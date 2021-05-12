@@ -6,18 +6,16 @@
 package com.ProyectoTDSBackend.repository;
 
 import com.ProyectoTDSBackend.models.Producto;
+import com.ProyectoTDSBackend.models.Proveedor;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author LENOVO
+ * @author corin
  */
-
-@Repository
-public interface ProductoRepository extends JpaRepository<Producto, Integer> {
-    Optional<Producto> findByNombre(String nombre);
-    boolean existsByNombre(String nombre);
+public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
+     Optional<Proveedor> findByNombreP(String nombre);
+    boolean existsByNombreP(String nombre);
     
 }

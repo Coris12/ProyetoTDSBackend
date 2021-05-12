@@ -5,23 +5,40 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author LENOVO
  */
-
 @Entity
-public class Producto {
+@Table(name = "productos")
+public class Producto implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private int id;
     private String nombre;
     private float precio;
+
+    @ManyToOne
+	@JoinColumn(name="id_pro")
+	@JsonIgnore
+   /* @JoinColumn(name = "id_pro")
+    @ManyToOne(fetch = FetchType.LAZY)*/
+    private Proveedor proveedor;
 
     public Producto() {
     }
@@ -29,6 +46,14 @@ public class Producto {
     public Producto(String nombre, float precio) {
         this.nombre = nombre;
         this.precio = precio;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
     public int getId() {
@@ -53,5 +78,5 @@ public class Producto {
 
     public void setPrecio(float precio) {
         this.precio = precio;
-    }   
+    }
 }

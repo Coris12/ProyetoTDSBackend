@@ -7,8 +7,11 @@ package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.dto.ProductoDto;
+import com.ProyectoTDSBackend.dto.ProveedorDto;
 import com.ProyectoTDSBackend.models.Producto;
+import com.ProyectoTDSBackend.models.Proveedor;
 import com.ProyectoTDSBackend.service.ProductoService;
+import com.ProyectoTDSBackend.service.ProveedorService;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
@@ -38,7 +41,7 @@ public class ProductoController {
 
     @Autowired
     ProductoService productoService;
-
+ProveedorService servicioProve;
     @ApiOperation("Muestra una lista de productos")
     @GetMapping("/lista")
     public ResponseEntity<List<Producto>> list(){
@@ -66,7 +69,7 @@ public class ProductoController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody ProductoDto productoDto){
+    public ResponseEntity<?> create(@RequestBody ProductoDto productoDto ){
         if(StringUtils.isBlank(productoDto.getNombre()))
             return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(productoDto.getPrecio()==null || productoDto.getPrecio()<0 )
@@ -75,6 +78,7 @@ public class ProductoController {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         Producto producto = new Producto(productoDto.getNombre(), productoDto.getPrecio());
         productoService.save(producto);
+        
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }
 
@@ -94,6 +98,7 @@ public class ProductoController {
         producto.setNombre(productoDto.getNombre());
         producto.setPrecio(productoDto.getPrecio());
         productoService.save(producto);
+      
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
