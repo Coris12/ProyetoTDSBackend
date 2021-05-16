@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/proveedor")
-@CrossOrigin(origins = "*")
+@CrossOrigin({"*"})
 public class ProveedorController {
 
     @Autowired
@@ -60,7 +60,7 @@ public class ProveedorController {
         }
         return "registrarProveedor";
     }*/
-    @CrossOrigin(origins = "*")
+    @CrossOrigin({"*"})
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/insertar")
     public ResponseEntity<?> create(@Valid @RequestBody ProveedorDto proveedorDto){
@@ -75,7 +75,7 @@ public class ProveedorController {
         }
         
     
-@CrossOrigin(origins = "*")
+@CrossOrigin({"*"})
     @GetMapping("/list")
     public ResponseEntity<List<Proveedor>> list() {
         List<Proveedor> list = servicioProve.list();

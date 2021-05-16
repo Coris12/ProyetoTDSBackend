@@ -36,7 +36,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @RestController
 @RequestMapping("/producto")
-@CrossOrigin(origins = "*")
+@CrossOrigin({"*"})
 public class ProductoController {
 
     @Autowired
