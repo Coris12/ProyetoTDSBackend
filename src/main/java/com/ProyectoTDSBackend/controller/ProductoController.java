@@ -22,6 +22,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -112,7 +113,10 @@ public class ProductoController {
 
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
-    @PutMapping("/deleteLogic/{id}")
+
+    @CrossOrigin({"*"})
+    @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/deleteLogic/{id}")
     public ResponseEntity<?> deleteLogic(@PathVariable("id") int id, @RequestBody ProductoDto productoDto) {
         Producto producto = productoService.getOne(id).get();
         producto.setEstado(0);
