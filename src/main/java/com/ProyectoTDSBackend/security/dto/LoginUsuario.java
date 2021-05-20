@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
  * @author LENOVO
  */
 public class LoginUsuario {
+
     @NotBlank
     private String nombreUsuario;
     @NotBlank

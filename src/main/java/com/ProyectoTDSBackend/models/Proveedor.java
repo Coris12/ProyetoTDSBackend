@@ -33,7 +33,7 @@ public class Proveedor {
     @GeneratedValue  
     private int idP;
     private String nombreP;
-    
+    private int estado;
   //Clave foranea manytoone
    @OneToMany(mappedBy="proveedor", cascade=CascadeType.MERGE, fetch=FetchType.LAZY)
 	private List<Producto> productos = new ArrayList<>();
@@ -47,6 +47,14 @@ public class Proveedor {
     public Proveedor(int idP, String nombreP) {
         this.idP = idP;
         this.nombreP = nombreP;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     

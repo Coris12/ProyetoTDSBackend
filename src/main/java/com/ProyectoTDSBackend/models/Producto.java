@@ -7,8 +7,6 @@ package com.ProyectoTDSBackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,19 +26,28 @@ import javax.persistence.Table;
 public class Producto implements Serializable {
 
     @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
     private float precio;
+    private int estado;
 
     @ManyToOne
-	@JoinColumn(name="id_pro")
-	@JsonIgnore
-   /* @JoinColumn(name = "id_pro")
+    @JoinColumn(name = "id_pro")
+    @JsonIgnore
+    /* @JoinColumn(name = "id_pro")
     @ManyToOne(fetch = FetchType.LAZY)*/
     private Proveedor proveedor;
 
     public Producto() {
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public Producto(String nombre, float precio) {

@@ -20,6 +20,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Rol {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

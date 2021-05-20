@@ -16,6 +16,16 @@ public class ProveedorDto {
 
     @NotBlank
     private String nombreP;
+    
+    private int estado;
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
     public String getNombreP() {
         return nombreP;
@@ -25,9 +35,12 @@ public class ProveedorDto {
         this.nombreP= nombreP;
     }
 
-    public ProveedorDto(String nombreP) {
+    public ProveedorDto(String nombreP, int estado) {
         this.nombreP = nombreP;
+        this.estado = estado;
     }
+
+ 
 
     public ProveedorDto() {
     }

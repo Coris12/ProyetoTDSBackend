@@ -21,17 +21,38 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ProveedorService {
+
     @Autowired
     private ProveedorRepository provRepository;
-    
-    public Proveedor save (Proveedor proveedor){
+
+    public Proveedor save(Proveedor proveedor) {
         return provRepository.save(proveedor);
     }
-    
-    public List<Proveedor> list(){
+
+    public List<Proveedor> list() {
         return provRepository.findAll();
     }
-      public Optional<Proveedor> getOne(int id){
+
+    public Optional<Proveedor> getOne(int id) {
         return provRepository.findById(id);
     }
+
+    public Optional<Proveedor> getByNombre(String nombre) {
+        return provRepository.findByNombreP(nombre);
+    }
+
+    public void delete(int id) {
+        provRepository.deleteById(id);
+    }
+
+    public boolean existsById(int id) {
+        return provRepository.existsById(id);
+    }
+
+    public boolean existsByNombre(String nombre) {
+        return provRepository.existsByNombreP(nombre);
+    }
+    
+   
+
 }
