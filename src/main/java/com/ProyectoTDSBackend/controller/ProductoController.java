@@ -13,6 +13,7 @@ import com.ProyectoTDSBackend.models.Proveedor;
 import com.ProyectoTDSBackend.service.ProductoService;
 import com.ProyectoTDSBackend.service.ProveedorService;
 import io.swagger.annotations.ApiOperation;
+import java.util.Collection;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -123,6 +125,11 @@ public class ProductoController {
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
+    @GetMapping("/search")
+     public ResponseEntity<List<Producto>> search() {
+         List<Producto> list = productoService.search();
+        return new ResponseEntity(list, HttpStatus.OK); 
+     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
@@ -133,5 +140,7 @@ public class ProductoController {
         productoService.delete(id);
         return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
+    
+    
 
 }
