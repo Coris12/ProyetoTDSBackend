@@ -38,7 +38,7 @@ public class ProveedorService {
     }
 
     public Optional<Proveedor> getByNombre(String nombre) {
-        return provRepository.findByNombreP(nombre);
+        return provRepository.findByNombreProveedor(nombre);
     }
 
     public void delete(int id) {
@@ -50,7 +50,7 @@ public class ProveedorService {
     }
 
     public boolean existsByNombre(String nombre) {
-        return provRepository.existsByNombreP(nombre);
+        return provRepository.existsByNombreProveedor(nombre);
     }
     
    

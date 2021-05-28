@@ -34,7 +34,7 @@ public class ProductoService {
     }
 
     public Optional<Producto> getByNombre(String nombre) {
-        return productoRepository.findByNombre(nombre);
+        return productoRepository.findByNombreProducto(nombre);
     }
 
     public void save(Producto producto) {
@@ -50,7 +50,7 @@ public class ProductoService {
     }
 
     public boolean existsByNombre(String nombre) {
-        return productoRepository.existsByNombre(nombre);
+        return productoRepository.existsByNombreProducto(nombre);
     }
     public List<Producto>search(){
      return productoRepository.findAllActiveUsersNative();
