@@ -57,11 +57,11 @@ public class ProveedorController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/insertar")
     public ResponseEntity<?> create(@Valid @RequestBody ProveedorDto proveedorDto) {
-        if (StringUtils.isBlank(proveedorDto.getNombreP())) {
+        if (StringUtils.isBlank(proveedorDto.getNombreProveedor())) {
             return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
 
-        Proveedor proveedor = new Proveedor(proveedorDto.getNombreP());
+        Proveedor proveedor = new Proveedor(proveedorDto.getNombreProveedor());
         proveedor.setEstado(1);
         servicioProve.save(proveedor);
 
@@ -86,15 +86,15 @@ public class ProveedorController {
         if (!servicioProve.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
-        if (servicioProve.existsByNombre(proveedorDto.getNombreP()) && servicioProve.getByNombre(proveedorDto.getNombreP()).get().getIdP() != id) {
+        if (servicioProve.existsByNombre(proveedorDto.getNombreProveedor()) && servicioProve.getByNombre(proveedorDto.getNombreProveedor()).get().getIdProveedor()!= id) {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if (StringUtils.isBlank(proveedorDto.getNombreP())) {
+        if (StringUtils.isBlank(proveedorDto.getNombreProveedor())) {
             return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
 
         Proveedor proveedor = servicioProve.getOne(id).get();
-        proveedor.setNombreP(proveedorDto.getNombreP());
+        proveedor.setNombreProveedor(proveedorDto.getNombreProveedor());
         servicioProve.save(proveedor);
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }

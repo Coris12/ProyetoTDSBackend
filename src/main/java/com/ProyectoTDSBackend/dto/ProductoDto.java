@@ -13,32 +13,35 @@ import javax.validation.constraints.NotBlank;
  * @author LENOVO
  */
 public class ProductoDto {
-    @NotBlank
-    private String nombre;
+ 
+    private String nombreProducto;
     @Min(0)
-    private Float precio;
+    private Float precioProducto;
+    
 
     public ProductoDto() {
     }
 
-    public ProductoDto(@NotBlank String nombre, @Min(0) Float precio) {
-        this.nombre = nombre;
-        this.precio = precio;
+    public ProductoDto(String nombreProducto, Float precioProducto) {
+        this.nombreProducto = nombreProducto;
+        this.precioProducto = precioProducto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
-    public Float getPrecio() {
-        return precio;
+    public Float getPrecioProducto() {
+        return precioProducto;
     }
 
-    public void setPrecio(Float precio) {
-        this.precio = precio;
+    public void setPrecioProducto(Float precioProducto) {
+        this.precioProducto = precioProducto;
     }
+
+    
 }

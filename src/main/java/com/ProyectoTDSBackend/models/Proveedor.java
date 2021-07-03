@@ -5,7 +5,6 @@
  */
 package com.ProyectoTDSBackend.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -27,26 +26,48 @@ import javax.persistence.Table;
  * @author corin
  */
 @Entity
-@Table(name="proveedor")
+@Table(name = "proveedor")
 public class Proveedor {
+
     @Id
-    @GeneratedValue  
-    private int idP;
-    private String nombreP;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_proveedor", nullable = false)
+    private int idProveedor;
+    @Column(name = "nombre_proveedor", nullable = false)
+    private String nombreProveedor;
+    @Column(name = "estado_proveedor", nullable = false)
     private int estado;
-  //Clave foranea manytoone
-   @OneToMany(mappedBy="proveedor", cascade=CascadeType.MERGE, fetch=FetchType.LAZY)
-	private List<Producto> productos = new ArrayList<>();
-   /* @OneToMany(mappedBy = "proveedor",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Producto> producto;*/
-   
+    //Clave foranea manytoone
+    @OneToMany(mappedBy = "proveedor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Producto> productos;
+
     public Proveedor() {
     }
 
-    public Proveedor(int idP, String nombreP) {
-        this.idP = idP;
-        this.nombreP = nombreP;
+    public Proveedor(int idProveedor, String nombreProveedor, int estado) {
+        this.idProveedor = idProveedor;
+        this.nombreProveedor = nombreProveedor;
+        this.estado = estado;
+    }
+
+    public Proveedor(String nombreProveedor) {
+       this.nombreProveedor=nombreProveedor;
+    }
+
+    public int getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public String getNombreProveedor() {
+        return nombreProveedor;
+    }
+
+    public void setNombreProveedor(String nombreProveedor) {
+        this.nombreProveedor = nombreProveedor;
     }
 
     public int getEstado() {
@@ -57,30 +78,12 @@ public class Proveedor {
         this.estado = estado;
     }
 
-    
-    public int getIdP() {
-        return idP;
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    public void setIdP(int idP) {
-        this.idP = idP;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 
-    public String getNombreP() {
-        return nombreP;
-    }
-
-    public void setNombreP(String nombreP) {
-        this.nombreP = nombreP;
-    }
-
-  
-    public Proveedor(String nombreP) {
-        this.nombreP = nombreP;
-    }
-
-   
-
-    
-    
 }

@@ -21,11 +21,12 @@ import org.springframework.stereotype.Repository;
  * @author corin
  */
 @Repository
+//jjj
 public interface ProveedorRepository extends JpaRepository<Proveedor, Integer> {
 
-    Optional<Proveedor> findByNombreP(String nombre);
+    Optional<Proveedor> findByNombreProveedor(String nombre);
 
-    boolean existsByNombreP(String nombre);
+    boolean existsByNombreProveedor(String nombre);
 
     /*@Modifying
     @Query(value = "update proveedor set estado=? where idP = ?",

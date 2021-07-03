@@ -14,35 +14,35 @@ import javax.validation.constraints.NotBlank;
  */
 public class ProveedorDto {
 
-    @NotBlank
-    private String nombreP;
+
+    private String nombreProveedor;
     
-    private int estado;
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public String getNombreP() {
-        return nombreP;
-    }
-
-    public void setNombreP(String nombreP) {
-        this.nombreP= nombreP;
-    }
-
-    public ProveedorDto(String nombreP, int estado) {
-        this.nombreP = nombreP;
-        this.estado = estado;
-    }
-
- 
+    private int estadoProveedor;
 
     public ProveedorDto() {
     }
+
+    public ProveedorDto(String nombreProveedor, int estadoProveedor) {
+        this.nombreProveedor = nombreProveedor;
+        this.estadoProveedor = estadoProveedor;
+    }
+
+    public String getNombreProveedor() {
+        return nombreProveedor;
+    }
+
+    public void setNombreProveedor(String nombreProveedor) {
+        this.nombreProveedor = nombreProveedor;
+    }
+
+    public int getEstadoProveedor() {
+        return estadoProveedor;
+    }
+
+    public void setEstadoProveedor(int estadoProveedor) {
+        this.estadoProveedor = estadoProveedor;
+    }
+
+
 
 }

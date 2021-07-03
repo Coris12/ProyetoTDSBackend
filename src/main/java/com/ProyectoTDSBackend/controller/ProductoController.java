@@ -7,13 +7,10 @@ package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.dto.ProductoDto;
-import com.ProyectoTDSBackend.dto.ProveedorDto;
 import com.ProyectoTDSBackend.models.Producto;
-import com.ProyectoTDSBackend.models.Proveedor;
 import com.ProyectoTDSBackend.service.ProductoService;
 import com.ProyectoTDSBackend.service.ProveedorService;
 import io.swagger.annotations.ApiOperation;
-import java.util.Collection;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +44,7 @@ public class ProductoController {
     ProveedorService servicioProve;
 
     @ApiOperation("Muestra una lista de productos")
+    @CrossOrigin({"*"})
     @GetMapping("/lista")
     public ResponseEntity<List<Producto>> list() {
         List<Producto> list = productoService.list();
@@ -76,17 +74,17 @@ public class ProductoController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ProductoDto productoDto) {
-        if (StringUtils.isBlank(productoDto.getNombre())) {
+        if (StringUtils.isBlank(productoDto.getNombreProducto())) {
             return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if (productoDto.getPrecio() == null || productoDto.getPrecio() < 0) {
+        if (productoDto.getPrecioProducto()== null || productoDto.getPrecioProducto()< 0) {
             return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
         }
-        if (productoService.existsByNombre(productoDto.getNombre())) {
+        if (productoService.existsByNombre(productoDto.getNombreProducto())) {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        Producto producto = new Producto(productoDto.getNombre(), productoDto.getPrecio());
-        producto.setEstado(1);
+        Producto producto = new Producto(productoDto.getNombreProducto(), productoDto.getPrecioProducto());
+        producto.setEstadoProducto(1);
         productoService.save(producto);
 
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
@@ -98,19 +96,19 @@ public class ProductoController {
         if (!productoService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
-        if (productoService.existsByNombre(productoDto.getNombre()) && productoService.getByNombre(productoDto.getNombre()).get().getId() != id) {
+        if (productoService.existsByNombre(productoDto.getNombreProducto()) && productoService.getByNombre(productoDto.getNombreProducto()).get().getIdProducto()!= id) {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
-        if (StringUtils.isBlank(productoDto.getNombre())) {
+        if (StringUtils.isBlank(productoDto.getNombreProducto())) {
             return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         }
-        if (productoDto.getPrecio() == null || productoDto.getPrecio() < 0) {
+        if (productoDto.getPrecioProducto()== null || productoDto.getPrecioProducto()< 0) {
             return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
         }
 
         Producto producto = productoService.getOne(id).get();
-        producto.setNombre(productoDto.getNombre());
-        producto.setPrecio(productoDto.getPrecio());
+        producto.setNombreProducto(productoDto.getNombreProducto());
+        producto.setPrecioProducto(productoDto.getPrecioProducto());
         productoService.save(producto);
 
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
@@ -121,7 +119,7 @@ public class ProductoController {
     @PatchMapping("/deleteLogic/{id}")
     public ResponseEntity<?> deleteLogic(@PathVariable("id") int id, @RequestBody ProductoDto productoDto) {
         Producto producto = productoService.getOne(id).get();
-        producto.setEstado(0);
+        producto.setEstadoProducto(0);
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
