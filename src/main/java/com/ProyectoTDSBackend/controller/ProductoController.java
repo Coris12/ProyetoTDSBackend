@@ -9,7 +9,6 @@ import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.dto.ProductoDto;
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.service.ProductoService;
-import com.ProyectoTDSBackend.service.ProveedorService;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
@@ -41,7 +40,6 @@ public class ProductoController {
 
     @Autowired
     ProductoService productoService;
-    ProveedorService servicioProve;
 
     @ApiOperation("Muestra una lista de productos")
     @CrossOrigin({"*"})
@@ -84,6 +82,7 @@ public class ProductoController {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
         Producto producto = new Producto(productoDto.getNombreProducto(), productoDto.getPrecioProducto());
+        
         producto.setEstadoProducto(1);
         productoService.save(producto);
 

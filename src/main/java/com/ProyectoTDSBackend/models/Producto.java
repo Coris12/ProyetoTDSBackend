@@ -37,13 +37,7 @@ public class Producto implements Serializable {
     private float precioProducto;
     @Column(name = "estado_producto", nullable = false)
     private int estadoProducto;
-    @Column(name = "id_proveedor", nullable = false)
-    private int idProveedor;
-
-    @JoinColumn(name = "id_proveedor", referencedColumnName = "id_proveedor", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-
-    private Proveedor proveedor;
+    
 
     public Producto() {
     }
@@ -83,14 +77,6 @@ public class Producto implements Serializable {
 
     public void setEstadoProducto(int estadoProducto) {
         this.estadoProducto = estadoProducto;
-    }
-
-    public Proveedor getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
     }
 
 }
