@@ -29,7 +29,7 @@ public class CreateRoles implements CommandLineRunner {
         Rol rolTribunal = new Rol(RolNombre.ROLE_TRIBUNAL);
         Rol rolTutor=new Rol (RolNombre.ROLE_TUTOR);
         rolService.save(rolCoordinador);
-        rolService.save(rolEstudiante);
+        rolService.save(rolEstudiante); 
         rolService.save(rolTribunal);
         rolService.save(rolTutor);*/
     }
