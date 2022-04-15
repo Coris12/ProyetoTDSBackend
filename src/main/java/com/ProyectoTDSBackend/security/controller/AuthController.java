@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.security.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.security.dto.JwtDto;
 import com.ProyectoTDSBackend.security.dto.LoginUsuario;
 import com.ProyectoTDSBackend.security.dto.NuevoUsuario;
@@ -13,10 +14,15 @@ import com.ProyectoTDSBackend.security.enums.RolNombre;
 import com.ProyectoTDSBackend.security.jwt.JwtProvider;
 import com.ProyectoTDSBackend.security.models.Rol;
 import com.ProyectoTDSBackend.security.models.Usuario;
+import com.ProyectoTDSBackend.security.repository.ServicioUser;
+import com.ProyectoTDSBackend.security.repository.UsuarioRepository;
 import com.ProyectoTDSBackend.security.service.RolService;
 import com.ProyectoTDSBackend.security.service.UsuarioService;
+import com.ProyectoTDSBackend.util.GenericResponse;
+import io.swagger.annotations.ApiOperation;
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +35,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -58,6 +66,12 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
 
+    @Autowired
+    UsuarioRepository userRepository;
+
+    @Autowired
+    ServicioUser userService;
+
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -74,7 +88,7 @@ public class AuthController {
                         passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_ESTUDIANTE).get());
-         if (nuevoUsuario.getRoles().contains("administrador")) {
+        if (nuevoUsuario.getRoles().contains("administrador")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMINISTRADOR).get());
         }
         if (nuevoUsuario.getRoles().contains("coordinador")) {
@@ -109,5 +123,22 @@ public class AuthController {
         String token = jwtProvider.refreshToken(jwtDto);
         JwtDto jwt = new JwtDto(token);
         return new ResponseEntity(jwt, HttpStatus.OK);
+    }
+
+    @ApiOperation("Muestra la lista de usuarios en el sistema")
+    @CrossOrigin({"*"})
+    @GetMapping("/listaUsuarios")
+    public ResponseEntity<List<Usuario>> lista() {
+        List<Usuario> list = usuarioService.listaUsuarios();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+
+    @CrossOrigin({"*"})
+    @PostMapping("/put-persona")
+    ResponseEntity<GenericResponse<Object>> putArrendatario(
+            @RequestParam(value = "idpersona") int idpersona,
+            @RequestParam(value = "rol") RolNombre rol
+    ) {
+        return new ResponseEntity<GenericResponse<Object>>(userService.putPermisos(idpersona, rol), HttpStatus.OK);
     }
 }

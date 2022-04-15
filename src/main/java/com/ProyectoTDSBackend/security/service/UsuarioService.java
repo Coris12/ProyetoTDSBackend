@@ -7,6 +7,7 @@ package com.ProyectoTDSBackend.security.service;
 
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.ProyectoTDSBackend.security.repository.UsuarioRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,9 @@ public class UsuarioService {
 
     public void save(Usuario usuario) {
         usuarioRepository.save(usuario);
+    }
+    
+    public List<Usuario> listaUsuarios() {
+        return usuarioRepository.findAll();
     }
 }
