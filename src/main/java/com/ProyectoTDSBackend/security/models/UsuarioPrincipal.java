@@ -17,25 +17,65 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @author LENOVO
  */
 public class UsuarioPrincipal implements UserDetails {
-    private String nombre;
-    private String nombreUsuario;
+   
+    private String identificacion;
+    
+    private String nombres;
+    
+    private String direccion;
+    
+    private String celular;
+    
+    private String profesion;
+    
+    private String sexo;
+   
     private String email;
+    
+    private String ciudad;
+   
+    private int estado;
+  
+    private String nombreUsuario;
+    
     private String password;
+    
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
-        this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
+    public UsuarioPrincipal(String identificacion, String nombres, String direccion, String celular, String profesion, String sexo, String email, String ciudad, int estado, String nombreUsuario, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
         this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.authorities = authorities;
     }
+
+
 
     public static UsuarioPrincipal build(Usuario usuario){
         List<GrantedAuthority> authorities =
                 usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol
                 .getRolNombre().name())).collect(Collectors.toList());
-        return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(), usuario.getPassword(), authorities);
+        return new UsuarioPrincipal(
+                usuario.getIdentificacion(),
+                usuario.getNombres(),
+                usuario.getDireccion(),
+                usuario.getCelular(),
+                usuario.getProfesion(),
+                usuario.getSexo(),
+                usuario.getEmail(),
+                usuario.getCiudad(),
+                usuario.getEstado(),
+                usuario.getNombreUsuario(), 
+                usuario.getPassword(), 
+                authorities);
     }
 
     @Override
@@ -74,10 +114,83 @@ public class UsuarioPrincipal implements UserDetails {
     }
 
     public String getNombre() {
-        return nombre;
+        return nombres;
     }
 
     public String getEmail() {
         return email;
     } 
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getProfesion() {
+        return profesion;
+    }
+
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+    
 }

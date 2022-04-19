@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
 
 /**
  *
@@ -27,16 +28,42 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id; 
     @NotNull
-    private String nombre;
+    private String identificacion;
+    
     @NotNull
+    private String nombres;
+    
+    @NotNull
+    private String direccion;
+    
+    @NotNull
+    private String celular;
+    
+    @NotNull
+    private String profesion;
+    
+    @NotNull
+    private String sexo;
+    
+    @NotNull
+    @Email
+    private String email;
+    
+    @NotNull
+    private String ciudad;
+    
+    @NotNull
+    @Column
+    private int estado;
+    
     @Column(unique = true)
     private String nombreUsuario;
-    @NotNull
-    private String email;
+    
     @NotNull
     private String password;
+    
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
@@ -46,12 +73,21 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
-        this.nombre = nombre;
-        this.nombreUsuario = nombreUsuario;
+    public Usuario(String identificacion, String nombres, String direccion, String celular, String profesion, String sexo, String email, String ciudad, int estado, String nombreUsuario, String password) {
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
         this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
     }
+
+   
 
     public int getId() {
         return id;
@@ -61,20 +97,52 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getProfesion() {
+        return profesion;
+    }
+
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getEmail() {
@@ -83,6 +151,22 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getPassword() {
@@ -100,4 +184,16 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    
+    
+   
 }

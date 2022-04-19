@@ -84,7 +84,17 @@ public class AuthController {
             return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
         }
         Usuario usuario
-                = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(),
+                = new Usuario(
+                nuevoUsuario.getIdentificacion(),
+                nuevoUsuario.getNombres(),
+                nuevoUsuario.getDireccion(),
+                nuevoUsuario.getCelular(),
+                nuevoUsuario.getProfesion(),
+                nuevoUsuario.getSexo(),
+                nuevoUsuario.getEmail(),
+                nuevoUsuario.getCiudad(),
+                nuevoUsuario.getEstado(),
+                nuevoUsuario.getNombreUsuario(), 
                         passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_ESTUDIANTE).get());
@@ -100,6 +110,7 @@ public class AuthController {
         if (nuevoUsuario.getRoles().contains("tutor")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_TUTOR).get());
         }
+        usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
         return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);
