@@ -16,4 +16,11 @@ public interface FarmaciaRepository extends JpaRepository<Farmacia, Long> {
     List<Farmacia> listarFarmacias();
     
     Farmacia findByIdFarmacia(Long idFarmacia);
+
+    //BUSCAR FARMACIA POR NOMBRE
+    Farmacia findByNombreFarmacia(String nombreFarmacia);
+
+    //BUSCAR FARMACIA POR IDSUCURSAL
+    Farmacia findByIdSucursal(Long idSucursal);
+
 }
