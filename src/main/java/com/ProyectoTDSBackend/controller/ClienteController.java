@@ -14,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -36,15 +38,32 @@ public class ClienteController {
     @PostMapping("/crearCliente")
     public ResponseEntity<?> create(@RequestBody Cliente cliente) {
 
-        Cliente cli = new Cliente(
-                cliente.getId_cliente(),
-                cliente.getObservaciones(),
-                cliente.getUsuario()
-        );
+        try {
+            Cliente cli = new Cliente(
+                    cliente.getId_cliente(),
+                    cliente.getObservaciones(),
+                    cliente.getEstado(),
+                    cliente.getUsuario()
+            );
+            cliente.setEstado(1);
+            servicio.save(cliente);
 
+            return new ResponseEntity(new Mensaje("Cliente creado exitosamente"), HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println("error crear cliente: " + e.getMessage());
+            return new ResponseEntity(new Mensaje("Cliente no fue creado"), HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @ApiOperation("Eliminado logico de cliente")
+    @CrossOrigin({"*"})
+    @PatchMapping("/deleteCliente/{id_cliente}")
+    public ResponseEntity<?> deleteCliente(@RequestParam(value = "idempresa") int idempresa) {
+        Cliente cliente = servicio.getOne(idempresa).get();
+        cliente.setEstado(0);
         servicio.save(cliente);
-
-        return new ResponseEntity(new Mensaje("Cliente creado exitosamente"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("cliente eliminado"), HttpStatus.OK);
     }
 
 }
