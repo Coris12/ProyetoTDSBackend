@@ -27,7 +27,7 @@ public class CuerpoFactura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cuerpo", nullable = false)
-    private int idCuerpo;
+    private Long idCuerpo;
     @Column(name = "cantidad", nullable = false)
     private int cantidad;
     @Column(name = "total", nullable = false)
@@ -53,7 +53,7 @@ public class CuerpoFactura {
     public CuerpoFactura() {
     }
 
-    public CuerpoFactura(int idCuerpo, int cantidad, float total, float subtotal, double descuento, int iva, int id_producto,Producto producto) {
+    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, int iva, int id_producto, Producto producto) {
         this.idCuerpo = idCuerpo;
         this.cantidad = cantidad;
         this.total = total;
@@ -64,13 +64,11 @@ public class CuerpoFactura {
         this.producto = producto;
     }
 
-   
-
-    public int getIdCuerpo() {
+    public Long getIdCuerpo() {
         return idCuerpo;
     }
 
-    public void setIdCuerpo(int idCuerpo) {
+    public void setIdCuerpo(Long idCuerpo) {
         this.idCuerpo = idCuerpo;
     }
 

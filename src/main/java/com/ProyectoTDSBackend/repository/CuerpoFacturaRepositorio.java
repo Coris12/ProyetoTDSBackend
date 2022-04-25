@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author corin
  */
-public interface CuerpoFacturaRepositorio extends JpaRepository<CuerpoFactura,Integer> {
+public interface CuerpoFacturaRepositorio extends JpaRepository<CuerpoFactura,Long> {
     
 }

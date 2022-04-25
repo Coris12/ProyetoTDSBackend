@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,8 +30,10 @@ public class  Factura {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 
-    @Column(name = "id_cliente", nullable = false)
-	private Long id_cliente;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Cliente cliente;
+
 
     @Column(name = "tipo_factura")
     private String tipo_factura;
@@ -42,11 +46,10 @@ public class  Factura {
     public Factura() {
     }
 
-    public Factura(Long id_factura, Date fecha, Long id_cliente, String tipo_factura,
-            List<CuerpoFactura> cuerpoFactura) {
+    public Factura(Long id_factura, Date fecha, Cliente cliente, String tipo_factura, List<CuerpoFactura> cuerpoFactura) {
         this.id_factura = id_factura;
         this.fecha = fecha;
-        this.id_cliente = id_cliente;
+        this.cliente = cliente;
         this.tipo_factura = tipo_factura;
         this.cuerpoFactura = cuerpoFactura;
     }
@@ -67,12 +70,12 @@ public class  Factura {
         this.fecha = fecha;
     }
 
-    public Long getId_cliente() {
-        return id_cliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setId_cliente(Long id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getTipo_factura() {
@@ -90,6 +93,4 @@ public class  Factura {
     public void setCuerpoFactura(List<CuerpoFactura> cuerpoFactura) {
         this.cuerpoFactura = cuerpoFactura;
     }
-
-    
 }

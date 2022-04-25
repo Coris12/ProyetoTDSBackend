@@ -6,12 +6,18 @@
 package com.ProyectoTDSBackend.models;
 
 import com.ProyectoTDSBackend.security.models.Usuario;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +44,9 @@ public class Cliente {
     @JoinColumn(name = "id_persona")
     private Usuario usuario;
 
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Factura> factura;
+
     public Cliente() {
     }
 
@@ -46,8 +55,6 @@ public class Cliente {
         this.observaciones = observaciones;
         this.usuario = usuario;
     }
-
-   
 
     public int getId_cliente() {
         return id_cliente;

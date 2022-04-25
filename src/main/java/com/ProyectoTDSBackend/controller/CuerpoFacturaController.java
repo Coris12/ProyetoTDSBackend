@@ -10,6 +10,8 @@ import com.ProyectoTDSBackend.dto.ProductoDto;
 import com.ProyectoTDSBackend.models.CuerpoFactura;
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.service.CuerpoFacturaService;
+import com.ProyectoTDSBackend.util.GenericResponse;
+
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
@@ -48,7 +50,7 @@ public class CuerpoFacturaController {
 
     @ApiOperation("Detalle del cuerpo de la Factura")
     @GetMapping("/detail/{id}")
-    public ResponseEntity<CuerpoFactura> getById(@PathVariable("id") int id) {
+    public ResponseEntity<CuerpoFactura> getById(@PathVariable("id") Long id) {
         if (!cuerpoService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
@@ -68,15 +70,16 @@ public class CuerpoFacturaController {
         }
 
         CuerpoFactura cuerpo = new CuerpoFactura(
-                cuerpos.getIdCuerpo(),
-                cuerpos.getCantidad(),
-                cuerpos.getTotal(),
-                cuerpos.getSubtotal(),
-                cuerpos.getDescuento(),
-                cuerpos.getIva(),
-                cuerpos.getId_producto(),
-                cuerpos.getProducto()
+            cuerpos.getIdCuerpo(),
+            cuerpos.getCantidad(),
+            cuerpos.getTotal(),
+            cuerpos.getSubtotal(),
+            cuerpos.getDescuento(),
+            cuerpos.getIva(),
+            cuerpos.getId_producto(),
+            cuerpos.getProducto()
                 );
+                
 
         cuerpoService.save(cuerpo);
 
@@ -85,7 +88,7 @@ public class CuerpoFacturaController {
 
     @ApiOperation("Actualizar el cuerpo de la factura")
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody CuerpoFactura cuerpo) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody CuerpoFactura cuerpo) {
         if (!cuerpoService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
@@ -107,11 +110,20 @@ public class CuerpoFacturaController {
 
     @ApiOperation("Eliminar el cuerpo de la factura")
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (!cuerpoService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
         cuerpoService.delete(id);
         return new ResponseEntity(new Mensaje("cuerpo de la factura eliminado eliminado"), HttpStatus.OK);
     }
+
+
+    //Guardar producto en cuerpo de factura
+    @ApiOperation("Guardar producto en cuerpo de factura")
+    @PostMapping(path = "/GuardarCuerpoFactura")
+	public ResponseEntity<GenericResponse<String>> GuardarCuerpoFactura(@RequestBody CuerpoFactura cuerpoFactura) {
+		return new ResponseEntity<GenericResponse<String>>(cuerpoService.saveCuerpoFactura(cuerpoFactura), HttpStatus.OK);
+	}
+
 }
