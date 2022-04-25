@@ -24,6 +24,7 @@ public class FacturaService {
     public GenericResponse<String> saveFactura(Factura factura) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
+            
             if (factura != null) {
                 facturaRepository.save(factura);
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());

@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @CrossOrigin(origins ="*")
 @RestController
-@RequestMapping("factura")
+@RequestMapping("/factura")
 @Tag(name = "FacturaWS", description = "Control y mantenimiento de factura" )
 public class FacturaController {
     
