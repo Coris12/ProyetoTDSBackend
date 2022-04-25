@@ -71,16 +71,7 @@ public class ProductoController {
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Producto productos) {
-        if (StringUtils.isBlank(productos.getNombreProducto())) {
-            return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        }
-
-        if (productos.getPrecioProducto() < 0) {
-            return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        }
-        if (productoService.existsByNombre(productos.getNombreProducto())) {
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        }
+       
         Producto producto = new Producto(
                 productos.getIdProducto(),
                 productos.getCategoriaProducto(),
@@ -93,7 +84,8 @@ public class ProductoController {
                 productos.getDescripcionProducto(),
                 productos.getPrecioProducto(),
                 productos.getEstadoProducto(),
-                productos.getStockProducto());
+                productos.getStockProducto(),
+                productos.getProveedor());
 
         producto.setEstadoProducto(1);
         productoService.save(producto);
@@ -101,32 +93,28 @@ public class ProductoController {
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+ 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody ProductoDto productoDto) {
-        if (!productoService.existsById(id)) {
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        }
-        if (productoService.existsByNombre(productoDto.getNombreProducto()) && productoService.getByNombre(productoDto.getNombreProducto()).get().getIdProducto() != id) {
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        }
-        if (StringUtils.isBlank(productoDto.getNombreProducto())) {
-            return new ResponseEntity(new Mensaje("el nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        }
-        if (productoDto.getPrecioProducto() == null || productoDto.getPrecioProducto() < 0) {
-            return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Producto productoDto) {
 
         Producto producto = productoService.getOne(id).get();
         producto.setNombreProducto(productoDto.getNombreProducto());
         producto.setPrecioProducto(productoDto.getPrecioProducto());
+        producto.setCategoriaProducto(productoDto.getCategoriaProducto());
+        producto.setCodBarra(productoDto.getCodBarra());
+        producto.setCodigoRef(productoDto.getCodigoRef());
+        producto.setDescripcionProducto(productoDto.getDescripcionProducto());
+        producto.setFechaExp(productoDto.getFechaExp());
+        producto.setInventarioProducto(productoDto.getInventarioProducto());
+        producto.setRegSanitario(productoDto.getRegSanitario());
+        producto.setStockProducto(productoDto.getStockProducto());
+
         productoService.save(producto);
 
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
     @CrossOrigin({"*"})
-    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/deleteLogic/{id}")
     public ResponseEntity<?> deleteLogic(@PathVariable("id") int id, @RequestBody ProductoDto productoDto) {
         Producto producto = productoService.getOne(id).get();
@@ -141,7 +129,6 @@ public class ProductoController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!productoService.existsById(id)) {

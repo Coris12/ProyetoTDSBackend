@@ -61,14 +61,6 @@ public class CuerpoFacturaController {
     @ApiOperation("Crear el cuerpo de la factura")
     @PostMapping("/crear")
     public ResponseEntity<?> create(@RequestBody CuerpoFactura cuerpos) {
-
-        if (cuerpos.getCantidad() < 0) {
-            return new ResponseEntity(new Mensaje("la cantidad debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        }
-        if (cuerpos.getDescuento() < 0) {
-            return new ResponseEntity(new Mensaje("el descuento debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        }
-
         CuerpoFactura cuerpo = new CuerpoFactura(
             cuerpos.getIdCuerpo(),
             cuerpos.getCantidad(),
@@ -76,12 +68,10 @@ public class CuerpoFacturaController {
             cuerpos.getSubtotal(),
             cuerpos.getDescuento(),
             cuerpos.getIva(),
-            cuerpos.getId_producto(),
-            cuerpos.getProducto()
-                );
+            cuerpos.getProducto()  );
                 
 
-        cuerpoService.save(cuerpo);
+        cuerpoService.save(cuerpos);
 
         return new ResponseEntity(new Mensaje("cuerpo de la factura creado"), HttpStatus.OK);
     }
@@ -89,14 +79,7 @@ public class CuerpoFacturaController {
     @ApiOperation("Actualizar el cuerpo de la factura")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody CuerpoFactura cuerpo) {
-        if (!cuerpoService.existsById(id)) {
-            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
-        }
-
-        if (cuerpo.getCantidad() < 0) {
-            return new ResponseEntity(new Mensaje("la cantidad debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        }
-
+        
         CuerpoFactura cuerpos = cuerpoService.getOne(id).get();
         cuerpos.setCantidad(cuerpo.getCantidad());
         cuerpos.setDescuento(cuerpo.getDescuento());

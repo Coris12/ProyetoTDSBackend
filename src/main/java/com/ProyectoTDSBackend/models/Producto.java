@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 //s
@@ -50,11 +52,14 @@ public class Producto implements Serializable {
     @Column(name = "estado_producto", nullable = false)
     private int estadoProducto;
 
+    @JoinColumn(name = "id_proveedors")
+    @ManyToOne()
+    private Proveedor proveedor;
     
     public Producto() {
     }
 
-    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, int stockProducto, int estadoProducto) {
+    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, int stockProducto, int estadoProducto, Proveedor proveedor) {
         this.idProducto = idProducto;
         this.categoriaProducto = categoriaProducto;
         this.codigoRef = codigoRef;
@@ -67,8 +72,10 @@ public class Producto implements Serializable {
         this.precioProducto = precioProducto;
         this.stockProducto = stockProducto;
         this.estadoProducto = estadoProducto;
-        
+        this.proveedor = proveedor;
     }
+
+    
 
     public int getIdProducto() {
         return idProducto;
@@ -164,6 +171,14 @@ public class Producto implements Serializable {
 
     public void setEstadoProducto(int estadoProducto) {
         this.estadoProducto = estadoProducto;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
    
