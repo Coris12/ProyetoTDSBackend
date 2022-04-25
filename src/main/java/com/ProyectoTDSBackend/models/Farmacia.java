@@ -1,22 +1,14 @@
 package com.ProyectoTDSBackend.models;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 @Table(name = "Farmacia")
@@ -32,14 +24,22 @@ public class Farmacia {
     @Column(name = "id_producto")
     private Long idProducto;
 
-    @Column(name = "id_sucursal")
-    private Long idSucursal;
+    //pirncipal
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_sucursal",updatable = false)
+    private Sucursal sucursal;
 
     //uno a muchos
-    @OneToMany(mappedBy = "farmacia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Sucursal> sucursal;
+    // @OneToMany(mappedBy = "farmacia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // private List<Sucursal> sucursal;
 
     public Farmacia() {
+    }
+
+    public Farmacia(Long idFarmacia, Long idEmpleado, Long idProducto) {
+        this.idFarmacia = idFarmacia;
+        this.idEmpleado = idEmpleado;
+        this.idProducto = idProducto;
     }
 
     public Long getIdFarmacia() {
@@ -66,20 +66,12 @@ public class Farmacia {
         this.idProducto = idProducto;
     }
 
-    public Long getIdSucursal() {
-        return idSucursal;
-    }
-
-    public void setIdSucursal(Long idSucursal) {
-        this.idSucursal = idSucursal;
-    }
-
-    public List<Sucursal> getSucursal() {
+    public Sucursal getSucursal() {
         return sucursal;
     }
 
-    public void setSucursal(List<Sucursal> sucursal) {
+    public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
     }
-    
+
 }

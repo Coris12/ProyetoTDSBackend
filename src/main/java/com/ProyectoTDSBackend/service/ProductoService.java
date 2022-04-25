@@ -7,7 +7,6 @@ package com.ProyectoTDSBackend.service;
 
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.repository.ProductoRepository;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

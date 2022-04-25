@@ -2,6 +2,7 @@ package com.ProyectoTDSBackend.dto;
 
 public class FarmaciaDTO {
     private Long idFarmacia;
+    
 
     public FarmaciaDTO() {
     }

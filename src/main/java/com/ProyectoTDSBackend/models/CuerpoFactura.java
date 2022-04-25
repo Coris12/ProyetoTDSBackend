@@ -5,7 +5,6 @@
  */
 package com.ProyectoTDSBackend.models;
 
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -46,6 +44,11 @@ public class CuerpoFactura {
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", insertable = false, updatable = false)
     @ManyToOne()
     private Producto producto;
+
+    @JoinColumn(name = "id_factura")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Factura factura;
+
 
     public CuerpoFactura() {
     }

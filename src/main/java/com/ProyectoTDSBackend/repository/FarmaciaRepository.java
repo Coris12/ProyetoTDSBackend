@@ -14,13 +14,7 @@ public interface FarmaciaRepository extends JpaRepository<Farmacia, Long> {
     +"JOIN sucursal s"
     +"ON f.id_farmacia=s.id_farmacia", nativeQuery = true)
     List<Farmacia> listarFarmacias();
+
     
-    Farmacia findByIdFarmacia(Long idFarmacia);
-
-    //BUSCAR FARMACIA POR NOMBRE
-    Farmacia findByNombreFarmacia(String nombreFarmacia);
-
-    //BUSCAR FARMACIA POR IDSUCURSAL
-    Farmacia findByIdSucursal(Long idSucursal);
 
 }
