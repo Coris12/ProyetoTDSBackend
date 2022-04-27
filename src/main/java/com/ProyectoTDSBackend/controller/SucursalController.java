@@ -3,6 +3,7 @@ package com.ProyectoTDSBackend.controller;
 import java.util.List;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.models.Sucursal;
 import com.ProyectoTDSBackend.service.SucursalService;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -21,10 +22,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+
 @RestController
 @RequestMapping("/sucursal")
 @CrossOrigin({"*"})
-@Tag(name = "Sucursal", description = "Control y Operaciones sobre las sucursales")
 public class SucursalController {
 
     @Autowired
@@ -38,40 +39,26 @@ public class SucursalController {
         return new ResponseEntity<GenericResponse<List<Sucursal>>>(sucursalService.getAllSucursales(), HttpStatus.OK);
     }
 
+    @ApiOperation("Crear sucursal")
+    @PostMapping("/crearSucursal")
+    public ResponseEntity<?> create(@org.springframework.web.bind.annotation.RequestBody Sucursal sucursal) {
 
-    @PostMapping(path = "saveSucursal")
-    public ResponseEntity<GenericResponse<String>> saveSucursal(@RequestBody Sucursal sucursal) {
-        return new ResponseEntity<GenericResponse<String>>(sucursalService.saveSucursal(sucursal), HttpStatus.OK);
+        try {
+            Sucursal suc = new Sucursal(
+                    sucursal.getIdSucursal(),
+                    sucursal.getCorreoSuc(),
+                    sucursal.getDireccionSuc(),
+                    sucursal.getTelefonoSuc(),
+                    sucursal.getNombreSuc()
+            );
+            sucursalService.save(sucursal);
+
+            return new ResponseEntity(new Mensaje("sucursal creada"), HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println("error crear sucursal: " + e.getMessage());
+            return new ResponseEntity(new Mensaje("sucursal no fue creada"), HttpStatus.BAD_REQUEST);
+        }
+
     }
-
-    //Guardar sucursal
-    @ApiOperation(value = "Guardar Sucursal", notes = "Guarda una sucursal")
-    @PostMapping(path = "save")
-    public Sucursal saveSucursal2(@RequestBody Sucursal sucursal) {
-        return sucursalService.save(sucursal);
-    }
-
-
-     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody Sucursal sucursal) {
-            //return new ResponseEntity(new Mensaje(), HttpStatus.BAD_REQUEST);
-
-        // if (sucursal.getTelefonoSuc() < 0) {
-        //     return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
-        // }
-        // if (sucursalService.existsByNombre(sucursal.getNombreSuc())) {
-        //     return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        // }
-        Sucursal suc = new Sucursal(
-                sucursal.getIdSucursal(),
-                sucursal.getNombreSuc(),
-                sucursal.getCorreoSuc(),
-                sucursal.getTelefonoSuc(),
-                sucursal.getDireccionSuc());
-
-                sucursalService.save2(sucursal);
-
-        return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
-    }
-    
+   
 }

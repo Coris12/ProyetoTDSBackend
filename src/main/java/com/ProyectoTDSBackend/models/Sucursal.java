@@ -1,6 +1,5 @@
 package com.ProyectoTDSBackend.models;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -13,12 +12,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sucursal")
 public class Sucursal extends Auditable implements Serializable {
+
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Id
+     *
+     */
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sucursal", nullable = false)
     private Long idSucursal;
@@ -30,7 +29,7 @@ public class Sucursal extends Auditable implements Serializable {
     private String direccionSuc;
 
     @Column(name = "telefonoSuc", length = 10)
-    private int telefonoSuc;
+    private String telefonoSuc;
 
     @Column(name = "correoSuc", length = 200)
     private String correoSuc;
@@ -38,16 +37,12 @@ public class Sucursal extends Auditable implements Serializable {
     public Sucursal() {
     }
 
-    public Sucursal(Long idSucursal, String nombreSuc, String direccionSuc, int telefonoSuc, String correoSuc) {
+    public Sucursal(Long idSucursal, String nombreSuc, String direccionSuc, String telefonoSuc, String correoSuc) {
         this.idSucursal = idSucursal;
         this.nombreSuc = nombreSuc;
         this.direccionSuc = direccionSuc;
         this.telefonoSuc = telefonoSuc;
         this.correoSuc = correoSuc;
-    }
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
     }
 
     public Long getIdSucursal() {
@@ -74,11 +69,11 @@ public class Sucursal extends Auditable implements Serializable {
         this.direccionSuc = direccionSuc;
     }
 
-    public int getTelefonoSuc() {
+    public String getTelefonoSuc() {
         return telefonoSuc;
     }
 
-    public void setTelefonoSuc(int telefonoSuc) {
+    public void setTelefonoSuc(String telefonoSuc) {
         this.telefonoSuc = telefonoSuc;
     }
 
@@ -89,6 +84,9 @@ public class Sucursal extends Auditable implements Serializable {
     public void setCorreoSuc(String correoSuc) {
         this.correoSuc = correoSuc;
     }
+    
+    
 
     
+
 }

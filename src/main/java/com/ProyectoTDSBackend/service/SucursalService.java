@@ -37,36 +37,31 @@ public class SucursalService {
         return response;
     }
 
-    //simple save
-    public Sucursal save(Sucursal sucursal) {
-        return sucursalRepository.save(sucursal);
-    }
-
-    public void save2(Sucursal sucursal){
+     public void save(Sucursal sucursal) {
         sucursalRepository.save(sucursal);
     }
 
     //Guardar sucursal
-    public GenericResponse<String> saveSucursal(Sucursal sucursal) {
-        GenericResponse<String> response = new GenericResponse<>();
-        try {
-            if (sucursal != null) {
-                System.out.println("Sucursal: " + sucursal.toString());
-                sucursalRepository.save(sucursal);
-                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("Guardado exitoso de: " + sucursal.getIdSucursal()+" :"+sucursal.getNombreSuc());
-                response.setStatus(ParametersApp.SUCCESSFUL.value());
-            } else {
-                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("No se pudo guardar");
-                response.setStatus(ParametersApp.SUCCESSFUL.value());
-            }
-        } catch (Exception e) {
-            log.error("Error al guardar sucursal: " + e.getMessage());
-            response.setStatus(ParametersApp.SERVER_ERROR.value());
-        }
-        return response;
-    }
+//    public GenericResponse<String> saveSucursal(Sucursal sucursal) {
+//        GenericResponse<String> response = new GenericResponse<>();
+//        try {
+//            if (sucursal != null) {
+//                System.out.println("Sucursal: " + sucursal.toString());
+//                sucursalRepository.save(sucursal);
+//                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+//                response.setObject("Guardado exitoso de: " + sucursal.getIdSucursal()+" :"+sucursal.getNombreSuc());
+//                response.setStatus(ParametersApp.SUCCESSFUL.value());
+//            } else {
+//                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+//                response.setObject("No se pudo guardar");
+//                response.setStatus(ParametersApp.SUCCESSFUL.value());
+//            }
+//        } catch (Exception e) {
+//            log.error("Error al guardar sucursal: " + e.getMessage());
+//            response.setStatus(ParametersApp.SERVER_ERROR.value());
+//        }
+//        return response;
+//    }
 
     public boolean existsByNombre(String nombre) {
         return sucursalRepository.existsByNombreSuc(nombre);
