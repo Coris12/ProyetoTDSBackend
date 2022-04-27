@@ -3,6 +3,7 @@ package com.ProyectoTDSBackend.models;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Farmacia")
+@Table(name = "farmacia")
 public class Farmacia {
+    private static final long serialVersionUID = 1542L;
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_farmacia", nullable = false)
@@ -24,14 +26,10 @@ public class Farmacia {
     @Column(name = "id_producto")
     private Long idProducto;
 
-    //pirncipal
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_sucursal",updatable = false)
+    //principal
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_sucursal", foreignKey = @ForeignKey(name = "fk_farmacia_sucursal"))
     private Sucursal sucursal;
-
-    //uno a muchos
-    // @OneToMany(mappedBy = "farmacia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    // private List<Sucursal> sucursal;
 
     public Farmacia() {
     }

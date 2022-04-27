@@ -6,7 +6,6 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
-import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.models.Empleado;
 import com.ProyectoTDSBackend.service.EmpleadoService;
 import io.swagger.annotations.ApiOperation;

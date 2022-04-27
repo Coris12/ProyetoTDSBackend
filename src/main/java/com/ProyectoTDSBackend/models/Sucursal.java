@@ -1,22 +1,24 @@
 package com.ProyectoTDSBackend.models;
 
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 @Entity
-@Table(name = "Sucursal")
-public class Sucursal {
-    @Id
+@Table(name = "sucursal")
+public class Sucursal extends Auditable implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sucursal", nullable = false)
     private Long idSucursal;
@@ -33,16 +35,27 @@ public class Sucursal {
     @Column(name = "correoSuc", length = 200)
     private String correoSuc;
 
-    //secundario de la tabla farmacia
-    // @JoinColumn(name = "id_farmacia")
-    // @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    // private Farmacia farmacia;
-
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    private Farmacia farmacia;
-
     public Sucursal() {
+    }
+
+    public Sucursal(Long idSucursal, String nombreSuc, String direccionSuc, int telefonoSuc, String correoSuc) {
+        this.idSucursal = idSucursal;
+        this.nombreSuc = nombreSuc;
+        this.direccionSuc = direccionSuc;
+        this.telefonoSuc = telefonoSuc;
+        this.correoSuc = correoSuc;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public Long getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(Long idSucursal) {
+        this.idSucursal = idSucursal;
     }
 
     public String getNombreSuc() {
@@ -75,22 +88,6 @@ public class Sucursal {
 
     public void setCorreoSuc(String correoSuc) {
         this.correoSuc = correoSuc;
-    }
-
-    public Long getIdSucursal() {
-        return idSucursal;
-    }
-
-    public void setIdSucursal(Long idSucursal) {
-        this.idSucursal = idSucursal;
-    }
-
-    public Farmacia getFarmacia() {
-        return farmacia;
-    }
-
-    public void setFarmacia(Farmacia farmacia) {
-        this.farmacia = farmacia;
     }
 
     

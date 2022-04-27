@@ -6,7 +6,6 @@
 package com.ProyectoTDSBackend.service;
 
 import com.ProyectoTDSBackend.models.Cliente;
-import com.ProyectoTDSBackend.models.CuerpoFactura;
 import com.ProyectoTDSBackend.repository.ClienteRepository;
 import java.util.List;
 import java.util.Optional;

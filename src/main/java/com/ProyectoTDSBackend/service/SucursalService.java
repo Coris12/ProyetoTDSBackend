@@ -2,6 +2,8 @@ package com.ProyectoTDSBackend.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.ProyectoTDSBackend.models.Sucursal;
 import com.ProyectoTDSBackend.repository.sucursalRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -12,34 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class SucursalService {
 
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(FarmaciaService.class);
     
     @Autowired
-    private sucursalRepository sucursalRepository;
+    sucursalRepository sucursalRepository;
 
-    public GenericResponse<String> saveSucursal(Sucursal sucursal) {
-        GenericResponse<String> response = new GenericResponse<>();
-        try {
-            if (sucursal != null) {
-                sucursalRepository.save(sucursal);
-                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("Guardado exitoso");
-                response.setStatus(ParametersApp.SUCCESSFUL.value());
-            } else {
-                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("No se pudo guardar");
-                response.setStatus(ParametersApp.SUCCESSFUL.value());
-            }
-        } catch (Exception e) {
-            log.error("Error al guardar farmacia: " + e.getMessage());
-            response.setStatus(ParametersApp.SERVER_ERROR.value());
-        }
-        return response;
-    }
-
-    //obtener todas las sucursales
+    //listar todas las sucursales
     public GenericResponse<List<Sucursal>> getAllSucursales() {
         GenericResponse<List<Sucursal>> response = new GenericResponse<>();
         try {
@@ -48,52 +31,45 @@ public class SucursalService {
             response.setObject(sucursales);
             response.setStatus(ParametersApp.SUCCESSFUL.value());
         } catch (Exception e) {
-            log.error("Error al obtener farmacias: " + e.getMessage());
+            log.error("Error al obtener sucursales: " + e.getMessage());
             response.setStatus(ParametersApp.SERVER_ERROR.value());
         }
         return response;
-    }  
-    
-    //Actualizar una sucursal
-    public GenericResponse<String> updateSucursal(Sucursal sucursal) {
+    }
+
+    //simple save
+    public Sucursal save(Sucursal sucursal) {
+        return sucursalRepository.save(sucursal);
+    }
+
+    public void save2(Sucursal sucursal){
+        sucursalRepository.save(sucursal);
+    }
+
+    //Guardar sucursal
+    public GenericResponse<String> saveSucursal(Sucursal sucursal) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
-            if(sucursalRepository.findByIdSucursal(sucursal.getIdSucursal()) != null){
+            if (sucursal != null) {
+                System.out.println("Sucursal: " + sucursal.toString());
                 sucursalRepository.save(sucursal);
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("Actualizado exitoso");
+                response.setObject("Guardado exitoso de: " + sucursal.getIdSucursal()+" :"+sucursal.getNombreSuc());
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             } else {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("No se pudo actualizar");
+                response.setObject("No se pudo guardar");
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             }
         } catch (Exception e) {
-            log.error("Error al actualizar farmacia: " + e.getMessage());
+            log.error("Error al guardar sucursal: " + e.getMessage());
             response.setStatus(ParametersApp.SERVER_ERROR.value());
         }
         return response;
     }
 
-
-    //eliminar una sucursal
-    public GenericResponse<String> deleteSucursal(Long idSucursal) {
-        GenericResponse<String> response = new GenericResponse<>();
-        try {
-            if(sucursalRepository.findByIdSucursal(idSucursal) != null){
-                sucursalRepository.deleteById(idSucursal);
-                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("Eliminado exitoso");
-                response.setStatus(ParametersApp.SUCCESSFUL.value());
-            } else {
-                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("No se pudo eliminar");
-                response.setStatus(ParametersApp.SUCCESSFUL.value());
-            }
-        } catch (Exception e) {
-            log.error("Error al eliminar farmacia: " + e.getMessage());
-            response.setStatus(ParametersApp.SERVER_ERROR.value());
-        }
-        return response;
+    public boolean existsByNombre(String nombre) {
+        return sucursalRepository.existsByNombreSuc(nombre);
     }
+    
 }

@@ -6,15 +6,12 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
-import com.ProyectoTDSBackend.dto.ProductoDto;
 import com.ProyectoTDSBackend.models.CuerpoFactura;
-import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.service.CuerpoFacturaService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
