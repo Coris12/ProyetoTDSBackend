@@ -40,6 +40,10 @@ public class Cliente {
     @Column(name = "observaciones", nullable = false)
     private String observaciones;
 
+    @Column(name = "estado", nullable = false)
+    private int estado;
+
+    
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Usuario usuario;
@@ -50,10 +54,19 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id_cliente, String observaciones, Usuario usuario) {
+    public Cliente(int id_cliente, String observaciones, int estado, Usuario usuario) {
         this.id_cliente = id_cliente;
         this.observaciones = observaciones;
+        this.estado = estado;
         this.usuario = usuario;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public int getId_cliente() {

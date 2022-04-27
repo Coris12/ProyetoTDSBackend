@@ -34,6 +34,9 @@ public class Proveedor {
     private String nombre_comercial_pro;
     
 
+   @Column(name = "estado", nullable = false)
+    private int estado;
+
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Usuario usuario;
@@ -41,12 +44,20 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int id_proveedor, String nombre_comercial_pro, Usuario usuario) {
+    public Proveedor(int id_proveedor, String nombre_comercial_pro, int estado, Usuario usuario) {
         this.id_proveedor = id_proveedor;
         this.nombre_comercial_pro = nombre_comercial_pro;
+        this.estado = estado;
         this.usuario = usuario;
     }
 
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
     public int getId_proveedor() {
         return id_proveedor;
     }

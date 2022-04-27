@@ -31,6 +31,9 @@ public class Empleado {
     @Column(name = "cargo_emple", nullable = false)
     private String cargo_emple;
 
+    @Column(name = "estado", nullable = false)
+    private int estado;
+
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Usuario usuario;
@@ -38,10 +41,19 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int id_empleado, String cargo_emple, Usuario usuario) {
+    public Empleado(int id_empleado, String cargo_emple, int estado, Usuario usuario) {
         this.id_empleado = id_empleado;
         this.cargo_emple = cargo_emple;
+        this.estado = estado;
         this.usuario = usuario;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public int getId_empleado() {

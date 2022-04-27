@@ -38,29 +38,25 @@ public class CuerpoFactura {
     private double descuento;
     @Column(name = "iva", nullable = false)
     private int iva;
-    @Column(name = "id_producto", nullable = true)
-    private int id_producto;
 
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", insertable = false, updatable = false)
+    @JoinColumn(name = "id_producto")
     @ManyToOne()
     private Producto producto;
 
     @JoinColumn(name = "id_factura")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Factura factura;
-
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Factura factura;
 
     public CuerpoFactura() {
     }
 
-    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, int iva, int id_producto, Producto producto) {
+    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, int iva, Producto producto) {
         this.idCuerpo = idCuerpo;
         this.cantidad = cantidad;
         this.total = total;
         this.subtotal = subtotal;
         this.descuento = descuento;
         this.iva = iva;
-        this.id_producto = id_producto;
         this.producto = producto;
     }
 
@@ -110,14 +106,6 @@ public class CuerpoFactura {
 
     public void setIva(int iva) {
         this.iva = iva;
-    }
-
-    public int getId_producto() {
-        return id_producto;
-    }
-
-    public void setId_producto(int id_producto) {
-        this.id_producto = id_producto;
     }
 
     public Producto getProducto() {
