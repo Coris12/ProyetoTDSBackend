@@ -6,12 +6,16 @@
 package com.ProyectoTDSBackend.models;
 
 import com.ProyectoTDSBackend.security.models.Usuario;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +42,10 @@ public class Empleado {
     @JoinColumn(name = "id_persona")
     private Usuario usuario;
 
+    @JoinColumn(name = "id_farmacia")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Farmacia farmacia;
+
     public Empleado() {
     }
 
@@ -46,6 +54,24 @@ public class Empleado {
         this.cargo_emple = cargo_emple;
         this.estado = estado;
         this.usuario = usuario;
+    }
+
+    
+
+    public Empleado(int id_empleado, String cargo_emple, int estado, Usuario usuario, Farmacia farmacia) {
+        this.id_empleado = id_empleado;
+        this.cargo_emple = cargo_emple;
+        this.estado = estado;
+        this.usuario = usuario;
+        this.farmacia = farmacia;
+    }
+
+    public Farmacia getFarmacia() {
+        return farmacia;
+    }
+
+    public void setFarmacia(Farmacia farmacia) {
+        this.farmacia = farmacia;
     }
 
     public int getEstado() {
