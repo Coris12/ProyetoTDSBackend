@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.ProyectoTDSBackend.models.Sucursal;
+import com.ProyectoTDSBackend.repository.FarmaciaRepository;
 import com.ProyectoTDSBackend.repository.sucursalRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
@@ -20,7 +21,10 @@ public class SucursalService {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(FarmaciaService.class);
     
     @Autowired
-    sucursalRepository sucursalRepository;
+    private sucursalRepository sucursalRepository;
+
+    @Autowired 
+    FarmaciaRepository farmaciaRepository;
 
     //listar todas las sucursales
     public GenericResponse<List<Sucursal>> getAllSucursales() {
@@ -37,34 +41,42 @@ public class SucursalService {
         return response;
     }
 
-     public void save(Sucursal sucursal) {
-        sucursalRepository.save(sucursal);
-    }
-
     //Guardar sucursal
-//    public GenericResponse<String> saveSucursal(Sucursal sucursal) {
-//        GenericResponse<String> response = new GenericResponse<>();
-//        try {
-//            if (sucursal != null) {
-//                System.out.println("Sucursal: " + sucursal.toString());
-//                sucursalRepository.save(sucursal);
-//                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-//                response.setObject("Guardado exitoso de: " + sucursal.getIdSucursal()+" :"+sucursal.getNombreSuc());
-//                response.setStatus(ParametersApp.SUCCESSFUL.value());
-//            } else {
-//                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-//                response.setObject("No se pudo guardar");
-//                response.setStatus(ParametersApp.SUCCESSFUL.value());
-//            }
-//        } catch (Exception e) {
-//            log.error("Error al guardar sucursal: " + e.getMessage());
-//            response.setStatus(ParametersApp.SERVER_ERROR.value());
-//        }
-//        return response;
-//    }
+    public GenericResponse<String>  saveSucursal(Sucursal sucursal) {
+		GenericResponse<String> response = new GenericResponse<>();
+		try {
+			if (sucursal != null) {
+				sucursalRepository.save(sucursal);
+				response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+				response.setObject("Sucursal ingresado correctamente");
+				response.setStatus(ParametersApp.SUCCESSFUL.value());
+			} else {
+				response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+				response.setObject("Datos de sucursal no ingresados");
+				response.setStatus(ParametersApp.SUCCESSFUL.value());
+			}
 
-    public boolean existsByNombre(String nombre) {
-        return sucursalRepository.existsByNombreSuc(nombre);
+		} catch (Exception e) {
+			log.error("ERROR AL CREAR SUCURSAL", e.getMessage());
+			response.setStatus(ParametersApp.SERVER_ERROR.value());
+		}
+		return response;
+	}
+
+    //Obtener sucursal por id
+    public GenericResponse<Sucursal> getSucursalById(Long id) {
+        GenericResponse<Sucursal> response = new GenericResponse<>();
+        try {
+            Sucursal sucursal = sucursalRepository.findById(id).get();
+            response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+            response.setObject(sucursal);
+            response.setStatus(ParametersApp.SUCCESSFUL.value());
+        } catch (Exception e) {
+            log.error("Error al obtener sucursal: " + e.getMessage());
+            response.setStatus(ParametersApp.SERVER_ERROR.value());
+        }
+        return response;
     }
+    
     
 }

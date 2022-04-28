@@ -2,13 +2,13 @@ package com.ProyectoTDSBackend.dto;
 
 public class FarmSucursalDTO {
     private Long id_farmacia, id_sucursal;
-    private int telefono_suc;
+    private String telefono_suc;
     private String nombre_suc, correo_suc, direccion_suc;
 
     public FarmSucursalDTO() {
     }
 
-    public FarmSucursalDTO(Long id_farmacia, Long id_sucursal, String nombre_suc, String correo_suc, int telefono_suc,   String direccion_suc) {
+    public FarmSucursalDTO(Long id_farmacia, Long id_sucursal, String nombre_suc, String correo_suc, String telefono_suc,   String direccion_suc) {
         this.id_farmacia = id_farmacia;
         this.id_sucursal = id_sucursal;
         this.telefono_suc = telefono_suc;
@@ -34,11 +34,11 @@ public class FarmSucursalDTO {
         this.id_sucursal = id_sucursal;
     }
 
-    public int getTelefono_suc() {
+    public String getTelefono_suc() {
         return telefono_suc;
     }
 
-    public void setTelefono_suc(int telefono_suc) {
+    public void setTelefono_suc(String telefono_suc) {
         this.telefono_suc = telefono_suc;
     }
 

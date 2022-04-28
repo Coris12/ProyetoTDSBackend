@@ -7,5 +7,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface sucursalRepository extends JpaRepository<Sucursal, Long> {
+
     boolean existsByNombreSuc(String nombre);
+
+    
+
+
 }
