@@ -7,7 +7,6 @@ package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Cliente;
-import com.ProyectoTDSBackend.models.CuerpoFactura;
 import com.ProyectoTDSBackend.service.ClienteService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

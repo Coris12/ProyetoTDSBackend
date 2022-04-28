@@ -40,6 +40,12 @@ public class Farmacia {
         this.idProducto = idProducto;
     }
 
+    
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
     public Long getIdFarmacia() {
         return idFarmacia;
     }

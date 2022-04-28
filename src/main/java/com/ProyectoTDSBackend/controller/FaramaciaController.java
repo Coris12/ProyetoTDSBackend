@@ -1,10 +1,6 @@
 package com.ProyectoTDSBackend.controller;
 
-import java.util.List;
-
-import com.ProyectoTDSBackend.dto.FarmSucursalDTO;
 import com.ProyectoTDSBackend.models.Farmacia;
-import com.ProyectoTDSBackend.repository.FarmaciaRepository;
 import com.ProyectoTDSBackend.service.FarmaciaService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
@@ -12,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

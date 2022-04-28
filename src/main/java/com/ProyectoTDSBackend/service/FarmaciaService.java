@@ -1,11 +1,9 @@
 package com.ProyectoTDSBackend.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ProyectoTDSBackend.dto.FarmSucursalDTO;
 import com.ProyectoTDSBackend.models.Farmacia;
-import com.ProyectoTDSBackend.models.Sucursal;
 import com.ProyectoTDSBackend.repository.FarmaciaRepository;
 import com.ProyectoTDSBackend.repository.sucursalRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;

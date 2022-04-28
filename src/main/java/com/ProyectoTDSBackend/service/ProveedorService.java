@@ -5,7 +5,6 @@
  */
 package com.ProyectoTDSBackend.service;
 
-import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.models.Proveedor;
 import com.ProyectoTDSBackend.repository.ProveedorRepository;
 import java.util.List;
