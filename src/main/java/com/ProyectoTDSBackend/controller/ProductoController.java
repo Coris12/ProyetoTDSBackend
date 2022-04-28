@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -111,14 +112,16 @@ public class ProductoController {
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
+   @ApiOperation("Eliminado logico del producto")
     @CrossOrigin({"*"})
-    @PatchMapping("/deleteLogic/{id}")
-    public ResponseEntity<?> deleteLogic(@PathVariable("id") int id, @RequestBody ProductoDto productoDto) {
-        Producto producto = productoService.getOne(id).get();
+    @PatchMapping("/deleteProducto/{id_producto}")
+    public ResponseEntity<?> deleteEmpleado(@RequestParam(value = "id_producto") int idProducto) {
+        Producto producto = productoService.getOne(idProducto).get();
         producto.setEstadoProducto(0);
         productoService.save(producto);
-        return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("proveedor eliminado"), HttpStatus.OK);
     }
+
 
     @GetMapping("/search")
     public ResponseEntity<List<Producto>> search() {
