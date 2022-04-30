@@ -58,8 +58,8 @@ public class ClienteController {
     @ApiOperation("Eliminado logico de cliente")
     @CrossOrigin({"*"})
     @PatchMapping("/deleteCliente/{id_cliente}")
-    public ResponseEntity<?> deleteCliente(@RequestParam(value = "idempresa") int idempresa) {
-        Cliente cliente = servicio.getOne(idempresa).get();
+    public ResponseEntity<?> deleteCliente(@RequestParam(value = "id_cliente") int idCliente) {
+        Cliente cliente = servicio.getOne(idCliente).get();
         cliente.setEstado(0);
         servicio.save(cliente);
         return new ResponseEntity(new Mensaje("cliente eliminado"), HttpStatus.OK);
