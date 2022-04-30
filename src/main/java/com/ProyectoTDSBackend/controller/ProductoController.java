@@ -115,7 +115,7 @@ public class ProductoController {
    @ApiOperation("Eliminado logico del producto")
     @CrossOrigin({"*"})
     @PatchMapping("/deleteProducto/{id_producto}")
-    public ResponseEntity<?> deleteEmpleado(@RequestParam(value = "id_producto") int idProducto) {
+    public ResponseEntity<?> deleteProducto(@RequestParam(value = "id_producto") int idProducto) {
         Producto producto = productoService.getOne(idProducto).get();
         producto.setEstadoProducto(0);
         productoService.save(producto);

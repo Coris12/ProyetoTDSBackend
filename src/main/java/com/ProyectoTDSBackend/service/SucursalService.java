@@ -27,18 +27,8 @@ public class SucursalService {
     FarmaciaRepository farmaciaRepository;
 
     //listar todas las sucursales
-    public GenericResponse<List<Sucursal>> getAllSucursales() {
-        GenericResponse<List<Sucursal>> response = new GenericResponse<>();
-        try {
-            List<Sucursal> sucursales = sucursalRepository.findAll();
-            response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-            response.setObject(sucursales);
-            response.setStatus(ParametersApp.SUCCESSFUL.value());
-        } catch (Exception e) {
-            log.error("Error al obtener sucursales: " + e.getMessage());
-            response.setStatus(ParametersApp.SERVER_ERROR.value());
-        }
-        return response;
+   public List<Sucursal> listaUsuarios() {
+        return sucursalRepository.findAll();
     }
 
     //Guardar sucursal

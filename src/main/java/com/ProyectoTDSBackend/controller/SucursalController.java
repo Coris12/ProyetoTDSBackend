@@ -29,12 +29,15 @@ public class SucursalController {
     @Autowired
     private SucursalService sucursalService;
 
-    //listar todas las sucursales
-    @ApiOperation("Listar todas las sucursales")
-    @GetMapping(path = "getAllSucursales")
-    public ResponseEntity<GenericResponse<List<Sucursal>>> ListAllSucursales() {
-        return new ResponseEntity<GenericResponse<List<Sucursal>>>(sucursalService.getAllSucursales(), HttpStatus.OK);
+  //listar todas las sucursales
+    @ApiOperation("Muestra la lista de usuarios en el sistema")
+    @CrossOrigin({"*"})
+    @GetMapping("/listaUsuarios")
+    public ResponseEntity<List<Sucursal>> lista() {
+        List<Sucursal> list = sucursalService.listaUsuarios();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
+
 
     //Guardar sucursal
     @ApiOperation("Crear sucursal")
