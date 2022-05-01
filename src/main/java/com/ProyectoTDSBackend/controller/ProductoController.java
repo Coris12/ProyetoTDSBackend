@@ -93,21 +93,21 @@ public class ProductoController {
 
  
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Producto productoDto) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Producto producto) {
 
-        Producto producto = productoService.getOne(id).get();
-        producto.setNombreProducto(productoDto.getNombreProducto());
-        producto.setPrecioProducto(productoDto.getPrecioProducto());
-        producto.setCategoriaProducto(productoDto.getCategoriaProducto());
-        producto.setCodBarra(productoDto.getCodBarra());
-        producto.setCodigoRef(productoDto.getCodigoRef());
-        producto.setDescripcionProducto(productoDto.getDescripcionProducto());
-        producto.setFechaExp(productoDto.getFechaExp());
-        producto.setInventarioProducto(productoDto.getInventarioProducto());
-        producto.setRegSanitario(productoDto.getRegSanitario());
-        producto.setStockProducto(productoDto.getStockProducto());
+        Producto productos = productoService.getOne(id).get();
+        producto.setNombreProducto(producto.getNombreProducto());
+        producto.setPrecioProducto(producto.getPrecioProducto());
+        producto.setCategoriaProducto(producto.getCategoriaProducto());
+        producto.setCodBarra(producto.getCodBarra());
+        producto.setCodigoRef(producto.getCodigoRef());
+        producto.setDescripcionProducto(producto.getDescripcionProducto());
+        producto.setFechaExp(producto.getFechaExp());
+        producto.setInventarioProducto(producto.getInventarioProducto());
+        producto.setRegSanitario(producto.getRegSanitario());
+        producto.setStockProducto(producto.getStockProducto());
 
-        productoService.save(producto);
+        productoService.save(productos);
 
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
