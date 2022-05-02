@@ -6,7 +6,9 @@
 package com.ProyectoTDSBackend.repository;
 
 import com.ProyectoTDSBackend.models.Proveedor;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -14,4 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ProveedorRepository extends JpaRepository<Proveedor, Integer> {
 
+    @Query(value = "select * from proveedor where estado = 1", nativeQuery = true)
+    List<Proveedor> findAllActiveUsersNative();
 }

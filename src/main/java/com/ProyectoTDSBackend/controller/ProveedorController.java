@@ -6,13 +6,16 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.models.Proveedor;
 import com.ProyectoTDSBackend.service.ProveedorService;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,7 +47,7 @@ public class ProveedorController {
                     proveedor.getEstado(),
                     proveedor.getUsuario()
             );
-            proveedor.setEstado(1);
+            prove.setEstado(1);
             servicio.save(prove);
 
             return new ResponseEntity(new Mensaje("Proveedor creado exitosamente"), HttpStatus.OK);
@@ -54,13 +57,29 @@ public class ProveedorController {
         }
     }
 
+    @ApiOperation("Muestra una lista de proveedores")
+    @CrossOrigin({"*"})
+    @GetMapping("/listaProveedores")
+    public ResponseEntity<List<Proveedor>> list() {
+        List<Proveedor> list = servicio.list();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+
     @ApiOperation("Eliminado logico del proveedor")
     @CrossOrigin({"*"})
-    @PatchMapping("/deleteProveedor/{id_empleado}")
+    @PatchMapping("/deleteProveedor/{id_proveedor}")
     public ResponseEntity<?> deleteEmpleado(@RequestParam(value = "id_proveedor") int idProveedor) {
         Proveedor proveedor = servicio.getOne(idProveedor).get();
         proveedor.setEstado(0);
         servicio.save(proveedor);
         return new ResponseEntity(new Mensaje("proveedor eliminado"), HttpStatus.OK);
+    }
+    
+    @ApiOperation("Lista los proveedores con estado 1")
+    @CrossOrigin({"*"})
+    @GetMapping("/proveedoresActivos")
+    public ResponseEntity<List<Proveedor>> search() {
+        List<Proveedor> list = servicio.search();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
 }

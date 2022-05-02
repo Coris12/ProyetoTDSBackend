@@ -43,4 +43,8 @@ public class ProveedorService {
     public boolean existsById(int id) {
         return repositorio.existsById(id);
     }
+    
+     public List<Proveedor>search(){
+     return repositorio.findAllActiveUsersNative();
+    }
 }
