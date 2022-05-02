@@ -69,7 +69,7 @@ public class ProductoController {
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Producto productos) {
-       
+
         Producto producto = new Producto(
                 productos.getIdProducto(),
                 productos.getCategoriaProducto(),
@@ -82,7 +82,9 @@ public class ProductoController {
                 productos.getDescripcionProducto(),
                 productos.getPrecioProducto(),
                 productos.getEstadoProducto(),
-                productos.getStockProducto(),
+                productos.getStock(),
+                productos.getCostoPromedio(),
+                productos.getUltimoCosto(),
                 productos.getProveedor());
 
         producto.setEstadoProducto(1);
@@ -91,7 +93,6 @@ public class ProductoController {
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }
 
- 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Producto producto) {
 
@@ -105,14 +106,17 @@ public class ProductoController {
         producto.setFechaExp(producto.getFechaExp());
         producto.setInventarioProducto(producto.getInventarioProducto());
         producto.setRegSanitario(producto.getRegSanitario());
-        producto.setStockProducto(producto.getStockProducto());
-
+        producto.setStock(producto.getStock());
+        producto.setCostoPromedio(producto.getCostoPromedio());
+        producto.setUltimoCosto(producto.getUltimoCosto());
+        producto.setProveedor(producto.getProveedor());
+        
         productoService.save(productos);
 
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
 
-   @ApiOperation("Eliminado logico del producto")
+    @ApiOperation("Eliminado logico del producto")
     @CrossOrigin({"*"})
     @PatchMapping("/deleteProducto/{id_producto}")
     public ResponseEntity<?> deleteProducto(@RequestParam(value = "id_producto") int idProducto) {
@@ -121,7 +125,6 @@ public class ProductoController {
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("proveedor eliminado"), HttpStatus.OK);
     }
-
 
     @GetMapping("/search")
     public ResponseEntity<List<Producto>> search() {

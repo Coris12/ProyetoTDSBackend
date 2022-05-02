@@ -47,19 +47,22 @@ public class Producto implements Serializable {
     private String descripcionProducto;
     @Column(name = "precio_producto", nullable = false)
     private float precioProducto;
-    @Column(name = "stock_producto", nullable = false)
-    private int stockProducto;
+    @Column(name = "stock")
+    private int stock;
     @Column(name = "estado_producto", nullable = false)
     private int estadoProducto;
-
-    @JoinColumn(name = "id_proveedors")
+    @Column(name = "ultimo_costo", nullable = false)
+    private float ultimoCosto;
+    @Column(name = "costo_promedio", nullable = false)
+    private float costoPromedio;
+    @JoinColumn(name = "id_proveedor")
     @ManyToOne()
     private Proveedor proveedor;
-    
+
     public Producto() {
     }
 
-    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, int stockProducto, int estadoProducto, Proveedor proveedor) {
+    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, int stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor) {
         this.idProducto = idProducto;
         this.categoriaProducto = categoriaProducto;
         this.codigoRef = codigoRef;
@@ -70,12 +73,12 @@ public class Producto implements Serializable {
         this.codBarra = codBarra;
         this.descripcionProducto = descripcionProducto;
         this.precioProducto = precioProducto;
-        this.stockProducto = stockProducto;
+        this.stock = stock;
         this.estadoProducto = estadoProducto;
+        this.ultimoCosto = ultimoCosto;
+        this.costoPromedio = costoPromedio;
         this.proveedor = proveedor;
     }
-
-    
 
     public int getIdProducto() {
         return idProducto;
@@ -157,12 +160,28 @@ public class Producto implements Serializable {
         this.precioProducto = precioProducto;
     }
 
-    public int getStockProducto() {
-        return stockProducto;
+    public int getStock() {
+        return stock;
     }
 
-    public void setStockProducto(int stockProducto) {
-        this.stockProducto = stockProducto;
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public float getUltimoCosto() {
+        return ultimoCosto;
+    }
+
+    public void setUltimoCosto(float ultimoCosto) {
+        this.ultimoCosto = ultimoCosto;
+    }
+
+    public float getCostoPromedio() {
+        return costoPromedio;
+    }
+
+    public void setCostoPromedio(float costoPromedio) {
+        this.costoPromedio = costoPromedio;
     }
 
     public int getEstadoProducto() {
@@ -180,8 +199,5 @@ public class Producto implements Serializable {
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
-
-   
-
 
 }
