@@ -9,6 +9,7 @@ import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.dto.ProductoDto;
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.service.ProductoService;
+import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,13 @@ public class ProductoController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    @ApiIgnore
+    
+    
+    @PutMapping(path = "update-producto2")
+	public ResponseEntity<GenericResponse<String>> actualizarFarmacia(@RequestBody Producto producto) {
+		return new ResponseEntity<GenericResponse<String>>(productoService.updateSucursal(producto), HttpStatus.OK);
+	}
+    
     @GetMapping("/detail/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id") int id) {
         if (!productoService.existsById(id)) {

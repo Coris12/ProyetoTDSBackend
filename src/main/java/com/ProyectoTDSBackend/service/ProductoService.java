@@ -5,8 +5,10 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.models.Farmacia;
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.repository.ProductoRepository;
+import com.ProyectoTDSBackend.util.GenericResponse;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,13 @@ public class ProductoService {
 
     public void save(Producto producto) {
         productoRepository.save(producto);
+    }
+    
+    
+    public GenericResponse<String> updateSucursal(Producto producto) {
+        GenericResponse<String> response = new GenericResponse<>();
+        productoRepository.save(producto);
+        return response;
     }
 
     public void delete(int id) {
