@@ -47,8 +47,8 @@ public class Producto implements Serializable {
     private String descripcionProducto;
     @Column(name = "precio_producto", nullable = false)
     private float precioProducto;
-    @Column(name = "stock")
-    private int stock;
+    @Column(name = "stock", nullable = false)
+    private String stock;
     @Column(name = "estado_producto", nullable = false)
     private int estadoProducto;
     @Column(name = "ultimo_costo", nullable = false)
@@ -62,7 +62,7 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, int stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor) {
+    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, String stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor) {
         this.idProducto = idProducto;
         this.categoriaProducto = categoriaProducto;
         this.codigoRef = codigoRef;
@@ -79,6 +79,7 @@ public class Producto implements Serializable {
         this.costoPromedio = costoPromedio;
         this.proveedor = proveedor;
     }
+
 
     public int getIdProducto() {
         return idProducto;
@@ -160,13 +161,15 @@ public class Producto implements Serializable {
         this.precioProducto = precioProducto;
     }
 
-    public int getStock() {
+    public String getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(String stock) {
         this.stock = stock;
     }
+
+  
 
     public float getUltimoCosto() {
         return ultimoCosto;

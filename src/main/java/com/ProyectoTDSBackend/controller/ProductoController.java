@@ -48,13 +48,11 @@ public class ProductoController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    
-    
     @PutMapping(path = "update-producto2")
-	public ResponseEntity<GenericResponse<String>> actualizarFarmacia(@RequestBody Producto producto) {
-		return new ResponseEntity<GenericResponse<String>>(productoService.updateSucursal(producto), HttpStatus.OK);
-	}
-    
+    public ResponseEntity<GenericResponse<String>> actualizarFarmacia(@RequestBody Producto producto) {
+        return new ResponseEntity<GenericResponse<String>>(productoService.updateSucursal(producto), HttpStatus.OK);
+    }
+
     @GetMapping("/detail/{id}")
     public ResponseEntity<Producto> getById(@PathVariable("id") int id) {
         if (!productoService.existsById(id)) {
@@ -88,8 +86,8 @@ public class ProductoController {
                 productos.getCodBarra(),
                 productos.getDescripcionProducto(),
                 productos.getPrecioProducto(),
-                productos.getEstadoProducto(),
                 productos.getStock(),
+                productos.getEstadoProducto(),
                 productos.getCostoPromedio(),
                 productos.getUltimoCosto(),
                 productos.getProveedor());
@@ -104,20 +102,20 @@ public class ProductoController {
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Producto producto) {
 
         Producto productos = productoService.getOne(id).get();
-        producto.setNombreProducto(producto.getNombreProducto());
-        producto.setPrecioProducto(producto.getPrecioProducto());
-        producto.setCategoriaProducto(producto.getCategoriaProducto());
-        producto.setCodBarra(producto.getCodBarra());
-        producto.setCodigoRef(producto.getCodigoRef());
-        producto.setDescripcionProducto(producto.getDescripcionProducto());
-        producto.setFechaExp(producto.getFechaExp());
-        producto.setInventarioProducto(producto.getInventarioProducto());
-        producto.setRegSanitario(producto.getRegSanitario());
-        producto.setStock(producto.getStock());
-        producto.setCostoPromedio(producto.getCostoPromedio());
-        producto.setUltimoCosto(producto.getUltimoCosto());
-        producto.setProveedor(producto.getProveedor());
-        
+        productos.setNombreProducto(producto.getNombreProducto());
+        productos.setPrecioProducto(producto.getPrecioProducto());
+        productos.setCategoriaProducto(producto.getCategoriaProducto());
+        productos.setCodBarra(producto.getCodBarra());
+        productos.setCodigoRef(producto.getCodigoRef());
+        productos.setDescripcionProducto(producto.getDescripcionProducto());
+        productos.setFechaExp(producto.getFechaExp());
+        productos.setInventarioProducto(producto.getInventarioProducto());
+        productos.setRegSanitario(producto.getRegSanitario());
+        productos.setStock(producto.getStock());
+        productos.setCostoPromedio(producto.getCostoPromedio());
+        productos.setUltimoCosto(producto.getUltimoCosto());
+        productos.setProveedor(producto.getProveedor());
+
         productoService.save(productos);
 
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
