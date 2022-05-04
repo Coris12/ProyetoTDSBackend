@@ -26,8 +26,6 @@ public class UsuarioPrincipal implements UserDetails {
     
     private String celular;
     
-    private String profesion;
-    
     private String sexo;
    
     private String email;
@@ -42,12 +40,11 @@ public class UsuarioPrincipal implements UserDetails {
     
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String identificacion, String nombres, String direccion, String celular, String profesion, String sexo, String email, String ciudad, int estado, String nombreUsuario, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UsuarioPrincipal(String identificacion, String nombres, String direccion, String celular, String sexo, String email, String ciudad, int estado, String nombreUsuario, String password, Collection<? extends GrantedAuthority> authorities) {
         this.identificacion = identificacion;
         this.nombres = nombres;
         this.direccion = direccion;
         this.celular = celular;
-        this.profesion = profesion;
         this.sexo = sexo;
         this.email = email;
         this.ciudad = ciudad;
@@ -57,6 +54,7 @@ public class UsuarioPrincipal implements UserDetails {
         this.authorities = authorities;
     }
 
+   
 
 
     public static UsuarioPrincipal build(Usuario usuario){
@@ -68,7 +66,6 @@ public class UsuarioPrincipal implements UserDetails {
                 usuario.getNombres(),
                 usuario.getDireccion(),
                 usuario.getCelular(),
-                usuario.getProfesion(),
                 usuario.getSexo(),
                 usuario.getEmail(),
                 usuario.getCiudad(),
@@ -153,13 +150,7 @@ public class UsuarioPrincipal implements UserDetails {
         this.celular = celular;
     }
 
-    public String getProfesion() {
-        return profesion;
-    }
-
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
-    }
+   
 
     public String getSexo() {
         return sexo;
