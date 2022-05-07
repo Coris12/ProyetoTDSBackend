@@ -68,6 +68,7 @@ public class ClienteController {
         return new ResponseEntity(new Mensaje("cliente eliminado"), HttpStatus.OK);
     }
 
+    //buscar por id
     @ApiOperation("Buscar cliente por id")
     @CrossOrigin({"*"})
     @GetMapping(path = "findByIdCliente")
