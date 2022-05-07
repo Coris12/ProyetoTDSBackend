@@ -1,0 +1,199 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.ProyectoTDSBackend.security.models;
+
+import com.sun.istack.NotNull;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
+
+/**
+ *
+ * @author LENOVO
+ */
+@Entity
+public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id; 
+    @NotNull
+    private String identificacion;
+    
+    @NotNull
+    private String nombres;
+    
+    @NotNull
+    private String direccion;
+    
+    @NotNull
+    private String celular;
+    
+    @NotNull
+    private String profesion;
+    
+    @NotNull
+    private String sexo;
+    
+    @NotNull
+    @Email
+    private String email;
+    
+    @NotNull
+    private String ciudad;
+    
+    @NotNull
+    @Column
+    private int estado;
+    
+    @Column(unique = true)
+    private String nombreUsuario;
+    
+    @NotNull
+    private String password;
+    
+    @NotNull
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet<>();
+
+    public Usuario() {
+    }
+
+    public Usuario(String identificacion, String nombres, String direccion, String celular, String profesion, String sexo, String email, String ciudad, int estado, String nombreUsuario, String password) {
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
+        this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+    }
+
+   
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getProfesion() {
+        return profesion;
+    }
+
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Rol> roles) {
+        this.roles = roles;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    
+    
+   
+}
