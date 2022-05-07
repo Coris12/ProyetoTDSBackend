@@ -5,10 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.repository;
 
-import com.ProyectoTDSBackend.security.enums.RolNombre;
 import com.ProyectoTDSBackend.security.models.Usuario;
-import com.ProyectoTDSBackend.util.GenericResponse;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
