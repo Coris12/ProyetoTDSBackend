@@ -144,6 +144,7 @@ public class AuthController {
         return new ResponseEntity<GenericResponse<Object>>(userService.putPermisos(idpersona, rol), HttpStatus.OK);
     }
 
+    //Obtener usuario por id
     @CrossOrigin({"*"})
     @GetMapping(path = "get-persona")
     public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(@RequestParam("identificacion") String identificacion) {

@@ -23,6 +23,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     
     Usuario findByid (int id);
     
+    //Buscar usuario por identificacion
     Usuario findByIdentificacion(String identificacion);
     
 }

@@ -52,6 +52,7 @@ public class ClienteService {
         return repositorio.existsById(id);
     }
 
+    //Buscar cliente por id
     public GenericResponse<Cliente> getIdCliente(int id) {
         GenericResponse<Cliente> response = new GenericResponse<>();
         try {

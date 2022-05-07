@@ -51,6 +51,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    //Buscar usuario por identificacion
     public GenericResponse<Usuario> ObtenerByIdentificacion(String identificacion){
         GenericResponse<Usuario> response = new GenericResponse<>();
         try {
