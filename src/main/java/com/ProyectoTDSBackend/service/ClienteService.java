@@ -10,8 +10,11 @@ import com.ProyectoTDSBackend.repository.ClienteRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.websocket.ClientEndpoint;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +55,7 @@ public class ClienteService {
         return repositorio.existsById(id);
     }
 
-    //Buscar cliente por id
+    // Buscar cliente por id
     public GenericResponse<Cliente> getIdCliente(int id) {
         GenericResponse<Cliente> response = new GenericResponse<>();
         try {
@@ -70,4 +73,17 @@ public class ClienteService {
         }
         return response;
     }
+
+    // Buscar cliente por idUsuario
+    public List<Cliente> getCliIdUser(Integer idUsuario) {
+        List<Cliente> lista = new ArrayList<>();
+        try {
+            lista = repositorio.getClienteId(idUsuario);
+            return lista;
+        } catch (Exception e) {
+            // TODO: handle exception
+            log.error("ERROR", e);
+			return new ArrayList<Cliente>();
+        }
+    };
 }

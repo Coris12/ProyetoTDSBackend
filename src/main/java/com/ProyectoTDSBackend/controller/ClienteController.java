@@ -5,6 +5,8 @@
  */
 package com.ProyectoTDSBackend.controller;
 
+import java.util.List;
+
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.service.ClienteService;
@@ -74,6 +76,14 @@ public class ClienteController {
     @GetMapping(path = "findByIdCliente")
     public ResponseEntity<GenericResponse<Cliente>>BuscarPorIdCliente(@RequestParam int idCliente) {
         return new ResponseEntity<GenericResponse<Cliente>>(servicio.getIdCliente(idCliente), HttpStatus.OK);
+    }
+
+    //buscar por ClientePersonaId
+    @ApiOperation("Buscar cliente por id")
+    @CrossOrigin({"*"})
+    @GetMapping(path = "findByIdPersonaCliente")
+    public ResponseEntity<List<Cliente>>BuscarPorIdPersonaCliente(@RequestParam Integer idPersona) {
+        return new ResponseEntity<List<Cliente>>(servicio.getCliIdUser(idPersona), HttpStatus.OK);
     }
 
 }
