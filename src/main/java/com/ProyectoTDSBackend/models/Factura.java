@@ -30,15 +30,14 @@ public class  Factura {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", insertable = false, updatable = false)
+    // @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
 	private Cliente cliente;
-
 
     @Column(name = "tipo_factura")
     private String tipo_factura;
-
-   
 
     @OneToMany(mappedBy = "factura", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<CuerpoFactura> cuerpoFactura;

@@ -9,7 +9,6 @@ import com.ProyectoTDSBackend.security.models.Usuario;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,9 +32,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente", nullable = false)
-    private int id_cliente;
-
-  
+    private int idCliente;
 
     @Column(name = "observaciones", nullable = false)
     private String observaciones;
@@ -43,19 +40,19 @@ public class Cliente {
     @Column(name = "estado", nullable = false)
     private int estado;
 
-    
     @OneToOne
     @JoinColumn(name = "id_persona")
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "cliente",fetch = FetchType.LAZY)
     private List<Factura> factura;
 
     public Cliente() {
     }
 
-    public Cliente(int id_cliente, String observaciones, int estado, Usuario usuario) {
-        this.id_cliente = id_cliente;
+    public Cliente(int idCliente, String observaciones, int estado, Usuario usuario) {
+        this.idCliente = idCliente;
         this.observaciones = observaciones;
         this.estado = estado;
         this.usuario = usuario;
@@ -69,14 +66,13 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
-
 
     public String getObservaciones() {
         return observaciones;
@@ -93,6 +89,4 @@ public class Cliente {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-   
 }
