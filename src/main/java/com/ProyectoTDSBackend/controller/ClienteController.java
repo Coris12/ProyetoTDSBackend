@@ -5,14 +5,19 @@
  */
 package com.ProyectoTDSBackend.controller;
 
+import java.util.List;
+
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.service.ClienteService;
+import com.ProyectoTDSBackend.util.GenericResponse;
+
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +44,7 @@ public class ClienteController {
 
         try {
             Cliente cli = new Cliente(
-                    cliente.getId_cliente(),
+                    cliente.getIdCliente(),
                     cliente.getObservaciones(),
                     cliente.getEstado(),
                     cliente.getUsuario()
@@ -63,6 +68,22 @@ public class ClienteController {
         cliente.setEstado(0);
         servicio.save(cliente);
         return new ResponseEntity(new Mensaje("cliente eliminado"), HttpStatus.OK);
+    }
+
+    //buscar por id
+    @ApiOperation("Buscar cliente por id")
+    @CrossOrigin({"*"})
+    @GetMapping(path = "findByIdCliente")
+    public ResponseEntity<GenericResponse<Cliente>>BuscarPorIdCliente(@RequestParam int idCliente) {
+        return new ResponseEntity<GenericResponse<Cliente>>(servicio.getIdCliente(idCliente), HttpStatus.OK);
+    }
+
+    //buscar por ClientePersonaId
+    @ApiOperation("Buscar cliente por id")
+    @CrossOrigin({"*"})
+    @GetMapping(path = "findByIdPersonaCliente")
+    public ResponseEntity<List<Cliente>>BuscarPorIdPersonaCliente(@RequestParam Integer idPersona) {
+        return new ResponseEntity<List<Cliente>>(servicio.getCliIdUser(idPersona), HttpStatus.OK);
     }
 
 }
