@@ -24,11 +24,11 @@ public class FacturaService {
     public GenericResponse<String> saveFactura(Factura factura) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
-            
             if (factura != null) {
                 facturaRepository.save(factura);
+                Long convertLong = Long.valueOf(factura.getIdFactura());
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("Guardado exitoso");
+                response.setObject(convertLong.toString());
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             } else {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());

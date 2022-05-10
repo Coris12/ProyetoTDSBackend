@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.persistence.ForeignKey;
 /**
  *
  * @author corin
@@ -37,20 +37,28 @@ public class CuerpoFactura {
     @Column(name = "descuento", nullable = false)
     private double descuento;
     @Column(name = "iva", nullable = false)
-    private int iva;
+    private Double iva;
 
     @JoinColumn(name = "id_producto")
     @ManyToOne()
     private Producto producto;
 
-    @JoinColumn(name = "id_factura")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // @JoinColumn(name = "id_factura")
+    // @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // private Factura factura;
+
+    @ManyToOne(optional = true,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_factura",foreignKey = @ForeignKey(name = "FK_CUERPOFACTURA_ID"))
     private Factura factura;
+
+    // @ManyToOne() valleeeeee
+    // @JoinColumn(name = "id_factura")
+    // private Factura factura;
 
     public CuerpoFactura() {
     }
 
-    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, int iva, Producto producto) {
+    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, Double iva, Producto producto) {
         this.idCuerpo = idCuerpo;
         this.cantidad = cantidad;
         this.total = total;
@@ -58,6 +66,27 @@ public class CuerpoFactura {
         this.descuento = descuento;
         this.iva = iva;
         this.producto = producto;
+    }
+
+    
+    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, Double iva,
+            Producto producto, Factura factura) {
+        this.idCuerpo = idCuerpo;
+        this.cantidad = cantidad;
+        this.total = total;
+        this.subtotal = subtotal;
+        this.descuento = descuento;
+        this.iva = iva;
+        this.producto = producto;
+        this.factura = factura;
+    }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
     }
 
     public Long getIdCuerpo() {
@@ -100,11 +129,11 @@ public class CuerpoFactura {
         this.descuento = descuento;
     }
 
-    public int getIva() {
+    public Double getIva() {
         return iva;
     }
 
-    public void setIva(int iva) {
+    public void setIva(Double iva) {
         this.iva = iva;
     }
 
