@@ -51,8 +51,8 @@ public class ClienteController {
             );
             cliente.setEstado(1);
             servicio.save(cliente);
-
-            return new ResponseEntity(new Mensaje("Cliente creado exitosamente"), HttpStatus.OK);
+            int id = cliente.getIdCliente();
+            return new ResponseEntity<>(new Mensaje(String.valueOf(id)), HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("error crear cliente: " + e.getMessage());
             return new ResponseEntity(new Mensaje("Cliente no fue creado"), HttpStatus.BAD_REQUEST);

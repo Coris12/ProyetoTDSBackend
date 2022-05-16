@@ -146,4 +146,10 @@ public class ProductoController {
         return new ResponseEntity(new Mensaje("producto eliminado"), HttpStatus.OK);
     }
 
+    @CrossOrigin
+    @PutMapping(path = "update-productoStock")
+    public ResponseEntity<GenericResponse<String>> actualizarStock(@RequestBody Producto producto,  @RequestParam int idProd) {
+        return new ResponseEntity<GenericResponse<String>>(productoService.updateProductoStock(producto, idProd), HttpStatus.OK);
+    }
+
 }
