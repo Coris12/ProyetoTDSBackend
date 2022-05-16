@@ -29,31 +29,31 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto", nullable = false)
     private int idProducto;
-    @Column(name = "categoria_producto", nullable = false)
+    @Column(name = "categoria_producto")
     private String categoriaProducto;
-    @Column(name = "codigo_ref_producto", nullable = false)
+    @Column(name = "codigo_ref_producto")
     private String codigoRef;
-    @Column(name = "nombre_producto", nullable = false)
+    @Column(name = "nombre_producto")
     private String nombreProducto;
-    @Column(name = "inventario_producto", nullable = false)
+    @Column(name = "inventario_producto")
     private String inventarioProducto;
-    @Column(name = "fecha_exp_producto", nullable = false)
+    @Column(name = "fecha_exp_producto")
     private String fechaExp;
-    @Column(name = "reg_sanitario_producto", nullable = false)
+    @Column(name = "reg_sanitario_producto")
     private String regSanitario;
-    @Column(name = "cod_barra_producto", nullable = false)
+    @Column(name = "cod_barra_producto")
     private String codBarra;
-    @Column(name = "descripcion_producto", nullable = false)
+    @Column(name = "descripcion_producto")
     private String descripcionProducto;
-    @Column(name = "precio_producto", nullable = false)
+    @Column(name = "precio_producto")
     private float precioProducto;
-    @Column(name = "stock", nullable = false)
+    @Column(name = "stock")
     private String stock;
-    @Column(name = "estado_producto", nullable = false)
+    @Column(name = "estado_producto")
     private int estadoProducto;
-    @Column(name = "ultimo_costo", nullable = false)
+    @Column(name = "ultimo_costo")
     private float ultimoCosto;
-    @Column(name = "costo_promedio", nullable = false)
+    @Column(name = "costo_promedio")
     private float costoPromedio;
     @JoinColumn(name = "id_proveedor")
     @ManyToOne()

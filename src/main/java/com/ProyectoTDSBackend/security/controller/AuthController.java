@@ -104,7 +104,7 @@ public class AuthController {
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("usuario guardado: "+usuario.getId()), HttpStatus.OK);
     }
 
     @PostMapping("/login")

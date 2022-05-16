@@ -23,7 +23,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
     @Query(value = "SELECT *"
     +" FROM cliente c JOIN usuario u"
     +" ON c.id_persona = u.id"
-    +" WHERE c.id_cliente = :personaId", nativeQuery = true)
+    +" WHERE c.id_persona = :personaId", nativeQuery = true)
     List<Cliente> getClienteId(Integer personaId);
     //Cliente findByPersonaId(int personaId);
     
