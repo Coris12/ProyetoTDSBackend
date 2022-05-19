@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,4 +87,11 @@ public class ClienteController {
         return new ResponseEntity<List<Cliente>>(servicio.getCliIdUser(idPersona), HttpStatus.OK);
     }
 
+    //update solo observaciones del cliente 
+    @ApiOperation("Actualizar observaciones del cliente")
+    @CrossOrigin
+    @PutMapping("/updateClienteObservacion")
+    public ResponseEntity<GenericResponse<String>> updateClienteObservacion(@RequestParam String observaciones, int idCliente) {
+        return new ResponseEntity<GenericResponse<String>>(servicio.updateObservacionCliente(observaciones, idCliente), HttpStatus.OK);
+    }
 }

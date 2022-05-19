@@ -83,7 +83,28 @@ public class ClienteService {
         } catch (Exception e) {
             // TODO: handle exception
             log.error("ERROR", e);
-			return new ArrayList<Cliente>();
+            return new ArrayList<Cliente>();
         }
     };
+
+    // Actualizar cliente
+    public GenericResponse<String> updateObservacionCliente(String observacion, int idCli) {
+        GenericResponse<String> response = new GenericResponse<>();
+        try {
+            if (repositorio.findById(idCli) != null) {
+                repositorio.updateObservaciones(observacion, idCli);
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject("actualizada correctamente");
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            }else{
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject("No se pudo actualizar");
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            }
+        } catch (Exception e) {
+            log.error("ERROR: ",e);
+			response.setStatus(ParametersApp.SERVER_ERROR.value());
+        }
+        return response;
+    }
 }

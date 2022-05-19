@@ -36,7 +36,7 @@ public class CuerpoFactura {
     @Column(name = "descuento", nullable = false)
     private double descuento;
     @Column(name = "iva", nullable = false)
-    private Double iva;
+    private double iva;
 
     @JoinColumn(name = "id_producto")
     @ManyToOne()
@@ -57,7 +57,7 @@ public class CuerpoFactura {
     public CuerpoFactura() {
     }
 
-    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, Double iva, Producto producto) {
+    public CuerpoFactura(Long idCuerpo, int cantidad, float total, float subtotal, double descuento, double iva, Producto producto) {
         this.idCuerpo = idCuerpo;
         this.cantidad = cantidad;
         this.total = total;
@@ -128,11 +128,11 @@ public class CuerpoFactura {
         this.descuento = descuento;
     }
 
-    public Double getIva() {
+    public double getIva() {
         return iva;
     }
 
-    public void setIva(Double iva) {
+    public void setIva(double iva) {
         this.iva = iva;
     }
 
