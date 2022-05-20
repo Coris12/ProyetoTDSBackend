@@ -101,9 +101,16 @@ public class CuerpoFacturaController {
 
     //Guardar producto en cuerpo de factura
     @ApiOperation("Guardar producto en cuerpo de factura")
-    @PostMapping(path = "/GuardarCuerpoFactura")
+    @PostMapping(path = "GuardarCuerpoFactura")
 	public ResponseEntity<GenericResponse<String>> GuardarCuerpoFactura(@RequestBody CuerpoFactura cuerpoFactura) {
 		return new ResponseEntity<GenericResponse<String>>(cuerpoService.saveCuerpoFactura(cuerpoFactura), HttpStatus.OK);
+	}
+
+    //Guardar cuerpoFactura 2
+    @CrossOrigin
+	@PostMapping(path = "GuardarCuerpoFactura2")
+    public ResponseEntity<CuerpoFactura>guardarCuerpoFact2(@RequestBody CuerpoFactura cuerpoFactura){
+		return new ResponseEntity<CuerpoFactura>(cuerpoService.saveCuerpoFact(cuerpoFactura),HttpStatus.OK);
 	}
 
 }

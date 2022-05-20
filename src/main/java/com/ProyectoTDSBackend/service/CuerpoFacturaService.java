@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @author corin
  */
 @Service
-@Transactional
 public class CuerpoFacturaService {
     private static final Logger log = LoggerFactory.getLogger(CuerpoFacturaService.class);
     @Autowired
@@ -71,5 +70,9 @@ public class CuerpoFacturaService {
         return response;
     }
     
+    //Guardar cuerpo de factura 2
+    public CuerpoFactura saveCuerpoFact(CuerpoFactura cuerpoFactura){
+        return cuerpoRepository.save(cuerpoFactura);
+    }
     
 }

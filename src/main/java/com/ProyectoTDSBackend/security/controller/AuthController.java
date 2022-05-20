@@ -102,7 +102,7 @@ public class AuthController {
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("usuario guardado: "+usuario.getId()), HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -140,5 +140,12 @@ public class AuthController {
             @RequestParam(value = "rol") RolNombre rol
     ) {
         return new ResponseEntity<GenericResponse<Object>>(userService.putPermisos(idpersona, rol), HttpStatus.OK);
+    }
+
+    //Obtener usuario por id
+    @CrossOrigin({"*"})
+    @GetMapping(path = "get-persona")
+    public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(@RequestParam("identificacion") String identificacion) {
+        return new ResponseEntity<GenericResponse<Usuario>>(usuarioService.ObtenerByIdentificacion(identificacion), HttpStatus.OK);
     }
 }
