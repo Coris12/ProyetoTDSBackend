@@ -5,79 +5,85 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
  *
- * @author LENOVO
+ * @author corin
  */
-
 @Entity
-@Table(name = "tratamiento")
+@Table(name = "tratamientos")
 public class Tratamiento {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tratamiento", nullable = false)
-    private int id_tratamiento;
+    private int idTratamiento;
 
-    @Column(name = "nombre", length = 200)
+    @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "codigo")
     private String codigo;
-    
-    @Column(name = "categoria", length = 200)
-    private String descuento;
-    
-    @Column(name = "descripcion", length = 200)
+
+    @Column(name = "categoria")
+    private String categoria;
+
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name = "cantidad", length = 10)
-    private String cantidad;
+    @Column(name = "cantidad")
+    private int cantidad;
 
-    @Column(name = "valor unitario", length = 200)
-    private Double correoSuc;
+    @Column(name = "valor_unitario")
+    private float valor_unitario;
     
-    @Column(name = "subtotal", length = 10)
-    private Double subtotal;
-    
-    @Column(name = "total", length = 200)
+     @Column(name = "subtotal")
+    private float subtotal;
+
+    @Column(name = "total")
     private Double total;
-    
-    @Column(name = "id_cliente", length = 200)
-    private Double idCliente;
-    
-    @Column(name = "id_empleado", length = 200)
-    private Double idEmpleado;
+
+    @JoinColumn(name = "id_cliente")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Cliente cliente;
+
+    @JoinColumn(name = "id_empleado")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Empleado empleado;
 
     public Tratamiento() {
     }
 
-    public Tratamiento(int id_tratamiento, String nombre, String codigo, String descuento, String descripcion, String cantidad, Double correoSuc, Double subtotal, Double total, Double idCliente, Double idEmpleado) {
-        this.id_tratamiento = id_tratamiento;
+    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, float valor_unitario, float subtotal, Double total, Cliente cliente, Empleado empleado) {
+        this.idTratamiento = idTratamiento;
         this.nombre = nombre;
         this.codigo = codigo;
-        this.descuento = descuento;
+        this.categoria = categoria;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
-        this.correoSuc = correoSuc;
+        this.valor_unitario = valor_unitario;
         this.subtotal = subtotal;
         this.total = total;
-        this.idCliente = idCliente;
-        this.idEmpleado = idEmpleado;
+        this.cliente = cliente;
+        this.empleado = empleado;
     }
 
-    public Integer getId_tratamiento() {
-        return id_tratamiento;
+    public int getIdTratamiento() {
+        return idTratamiento;
     }
 
-    public void setId_tratamiento(int id_tratamiento) {
-        this.id_tratamiento = id_tratamiento;
+    public void setIdTratamiento(int idTratamiento) {
+        this.idTratamiento = idTratamiento;
     }
 
     public String getNombre() {
@@ -96,12 +102,12 @@ public class Tratamiento {
         this.codigo = codigo;
     }
 
-    public String getDescuento() {
-        return descuento;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setDescuento(String descuento) {
-        this.descuento = descuento;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getDescripcion() {
@@ -112,27 +118,27 @@ public class Tratamiento {
         this.descripcion = descripcion;
     }
 
-    public String getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(String cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
-    public Double getCorreoSuc() {
-        return correoSuc;
+    public float getValor_unitario() {
+        return valor_unitario;
     }
 
-    public void setCorreoSuc(Double correoSuc) {
-        this.correoSuc = correoSuc;
+    public void setValor_unitario(float valor_unitario) {
+        this.valor_unitario = valor_unitario;
     }
 
-    public Double getSubtotal() {
+    public float getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(Double subtotal) {
+    public void setSubtotal(float subtotal) {
         this.subtotal = subtotal;
     }
 
@@ -144,26 +150,21 @@ public class Tratamiento {
         this.total = total;
     }
 
-    public Double getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Double idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Double getIdEmpleado() {
-        return idEmpleado;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setIdEmpleado(Double idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
-    
-    
-    
-    
-    
     
     
 }
