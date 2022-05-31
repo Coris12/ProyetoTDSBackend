@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.security.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.security.dto.JwtDto;
 import com.ProyectoTDSBackend.security.dto.LoginUsuario;
@@ -75,36 +76,34 @@ public class AuthController {
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Campos mal puestos o Email inválido"), HttpStatus.BAD_REQUEST);
         }
         if (usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario())) {
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Nombre de usuario ya se encuentra en uso"), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
-            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
-        }
+
         Usuario usuario
                 = new Usuario(
-                nuevoUsuario.getIdentificacion(),
-                nuevoUsuario.getNombres(),
-                nuevoUsuario.getDireccion(),
-                nuevoUsuario.getCelular(),
-                nuevoUsuario.getProfesion(),
-                nuevoUsuario.getSexo(),
-                nuevoUsuario.getEmail(),
-                nuevoUsuario.getCiudad(),
-                nuevoUsuario.getEstado(),
-                nuevoUsuario.getNombreUsuario(), 
+                        nuevoUsuario.getIdentificacion(),
+                        nuevoUsuario.getNombres(),
+                        nuevoUsuario.getDireccion(),
+                        nuevoUsuario.getCelular(),
+                        nuevoUsuario.getProfesion(),
+                        nuevoUsuario.getSexo(),
+                        nuevoUsuario.getEmail(),
+                        nuevoUsuario.getCiudad(),
+                        nuevoUsuario.getEstado(),
+                        nuevoUsuario.getNombreUsuario(),
                         passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
-          roles.add(rolService.getByRolNombre(RolNombre.ROLE_PACIENTE).get());
+        roles.add(rolService.getByRolNombre(RolNombre.ROLE_PACIENTE).get());
         if (nuevoUsuario.getRoles().contains("admin")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
         }
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado: "+usuario.getId()), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("usuario guardado: " + usuario.getId()), HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -149,5 +148,11 @@ public class AuthController {
     @GetMapping(path = "get-persona")
     public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(@RequestParam("identificacion") String identificacion) {
         return new ResponseEntity<GenericResponse<Usuario>>(usuarioService.ObtenerByIdentificacion(identificacion), HttpStatus.OK);
+    }
+
+    @GetMapping("/clientes")
+    public ResponseEntity<List<Usuario>> search() {
+        List<Usuario> list = usuarioService.search();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
 }

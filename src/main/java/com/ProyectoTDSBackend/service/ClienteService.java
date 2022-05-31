@@ -107,4 +107,8 @@ public class ClienteService {
         }
         return response;
     }
+    
+    //listar solo los cliente
+    
+     
 }
