@@ -2,6 +2,8 @@ package com.ProyectoTDSBackend.service;
 
 import java.util.List;
 
+import com.ProyectoTDSBackend.dto.FactConsFinalDTO;
+import com.ProyectoTDSBackend.dto.FacturaDatosDTO;
 import com.ProyectoTDSBackend.models.Factura;
 import com.ProyectoTDSBackend.repository.FacturaRespository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -14,13 +16,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FacturaService {
-    
-    private static final Logger log = LoggerFactory.getLogger(FacturaService.class);
-	
-    @Autowired
-	private FacturaRespository facturaRepository;
 
-    //Guardar factura
+    private static final Logger log = LoggerFactory.getLogger(FacturaService.class);
+
+    @Autowired
+    private FacturaRespository facturaRepository;
+
+    // Guardar factura
     public GenericResponse<String> saveFactura(Factura factura) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
@@ -42,7 +44,7 @@ public class FacturaService {
         return response;
     }
 
-    //Obtener todas las facturas
+    // Obtener todas las facturas
     public GenericResponse<List<Factura>> getAllFacturas() {
         GenericResponse<List<Factura>> response = new GenericResponse<>();
         try {
@@ -55,5 +57,22 @@ public class FacturaService {
             response.setStatus(ParametersApp.SERVER_ERROR.value());
         }
         return response;
+    }
+
+    // Obtener factura por datos usuarios
+    public List<FacturaDatosDTO> getFacturacionPdfUsuario(Long idFactura) {
+        Long convertLong = Long.valueOf(idFactura);
+        List<FacturaDatosDTO> datosUsu = this.facturaRepository.getPdfFacturaUsuario(convertLong);
+        // for(FacturaDatosDTO fac: optPedido){
+        //     System.out.println("id: "+fac.getId_factura());
+        // }
+        return datosUsu;
+    }
+
+    // Obtener factura por consumidor final
+    public List<FactConsFinalDTO> getFacturacionPdfConsFinal(Long idFactura) {
+        Long convertLong = Long.valueOf(idFactura);
+        List<FactConsFinalDTO> datosConsFinal = this.facturaRepository.getPdfFacturaConsFinal(convertLong);
+        return datosConsFinal;
     }
 }

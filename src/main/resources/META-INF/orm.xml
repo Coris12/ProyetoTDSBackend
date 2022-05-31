@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+    <entity class="com.ProyectoTDSBackend.models.Factura">
+        <named-native-query name="Factura.getPdfFacturaUsuario" result-set-mapping="getPdfFacturaUsuario">
+            <query>
+                SELECT f.fecha as fecha, us.identificacion as identificacion, us.nombres as nombres, us.celular as celular, us.email as email, f.id_factura as id_factura,
+                cl.id_cliente as id_cliente,p.precio_producto as precio_producto, p.nombre_producto as nombre_producto, us.direccion as direccion,cf.cantidad as cantidad, cf.descuento as descuento, cf.iva as iva, cf.subtotal as subtotal, cf.total as total
+                FROM usuario us JOIN cliente cl
+                ON us.id = cl.id_persona JOIN factura f
+                ON f.id_cliente = cl.id_cliente JOIN cuerpo_factura cf
+                ON f.id_factura = cf.id_factura JOIN productos p
+                ON cf.id_producto = p.id_producto
+                WHERE f.id_factura = :idFactura
+            </query>
+        </named-native-query>
+
+        <named-native-query name="Factura.getPdfFacturaConsFinal" result-set-mapping="getPdfFacturaConsFinal">
+            <query>
+                SELECT f.id_factura as idFactura, f.fecha as fecha, c.cantidad as cantidad, p.nombre_producto as nombreProducto, 
+                p.precio_producto as precioProducto, c.descuento as descuento, c.iva as iva, c.subtotal as subtotal, c.total as total
+                FROM factura f JOIN cuerpo_factura c
+                ON f.id_factura = c.id_factura JOIN productos p
+                ON p.id_producto = c.id_producto JOIN cliente cl
+                ON cl.id_cliente = f.id_cliente
+                WHERE f.id_factura = :idFactura 
+            </query>
+        </named-native-query>
+    </entity>
+</entity-mappings>
