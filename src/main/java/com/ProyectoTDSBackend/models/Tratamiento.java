@@ -44,10 +44,13 @@ public class Tratamiento {
     @Column(name = "cantidad")
     private int cantidad;
 
+    @Column(name = "estado")
+    private int estado;
+    
     @Column(name = "valor_unitario")
     private float valor_unitario;
-    
-     @Column(name = "subtotal")
+
+    @Column(name = "subtotal")
     private float subtotal;
 
     @Column(name = "total")
@@ -64,19 +67,22 @@ public class Tratamiento {
     public Tratamiento() {
     }
 
-    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, float valor_unitario, float subtotal, Double total, Cliente cliente, Empleado empleado) {
+    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, int estado, float valor_unitario, float subtotal, Double total, Cliente cliente, Empleado empleado) {
         this.idTratamiento = idTratamiento;
         this.nombre = nombre;
         this.codigo = codigo;
         this.categoria = categoria;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
+        this.estado = estado;
         this.valor_unitario = valor_unitario;
         this.subtotal = subtotal;
         this.total = total;
         this.cliente = cliente;
         this.empleado = empleado;
     }
+
+    
 
     public int getIdTratamiento() {
         return idTratamiento;
@@ -165,6 +171,13 @@ public class Tratamiento {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
-    
-    
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
 }

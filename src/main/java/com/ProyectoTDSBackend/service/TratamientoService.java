@@ -20,11 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class TratamientoService {
+
     @Autowired
     TratamientoRepository repositorio;
 
-    
-    
     public List<Tratamiento> list() {
         return repositorio.findAll();
     }
@@ -40,6 +39,13 @@ public class TratamientoService {
     public void delete(int id) {
         repositorio.deleteById(id);
     }
-    
+
+    public List<Tratamiento> search() {
+        return repositorio.findTratamientos();
+    }
+
+    public boolean existsById(int id) {
+        return repositorio.existsById(id);
+    }
 
 }

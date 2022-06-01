@@ -15,9 +15,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -44,12 +48,14 @@ public class TratamientoController {
                     tratamiento.getCategoria(),
                     tratamiento.getDescripcion(),
                     tratamiento.getCantidad(),
+                    tratamiento.getEstado(),
                     tratamiento.getValor_unitario(),
                     tratamiento.getSubtotal(),
                     tratamiento.getTotal(),
                     tratamiento.getCliente(),
                     tratamiento.getEmpleado()
             );
+            tratamiento.setEstado(1);
             servicio.save(trata);
 
             return new ResponseEntity(new Mensaje("Tratamiento creado exitosamente"), HttpStatus.OK);
@@ -66,4 +72,53 @@ public class TratamientoController {
         List<Tratamiento> list = servicio.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
+
+    @ApiOperation("Eliminado logico del tratamiento")
+    @CrossOrigin({"*"})
+    @PatchMapping("/deleteTratamiento/{id_tratamiento}")
+    public ResponseEntity<?> deleteTratamiento(@RequestParam(value = "id_tratamiento") int idTratamiento) {
+        Tratamiento tratamiento = servicio.getOne(idTratamiento).get();
+        tratamiento.setEstado(0);
+        servicio.save(tratamiento);
+        return new ResponseEntity(new Mensaje("empleado eliminado"), HttpStatus.OK);
+    }
+
+    @ApiOperation("Lista los tratamientos con estado 1")
+    @GetMapping("/tratamientosActivos")
+    public ResponseEntity<List<Tratamiento>> search() {
+        List<Tratamiento> list = servicio.search();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+
+    @ApiOperation("Detalles de los tratamientos")
+    @GetMapping("/detallesTratamientos/{id}")
+    public ResponseEntity<Tratamiento> getById(@PathVariable("id") int id) {
+        if (!servicio.existsById(id)) {
+            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        }
+        Tratamiento tratamiento = servicio.getOne(id).get();
+        return new ResponseEntity(tratamiento, HttpStatus.OK);
+    }
+
+    @ApiOperation("Actualizacion de los tratamientos")
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Tratamiento tratamiento) {
+
+        Tratamiento tratamientos = servicio.getOne(id).get();
+        tratamientos.setNombre(tratamiento.getNombre());
+        tratamientos.setCodigo(tratamiento.getCodigo());
+        tratamientos.setCategoria(tratamiento.getCategoria());
+        tratamientos.setDescripcion(tratamiento.getDescripcion());
+        tratamientos.setCantidad(tratamiento.getCantidad());
+        tratamientos.setValor_unitario(tratamiento.getValor_unitario());
+        tratamientos.setSubtotal(tratamiento.getSubtotal());
+        tratamientos.setTotal(tratamiento.getTotal());
+        tratamientos.setCliente(tratamiento.getCliente());
+        tratamientos.setEmpleado(tratamiento.getEmpleado());
+
+        servicio.save(tratamientos);
+
+        return new ResponseEntity(new Mensaje("Tratamiento actualizado"), HttpStatus.OK);
+    }
+
 }

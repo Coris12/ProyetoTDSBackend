@@ -6,12 +6,15 @@
 package com.ProyectoTDSBackend.repository;
 
 import com.ProyectoTDSBackend.models.Tratamiento;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
  * @author LENOVO
  */
 public interface TratamientoRepository  extends JpaRepository<Tratamiento, Integer> {
-    
+     @Query(value = "select * from tratamientos  where estado=1",nativeQuery = true)
+    List<Tratamiento> findTratamientos();
 }

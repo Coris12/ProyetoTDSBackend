@@ -9,10 +9,12 @@ import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Empleado;
 import com.ProyectoTDSBackend.service.EmpleadoService;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -62,5 +64,12 @@ public class EmpleadoController {
         empleado.setEstado(0);
         servicio.save(empleado);
         return new ResponseEntity(new Mensaje("empleado eliminado"), HttpStatus.OK);
+    }
+    
+      @ApiOperation("Lista los empleados  con estado 1")
+    @GetMapping("/empleadosActivos")
+    public ResponseEntity<List<Empleado>> search() {
+        List<Empleado> list = servicio.search();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
 }
