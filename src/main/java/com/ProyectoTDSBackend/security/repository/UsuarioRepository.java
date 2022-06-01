@@ -32,4 +32,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     @Query(value = "select * from usuario usu, usuario_rol rol where usu.id = rol.usuario_id and rol.rol_id =2;", nativeQuery = true)
     List<Usuario> list();
+
+    @Query(value = "select * from usuario usu, usuario_rol rol where usu.id = rol.usuario_id and rol.rol_id !=2 and rol.rol_id !=1;", nativeQuery = true)
+     
+
+    List<Usuario> listaEmpleados();
 }

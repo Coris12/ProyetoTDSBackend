@@ -70,4 +70,8 @@ public class UsuarioService {
     public List<Usuario> search() {
         return usuarioRepository.list();
     }
+    
+     public List<Usuario> searchEmp() {
+        return usuarioRepository.listaEmpleados();
+    }
 }

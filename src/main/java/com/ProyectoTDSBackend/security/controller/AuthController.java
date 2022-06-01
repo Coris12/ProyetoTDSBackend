@@ -155,4 +155,10 @@ public class AuthController {
         List<Usuario> list = usuarioService.search();
         return new ResponseEntity(list, HttpStatus.OK);
     }
+    @ApiOperation("Muestra la lista de usuarios en el sistema")
+      @GetMapping("/empleados")
+    public ResponseEntity<List<Usuario>> searchE() {
+        List<Usuario> list = usuarioService.searchEmp();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
 }
