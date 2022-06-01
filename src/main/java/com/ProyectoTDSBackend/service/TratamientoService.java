@@ -40,5 +40,6 @@ public class TratamientoService {
     public void delete(int id) {
         repositorio.deleteById(id);
     }
+    
 
 }
