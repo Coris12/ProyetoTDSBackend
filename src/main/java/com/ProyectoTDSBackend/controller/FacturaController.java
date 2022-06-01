@@ -65,6 +65,7 @@ public class FacturaController {
     }
 
     // generar reporte de factura de usuarios y consumidor final
+    @CrossOrigin(origins = "*")
     @GetMapping(path = "/generarPdfUsuario")
     public ResponseEntity<byte[]> generarPdfFacturaUsuario(@RequestParam Long idFactura)
             throws JRException, FileNotFoundException {
@@ -91,6 +92,7 @@ public class FacturaController {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentDisposition(contentDisposition);
             return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+
         } else {
             JRBeanCollectionDataSource beanCollectionDataSource2 = new JRBeanCollectionDataSource(
                     servicio.getFacturacionPdfConsFinal(idFactura));
@@ -114,7 +116,7 @@ public class FacturaController {
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentDisposition(contentDisposition);
                 return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
-            }else{
+            } else {
                 System.out.println("No hay datos");
                 return null;
             }
