@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author corin
@@ -56,10 +58,12 @@ public class Tratamiento {
     @Column(name = "total")
     private Double total;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_cliente")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Cliente cliente;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "id_empleado")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Empleado empleado;

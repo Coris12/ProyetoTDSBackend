@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe9229b8-080c-40d1-81f9-4017ee04dab1">
 	<property name="ireport.zoom" value="1.3310000000000035"/>
 	<property name="ireport.x" value="0"/>
@@ -57,10 +58,6 @@
 				</textElement>
 				<text><![CDATA[FACTURA]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="120" height="103" uuid="5f11674b-3f3b-4fe6-8a7e-f24dfcf5398d"/>
-				<imageExpression><![CDATA["C:\\Users\\willi\\Documents\\GitHub\\Backend\\ProyetoTDSBackend\\src\\main\\java\\com\\ProyectoTDSBackend\\Reports\\Image\\medivalle.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="213" y="53" width="130" height="20" uuid="72471b45-66f8-4055-aa61-3f83289998fd"/>
 				<text><![CDATA[01-010-01010101010010]]></text>
@@ -91,6 +88,10 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id_factura}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="0" y="0" width="130" height="118" uuid="11872f7c-cd14-4084-87ba-1ee1f265b194"/>
+				<imageExpression><![CDATA["/src/main/resources/Image/medivalle.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>
