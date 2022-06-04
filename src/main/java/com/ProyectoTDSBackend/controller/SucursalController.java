@@ -1,5 +1,6 @@
 package com.ProyectoTDSBackend.controller;
 
+import com.ProyectoTDSBackend.dto.Mensaje;
 import java.util.List;
 import com.ProyectoTDSBackend.models.Sucursal;
 import com.ProyectoTDSBackend.service.SucursalService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 
 @RestController
@@ -44,6 +46,7 @@ public class SucursalController {
     @CrossOrigin
 	@PostMapping(path = "crearSucursal")
 	public  ResponseEntity<GenericResponse<String>> guardarFactura(@RequestBody Sucursal sucursal){
+            sucursal.setEstado(1);
 		return new ResponseEntity<GenericResponse<String>> (sucursalService.saveSucursal(sucursal), HttpStatus.OK);
 	}
 
@@ -54,4 +57,22 @@ public class SucursalController {
     public ResponseEntity<GenericResponse<Sucursal>> getSucursalById(@RequestParam("id") Long id) {
         return new ResponseEntity<GenericResponse<Sucursal>>(sucursalService.getSucursalById(id), HttpStatus.OK);
     }
+    
+    @ApiOperation("Lista los sucursal con estado 1")
+    @CrossOrigin({"*"})
+    @GetMapping("/sucursalActivos")
+    public ResponseEntity<List<Sucursal>> search() {
+        List<Sucursal> list = sucursalService.search();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+    @ApiOperation("Eliminado logico de Sucursal")
+    @CrossOrigin({"*"})
+    @PatchMapping("/deleteSucursal/{id_sucursal}")
+    public ResponseEntity<?> deleletSucursal(@RequestParam(value = "id_sucursal") Long idSucursal) {
+        Sucursal sucursal = sucursalService.getOne(idSucursal).get();
+        sucursal.setEstado(0);
+        sucursalService.saveSucursal(sucursal);
+        return new ResponseEntity(new Mensaje("sucursal eliminado"), HttpStatus.OK);
+    }
+    
 }
