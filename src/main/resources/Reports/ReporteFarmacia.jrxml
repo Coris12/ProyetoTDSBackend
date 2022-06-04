@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe9229b8-080c-40d1-81f9-4017ee04dab1">
 	<property name="ireport.zoom" value="1.3310000000000035"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="262"/>
+	<property name="ireport.y" value="48"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ConexionPg"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="idFact" class="java.lang.Integer">
@@ -52,7 +51,7 @@
 	<title>
 		<band height="146" splitType="Stretch">
 			<staticText>
-				<reportElement x="106" y="18" width="342" height="35" uuid="8d891e09-0c13-416f-b0e7-8f688fc4897a"/>
+				<reportElement x="160" y="18" width="214" height="35" uuid="8d891e09-0c13-416f-b0e7-8f688fc4897a"/>
 				<textElement textAlignment="Center">
 					<font size="22" isBold="true"/>
 				</textElement>
@@ -89,8 +88,8 @@
 				<textFieldExpression><![CDATA[$F{id_factura}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="0" width="130" height="118" uuid="11872f7c-cd14-4084-87ba-1ee1f265b194"/>
-				<imageExpression><![CDATA["/src/main/resources/Image/medivalle.png"]]></imageExpression>
+				<reportElement x="1" y="0" width="119" height="118" uuid="db2ba1d6-1ffb-40b6-be35-dedd1de4df15"/>
+				<imageExpression><![CDATA["Image\\medivalle.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
