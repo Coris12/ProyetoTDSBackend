@@ -76,4 +76,7 @@ public class SucursalService {
     public Optional<Sucursal> getOne(Long id) {
         return sucursalRepository.findById(id);
     }
+     public boolean existsById(Long id) {
+        return sucursalRepository.existsById(id);
+    }
 }
