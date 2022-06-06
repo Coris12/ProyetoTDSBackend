@@ -49,7 +49,7 @@ public class TratamientoController {
                     tratamiento.getDescripcion(),
                     tratamiento.getCantidad(),
                     tratamiento.getEstado(),
-                    tratamiento.getValor_unitario(),
+                    tratamiento.getValorUnitario(),
                     tratamiento.getSubtotal(),
                     tratamiento.getTotal(),
                     tratamiento.getCliente(),
@@ -110,7 +110,7 @@ public class TratamientoController {
         tratamientos.setCategoria(tratamiento.getCategoria());
         tratamientos.setDescripcion(tratamiento.getDescripcion());
         tratamientos.setCantidad(tratamiento.getCantidad());
-        tratamientos.setValor_unitario(tratamiento.getValor_unitario());
+        tratamientos.setValorUnitario(tratamiento.getValorUnitario());
         tratamientos.setSubtotal(tratamiento.getSubtotal());
         tratamientos.setTotal(tratamiento.getTotal());
         tratamientos.setCliente(tratamiento.getCliente());
