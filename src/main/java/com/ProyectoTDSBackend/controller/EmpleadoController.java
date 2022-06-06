@@ -45,8 +45,8 @@ public class EmpleadoController {
                 empleado.getEstado(),
                 empleado.getUsuario()
         );
-        empleado.setEstado(1);
-        servicio.save(empleado);
+        emple.setEstado(1);
+        servicio.save(emple);
         
         return new ResponseEntity(new Mensaje("Empleado creado exitosamente"), HttpStatus.OK);
         } catch (Exception e) {
