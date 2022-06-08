@@ -58,20 +58,12 @@ public class Tratamiento {
     @Column(name = "total")
     private Double total;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "id_cliente")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Cliente cliente;
-
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "id_empleado")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Empleado empleado;
+  
 
     public Tratamiento() {
     }
 
-    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, int estado, float valorUnitario, float subtotal, Double total, Cliente cliente, Empleado empleado) {
+    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, int estado, float valorUnitario, float subtotal, Double total) {
         this.idTratamiento = idTratamiento;
         this.nombre = nombre;
         this.codigo = codigo;
@@ -82,9 +74,9 @@ public class Tratamiento {
         this.valorUnitario = valorUnitario;
         this.subtotal = subtotal;
         this.total = total;
-        this.cliente = cliente;
-        this.empleado = empleado;
     }
+
+    
 
     
 
@@ -164,21 +156,6 @@ public class Tratamiento {
         this.total = total;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
 
     public int getEstado() {
         return estado;
