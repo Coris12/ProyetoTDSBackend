@@ -96,5 +96,11 @@ public class ClienteController {
     }
 
     // lista solo los clientes/pacientes
-  
+   @ApiOperation("Muestra una lista de clientes")
+    @CrossOrigin({"*"})
+    @GetMapping("/listaClientes")
+    public ResponseEntity<List<Cliente>> list() {
+        List<Cliente> list = servicio.list();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
 }

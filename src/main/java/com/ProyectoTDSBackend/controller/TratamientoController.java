@@ -49,13 +49,12 @@ public class TratamientoController {
                     tratamiento.getDescripcion(),
                     tratamiento.getCantidad(),
                     tratamiento.getEstado(),
-                    tratamiento.getValor_unitario(),
+                    tratamiento.getValorUnitario(),
                     tratamiento.getSubtotal(),
-                    tratamiento.getTotal(),
-                    tratamiento.getCliente(),
-                    tratamiento.getEmpleado()
+                    tratamiento.getTotal()
+                   
             );
-            tratamiento.setEstado(1);
+            trata.setEstado(1);
             servicio.save(trata);
 
             return new ResponseEntity(new Mensaje("Tratamiento creado exitosamente"), HttpStatus.OK);
@@ -110,12 +109,10 @@ public class TratamientoController {
         tratamientos.setCategoria(tratamiento.getCategoria());
         tratamientos.setDescripcion(tratamiento.getDescripcion());
         tratamientos.setCantidad(tratamiento.getCantidad());
-        tratamientos.setValor_unitario(tratamiento.getValor_unitario());
+        tratamientos.setValorUnitario(tratamiento.getValorUnitario());
         tratamientos.setSubtotal(tratamiento.getSubtotal());
         tratamientos.setTotal(tratamiento.getTotal());
-        tratamientos.setCliente(tratamiento.getCliente());
-        tratamientos.setEmpleado(tratamiento.getEmpleado());
-
+ 
         servicio.save(tratamientos);
 
         return new ResponseEntity(new Mensaje("Tratamiento actualizado"), HttpStatus.OK);

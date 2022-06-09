@@ -50,7 +50,7 @@ public class Tratamiento {
     private int estado;
     
     @Column(name = "valor_unitario")
-    private float valor_unitario;
+    private float valorUnitario;
 
     @Column(name = "subtotal")
     private float subtotal;
@@ -58,20 +58,12 @@ public class Tratamiento {
     @Column(name = "total")
     private Double total;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "id_cliente")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Cliente cliente;
-
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "id_empleado")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Empleado empleado;
+  
 
     public Tratamiento() {
     }
 
-    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, int estado, float valor_unitario, float subtotal, Double total, Cliente cliente, Empleado empleado) {
+    public Tratamiento(int idTratamiento, String nombre, String codigo, String categoria, String descripcion, int cantidad, int estado, float valorUnitario, float subtotal, Double total) {
         this.idTratamiento = idTratamiento;
         this.nombre = nombre;
         this.codigo = codigo;
@@ -79,12 +71,14 @@ public class Tratamiento {
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.estado = estado;
-        this.valor_unitario = valor_unitario;
+        this.valorUnitario = valorUnitario;
         this.subtotal = subtotal;
         this.total = total;
-        this.cliente = cliente;
-        this.empleado = empleado;
     }
+
+    
+
+    
 
     
 
@@ -136,13 +130,15 @@ public class Tratamiento {
         this.cantidad = cantidad;
     }
 
-    public float getValor_unitario() {
-        return valor_unitario;
+    public float getValorUnitario() {
+        return valorUnitario;
     }
 
-    public void setValor_unitario(float valor_unitario) {
-        this.valor_unitario = valor_unitario;
+    public void setValorUnitario(float valorUnitario) {
+        this.valorUnitario = valorUnitario;
     }
+
+   
 
     public float getSubtotal() {
         return subtotal;
@@ -160,21 +156,6 @@ public class Tratamiento {
         this.total = total;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
 
     public int getEstado() {
         return estado;
