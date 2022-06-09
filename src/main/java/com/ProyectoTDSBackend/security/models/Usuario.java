@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.models;
 
+import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.sun.istack.NotNull;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -70,6 +73,9 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<ConsultaExterna> consultaExterna;
+
     public Usuario() {
     }
 
@@ -87,7 +93,13 @@ public class Usuario {
         this.password = password;
     }
 
-   
+    public Set<ConsultaExterna> getConsultaExterna() {
+        return consultaExterna;
+    }
+
+    public void setConsultaExterna(Set<ConsultaExterna> consultaExterna) {
+        this.consultaExterna = consultaExterna;
+    }
 
     public int getId() {
         return id;
@@ -192,8 +204,5 @@ public class Usuario {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-
-    
-    
    
 }

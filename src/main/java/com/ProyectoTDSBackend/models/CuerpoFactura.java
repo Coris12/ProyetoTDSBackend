@@ -46,7 +46,7 @@ public class CuerpoFactura {
     // @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     // private Factura factura;
 
-    @ManyToOne(optional = true,cascade = CascadeType.MERGE)
+    @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_factura",foreignKey = @ForeignKey(name = "FK_CUERPOFACTURA_ID"))
     private Factura factura;
 
