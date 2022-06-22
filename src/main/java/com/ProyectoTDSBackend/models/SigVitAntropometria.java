@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.ForeignKey;
 
 @Entity
@@ -22,13 +24,14 @@ public class SigVitAntropometria {
 	@Column(name = "ID_SIGVIT_ANT")
     private Long idSigVitAnt;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "FECHA_MEDICION")
     private Date fechaMedicion;
 
     @Column(name = "TEMPERATURA")
     private Double temperatura;
 
-    @Column(name = "PRESION_ARTERIAL")
+    @Column(name = "PRESION_ARTERIAL", length = 30)
     private String presionArterial;
 
     @Column(name = "PULSO")

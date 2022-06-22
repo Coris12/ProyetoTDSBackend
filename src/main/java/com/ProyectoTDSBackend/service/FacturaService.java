@@ -59,7 +59,7 @@ public class FacturaService {
         return response;
     }
 
-    // Obtener factura por datos usuarios
+    // Generar pdf por usuario
     public List<FacturaDatosDTO> getFacturacionPdfUsuario(Long idFactura) {
         Long convertLong = Long.valueOf(idFactura);
         List<FacturaDatosDTO> datosUsu = this.facturaRepository.getPdfFacturaUsuario(convertLong);

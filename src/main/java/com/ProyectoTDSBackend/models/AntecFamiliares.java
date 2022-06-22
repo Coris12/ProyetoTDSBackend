@@ -19,35 +19,35 @@ public class AntecFamiliares {
     @Column(name = "ID_ANTEC_FAMILIARES", nullable = false)
     private Long idAntecFamiliares;
 
-    @Column(name = "CARDIOPATIA", length = 5)
-    private String cardiopatia;
+    @Column(name = "CARDIOPATIA")
+    private boolean cardiopatia;
 
-    @Column(name = "DIABETES", length = 5)
-    private String diabetes;
+    @Column(name = "DIABETES" )
+    private boolean diabetes;
 
-    @Column(name = "ENF_CARDIOVASCULARES", length = 5)
-    private String enfCardiovasculares;
+    @Column(name = "ENF_CARDIOVASCULARES" )
+    private boolean enfCardiovasculares;
 
-    @Column(name = "HIPERTENSION", length = 5)
-    private String hipertension;
+    @Column(name = "HIPERTENSION" )
+    private boolean hipertension;
 
-    @Column(name = "CANCER", length = 5)
-    private String cancer;
+    @Column(name = "CANCER" )
+    private boolean cancer;
 
-    @Column(name = "TUBERCULOSIS", length = 5)
-    private String tuberculosis;
+    @Column(name = "TUBERCULOSIS")
+    private boolean tuberculosis;
 
-    @Column(name = "ENF_MENTALES", length = 5)
-    private String enfMentales;
+    @Column(name = "ENF_MENTALES")
+    private boolean enfMentales;
 
-    @Column(name = "ENF_INFECCIOSAS", length = 5)
-    private String enfInfecciosas;
+    @Column(name = "ENF_INFECCIOSAS" )
+    private boolean enfInfecciosas;
 
-    @Column(name = "MALFORMACIONES", length = 5)
-    private String malformaciones;
+    @Column(name = "MALFORMACIONES" )
+    private boolean malformaciones;
 
     @Column(name = "OTROS")
-    private String otros;
+    private boolean otros;
 
     @Column(name = "FAMILIARES")
     private String familiares;
@@ -58,10 +58,10 @@ public class AntecFamiliares {
 
     public AntecFamiliares() {
     }
-    
-    public AntecFamiliares(Long idAntecFamiliares, String cardiopatia, String diabetes, String enfCardiovasculares,
-            String hipertension, String cancer, String tuberculosis, String enfMentales, String enfInfecciosas,
-            String malformaciones, String otros, String familiares, ConsultaExterna consultaExterna) {
+
+    public AntecFamiliares(Long idAntecFamiliares, boolean cardiopatia, boolean diabetes, boolean enfCardiovasculares,
+            boolean hipertension, boolean cancer, boolean tuberculosis, boolean enfMentales, boolean enfInfecciosas,
+            boolean malformaciones, boolean otros, String familiares, ConsultaExterna consultaExterna) {
         this.idAntecFamiliares = idAntecFamiliares;
         this.cardiopatia = cardiopatia;
         this.diabetes = diabetes;
@@ -85,83 +85,83 @@ public class AntecFamiliares {
         this.idAntecFamiliares = idAntecFamiliares;
     }
 
-    public String getCardiopatia() {
+    public boolean isCardiopatia() {
         return cardiopatia;
     }
 
-    public void setCardiopatia(String cardiopatia) {
+    public void setCardiopatia(boolean cardiopatia) {
         this.cardiopatia = cardiopatia;
     }
 
-    public String getDiabetes() {
+    public boolean isDiabetes() {
         return diabetes;
     }
 
-    public void setDiabetes(String diabetes) {
+    public void setDiabetes(boolean diabetes) {
         this.diabetes = diabetes;
     }
 
-    public String getEnfCardiovasculares() {
+    public boolean isEnfCardiovasculares() {
         return enfCardiovasculares;
     }
 
-    public void setEnfCardiovasculares(String enfCardiovasculares) {
+    public void setEnfCardiovasculares(boolean enfCardiovasculares) {
         this.enfCardiovasculares = enfCardiovasculares;
     }
 
-    public String getHipertension() {
+    public boolean isHipertension() {
         return hipertension;
     }
 
-    public void setHipertension(String hipertension) {
+    public void setHipertension(boolean hipertension) {
         this.hipertension = hipertension;
     }
 
-    public String getCancer() {
+    public boolean isCancer() {
         return cancer;
     }
 
-    public void setCancer(String cancer) {
+    public void setCancer(boolean cancer) {
         this.cancer = cancer;
     }
 
-    public String getTuberculosis() {
+    public boolean isTuberculosis() {
         return tuberculosis;
     }
 
-    public void setTuberculosis(String tuberculosis) {
+    public void setTuberculosis(boolean tuberculosis) {
         this.tuberculosis = tuberculosis;
     }
 
-    public String getEnfMentales() {
+    public boolean isEnfMentales() {
         return enfMentales;
     }
 
-    public void setEnfMentales(String enfMentales) {
+    public void setEnfMentales(boolean enfMentales) {
         this.enfMentales = enfMentales;
     }
 
-    public String getEnfInfecciosas() {
+    public boolean isEnfInfecciosas() {
         return enfInfecciosas;
     }
 
-    public void setEnfInfecciosas(String enfInfecciosas) {
+    public void setEnfInfecciosas(boolean enfInfecciosas) {
         this.enfInfecciosas = enfInfecciosas;
     }
 
-    public String getMalformaciones() {
+    public boolean isMalformaciones() {
         return malformaciones;
     }
 
-    public void setMalformaciones(String malformaciones) {
+    public void setMalformaciones(boolean malformaciones) {
         this.malformaciones = malformaciones;
     }
 
-    public String getOtros() {
+    public boolean isOtros() {
         return otros;
     }
 
-    public void setOtros(String otros) {
+    public void setOtros(boolean otros) {
         this.otros = otros;
     }
 
@@ -181,5 +181,4 @@ public class AntecFamiliares {
         this.consultaExterna = consultaExterna;
     }
 
-    
 }

@@ -147,7 +147,7 @@ public class Factura {
         this.tipo_factura = tipo_factura;
     }
 
-    public Long getId_factura() {
-        return this.idFactura != null ? this.idFactura : 0;
-    }
+    // public Long getId_factura() {
+    //     return this.idFactura != null ? this.idFactura : 0;
+    // }
 }

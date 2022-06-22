@@ -6,8 +6,10 @@
 package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.models.ConsultaExterna;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,8 +75,9 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<ConsultaExterna> consultaExterna;
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<ConsultaExterna> consultaExterna;
 
     public Usuario() {
     }
@@ -93,11 +96,30 @@ public class Usuario {
         this.password = password;
     }
 
-    public Set<ConsultaExterna> getConsultaExterna() {
+    public Usuario(int id, String identificacion, String nombres, String direccion, String celular, String profesion,
+            String sexo, @Email String email, String ciudad, int estado, String nombreUsuario, String password,
+            Set<Rol> roles, List<ConsultaExterna> consultaExterna) {
+        this.id = id;
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
+        this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.roles = roles;
+        this.consultaExterna = consultaExterna;
+    }
+
+    public List<ConsultaExterna> getConsultaExterna() {
         return consultaExterna;
     }
 
-    public void setConsultaExterna(Set<ConsultaExterna> consultaExterna) {
+    public void setConsultaExterna(List<ConsultaExterna> consultaExterna) {
         this.consultaExterna = consultaExterna;
     }
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" 
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <entity class="com.ProyectoTDSBackend.models.Factura">
         <named-native-query name="Factura.getPdfFacturaUsuario" result-set-mapping="getPdfFacturaUsuario">
@@ -25,6 +24,84 @@
                 ON p.id_producto = c.id_producto JOIN cliente cl
                 ON cl.id_cliente = f.id_cliente
                 WHERE f.id_factura = :idFactura 
+            </query>
+        </named-native-query>
+    </entity>
+
+    <entity class="com.ProyectoTDSBackend.models.ConsultaExterna">
+        <named-native-query name="ConsultaExterna.getConsultaExterna" result-set-mapping="getConsultaExterna">
+            <query>
+                SELECT ce.id_consexterna as id_consexterna, us.nombres as nombres, ce.historia_clinica as historia_clinica, 
+                ce.fecha as fecha, ce.nombres_profesional as nombresProfesional
+     	        FROM usuario us JOIN consulta_externa ce
+     	        ON ce.id_usuario = us.id JOIN antec_personales ap
+     	        ON ap.id_consexterna = ce.id_consexterna JOIN antec_familiares af
+     	        ON af.id_consexterna = ce.id_consexterna JOIN rev_organo_sistem ro
+     	        ON ro.id_consexterna = ce.id_consexterna JOIN sigvit_antropometria sa
+     	        ON sa.id_consexterna = ce.id_consexterna JOIN exam_fisico_regional ef
+     	        ON ef.id_consexterna = ce.id_consexterna JOIN diagnosticos d
+     	        ON d.id_consexterna = ce.id_consexterna JOIN plan_tratamiento pt
+     	        ON pt.id_consexterna = ce.id_consexterna
+	 	        WHERE ce.estado = 'a'
+                ORDER BY ce.id_consexterna DESC
+            </query>
+        </named-native-query>
+
+        <named-native-query name="ConsultaExterna.getConsultaExternaById" result-set-mapping="getConsultaExternaById">
+            <query>
+                SELECT ce.duracion_consulta as duracionConsulta, ce.nombres_profesional as nombresProfesional, us.identificacion as identificacion,
+                 ce.id_consexterna as idConsexterna, ce.establecimiento as establecimiento, us.nombres as nombres, us.sexo as sexo, ce.historia_clinica as historiaClinica,
+                ce.motivo_consulta as motivoConsulta, ce.enfermedad_actual as enfermedadActual, ce.fecha as fecha, ap.clinicos as clinicos,
+                ap.quirurgicos as quirurgicos, af.cardiopatia as cardiopatia, af.diabetes as diabetes, af.enf_cardiovasculares as enfCardiovasculares,
+                af.hipertension as hipertension, af.cancer as cancer, af.tuberculosis as tuberculosis, af.enf_mentales as enfMentales,
+                af.enf_infecciosas as enfInfecciosas, af.malformaciones as malformaciones, af.otros as otros, af.familiares as familiares,
+                ro.organo_sentido as organoSentido, ro.respiratorio as respiratorio, ro.cardiovascular as cardiovascular, ro.digestivo as digestivo,
+                ro.genital as genital, ro.urinario as urinario, ro.musculo_esqueletico as musculoEsqueletico, ro.endocrino as endocrino,
+                ro.hemolenfatico as hemolenfatico, ro.nervioso as nervioso, ro.descripcion as descripcion, sa.fecha_medicion as fechaMedicion,
+                sa.temperatura as temperatura, sa.presion_arterial as presionArterial, sa.pulso as pulso, sa.frec_respiratoria as frecRespiratoria,
+                sa.peso as peso, sa.talla as talla, ef.cabeza as cabeza, ef.cuello as cuello, ef.torax as torax, ef.abdomen as abdomen, 
+                ef.pelvis as pelvis, ef.extremidades as extremidades, ef.observaciones as observaciones, d.descripcion_diagnostico as descripcionDiagnostico,
+                d.cie as cie, d.pre_def as preDef, d.descripcion_pre_def as descripcionPreDef, d.descripcion_pre_def_cie as descripcionPreDefCie,
+                d.descripcion_pre_def_pre_def as descripcionPreDefPreDef, pt.m as m, pt.i as i, pt.l as l, pt.r as r, pt.c as c, pt.t as t, pt.o as o
+                FROM usuario us JOIN consulta_externa ce
+                ON ce.id_usuario = us.id JOIN antec_personales ap
+                ON ap.id_consexterna = ce.id_consexterna JOIN antec_familiares af
+                ON af.id_consexterna = ce.id_consexterna JOIN rev_organo_sistem ro
+                ON ro.id_consexterna = ce.id_consexterna JOIN sigvit_antropometria sa
+                ON sa.id_consexterna = ce.id_consexterna JOIN exam_fisico_regional ef
+                ON ef.id_consexterna = ce.id_consexterna JOIN diagnosticos d
+                ON d.id_consexterna = ce.id_consexterna JOIN plan_tratamiento pt
+                ON pt.id_consexterna = ce.id_consexterna
+                WHERE ce.id_consexterna = :idConExt AND ce.estado = 'a'
+            </query>
+        </named-native-query>
+
+        <named-native-query name="ConsultaExterna.generarPdfConsultaExterna" result-set-mapping="generarPdfConsultaExterna">
+            <query>
+                SELECT ce.duracion_consulta as duracionConsulta, ce.nombres_profesional as nombresProfesional, us.identificacion as identificacion,
+                 ce.id_consexterna as idConsexterna, ce.establecimiento as establecimiento, us.nombres as nombres, us.sexo as sexo, ce.historia_clinica as historiaClinica,
+                ce.motivo_consulta as motivoConsulta, ce.enfermedad_actual as enfermedadActual, ce.fecha as fecha, ap.clinicos as clinicos,
+                ap.quirurgicos as quirurgicos, af.cardiopatia as cardiopatia, af.diabetes as diabetes, af.enf_cardiovasculares as enfCardiovasculares,
+                af.hipertension as hipertension, af.cancer as cancer, af.tuberculosis as tuberculosis, af.enf_mentales as enfMentales,
+                af.enf_infecciosas as enfInfecciosas, af.malformaciones as malformaciones, af.otros as otros, af.familiares as familiares,
+                ro.organo_sentido as organoSentido, ro.respiratorio as respiratorio, ro.cardiovascular as cardiovascular, ro.digestivo as digestivo,
+                ro.genital as genital, ro.urinario as urinario, ro.musculo_esqueletico as musculoEsqueletico, ro.endocrino as endocrino,
+                ro.hemolenfatico as hemolenfatico, ro.nervioso as nervioso, ro.descripcion as descripcion, sa.fecha_medicion as fechaMedicion,
+                sa.temperatura as temperatura, sa.presion_arterial as presionArterial, sa.pulso as pulso, sa.frec_respiratoria as frecRespiratoria,
+                sa.peso as peso, sa.talla as talla, ef.cabeza as cabeza, ef.cuello as cuello, ef.torax as torax, ef.abdomen as abdomen, 
+                ef.pelvis as pelvis, ef.extremidades as extremidades, ef.observaciones as observaciones, d.descripcion_diagnostico as descripcionDiagnostico,
+                d.cie as cie, d.pre_def as preDef, d.descripcion_pre_def as descripcionPreDef, d.descripcion_pre_def_cie as descripcionPreDefCie,
+                d.descripcion_pre_def_pre_def as descripcionPreDefPreDef, pt.m as m, pt.i as i, pt.l as l, pt.r as r, pt.c as c, pt.t as t, pt.o as o
+                FROM usuario us JOIN consulta_externa ce
+                ON ce.id_usuario = us.id JOIN antec_personales ap
+                ON ap.id_consexterna = ce.id_consexterna JOIN antec_familiares af
+                ON af.id_consexterna = ce.id_consexterna JOIN rev_organo_sistem ro
+                ON ro.id_consexterna = ce.id_consexterna JOIN sigvit_antropometria sa
+                ON sa.id_consexterna = ce.id_consexterna JOIN exam_fisico_regional ef
+                ON ef.id_consexterna = ce.id_consexterna JOIN diagnosticos d
+                ON d.id_consexterna = ce.id_consexterna JOIN plan_tratamiento pt
+                ON pt.id_consexterna = ce.id_consexterna
+                WHERE ce.id_consexterna = :idConExt AND ce.estado = 'a'
             </query>
         </named-native-query>
     </entity>

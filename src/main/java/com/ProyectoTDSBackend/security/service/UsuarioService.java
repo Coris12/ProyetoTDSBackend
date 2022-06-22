@@ -52,15 +52,19 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    //Buscar usuario por identificacion
+    // Buscar usuario por identificacion
     public GenericResponse<Usuario> ObtenerByIdentificacion(String identificacion) {
         GenericResponse<Usuario> response = new GenericResponse<>();
         try {
-            response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-            response.setObject(usuarioRepository.findByIdentificacion(identificacion));
-            response.setStatus(ParametersApp.SUCCESSFUL.value());
+            if (identificacion != null) {
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject(usuarioRepository.findByIdentificacion(identificacion));
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            } else {
+                response.setObject(null);
+            }
         } catch (Exception e) {
-            //TODO: handle exception
+            // TODO: handle exception
             log.error("Error al buscar persona por identificacion de usuario: ", e);
             response.setStatus(ParametersApp.SERVER_ERROR.value());
         }
@@ -70,8 +74,8 @@ public class UsuarioService {
     public List<Usuario> search() {
         return usuarioRepository.list();
     }
-    
-     public List<Usuario> searchEmp() {
+
+    public List<Usuario> searchEmp() {
         return usuarioRepository.listaEmpleados();
     }
 }

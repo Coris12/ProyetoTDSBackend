@@ -25,6 +25,7 @@ public class AntecPersonales {
     @Column(name = "QUIRURGICOS")
     private String quirurgicos;
 
+
     @ManyToOne( cascade = CascadeType.MERGE)
     @JoinColumn(name = "ID_CONSEXTERNA",foreignKey = @ForeignKey(name = "FK_ANTEC_PERSONALES_ID"))
     private ConsultaExterna consultaExterna;
@@ -38,12 +39,6 @@ public class AntecPersonales {
         this.clinicos = clinicos;
         this.quirurgicos = quirurgicos;
         this.consultaExterna = consultaExterna;
-    }
-
-    public AntecPersonales(Long idAntecPersonales, String clinicos, String quirurgicos) {
-        this.idAntecPersonales = idAntecPersonales;
-        this.clinicos = clinicos;
-        this.quirurgicos = quirurgicos;
     }
 
     public Long getIdAntecPersonales() {

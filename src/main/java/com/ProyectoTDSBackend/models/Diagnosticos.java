@@ -23,26 +23,20 @@ public class Diagnosticos {
     @Column(name = "DESCRIPCION_DIAGNOSTICO")
     private String descripcionDiagnostico;
 
-    @Column(name = "CIE")
+    @Column(name = "CIE", length = 10)
     private String cie;
 
-    @Column(name = "PRE", length = 3)
-    private String pre;
-
-    @Column(name = "DEF", length = 3)
-    private String def;
+    @Column(name = "PRE_DEF", length = 3)
+    private String preDef;
 
     @Column(name = "DESCRIPCION_PRE_DEF")
     private String descripcionPreDef;
 
-    @Column(name = "DESCRIPCION_PRE_DEF_CIE")
+    @Column(name = "DESCRIPCION_PRE_DEF_CIE", length = 50)
     private String descripcionPreDefCie;
 
-    @Column(name = "DESCRIPCION_PRE_DEF_PRE", length = 3)
-    private String descripcionPreDefPre;
-
-    @Column(name = "DESCRIPCION_PRE_DEF_DEF", length = 3)
-    private String descripcionPreDefDef;
+    @Column(name = "DESCRIPCION_PRE_DEF_PRE_DEF", length = 3)
+    private String descripcionPreDefPreDef;
 
     @ManyToOne( cascade = CascadeType.MERGE)
     @JoinColumn(name = "ID_CONSEXTERNA",foreignKey = @ForeignKey(name = "FK_DIAGNOSTICOS_ID"))
@@ -51,18 +45,16 @@ public class Diagnosticos {
     public Diagnosticos() {
     }
 
-    public Diagnosticos(long idDiagnosticos, String descripcionDiagnostico, String cie, String pre, String def,
-            String descripcionPreDef, String descripcionPreDefCie, String descripcionPreDefPre,
-            String descripcionPreDefDef, ConsultaExterna consultaExterna) {
+    public Diagnosticos(long idDiagnosticos, String descripcionDiagnostico, String cie, String preDef,
+            String descripcionPreDef, String descripcionPreDefCie, String descripcionPreDefPreDef,
+            ConsultaExterna consultaExterna) {
         this.idDiagnosticos = idDiagnosticos;
         this.descripcionDiagnostico = descripcionDiagnostico;
         this.cie = cie;
-        this.pre = pre;
-        this.def = def;
+        this.preDef = preDef;
         this.descripcionPreDef = descripcionPreDef;
         this.descripcionPreDefCie = descripcionPreDefCie;
-        this.descripcionPreDefPre = descripcionPreDefPre;
-        this.descripcionPreDefDef = descripcionPreDefDef;
+        this.descripcionPreDefPreDef = descripcionPreDefPreDef;
         this.consultaExterna = consultaExterna;
     }
 
@@ -93,21 +85,13 @@ public class Diagnosticos {
     public void setCie(String cie) {
         this.cie = cie;
     }
-
-    public String getPre() {
-        return pre;
+    
+    public String getPreDef() {
+        return preDef;
     }
 
-    public void setPre(String pre) {
-        this.pre = pre;
-    }
-
-    public String getDef() {
-        return def;
-    }
-
-    public void setDef(String def) {
-        this.def = def;
+    public void setPreDef(String preDef) {
+        this.preDef = preDef;
     }
 
     public String getDescripcionPreDef() {
@@ -134,20 +118,12 @@ public class Diagnosticos {
         this.descripcionPreDefCie = descripcionPreDefCie;
     }
 
-    public String getDescripcionPreDefPre() {
-        return descripcionPreDefPre;
+    public String getDescripcionPreDefPreDef() {
+        return descripcionPreDefPreDef;
     }
 
-    public void setDescripcionPreDefPre(String descripcionPreDefPre) {
-        this.descripcionPreDefPre = descripcionPreDefPre;
+    public void setDescripcionPreDefPreDef(String descripcionPreDefPreDef) {
+        this.descripcionPreDefPreDef = descripcionPreDefPreDef;
     }
 
-    public String getDescripcionPreDefDef() {
-        return descripcionPreDefDef;
-    }
-
-    public void setDescripcionPreDefDef(String descripcionPreDefDef) {
-        this.descripcionPreDefDef = descripcionPreDefDef;
-    }
-    
 }
