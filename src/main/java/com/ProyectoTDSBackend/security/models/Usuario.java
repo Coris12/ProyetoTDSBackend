@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.models.ConsultaExterna;
+import com.ProyectoTDSBackend.models.Tarjeta;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import java.util.HashSet;
@@ -23,6 +24,7 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -33,42 +35,42 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; 
+    private int id;
     @NotNull
     private String identificacion;
-    
+
     @NotNull
     private String nombres;
-    
+
     @NotNull
     private String direccion;
-    
+
     @NotNull
     private String celular;
-    
+
     @NotNull
     private String profesion;
-    
+
     @NotNull
     private String sexo;
-    
+
     @NotNull
     @Email
     private String email;
-    
+
     @NotNull
     private String ciudad;
-    
+
     @NotNull
     @Column
     private int estado;
-    
+
     @Column(unique = true)
     private String nombreUsuario;
-    
+
     @NotNull
     private String password;
-    
+
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
@@ -77,7 +79,11 @@ public class Usuario {
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	private List<ConsultaExterna> consultaExterna;
+    private List<ConsultaExterna> consultaExterna;
+
+    @OneToOne
+    @JoinColumn(name = "id_tarjeta")
+    private Tarjeta tarjeta;
 
     public Usuario() {
     }
@@ -226,5 +232,5 @@ public class Usuario {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-   
+
 }
