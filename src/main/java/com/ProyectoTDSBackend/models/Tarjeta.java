@@ -6,11 +6,15 @@
 package com.ProyectoTDSBackend.models;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -44,21 +48,24 @@ public class Tarjeta {
 
     @Column(name = "estado", nullable = false)
     private int estado;
-
-    private int idTarjetaEspe;
+    
+    @JoinColumn(name = "ID_TARJETA_ESPECIALIDAD", unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private TarjetaEspecialidad tarjetaEspecialidad;
 
     public Tarjeta() {
     }
 
-    public Tarjeta(int idTarjeta, int numConsultas, String tipoaAfiliacion, Date fechaInicio, Date fechaFin, String QR, int estado, int idTarjetaEspe) {
+    public Tarjeta(int idTarjeta, int numConsultas, String tipoaAfiliacion, Date fechaInicio, Date fechaFin, String qR,
+            int estado, TarjetaEspecialidad tarjetaEspecialidad) {
         this.idTarjeta = idTarjeta;
         this.numConsultas = numConsultas;
         this.tipoaAfiliacion = tipoaAfiliacion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.QR = QR;
+        QR = qR;
         this.estado = estado;
-        this.idTarjetaEspe = idTarjetaEspe;
+        this.tarjetaEspecialidad = tarjetaEspecialidad;
     }
 
     public int getIdTarjeta() {
@@ -117,12 +124,12 @@ public class Tarjeta {
         this.estado = estado;
     }
 
-    public int getIdTarjetaEspe() {
-        return idTarjetaEspe;
+    public TarjetaEspecialidad getTarjetaEspecialidad() {
+        return tarjetaEspecialidad;
     }
 
-    public void setIdTarjetaEspe(int idTarjetaEspe) {
-        this.idTarjetaEspe = idTarjetaEspe;
+    public void setTarjetaEspecialidad(TarjetaEspecialidad tarjetaEspecialidad) {
+        this.tarjetaEspecialidad = tarjetaEspecialidad;
     }
 
 }

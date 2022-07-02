@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.models.ConsultaExterna;
+import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.models.Tarjeta;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -85,6 +86,9 @@ public class Usuario {
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
 
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Familiares> familiares;
+
     public Usuario() {
     }
 
@@ -119,6 +123,35 @@ public class Usuario {
         this.password = password;
         this.roles = roles;
         this.consultaExterna = consultaExterna;
+    }
+
+    public Usuario(int id, String identificacion, String nombres, String direccion, String celular, String profesion,
+            String sexo, @Email String email, String ciudad, int estado, String nombreUsuario, String password,
+            Set<Rol> roles, List<ConsultaExterna> consultaExterna, Tarjeta tarjeta, List<Familiares> familiares) {
+        this.id = id;
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
+        this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.roles = roles;
+        this.consultaExterna = consultaExterna;
+        this.tarjeta = tarjeta;
+        this.familiares = familiares;
+    }
+
+    public Tarjeta getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(Tarjeta tarjeta) {
+        this.tarjeta = tarjeta;
     }
 
     public List<ConsultaExterna> getConsultaExterna() {
@@ -231,6 +264,14 @@ public class Usuario {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public List<Familiares> getFamiliares() {
+        return familiares;
+    }
+
+    public void setFamiliares(List<Familiares> familiares) {
+        this.familiares = familiares;
     }
 
 }

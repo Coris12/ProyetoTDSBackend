@@ -105,4 +105,15 @@
             </query>
         </named-native-query>
     </entity>
+    <entity class="com.ProyectoTDSBackend.models.Familiares">
+        <named-native-query name="Familiares.getAllFamiliares" result-set-mapping="getAllFamiliares">
+            <query>
+                SELECT f.id_familiares as idFamiliares, us.nombre_usuario as nombres,
+                f.usuario_id as usuarioId, f.iden_usuario_familiar as idenUsuarioFamiliar, f.tipo_familiar as tipoFamiliar
+                FROM usuario us JOIN familiares f 
+                ON us.id = f.usuario_id 
+                WHERE us.id = :usuarioId
+            </query>
+        </named-native-query>
+    </entity>
 </entity-mappings>

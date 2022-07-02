@@ -49,7 +49,7 @@ public class TarjetaController {
                     tarjeta.getFechaFin(),
                     tarjeta.getQR(),
                     tarjeta.getEstado(),
-                    tarjeta.getIdTarjetaEspe()
+                    tarjeta.getTarjetaEspecialidad()
             );
             tar.setEstado(1);
             servicio.save(tar);
