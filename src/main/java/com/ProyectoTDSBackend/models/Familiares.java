@@ -52,7 +52,7 @@ public class Familiares {
     private String idenUsuarioFamiliar; 
 
     @JoinColumn(name = "usuario_id")
-	@ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Usuario usuario;
 
     public Familiares() {

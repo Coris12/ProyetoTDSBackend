@@ -7,6 +7,7 @@ package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Familiares;
+import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.models.Tarjeta;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -88,6 +89,10 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Familiares> familiares;
+
+    @JsonIgnore
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Residencia> post;
 
     public Usuario() {
     }

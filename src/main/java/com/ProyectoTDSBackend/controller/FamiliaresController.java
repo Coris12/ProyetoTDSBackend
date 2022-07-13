@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ProyectoTDSBackend.Exceptions.MessagExcepciones;
 import com.ProyectoTDSBackend.dto.FamiliaresAllDTO;
-import com.ProyectoTDSBackend.dto.FamiliaresDTO;
 import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.service.FamiliaresService;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -31,7 +31,7 @@ public class FamiliaresController {
 
     // Guardar familiares
     @PostMapping(path = "savefamiliares")
-    public ResponseEntity<GenericResponse<String>> savefamiliares(@RequestBody Familiares familiares) {
+    public ResponseEntity<GenericResponse<String>> savefamiliares(@RequestBody Familiares familiares) throws MessagExcepciones {
         return new ResponseEntity<GenericResponse<String>>(servicio.saveFamiliares(familiares), HttpStatus.OK);
     }
 
