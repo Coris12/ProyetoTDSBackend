@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.models;
 
+import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
 import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.models.Residencia;
@@ -28,10 +29,39 @@ import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import javax.persistence.ConstructorResult;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.SqlResultSetMappings;
+import javax.persistence.ColumnResult;
+
 /**
  *
  * @author LENOVO
  */
+
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "DatosTarjetaDto.getDatosTarjetaUser", query = "", resultSetMapping = "getDatosTarjetaUser"),
+})
+
+@SqlResultSetMappings({
+    @SqlResultSetMapping(name = "getDatosTarjetaUser", classes = {
+        @ConstructorResult(targetClass = DatosTarjetaDto.class, columns = {
+            @ColumnResult(name = "id", type = Long.class),
+            @ColumnResult(name = "idRecidencia", type = Long.class),
+            @ColumnResult(name = "nombres", type = String.class),
+            @ColumnResult(name = "direccion", type = String.class),
+            @ColumnResult(name = "celular", type = String.class),
+            @ColumnResult(name = "nacionalidad", type = String.class),
+            @ColumnResult(name = "pais", type = String.class),
+            @ColumnResult(name = "provincia", type = String.class),
+            @ColumnResult(name = "canton", type = String.class),
+            @ColumnResult(name = "parroquia", type = String.class)
+        })
+    })
+})
+
 @Entity
 public class Usuario {
 

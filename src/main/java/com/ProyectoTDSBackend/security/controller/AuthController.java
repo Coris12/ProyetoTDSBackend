@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.controller;
 
+import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.models.Producto;
@@ -82,19 +83,18 @@ public class AuthController {
             return new ResponseEntity(new Mensaje("Nombre de usuario ya se encuentra en uso"), HttpStatus.BAD_REQUEST);
         }
 
-        Usuario usuario
-                = new Usuario(
-                        nuevoUsuario.getIdentificacion(),
-                        nuevoUsuario.getNombres(),
-                        nuevoUsuario.getDireccion(),
-                        nuevoUsuario.getCelular(),
-                        nuevoUsuario.getProfesion(),
-                        nuevoUsuario.getSexo(),
-                        nuevoUsuario.getEmail(),
-                        nuevoUsuario.getCiudad(),
-                        nuevoUsuario.getEstado(),
-                        nuevoUsuario.getNombreUsuario(),
-                        passwordEncoder.encode(nuevoUsuario.getPassword()));
+        Usuario usuario = new Usuario(
+                nuevoUsuario.getIdentificacion(),
+                nuevoUsuario.getNombres(),
+                nuevoUsuario.getDireccion(),
+                nuevoUsuario.getCelular(),
+                nuevoUsuario.getProfesion(),
+                nuevoUsuario.getSexo(),
+                nuevoUsuario.getEmail(),
+                nuevoUsuario.getCiudad(),
+                nuevoUsuario.getEstado(),
+                nuevoUsuario.getNombreUsuario(),
+                passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_PACIENTE).get());
         if (nuevoUsuario.getRoles().contains("admin")) {
@@ -111,8 +111,8 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity(new Mensaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
         }
-        Authentication authentication
-                = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
         JwtDto jwtDto = new JwtDto(jwt);
@@ -127,27 +127,28 @@ public class AuthController {
     }
 
     @ApiOperation("Muestra la lista de usuarios en el sistema")
-    @CrossOrigin({"*"})
+    @CrossOrigin({ "*" })
     @GetMapping("/listaUsuarios")
     public ResponseEntity<List<Usuario>> lista() {
         List<Usuario> list = usuarioService.listaUsuarios();
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    @CrossOrigin({"*"})
+    @CrossOrigin({ "*" })
     @PostMapping("/put-persona")
     ResponseEntity<GenericResponse<Object>> putArrendatario(
             @RequestParam(value = "idpersona") int idpersona,
-            @RequestParam(value = "rol") RolNombre rol
-    ) {
+            @RequestParam(value = "rol") RolNombre rol) {
         return new ResponseEntity<GenericResponse<Object>>(userService.putPermisos(idpersona, rol), HttpStatus.OK);
     }
 
-    //Obtener usuario por id
-    @CrossOrigin({"*"})
+    // Obtener usuario por id
+    @CrossOrigin({ "*" })
     @GetMapping(path = "get-persona")
-    public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(@RequestParam("identificacion") String identificacion) {
-        return new ResponseEntity<GenericResponse<Usuario>>(usuarioService.ObtenerByIdentificacion(identificacion), HttpStatus.OK);
+    public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(
+            @RequestParam("identificacion") String identificacion) {
+        return new ResponseEntity<GenericResponse<Usuario>>(usuarioService.ObtenerByIdentificacion(identificacion),
+                HttpStatus.OK);
     }
 
     @GetMapping("/clientes")
@@ -155,10 +156,16 @@ public class AuthController {
         List<Usuario> list = usuarioService.search();
         return new ResponseEntity(list, HttpStatus.OK);
     }
+
     @ApiOperation("Muestra la lista de usuarios en el sistema")
-      @GetMapping("/empleados")
+    @GetMapping("/empleados")
     public ResponseEntity<List<Usuario>> searchE() {
         List<Usuario> list = usuarioService.searchEmp();
         return new ResponseEntity(list, HttpStatus.OK);
     }
+
+    @GetMapping("/datosTarjeta")
+    public ResponseEntity<GenericResponse<DatosTarjetaDto>> searchDateTarjetaUser(@RequestParam String identificacion){
+		return new ResponseEntity<GenericResponse<DatosTarjetaDto>>(usuarioService.getDatosTarjetaUser(identificacion), HttpStatus.OK);
+	}
 }

@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.security.service;
 
+import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.ProyectoTDSBackend.security.repository.UsuarioRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -77,5 +78,37 @@ public class UsuarioService {
 
     public List<Usuario> searchEmp() {
         return usuarioRepository.listaEmpleados();
+    }
+
+    // Buscar usuario por identificacion para tarjetas
+    public GenericResponse<DatosTarjetaDto> getDatosTarjetaUser(String identificacion) {
+        GenericResponse<DatosTarjetaDto> response = new GenericResponse<>();
+        try {
+            Optional<DatosTarjetaDto> dt = usuarioRepository.getDatosTarjetaUser(identificacion);
+            if (dt.isPresent()) {
+                DatosTarjetaDto dto = new DatosTarjetaDto();
+                dto.setId(dt.get().getId());
+                dto.setIdRecidencia(dt.get().getIdRecidencia());
+                dto.setNombres(dt.get().getNombres());
+                dto.setDireccion(dt.get().getDireccion());
+                dto.setCelular(dt.get().getCelular());
+                dto.setNacionalidad(dt.get().getNacionalidad());
+                dto.setPais(dt.get().getPais());
+                dto.setProvincia(dt.get().getProvincia());
+                dto.setCanton(dt.get().getCanton());
+                dto.setParroquia(dt.get().getParroquia());
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject(dto);
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            }else {
+                response.setMessage("USUARIO NO ENCONTRADO");
+                response.setStatus(ParametersApp.NOT_FOUND_RECORDS.value());	
+            }
+        } catch (Exception e) {
+            log.error("ERROR: ", e);
+            response.setMessage(ParametersApp.SERVER_ERROR.getReasonPhrase());
+            response.setStatus(ParametersApp.SERVER_ERROR.value());
+        }
+        return response;
     }
 }

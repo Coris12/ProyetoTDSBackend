@@ -116,4 +116,16 @@
             </query>
         </named-native-query>
     </entity>
+    <entity class="com.ProyectoTDSBackend.security.models.Usuario">
+        <named-native-query name="Usuario.getDatosTarjetaUser" result-set-mapping="getDatosTarjetaUser">
+            <query>
+                SELECT us.id as id, r.id_recidencia as idRecidencia, us.nombres as nombres, us.direccion as direccion,
+                us.celular as celular, r.nacionalidad as nacionalidad, r.pais as pais, r.provincia as provincia, 
+                r.canton as canton, r.parroquia as parroquia
+                FROM usuario us JOIN residencia r
+                ON us.id = r.id_usuario
+                WHERE us.identificacion = :identificacion
+            </query>
+        </named-native-query>
+    </entity>
 </entity-mappings>
