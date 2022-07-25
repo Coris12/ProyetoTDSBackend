@@ -35,6 +35,7 @@ public class FamiliaresService {
     @Transactional(rollbackFor = { MessagExcepciones.class })
     public GenericResponse<String> saveFamiliares(Familiares familiares) throws MessagExcepciones {
         GenericResponse<String> response = new GenericResponse<>();
+        
         try {
             if (familiares != null) {
                 if (familiares.getUsuario().getId() != 0) {

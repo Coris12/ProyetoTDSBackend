@@ -103,7 +103,7 @@ public class AuthController {
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado: " + usuario.getId()), HttpStatus.OK);
+        return new ResponseEntity<>(new Mensaje(String.valueOf(usuario.getId())), HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -127,14 +127,14 @@ public class AuthController {
     }
 
     @ApiOperation("Muestra la lista de usuarios en el sistema")
-    @CrossOrigin({ "*" })
+    @CrossOrigin({"*"})
     @GetMapping("/listaUsuarios")
     public ResponseEntity<List<Usuario>> lista() {
         List<Usuario> list = usuarioService.listaUsuarios();
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    @CrossOrigin({ "*" })
+    @CrossOrigin({"*"})
     @PostMapping("/put-persona")
     ResponseEntity<GenericResponse<Object>> putArrendatario(
             @RequestParam(value = "idpersona") int idpersona,
@@ -143,7 +143,7 @@ public class AuthController {
     }
 
     // Obtener usuario por id
-    @CrossOrigin({ "*" })
+    @CrossOrigin({"*"})
     @GetMapping(path = "get-persona")
     public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(
             @RequestParam("identificacion") String identificacion) {
@@ -165,7 +165,7 @@ public class AuthController {
     }
 
     @GetMapping("/datosTarjeta")
-    public ResponseEntity<GenericResponse<DatosTarjetaDto>> searchDateTarjetaUser(@RequestParam String identificacion){
-		return new ResponseEntity<GenericResponse<DatosTarjetaDto>>(usuarioService.getDatosTarjetaUser(identificacion), HttpStatus.OK);
-	}
+    public ResponseEntity<GenericResponse<DatosTarjetaDto>> searchDateTarjetaUser(@RequestParam String identificacion) {
+        return new ResponseEntity<GenericResponse<DatosTarjetaDto>>(usuarioService.getDatosTarjetaUser(identificacion), HttpStatus.OK);
+    }
 }
