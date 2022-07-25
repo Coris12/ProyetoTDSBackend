@@ -18,10 +18,13 @@ import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 
 import com.ProyectoTDSBackend.dto.FamiliaresAllDTO;
+import com.ProyectoTDSBackend.dto.ListaFamiliaresDTO;
 import com.ProyectoTDSBackend.security.models.Usuario;
 
 @NamedNativeQueries({
     @NamedNativeQuery(name = "Familiares.getAllFamiliares", query = "", resultSetMapping = "getAllFamiliares"),
+    @NamedNativeQuery(name = "Familiares.listAllFamilyOfUser", query = "", resultSetMapping = "listAllFamilyOfUser"),
+    @NamedNativeQuery(name = "Familiares.listAllFamilyOfUser", query = "", resultSetMapping = "listAllFamilyOfUser"),
 })
 
 @SqlResultSetMappings({
@@ -30,8 +33,20 @@ import com.ProyectoTDSBackend.security.models.Usuario;
             @ColumnResult(name = "idFamiliares", type = Long.class),
             @ColumnResult(name = "nombres", type = String.class),
             @ColumnResult(name = "usuarioId", type = String.class),
-            @ColumnResult(name = "idenUsuarioFamiliar", type = String.class),
+            @ColumnResult(name = "idenUsuarioFamiliar", type = Integer.class),
             @ColumnResult(name = "tipoFamiliar", type = String.class),
+        })
+    }), 
+    @SqlResultSetMapping(name = "listAllFamilyOfUser", classes = {
+        @ConstructorResult(targetClass = ListaFamiliaresDTO.class, columns = {
+            @ColumnResult(name = "idFamiliares", type = Long.class),
+            @ColumnResult(name = "identificacion", type = String.class),
+            @ColumnResult(name = "nombres", type = String.class),
+            @ColumnResult(name = "idenUsuarioFamiliar", type = Integer.class),
+            @ColumnResult(name = "tipoFamiliar", type = String.class),
+            @ColumnResult(name = "usuarioId", type = Integer.class),
+            @ColumnResult(name = "estado", type = String.class),
+
         })
     })
 })
@@ -48,8 +63,11 @@ public class Familiares {
     @Column(name = "TIPO_FAMILIAR",length = 50)
     private String tipoFamiliar; 
 
+    @Column(name = "ESTADO",length = 1)
+    private String estado; 
+
     @Column(name = "IDEN_USUARIO_FAMILIAR", length = 50)
-    private String idenUsuarioFamiliar; 
+    private int idenUsuarioFamiliar; 
 
     @JoinColumn(name = "usuario_id")
 	@ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
@@ -58,9 +76,10 @@ public class Familiares {
     public Familiares() {
     }
 
-    public Familiares(Long idFamiliares, String tipoFamiliar, String idenUsuarioFamiliar, Usuario usuario) {
+    public Familiares(Long idFamiliares, String tipoFamiliar, String estado, int idenUsuarioFamiliar, Usuario usuario) {
         this.idFamiliares = idFamiliares;
         this.tipoFamiliar = tipoFamiliar;
+        this.estado = estado;
         this.idenUsuarioFamiliar = idenUsuarioFamiliar;
         this.usuario = usuario;
     }
@@ -89,12 +108,20 @@ public class Familiares {
         this.tipoFamiliar = tipoFamiliar;
     }
 
-    public String getIdenUsuarioFamiliar() {
+    public int getIdenUsuarioFamiliar() {
         return idenUsuarioFamiliar;
     }
 
-    public void setIdenUsuarioFamiliar(String idenUsuarioFamiliar) {
+    public void setIdenUsuarioFamiliar(int idenUsuarioFamiliar) {
         this.idenUsuarioFamiliar = idenUsuarioFamiliar;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 }

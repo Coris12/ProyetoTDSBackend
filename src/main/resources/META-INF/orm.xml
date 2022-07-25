@@ -115,6 +115,16 @@
                 WHERE us.id = :usuarioId
             </query>
         </named-native-query>
+
+        <named-native-query name="Familiares.listAllFamilyOfUser" result-set-mapping="listAllFamilyOfUser">
+            <query>
+                SELECT f.id_familiares as idFamiliares, u.identificacion as identificacion, u. nombres as nombres, f.iden_usuario_familiar as idenUsuarioFamiliar, 
+                f.tipo_familiar as tipoFamiliar, f.usuario_id as usuarioId, f.estado as estado
+                FROM usuario u JOIN familiares f
+                ON u.id = f.iden_usuario_familiar
+                WHERE f.usuario_id = :ui and f.estado = 'a'
+            </query>
+        </named-native-query>
     </entity>
     <entity class="com.ProyectoTDSBackend.security.models.Usuario">
         <named-native-query name="Usuario.getDatosTarjetaUser" result-set-mapping="getDatosTarjetaUser">

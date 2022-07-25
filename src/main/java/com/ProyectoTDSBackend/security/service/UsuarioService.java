@@ -100,10 +100,11 @@ public class UsuarioService {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
                 response.setObject(dto);
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
-            }else {
+            } else {
                 response.setMessage("USUARIO NO ENCONTRADO");
-                response.setStatus(ParametersApp.NOT_FOUND_RECORDS.value());	
+                response.setStatus(ParametersApp.NOT_FOUND_RECORDS.value());
             }
+
         } catch (Exception e) {
             log.error("ERROR: ", e);
             response.setMessage(ParametersApp.SERVER_ERROR.getReasonPhrase());
