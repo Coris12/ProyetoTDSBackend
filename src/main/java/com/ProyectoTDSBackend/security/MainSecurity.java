@@ -73,7 +73,11 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                         "/swagger-ui/**",
                         "/swagger-resources/**",
                         "/configuration/**"
-                ).permitAll()
+                ).permitAll().antMatchers("/familiares/listfamiliaresusuario",
+                                                        "/familiares/deletefamiliares", 
+                                                        "/familiares/updatefamiliares", 
+                                                        "/auth/get-persona")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)

@@ -122,7 +122,7 @@ public class Usuario {
 
     @JsonIgnore
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Residencia> post;
+	private List<Residencia> residencia;
 
     public Usuario() {
     }
@@ -179,6 +179,29 @@ public class Usuario {
         this.consultaExterna = consultaExterna;
         this.tarjeta = tarjeta;
         this.familiares = familiares;
+    }
+
+    public Usuario(int id, String identificacion, String nombres, String direccion, String celular, String profesion,
+            String sexo, @Email String email, String ciudad, int estado, String nombreUsuario, String password,
+            Set<Rol> roles, List<ConsultaExterna> consultaExterna, Tarjeta tarjeta, List<Familiares> familiares,
+            List<Residencia> residencia) {
+        this.id = id;
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
+        this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.roles = roles;
+        this.consultaExterna = consultaExterna;
+        this.tarjeta = tarjeta;
+        this.familiares = familiares;
+        this.residencia = residencia;
     }
 
     public Tarjeta getTarjeta() {
@@ -307,6 +330,14 @@ public class Usuario {
 
     public void setFamiliares(List<Familiares> familiares) {
         this.familiares = familiares;
+    }
+
+    public void setResidencia(List<Residencia> residencia) {
+        this.residencia = residencia;
+    }
+
+    public List<Residencia> getResidencia() {
+        return residencia;
     }
 
 }
