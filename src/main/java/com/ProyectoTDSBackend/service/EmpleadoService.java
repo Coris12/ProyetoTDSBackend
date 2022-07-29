@@ -43,5 +43,9 @@ public class EmpleadoService {
     public boolean existsById(int id) {
         return repositorio.existsById(id);
     }
+    
+    public List<Empleado> search() {
+        return repositorio.findEmpleadosActivos();
+    }
 
 }

@@ -9,6 +9,7 @@ import com.ProyectoTDSBackend.repository.FarmaciaRepository;
 import com.ProyectoTDSBackend.repository.sucursalRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,14 @@ public class SucursalService {
         return response;
     }
     
+    public List<Sucursal>search(){
+     return sucursalRepository.findSucursal();
+    }
     
+    public Optional<Sucursal> getOne(Long id) {
+        return sucursalRepository.findById(id);
+    }
+     public boolean existsById(Long id) {
+        return sucursalRepository.existsById(id);
+    }
 }

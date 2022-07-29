@@ -16,7 +16,6 @@ public class Sucursal extends Auditable implements Serializable {
     /**
      *
      */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sucursal", nullable = false)
@@ -34,16 +33,22 @@ public class Sucursal extends Auditable implements Serializable {
     @Column(name = "correoSuc", length = 200)
     private String correoSuc;
 
+    @Column(name = "estado", length = 200)
+    private int estado;
+
     public Sucursal() {
     }
 
-    public Sucursal(Long idSucursal, String nombreSuc, String direccionSuc, String telefonoSuc, String correoSuc) {
+    public Sucursal(Long idSucursal, String nombreSuc, String direccionSuc, String telefonoSuc, String correoSuc, int estado) {
         this.idSucursal = idSucursal;
         this.nombreSuc = nombreSuc;
         this.direccionSuc = direccionSuc;
         this.telefonoSuc = telefonoSuc;
         this.correoSuc = correoSuc;
+        this.estado = estado;
     }
+
+  
 
     public Long getIdSucursal() {
         return idSucursal;
@@ -84,9 +89,13 @@ public class Sucursal extends Auditable implements Serializable {
     public void setCorreoSuc(String correoSuc) {
         this.correoSuc = correoSuc;
     }
-    
-    
 
-    
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
 }

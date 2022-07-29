@@ -30,10 +30,10 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado", nullable = false)
-    private int id_empleado;
+    private int idEmpleado;
 
     @Column(name = "cargo_emple", nullable = false)
-    private String cargo_emple;
+    private String cargoEmple;
 
     @Column(name = "estado", nullable = false)
     private int estado;
@@ -49,22 +49,17 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int id_empleado, String cargo_emple, int estado, Usuario usuario) {
-        this.id_empleado = id_empleado;
-        this.cargo_emple = cargo_emple;
-        this.estado = estado;
-        this.usuario = usuario;
-    }
-
-    
-
-    public Empleado(int id_empleado, String cargo_emple, int estado, Usuario usuario, Farmacia farmacia) {
-        this.id_empleado = id_empleado;
-        this.cargo_emple = cargo_emple;
+    public Empleado(int idEmpleado, String cargoEmple, int estado, Usuario usuario, Farmacia farmacia) {
+        this.idEmpleado = idEmpleado;
+        this.cargoEmple = cargoEmple;
         this.estado = estado;
         this.usuario = usuario;
         this.farmacia = farmacia;
     }
+
+   
+
+   
 
     public Farmacia getFarmacia() {
         return farmacia;
@@ -82,21 +77,22 @@ public class Empleado {
         this.estado = estado;
     }
 
-    public int getId_empleado() {
-        return id_empleado;
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
 
-    public void setId_empleado(int id_empleado) {
-        this.id_empleado = id_empleado;
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
-    public String getCargo_emple() {
-        return cargo_emple;
+    public String getCargoEmple() {
+        return cargoEmple;
     }
 
-    public void setCargo_emple(String cargo_emple) {
-        this.cargo_emple = cargo_emple;
+    public void setCargoEmple(String cargoEmple) {
+        this.cargoEmple = cargoEmple;
     }
+
 
     public Usuario getUsuario() {
         return usuario;

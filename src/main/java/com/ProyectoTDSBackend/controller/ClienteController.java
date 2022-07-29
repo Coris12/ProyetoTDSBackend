@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,7 +75,7 @@ public class ClienteController {
     @ApiOperation("Buscar cliente por id")
     @CrossOrigin({"*"})
     @GetMapping(path = "findByIdCliente")
-    public ResponseEntity<GenericResponse<Cliente>>BuscarPorIdCliente(@RequestParam int idCliente) {
+    public ResponseEntity<GenericResponse<Cliente>> BuscarPorIdCliente(@RequestParam int idCliente) {
         return new ResponseEntity<GenericResponse<Cliente>>(servicio.getIdCliente(idCliente), HttpStatus.OK);
     }
 
@@ -82,8 +83,24 @@ public class ClienteController {
     @ApiOperation("Buscar cliente por id")
     @CrossOrigin({"*"})
     @GetMapping(path = "findByIdPersonaCliente")
-    public ResponseEntity<List<Cliente>>BuscarPorIdPersonaCliente(@RequestParam Integer idPersona) {
+    public ResponseEntity<List<Cliente>> BuscarPorIdPersonaCliente(@RequestParam Integer idPersona) {
         return new ResponseEntity<List<Cliente>>(servicio.getCliIdUser(idPersona), HttpStatus.OK);
     }
 
+    //update solo observaciones del cliente 
+    @ApiOperation("Actualizar observaciones del cliente")
+    @CrossOrigin
+    @PutMapping("/updateClienteObservacion")
+    public ResponseEntity<GenericResponse<String>> updateClienteObservacion(@RequestParam String observaciones, int idCliente) {
+        return new ResponseEntity<GenericResponse<String>>(servicio.updateObservacionCliente(observaciones, idCliente), HttpStatus.OK);
+    }
+
+    // lista solo los clientes/pacientes
+   @ApiOperation("Muestra una lista de clientes")
+    @CrossOrigin({"*"})
+    @GetMapping("/listaClientes")
+    public ResponseEntity<List<Cliente>> list() {
+        List<Cliente> list = servicio.list();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
 }

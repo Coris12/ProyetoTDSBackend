@@ -5,7 +5,9 @@
  */
 package com.ProyectoTDSBackend.security.controller;
 
+import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.models.Cliente;
 import com.ProyectoTDSBackend.models.Producto;
 import com.ProyectoTDSBackend.security.dto.JwtDto;
 import com.ProyectoTDSBackend.security.dto.LoginUsuario;
@@ -75,16 +77,13 @@ public class AuthController {
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Campos mal puestos o Email inválido"), HttpStatus.BAD_REQUEST);
         }
         if (usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario())) {
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Nombre de usuario ya se encuentra en uso"), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
-            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
-        }
-        Usuario usuario
-                = new Usuario(
+
+        Usuario usuario = new Usuario(
                 nuevoUsuario.getIdentificacion(),
                 nuevoUsuario.getNombres(),
                 nuevoUsuario.getDireccion(),
@@ -94,17 +93,17 @@ public class AuthController {
                 nuevoUsuario.getEmail(),
                 nuevoUsuario.getCiudad(),
                 nuevoUsuario.getEstado(),
-                nuevoUsuario.getNombreUsuario(), 
-                        passwordEncoder.encode(nuevoUsuario.getPassword()));
+                nuevoUsuario.getNombreUsuario(),
+                passwordEncoder.encode(nuevoUsuario.getPassword()));
         Set<Rol> roles = new HashSet<>();
-          roles.add(rolService.getByRolNombre(RolNombre.ROLE_PACIENTE).get());
+        roles.add(rolService.getByRolNombre(RolNombre.ROLE_PACIENTE).get());
         if (nuevoUsuario.getRoles().contains("admin")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
         }
         usuario.setEstado(1);
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado: "+usuario.getId()), HttpStatus.OK);
+        return new ResponseEntity<>(new Mensaje(String.valueOf(usuario.getId())), HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -112,8 +111,8 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity(new Mensaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
         }
-        Authentication authentication
-                = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
         JwtDto jwtDto = new JwtDto(jwt);
@@ -139,15 +138,34 @@ public class AuthController {
     @PostMapping("/put-persona")
     ResponseEntity<GenericResponse<Object>> putArrendatario(
             @RequestParam(value = "idpersona") int idpersona,
-            @RequestParam(value = "rol") RolNombre rol
-    ) {
+            @RequestParam(value = "rol") RolNombre rol) {
         return new ResponseEntity<GenericResponse<Object>>(userService.putPermisos(idpersona, rol), HttpStatus.OK);
     }
 
-    //Obtener usuario por id
+    // Obtener usuario por id
     @CrossOrigin({"*"})
     @GetMapping(path = "get-persona")
-    public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(@RequestParam("identificacion") String identificacion) {
-        return new ResponseEntity<GenericResponse<Usuario>>(usuarioService.ObtenerByIdentificacion(identificacion), HttpStatus.OK);
+    public ResponseEntity<GenericResponse<Usuario>> getPersonaByIdentificacion(
+            @RequestParam("identificacion") String identificacion) {
+        return new ResponseEntity<GenericResponse<Usuario>>(usuarioService.ObtenerByIdentificacion(identificacion),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("/clientes")
+    public ResponseEntity<List<Usuario>> search() {
+        List<Usuario> list = usuarioService.search();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+
+    @ApiOperation("Muestra la lista de usuarios en el sistema")
+    @GetMapping("/empleados")
+    public ResponseEntity<List<Usuario>> searchE() {
+        List<Usuario> list = usuarioService.searchEmp();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/datosTarjeta")
+    public ResponseEntity<GenericResponse<DatosTarjetaDto>> searchDateTarjetaUser(@RequestParam String identificacion) {
+        return new ResponseEntity<GenericResponse<DatosTarjetaDto>>(usuarioService.getDatosTarjetaUser(identificacion), HttpStatus.OK);
     }
 }
