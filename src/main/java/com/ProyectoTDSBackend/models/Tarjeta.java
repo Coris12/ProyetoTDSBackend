@@ -50,7 +50,7 @@ public class Tarjeta {
     private int estado;
     
     @JoinColumn(name = "ID_TARJETA_ESPECIALIDAD", unique = true)
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     private TarjetaEspecialidad tarjetaEspecialidad;
 
     public Tarjeta() {

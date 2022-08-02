@@ -22,7 +22,7 @@ public class TarjetaEspecialidadService {
     @Autowired
     private TarjetaEspecialidadRepository tarjetaEspecialidadRepository;
 
-    //Guardar TarjetaEspecialidad
+    //Buscar TarjetaEspecialidad
     public GenericResponse<Optional<TarjetaEspecialidad>> BuscarTarjetaEspecialidad(NomEspTarjeta nomEspTarjeta) {
         GenericResponse<Optional<TarjetaEspecialidad>> response = new GenericResponse<>();
         try {
