@@ -81,6 +81,7 @@ public class TarjetaController {
 
     @ApiOperation("Lista de tarjetas con estado 1")
     @GetMapping("/tarjetasActivas")
+    @CrossOrigin({"*"})
     public ResponseEntity<List<Tarjeta>> listaTarjetasA() {
         List<Tarjeta> list = servicio.deleteLogi();
         return new ResponseEntity(list, HttpStatus.OK);

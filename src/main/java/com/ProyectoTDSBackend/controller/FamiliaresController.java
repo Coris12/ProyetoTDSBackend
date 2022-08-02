@@ -34,6 +34,7 @@ public class FamiliaresController {
     // Guardar familiares
     @PostMapping(path = "savefamiliares")
     public ResponseEntity<GenericResponse<String>> savefamiliares(@RequestBody Familiares familiares) throws MessagExcepciones {
+        familiares.setEstado("a");
         return new ResponseEntity<GenericResponse<String>>(servicio.saveFamiliares(familiares), HttpStatus.OK);
     }
 
