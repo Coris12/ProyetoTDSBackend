@@ -29,6 +29,6 @@ public interface tarjetaRepository extends JpaRepository<Tarjeta, Integer>{
 
     @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     @Query(nativeQuery = true)
-    Optional<DatosTarjetaAllDTO> getAllDatosTarjeta(@Param("identificacion") String identificacion) throws SQLException; 
+    Optional<DatosTarjetaAllDTO> getAllDatosTarjeta(@Param("identificacion") String identificacion) throws SQLException;
 
 }

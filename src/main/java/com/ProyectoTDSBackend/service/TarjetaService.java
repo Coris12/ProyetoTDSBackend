@@ -127,6 +127,19 @@ public class TarjetaService {
     public GenericResponse<DatosTarjetaAllDTO> getAllDatosTarjetaUser(String identificacion) {
         GenericResponse<DatosTarjetaAllDTO> response = new GenericResponse<>();
         try {
+            if(identificacion == null || identificacion.isEmpty()) {
+                log.error("NO SE HA INGRESADO LA IDENTIFICACION");
+                response.setMessage("NO SE HA INGRESADO IDENTIFICACION");
+                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+                return response; 
+            }
+
+            if(!usuarioRepository.existsByIdentificacion(identificacion)){
+                log.error("NO EXISTE EL USUARIO");
+                response.setMessage("NO EXISTE EL USUARIO");
+                response.setStatus(ParametersApp.EMPTY_RECORD.value()); 
+                return response; 
+            }
             Optional<DatosTarjetaAllDTO> dt = repository.getAllDatosTarjeta(identificacion);            
 
             if(dt.isPresent()){
