@@ -5,11 +5,17 @@
  */
 package com.ProyectoTDSBackend.controller;
 
+import com.ProyectoTDSBackend.dto.DatosTarjetaAllDTO;
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Tarjeta;
+import com.ProyectoTDSBackend.security.repository.UsuarioRepository;
 import com.ProyectoTDSBackend.service.TarjetaService;
+import com.ProyectoTDSBackend.util.GenericResponse;
+
 import io.swagger.annotations.ApiOperation;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,39 +36,65 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/tarjeta")
-@CrossOrigin({"*"})
+@CrossOrigin({ "*" })
 public class TarjetaController {
+
+    //
+    private final String imagePath = "src/main/resources/ImgQR/QRCode.png";
 
     @Autowired
     private TarjetaService servicio;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @ApiOperation("Crea la tarjeta")
     @PostMapping("/creaTarjeta")
-    public ResponseEntity<?> create(@RequestBody Tarjeta tarjeta) {
+    public ResponseEntity<?> create(@RequestBody DatosTarjetaAllDTO tarjeta,
+            @RequestParam("identificacion") String identificacion) {
 
         try {
-            Tarjeta tar = new Tarjeta(
-                    tarjeta.getIdTarjeta(),
-                    tarjeta.getNumConsultas(),
-                    tarjeta.getTipoaAfiliacion(),
-                    tarjeta.getFechaInicio(),
-                    tarjeta.getFechaFin(),
-                    tarjeta.getQR(),
-                    tarjeta.getEstado(),
-                    tarjeta.getTarjetaEspecialidad()
-            );
-            tar.setEstado(1);
-            servicio.save(tar);
 
-            return new ResponseEntity(new Mensaje("tarjeta creada exitosamente"), HttpStatus.OK);
+            if (!usuarioRepository.existsByIdentificacion(identificacion)) {
+                return ResponseEntity
+                        .badRequest()
+                        .body(new Mensaje("Error: NO EXISTE ESTA PERSONA CON ESTA IDENTIFICACIÓN!"));
+            }
+
+            Tarjeta tar = new Tarjeta();
+            tar.setNumConsultas(tarjeta.getConsultas());
+            tar.setTipoaAfiliacion(tarjeta.getAfiliacion());
+            tar.setFechaInicio(tarjeta.getFechaInicio());
+            tar.setFechaFin(tarjeta.getFechaFin());
+            tar.setQR(servicio.generateByteQrCode(identificacion, 250, 250));
+            tar.setEstado(tarjeta.getEstado());
+            tar.setIdTarjetaEspecialidad(tarjeta.getIdTarjetaEspecialidad());
+            servicio.save(tar);
+            //servicio.generateImageQR(identificacion, 250, 250, imagePath);
+            return new ResponseEntity(new Mensaje(String.valueOf(tar.getIdTarjeta())), HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("tarjeta no creada; " + e.getMessage());
+            e.getStackTrace();
             return new ResponseEntity(new Mensaje("Tratamiento no creado"), HttpStatus.BAD_REQUEST);
         }
     }
 
+    // @PostMapping(value = "/creaQR", produces = MediaType.IMAGE_PNG_VALUE)
+    // public ResponseEntity<BufferedImage> zxingQR(@RequestBody String text) throws Exception {
+    //     return successResponse(servicio.generateQR(text));
+    // }
+
+    // @Bean
+    // public HttpMessageConverter<BufferedImage> bufferedImageConverter() {
+    //     return new BufferedImageHttpMessageConverter();
+    // }
+
+    // private ResponseEntity<BufferedImage> successResponse(BufferedImage image) {
+    //     return new ResponseEntity<>(image, HttpStatus.OK);
+    // }
+
     @ApiOperation("Muestra una lista de tarjetas")
-    @CrossOrigin({"*"})
+    @CrossOrigin({ "*" })
     @GetMapping("/listaTarjetas")
     public ResponseEntity<List<Tarjeta>> list() {
         List<Tarjeta> list = servicio.listaTarjetas();
@@ -70,7 +102,7 @@ public class TarjetaController {
     }
 
     @ApiOperation("Eliminado logico del tarjeta")
-    @CrossOrigin({"*"})
+    @CrossOrigin({ "*" })
     @PatchMapping("/deleteTarjeta/{id_tarjeta}")
     public ResponseEntity<?> deleteTratamiento(@RequestParam(value = "id_tarjeta") int idTarjeta) {
         Tarjeta tarjeta = servicio.getOne(idTarjeta).get();
@@ -81,7 +113,7 @@ public class TarjetaController {
 
     @ApiOperation("Lista de tarjetas con estado 1")
     @GetMapping("/tarjetasActivas")
-    @CrossOrigin({"*"})
+    @CrossOrigin({ "*" })
     public ResponseEntity<List<Tarjeta>> listaTarjetasA() {
         List<Tarjeta> list = servicio.deleteLogi();
         return new ResponseEntity(list, HttpStatus.OK);
@@ -113,4 +145,17 @@ public class TarjetaController {
 
         return new ResponseEntity(new Mensaje("tarjetas actualizadas"), HttpStatus.OK);
     }
+
+    //get Datos de la tarjeta 
+    @GetMapping("/getAllDatosTarjeta")
+    public ResponseEntity<GenericResponse<DatosTarjetaAllDTO>> searchDateTarjetaUser(@RequestParam String identificacion) {
+        return new ResponseEntity<GenericResponse<DatosTarjetaAllDTO>>(servicio.getAllDatosTarjetaUser(identificacion), HttpStatus.OK);
+    }
+
+    //update Datos de la tarjeta de un user
+    @PutMapping("/updateDatosTarjetaUser")
+    public ResponseEntity<GenericResponse<String>> updateDatosTarjetaUser(@RequestBody DatosTarjetaAllDTO datosTarjetaAllDTO) {
+        return new ResponseEntity<GenericResponse<String>>(servicio.updateDatosTarjetaUser(datosTarjetaAllDTO), HttpStatus.OK);
+    }
+
 }

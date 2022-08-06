@@ -138,4 +138,20 @@
             </query>
         </named-native-query>
     </entity>
+    <entity class="com.ProyectoTDSBackend.models.Tarjeta">
+        <named-native-query name="Tarjeta.getAllDatosTarjeta" result-set-mapping="getAllDatosTarjeta">
+            <query>
+                SELECT us.id as id, r.id_recidencia as idRecidencia, us.nombres as nombres, us.direccion as direccion,
+                us.celular as celular, r.nacionalidad as nacionalidad, r.pais as pais, r.provincia as provincia,
+                r.canton as canton, r.parroquia as parroquia, ta.id_tarjeta as idTarjeta, ta.afiliacion as afiliacion, 
+                te.id_tarjeta_especialidad as idTarjetaEspecialidad, te.tipo_especialidad as tipoEspecialidad, ta.estado as estado, 
+                ta.fecha_fin as fechaFin, ta.fecha_inicio as fechaInicio, ta.consultas as consultas
+                FROM usuario us JOIN residencia r
+                ON us.id = r.id_usuario JOIN tarjeta ta
+                ON ta.id_tarjeta = us.id_tarjeta JOIN tarjeta_especialidad te
+                ON te.id_tarjeta_especialidad = ta.id_tarjeta_especialidad
+                WHERE us.identificacion = :identificacion and ta.estado = 1
+            </query>
+        </named-native-query>
+    </entity>
 </entity-mappings>

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ProyectoTDSBackend.dto.FamiliaresAllDTO;
 import com.ProyectoTDSBackend.dto.ListaFamiliaresDTO;
 import com.ProyectoTDSBackend.models.Familiares;
-import com.ProyectoTDSBackend.security.models.Usuario;
 
 public interface FamiliaresRepository extends JpaRepository<Familiares, Long> {
 

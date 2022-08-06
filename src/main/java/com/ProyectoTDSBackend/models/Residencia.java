@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import com.ProyectoTDSBackend.security.models.Usuario;
 
 @Entity
-@Table
+@Table(name = "residencia")
 public class Residencia {
 
     @Id

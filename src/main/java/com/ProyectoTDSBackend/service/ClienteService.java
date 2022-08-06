@@ -87,7 +87,7 @@ public class ClienteService {
         }
     };
 
-    // Actualizar cliente
+    // Actualizar observaciones cliente
     public GenericResponse<String> updateObservacionCliente(String observacion, int idCli) {
         GenericResponse<String> response = new GenericResponse<>();
         try {

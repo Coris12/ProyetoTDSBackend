@@ -76,7 +76,11 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                 ).permitAll().antMatchers("/familiares/listfamiliaresusuario",
                                                         "/familiares/deletefamiliares", 
                                                         "/familiares/updatefamiliares", 
-                                                        "/auth/get-persona")
+                                                        "/auth/get-persona", 
+                                                        "/TajetaEspecialidad/getAllTarjetaEspecialidad", 
+                                                        "/residencia/save", 
+                                                        "/tarjeta/**", 
+                                                        "/auth/update-idTarjeta")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

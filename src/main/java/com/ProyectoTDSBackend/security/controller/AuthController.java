@@ -39,6 +39,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -167,5 +168,11 @@ public class AuthController {
     @GetMapping("/datosTarjeta")
     public ResponseEntity<GenericResponse<DatosTarjetaDto>> searchDateTarjetaUser(@RequestParam String identificacion) {
         return new ResponseEntity<GenericResponse<DatosTarjetaDto>>(usuarioService.getDatosTarjetaUser(identificacion), HttpStatus.OK);
+    }
+
+    //update idTarjeta de un usuario
+    @PutMapping("/update-idTarjeta")
+    public ResponseEntity<GenericResponse<String>> updateIdTarjeta(@RequestParam String identificacion, @RequestParam Integer idTarjeta) {
+        return new ResponseEntity<GenericResponse<String>>(usuarioService.updateIdTarjeta(identificacion, idTarjeta), HttpStatus.OK);
     }
 }

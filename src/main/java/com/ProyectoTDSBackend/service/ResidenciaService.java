@@ -22,6 +22,11 @@ public class ResidenciaService {
     public GenericResponse<String> saveRecidencia(ResidenciaDto recidenciaDto) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
+            if(recidenciaDto.getIdUsuario() == null || recidenciaDto.getIdUsuario() == 0) {
+                log.error("ERROR NO EXISTE ID USUARIO");
+                response.setStatus(ParametersApp.SERVER_ERROR.value());
+                return response;
+            }
             Residencia recidencia = new Residencia();
             //recidencia.setIdRecidencia(recidenciaDto.getIdRecidencia());
             recidencia.setPais(recidenciaDto.getPais());

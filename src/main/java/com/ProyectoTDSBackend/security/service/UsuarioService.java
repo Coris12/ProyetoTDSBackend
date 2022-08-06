@@ -112,4 +112,34 @@ public class UsuarioService {
         }
         return response;
     }
+
+    //update idTarjeta de usuario
+    public GenericResponse<String> updateIdTarjeta(String identificacion, Integer idTarjeta) {
+        GenericResponse<String> response = new GenericResponse<>();
+        try {
+            if(identificacion == null || idTarjeta == 0){
+                log.error("ERROR: IDENTIFICACION O IDTARJETA SIN VALORES");;
+                response.setMessage("ERROR: IDENTIFICACION O IDTARJETA SIN VALORES");
+                response.setStatus(ParametersApp.SERVER_ERROR.value());
+                return response;
+            }
+            
+            if(usuarioRepository.existsByIdentificacion(identificacion)){
+                usuarioRepository.updateIdTarjetaUser(identificacion, idTarjeta);
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject("actualizada correctamente");
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            }else{
+                log.error("ERROR: USUARIO NO ENCONTRADO");
+                response.setMessage("USUARIO NO ENCONTRADO");
+                response.setStatus(ParametersApp.NOT_FOUND_RECORDS.value());
+                return response;
+            }
+        } catch (Exception e) {
+            log.error("ERROR: ", e);
+            response.setMessage(ParametersApp.SERVER_ERROR.getReasonPhrase());
+            response.setStatus(ParametersApp.SERVER_ERROR.value());
+        }
+        return response;
+    }
 }

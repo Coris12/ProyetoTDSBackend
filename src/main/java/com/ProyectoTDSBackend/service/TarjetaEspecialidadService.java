@@ -1,5 +1,6 @@
 package com.ProyectoTDSBackend.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -16,18 +17,19 @@ import com.ProyectoTDSBackend.util.ParametersApp;
 
 @Service
 public class TarjetaEspecialidadService {
-    
+
     private static final Logger log = LoggerFactory.getLogger(TarjetaEspecialidadService.class);
 
     @Autowired
     private TarjetaEspecialidadRepository tarjetaEspecialidadRepository;
 
-    //Buscar TarjetaEspecialidad
+    // Buscar TarjetaEspecialidad
     public GenericResponse<Optional<TarjetaEspecialidad>> BuscarTarjetaEspecialidad(NomEspTarjeta nomEspTarjeta) {
         GenericResponse<Optional<TarjetaEspecialidad>> response = new GenericResponse<>();
         try {
-            if (nomEspTarjeta!= null){
-                Optional<TarjetaEspecialidad> tarjetaEsp = tarjetaEspecialidadRepository.findByTipoEspecialidad(nomEspTarjeta); 
+            if (nomEspTarjeta != null) {
+                Optional<TarjetaEspecialidad> tarjetaEsp = tarjetaEspecialidadRepository
+                        .findByTipoEspecialidad(nomEspTarjeta);
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
                 response.setObject(tarjetaEsp);
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
@@ -38,24 +40,44 @@ public class TarjetaEspecialidadService {
         }
         return response;
     }
-    
-    //Guardar Tarjeta Especialidad
-    public GenericResponse<String> saveTarjetaEspecialidad(TarjetaEspecialidad tarjetaEspecialidad){
+
+    // Guardar Tarjeta Especialidad
+    public GenericResponse<String> saveTarjetaEspecialidad(TarjetaEspecialidad tarjetaEspecialidad) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
-            if(tarjetaEspecialidad != null){
-                tarjetaEspecialidadRepository.save(tarjetaEspecialidad); 
+            if (tarjetaEspecialidad != null) {
+                tarjetaEspecialidadRepository.save(tarjetaEspecialidad);
                 Long convertLong = Long.valueOf(tarjetaEspecialidad.getIdTarjetaEspcialidad());
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
                 response.setObject(convertLong.toString());
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
-            }else {
+            } else {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
                 response.setObject("No se pudo guardar");
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             }
         } catch (Exception e) {
             log.error("Error al guardar TarjetaEspecialidad: " + e.getMessage());
+            response.setStatus(ParametersApp.SERVER_ERROR.value());
+        }
+        return response;
+    }
+
+    // listar TarjetaEspecialidad
+    public GenericResponse<List<TarjetaEspecialidad>> listarTarjetaEspecialidad() {
+        GenericResponse<List<TarjetaEspecialidad>> response = new GenericResponse<>();
+        try {
+            List<TarjetaEspecialidad> tarjetaEspecialidad = tarjetaEspecialidadRepository.findAll();
+            if (tarjetaEspecialidad == null) {
+                log.error("Error al obtener Tarjetas Especialidad: ");
+                //response.setStatus(ParametersApp.EMPTY_RECORD.value());
+                response.setMessage(ParametersApp.EMPTY_RECORD.getReasonPhrase());
+            }
+            response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+            response.setObject(tarjetaEspecialidad);
+            response.setStatus(ParametersApp.SUCCESSFUL.value());
+        } catch (Exception e) {
+            log.error("Error al listar : " + e.getMessage());
             response.setStatus(ParametersApp.SERVER_ERROR.value());
         }
         return response;

@@ -10,6 +10,7 @@ import com.ProyectoTDSBackend.security.models.Usuario;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -31,7 +32,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Usuario findByid(int id);
 
-    //Buscar usuario por identificacion
+    // Buscar usuario por identificacion
     Usuario findByIdentificacion(String identificacion);
 
     @Query(value = "select * from usuario usu, usuario_rol rol where usu.id = rol.usuario_id and rol.rol_id =2;", nativeQuery = true)
@@ -40,7 +41,19 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query(value = "select * from usuario usu, usuario_rol rol where usu.id = rol.usuario_id and rol.rol_id !=2 and rol.rol_id !=1;", nativeQuery = true)
     List<Usuario> listaEmpleados();
 
-    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
+    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {
+            Throwable.class })
     @Query(nativeQuery = true)
     Optional<DatosTarjetaDto> getDatosTarjetaUser(@Param("identificacion") String identificacion);
+
+    boolean existsByIdentificacion(String identificacion);
+
+    // update idtarjeta user
+    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {
+            Throwable.class })
+    @Modifying
+    @Query(value = "UPDATE usuario "
+            + "SET id_tarjeta = :idTarjeta "
+            + "WHERE identificacion = :identificacion and estado = 1", nativeQuery = true)
+    void updateIdTarjetaUser(String identificacion, Integer idTarjeta);
 }
