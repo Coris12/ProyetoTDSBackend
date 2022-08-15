@@ -168,7 +168,7 @@ public class TarjetaService {
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             }else {
                 response.setMessage("USUARIO NO ENCONTRADO");
-                response.setStatus(ParametersApp.NOT_FOUND_RECORDS.value());
+                response.setStatus(ParametersApp.SERVER_ERROR.value());
             }
         } catch (NonUniqueResultException e) {
             log.error("ERROR MAS DE UN RESULTADO", e);
@@ -246,7 +246,7 @@ public class TarjetaService {
                 };
             }else {
                 response.setMessage("USUARIO NO ENCONTRADO");
-                response.setStatus(ParametersApp.NOT_FOUND_RECORDS.value());
+                response.setStatus(ParametersApp.SERVER_ERROR.value());
             }
         } catch (Exception e) {
             log.error("ERROR: ", e);
