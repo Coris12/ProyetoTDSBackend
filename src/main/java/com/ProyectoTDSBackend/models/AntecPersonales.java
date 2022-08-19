@@ -19,10 +19,10 @@ public class AntecPersonales {
     @Column(name = "ID_ANTEC_PERSONALES", nullable = false)
     private Long idAntecPersonales;
 
-    @Column(name = "CLINICOS")
+    @Column(name = "CLINICOS", length = 500)
     private String clinicos;
 
-    @Column(name = "QUIRURGICOS")
+    @Column(name = "QUIRURGICOS", length = 500)
     private String quirurgicos;
 
 

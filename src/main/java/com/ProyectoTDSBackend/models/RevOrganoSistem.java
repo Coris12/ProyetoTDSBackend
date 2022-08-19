@@ -49,7 +49,8 @@ public class RevOrganoSistem {
     @Column(name = "NERVIOSO", length = 2)
     private String nervioso;
 
-    @Column(name = "DESCRIPCION")
+    
+    @Column(name = "DESCRIPCION", length = 1000)
     private String descripcion;
 
     @ManyToOne( cascade = CascadeType.MERGE)

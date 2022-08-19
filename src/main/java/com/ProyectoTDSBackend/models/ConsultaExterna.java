@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SqlResultSetMapping;
@@ -20,6 +21,7 @@ import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import javax.persistence.ForeignKey;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
@@ -196,10 +198,10 @@ public class ConsultaExterna {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
-    @Column(name = "MOTIVO_CONSULTA")
+    @Column(name = "MOTIVO_CONSULTA", length = 1200)
     private String motivoConsulta;
 
-    @Column(name = "ENFERMEDAD_ACTUAL")
+    @Column(name = "ENFERMEDAD_ACTUAL", length = 1200)
     private String enfermedadActual;
 
     @Column(name = "HISTORIA_CLINICA")

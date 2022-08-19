@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.ForeignKey;
@@ -38,7 +39,7 @@ public class ExamFisicoRegional {
     @Column(name = "EXTREMIDADES", length = 2)
     private String extremidades;
 
-    @Column(name = "OBSERVACIONES")
+    @Column(name = "OBSERVACIONES", length = 1200)
     private String observaciones;
 
     @OneToOne(optional = true, cascade = CascadeType.MERGE)

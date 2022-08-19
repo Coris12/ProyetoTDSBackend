@@ -2,11 +2,9 @@ package com.ProyectoTDSBackend.controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

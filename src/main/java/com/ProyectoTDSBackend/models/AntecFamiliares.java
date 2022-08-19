@@ -49,7 +49,7 @@ public class AntecFamiliares {
     @Column(name = "OTROS")
     private boolean otros;
 
-    @Column(name = "FAMILIARES")
+    @Column(name = "FAMILIARES", length = 500)
     private String familiares;
 
     @ManyToOne(cascade = CascadeType.MERGE)

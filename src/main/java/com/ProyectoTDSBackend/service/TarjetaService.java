@@ -167,7 +167,7 @@ public class TarjetaService {
                 response.setObject(dto);
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             }else {
-                response.setMessage("USUARIO NO ENCONTRADO");
+                response.setMessage("CONSULTA VACIA");
                 response.setStatus(ParametersApp.SERVER_ERROR.value());
             }
         } catch (NonUniqueResultException e) {

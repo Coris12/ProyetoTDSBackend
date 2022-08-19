@@ -23,7 +23,7 @@ public class Diagnosticos {
     @Column(name = "DESCRIPCION_DIAGNOSTICO")
     private String descripcionDiagnostico;
 
-    @Column(name = "CIE", length = 10)
+    @Column(name = "CIE", length = 50)
     private String cie;
 
     @Column(name = "PRE_DEF", length = 3)

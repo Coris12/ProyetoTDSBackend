@@ -1,5 +1,6 @@
 package com.ProyectoTDSBackend.service;
 
+import java.io.Reader;
 import java.util.Date;
 import java.util.List;
 
@@ -109,6 +110,9 @@ public class ConsultaExternaService {
             ConsultaExternaByIdDTO consultaExternaByIdDTO = consultaExternaRepository.getConsultaExternaById(idConExt);
             if (consultaExternaByIdDTO != null) {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                
+                System.out.println("Motivo consut: "+consultaExternaByIdDTO.getMotivoConsulta().getBytes().toString());
+
                 response.setObject(consultaExternaByIdDTO);
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             }

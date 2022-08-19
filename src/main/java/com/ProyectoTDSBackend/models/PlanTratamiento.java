@@ -21,25 +21,25 @@ public class PlanTratamiento {
 	@Column(name = "ID_PLAN_TRATAMIENTO", nullable = false)
     private long idPlanTratamiento;
 
-    @Column(name = "M")
+    @Column(name = "M", length = 500)
     private String m;
 
-    @Column(name = "I")
+    @Column(name = "I", length = 500)
     private String i;
 
-    @Column(name = "L")
+    @Column(name = "L", length = 500)
     private String l;
 
-    @Column(name = "R")
+    @Column(name = "R", length = 500)
     private String r;
 
-    @Column(name = "C")
+    @Column(name = "C", length = 500)
     private String c;
 
-    @Column(name = "T")
+    @Column(name = "T", length = 500)
     private String t;
 
-    @Column(name = "O")
+    @Column(name = "O", length = 500)
     private String o;
 
     @ManyToOne( cascade = CascadeType.MERGE)
