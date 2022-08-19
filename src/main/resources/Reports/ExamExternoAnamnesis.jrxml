@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ebc1b57-674d-4a92-a1e9-e706c988222d">
 	<property name="ireport.zoom" value="1.331000000000003"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="204"/>
+	<property name="ireport.x" value="50"/>
+	<property name="ireport.y" value="384"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ConexionPg"/>
 	<parameter name="idConExt" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -120,7 +120,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ESTABLECIMIENTO]]></text>
 			</staticText>
@@ -134,7 +134,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[NOMBRES Y APELLIDOS]]></text>
 			</staticText>
@@ -148,7 +148,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SEXO]]></text>
 			</staticText>
@@ -162,7 +162,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[NÚMERO DE HOJA]]></text>
 			</staticText>
@@ -176,7 +176,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[HISTORIA CLINICA]]></text>
 			</staticText>
@@ -190,9 +190,9 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{establecimiento}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="113" y="15" width="177" height="20" uuid="66747772-e8b4-4174-859f-19aa33deabb0"/>
@@ -204,9 +204,9 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombres}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="290" y="15" width="79" height="20" uuid="bb4a9d16-3dae-444a-a00e-b332d13e4911"/>
@@ -218,9 +218,9 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sexo}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="369" y="15" width="95" height="20" uuid="b79456a6-adbb-4158-a55d-94025d40c4e7"/>
@@ -232,7 +232,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
@@ -246,7 +246,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="7" isBold="false"/>
+					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{historiaClinica}]]></textFieldExpression>
 			</textField>
@@ -264,7 +264,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement markup="html"/>
-				<textFieldExpression><![CDATA[$F{motivoConsulta}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{motivoConsulta}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="15" uuid="05cd30f4-bad2-40a2-a30b-a56bc3532b6d">
@@ -278,7 +278,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[1. MOTIVO CONSULTA]]></text>
 			</staticText>
@@ -296,7 +296,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CLÍNICOS:]]></text>
 			</staticText>
@@ -312,7 +312,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[2. ANTECEDENTES PERSONALES]]></text>
 			</staticText>
@@ -325,10 +325,7 @@
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{clinicos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{clinicos}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="16">
@@ -344,7 +341,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[QUIRURGICOS:]]></text>
 			</staticText>
@@ -357,10 +354,7 @@
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{quirurgicos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{quirurgicos}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="45">
@@ -376,7 +370,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CARDIOPATÍA]]></text>
 			</staticText>
@@ -392,7 +386,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[3. ANTECEDENTES FAMILIARES.]]></text>
 			</staticText>
@@ -405,9 +399,7 @@
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
 				<textFieldExpression><![CDATA[($F{cardiopatia}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -422,7 +414,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIABETES]]></text>
 			</staticText>
@@ -436,7 +428,6 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{diabetes}==true?"X":"")]]></textFieldExpression>
@@ -453,7 +444,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ENF. 
 CARDIOVASCULARES]]></text>
@@ -467,9 +458,7 @@ CARDIOVASCULARES]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{enfCardiovasculares}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -484,7 +473,7 @@ CARDIOVASCULARES]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[HIPERTENCION]]></text>
 			</staticText>
@@ -497,9 +486,7 @@ CARDIOVASCULARES]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{hipertension}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -514,7 +501,7 @@ CARDIOVASCULARES]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CANCER]]></text>
 			</staticText>
@@ -527,9 +514,7 @@ CARDIOVASCULARES]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{cancer}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -544,7 +529,7 @@ CARDIOVASCULARES]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TUBERCULOSIS]]></text>
 			</staticText>
@@ -557,9 +542,7 @@ CARDIOVASCULARES]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{tuberculosis}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -574,7 +557,7 @@ CARDIOVASCULARES]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ENF. MENTALES]]></text>
 			</staticText>
@@ -587,9 +570,7 @@ CARDIOVASCULARES]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{enfMentales}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -604,7 +585,7 @@ CARDIOVASCULARES]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ENF. 
 INFECCIOSAS]]></text>
@@ -618,9 +599,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{enfInfecciosas}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -635,7 +614,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[MALFORMACION]]></text>
 			</staticText>
@@ -651,7 +630,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="4" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[OTROS]]></text>
 			</staticText>
@@ -664,9 +643,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{malformaciones}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
@@ -678,9 +655,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[($F{otros}==true?"X":"")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -695,7 +670,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FAMILIARES:]]></text>
 			</staticText>
@@ -708,10 +683,8 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{familiares}]]></textFieldExpression>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{familiares}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="30">
@@ -727,7 +700,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[4. ENFERMEDAD O PROBLEMA ACTUAL]]></text>
 			</staticText>
@@ -740,10 +713,8 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement verticalAlignment="Middle" markup="html">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{enfermedadActual}]]></textFieldExpression>
+				<textElement verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[$F{enfermedadActual}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="70">
@@ -759,7 +730,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[5. REVISION ACTUAL DE ORGANOS Y SITEMAS]]></text>
 			</staticText>
@@ -775,7 +746,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ORGANOS DE LOS SENTIDOS]]></text>
 			</staticText>
@@ -791,7 +762,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[RESPITORIO]]></text>
 			</staticText>
@@ -807,7 +778,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -823,7 +794,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -839,7 +810,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -855,7 +826,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -871,7 +842,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIGESTIVO]]></text>
 			</staticText>
@@ -887,7 +858,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CARDIOVASCULAR]]></text>
 			</staticText>
@@ -903,7 +874,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -919,7 +890,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -935,7 +906,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[URINARIO]]></text>
 			</staticText>
@@ -951,7 +922,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[GENITAL]]></text>
 			</staticText>
@@ -967,7 +938,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -983,7 +954,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -999,7 +970,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ENDOCRINO]]></text>
 			</staticText>
@@ -1015,7 +986,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[MUSCULO ESQUELETICO]]></text>
 			</staticText>
@@ -1031,7 +1002,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1047,7 +1018,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1063,7 +1034,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[NERVIOSO]]></text>
 			</staticText>
@@ -1079,7 +1050,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[HEMOLINFATICO]]></text>
 			</staticText>
@@ -1092,9 +1063,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{organoSentido}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1106,9 +1075,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{respiratorio}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1120,9 +1087,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cardiovascular}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1134,9 +1099,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{digestivo}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1148,9 +1111,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{genital}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1162,9 +1123,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{urinario}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1176,9 +1135,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{musculoEsqueletico}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1190,9 +1147,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{endocrino}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1204,9 +1159,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{hemolenfatico}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1218,9 +1171,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nervioso}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
@@ -1232,9 +1183,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -1251,7 +1200,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[6. SIGNOS VITALES Y ANTROPOMETRIA]]></text>
 			</staticText>
@@ -1267,7 +1216,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FECHA MEDICION]]></text>
 			</staticText>
@@ -1283,7 +1232,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TEMPERATURA °C]]></text>
 			</staticText>
@@ -1299,7 +1248,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PRESION ARTERIAL]]></text>
 			</staticText>
@@ -1315,7 +1264,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PULSO/MIN]]></text>
 			</staticText>
@@ -1331,7 +1280,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PESO/KG]]></text>
 			</staticText>
@@ -1347,7 +1296,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FRECUENCIA RESPIRATORIA]]></text>
 			</staticText>
@@ -1363,7 +1312,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TALA/CM]]></text>
 			</staticText>
@@ -1376,9 +1325,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fechaMedicion}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1390,9 +1337,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{temperatura}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1404,9 +1349,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{presionArterial}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1418,9 +1361,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{pulso}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1432,9 +1373,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{frecRespiratoria}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1446,9 +1385,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1460,9 +1397,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{talla}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -1479,7 +1414,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[7. EXAMEN FISICO REGIONAL]]></text>
 			</staticText>
@@ -1495,7 +1430,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1511,7 +1446,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1527,7 +1462,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CABEZA]]></text>
 			</staticText>
@@ -1543,7 +1478,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1559,7 +1494,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1575,7 +1510,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CUELLO]]></text>
 			</staticText>
@@ -1591,7 +1526,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1607,7 +1542,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1623,7 +1558,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TORAX]]></text>
 			</staticText>
@@ -1639,7 +1574,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ABDOMEN]]></text>
 			</staticText>
@@ -1655,7 +1590,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1671,7 +1606,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1687,7 +1622,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PELVIS]]></text>
 			</staticText>
@@ -1703,7 +1638,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1719,7 +1654,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1735,7 +1670,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[EXTREMIDADES]]></text>
 			</staticText>
@@ -1751,7 +1686,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[SP]]></text>
 			</staticText>
@@ -1767,7 +1702,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CP]]></text>
 			</staticText>
@@ -1780,9 +1715,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cabeza}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1794,9 +1727,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cuello}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1808,9 +1739,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{torax}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1822,9 +1751,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{abdomen}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1836,9 +1763,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{pelvis}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1850,9 +1775,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{extremidades}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -1864,9 +1787,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html"/>
 				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -1883,7 +1804,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[8. DIAGNOSTICO]]></text>
 			</staticText>
@@ -1899,7 +1820,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CIE]]></text>
 			</staticText>
@@ -1915,7 +1836,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PRE]]></text>
 			</staticText>
@@ -1931,7 +1852,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[DEF]]></text>
 			</staticText>
@@ -1947,7 +1868,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PRE = PRESUNTIVO / DEF = DEFINITIVO]]></text>
 			</staticText>
@@ -1963,7 +1884,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[PRE]]></text>
 			</staticText>
@@ -1979,7 +1900,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[DEF]]></text>
 			</staticText>
@@ -1995,7 +1916,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CIE]]></text>
 			</staticText>
@@ -2008,10 +1929,8 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{descripcionDiagnostico}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descripcionDiagnostico}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="170" y="15" width="34" height="15" uuid="bfa4b232-b3f3-4ab7-8bc2-ddfd0a8720c7"/>
@@ -2022,10 +1941,8 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cie}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cie}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="272" y="15" width="181" height="15" uuid="02f81081-9ecc-429f-ba44-cb88b593b37f"/>
@@ -2036,10 +1953,8 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{descripcionPreDef}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descripcionPreDef}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="204" y="15" width="68" height="15" uuid="95d4f53d-cd57-4c71-82bd-05f5f6f68518"/>
@@ -2050,9 +1965,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{preDef}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -2064,10 +1977,8 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{descripcionPreDefCie}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descripcionPreDefCie}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="487" y="15" width="68" height="15" uuid="60747ce1-fa3a-4e85-b9f9-b61006a9b013"/>
@@ -2078,9 +1989,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{descripcionPreDefPreDef}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -2097,7 +2006,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Left" markup="html">
-					<font size="8" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[9. PLANES DE TRATAMIENTO]]></text>
 			</staticText>
@@ -2110,9 +2019,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{m}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -2124,9 +2031,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{i}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -2138,9 +2043,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{l}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -2152,9 +2055,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{r}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -2166,9 +2067,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{c}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -2180,9 +2079,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -2194,9 +2091,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{o}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -2211,7 +2106,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2227,7 +2122,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2243,7 +2138,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2259,7 +2154,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2275,7 +2170,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2291,7 +2186,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2307,7 +2202,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[M:]]></text>
 			</staticText>
@@ -2323,7 +2218,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[DURACION CONSULTA:]]></text>
 			</staticText>
@@ -2336,9 +2231,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{duracionConsulta}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -2355,7 +2248,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FECHA Y HORA:]]></text>
 			</staticText>
@@ -2368,9 +2261,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -2385,7 +2276,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[NOMBRE DEL PROFESIONAL:]]></text>
 			</staticText>
@@ -2398,9 +2289,7 @@ INFECCIOSAS]]></text>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombresProfesional}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -2415,7 +2304,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FIRMA:]]></text>
 			</staticText>
@@ -2431,7 +2320,7 @@ INFECCIOSAS]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>

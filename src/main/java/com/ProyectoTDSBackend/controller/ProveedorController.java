@@ -103,7 +103,7 @@ public class ProveedorController {
     @ApiOperation("Detalle los proveedores")
     @CrossOrigin({"*"})
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Producto> getById(@PathVariable("id") int id) {
+    public ResponseEntity<Proveedor> getById(@PathVariable("id") int id) {
         if (!servicio.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }

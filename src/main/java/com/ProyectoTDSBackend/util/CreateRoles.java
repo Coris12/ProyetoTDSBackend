@@ -46,16 +46,16 @@ public class CreateRoles implements CommandLineRunner {
     //    rolService.save(rolFarmacia);
     //    rolService.save(rolContabilidad);
     
-    // ////Crear tarjetaEspecialidad
-    // TarjetaEspecialidad pediatria = new TarjetaEspecialidad(NomEspTarjeta.PEDIATRIA); 
-    // TarjetaEspecialidad ginecologia = new TarjetaEspecialidad(NomEspTarjeta.GINECOLOGIA); 
-    // TarjetaEspecialidad psicologia = new TarjetaEspecialidad(NomEspTarjeta.PSICOLOGIA); 
-    // TarjetaEspecialidad especialidadGstroCirugGeneral = new TarjetaEspecialidad(NomEspTarjeta.ESPECIALIADADES_GASTRO_CIRUJIA_GENERAL); 
-    // TarjetaEspecialidad medicinaGeneral = new TarjetaEspecialidad(NomEspTarjeta.MEDICINA_GENERAL); 
-    // tarjetaEspecialidadService.saveTarjetaEspecialidad(pediatria); 
-    // tarjetaEspecialidadService.saveTarjetaEspecialidad(ginecologia); 
-    // tarjetaEspecialidadService.saveTarjetaEspecialidad(psicologia); 
-    // tarjetaEspecialidadService.saveTarjetaEspecialidad(especialidadGstroCirugGeneral); 
-    // tarjetaEspecialidadService.saveTarjetaEspecialidad(medicinaGeneral); 
+//     ////Crear tarjetaEspecialidad
+//     TarjetaEspecialidad pediatria = new TarjetaEspecialidad(NomEspTarjeta.PEDIATRIA); 
+//     TarjetaEspecialidad ginecologia = new TarjetaEspecialidad(NomEspTarjeta.GINECOLOGIA); 
+//     TarjetaEspecialidad psicologia = new TarjetaEspecialidad(NomEspTarjeta.PSICOLOGIA); 
+//     TarjetaEspecialidad especialidadGstroCirugGeneral = new TarjetaEspecialidad(NomEspTarjeta.ESPECIALIADADES_GASTRO_CIRUJIA_GENERAL); 
+//     TarjetaEspecialidad medicinaGeneral = new TarjetaEspecialidad(NomEspTarjeta.MEDICINA_GENERAL); 
+//     tarjetaEspecialidadService.saveTarjetaEspecialidad(pediatria); 
+//     tarjetaEspecialidadService.saveTarjetaEspecialidad(ginecologia); 
+//     tarjetaEspecialidadService.saveTarjetaEspecialidad(psicologia); 
+//     tarjetaEspecialidadService.saveTarjetaEspecialidad(especialidadGstroCirugGeneral); 
+//     tarjetaEspecialidadService.saveTarjetaEspecialidad(medicinaGeneral); 
     }
 }
