@@ -18,27 +18,27 @@ import com.ProyectoTDSBackend.security.models.Usuario;
 public class Residencia {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_RECIDENCIA", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_RECIDENCIA", nullable = false)
     private long idRecidencia;
-    
+
     @Column(name = "PROVINCIA", length = 60)
-    public String provincia; 
+    public String provincia;
 
     @Column(name = "CANTON", length = 60)
-    public String canton; 
+    public String canton;
 
     @Column(name = "PARROQUIA", length = 60)
-    public String parroquia; 
+    public String parroquia;
 
     @Column(name = "BARRIO", length = 60)
-    public String barrio; 
+    public String barrio;
 
     @Column(name = "ZONA", length = 100)
-    private  String zona; 
+    private String zona;
 
     @Column(name = "ID_USUARIO", unique = false)
-    public Long IdUsuario; 
+    public Long IdUsuario;
 
     @Column(name = "PAIS", length = 100)
     public String pais;
@@ -46,10 +46,10 @@ public class Residencia {
     @Column(name = "NACIONALIDAD", length = 100)
     public String nacionalidad;
 
-    @JoinColumn(name = "ID_USUARIO", referencedColumnName = "id",insertable = false, updatable = false)
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Usuario usuario;
-
+    @JoinColumn(name = "ID_USUARIO", referencedColumnName = "id", insertable = false, updatable = false)
+    
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Usuario usuario;
 
     public Residencia() {
     }

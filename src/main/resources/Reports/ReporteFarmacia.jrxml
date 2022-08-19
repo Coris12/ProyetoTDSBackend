@@ -53,7 +53,7 @@
 			<staticText>
 				<reportElement x="160" y="18" width="214" height="35" uuid="8d891e09-0c13-416f-b0e7-8f688fc4897a"/>
 				<textElement textAlignment="Center">
-					<font size="22" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FACTURA]]></text>
 			</staticText>
@@ -83,7 +83,7 @@
 			<textField>
 				<reportElement x="380" y="20" width="174" height="30" uuid="b4329e05-2876-45e8-bdf9-356e478b9041"/>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id_factura}]]></textFieldExpression>
 			</textField>
@@ -221,18 +221,12 @@
 				<reportElement x="453" y="0" width="5" height="12" uuid="0fb2d19d-37b0-47e5-b58d-beafba11653b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement>
-					<font size="9"/>
-				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="396" y="0" width="5" height="12" uuid="e5c14ba9-96a1-4f68-a8d6-db29cb6184fd">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement>
-					<font size="9"/>
-				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<staticText>
@@ -240,9 +234,6 @@
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement>
-					<font size="9"/>
-				</textElement>
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">

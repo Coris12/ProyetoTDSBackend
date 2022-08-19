@@ -40,10 +40,8 @@ import javax.persistence.ColumnResult;
  *
  * @author LENOVO
  */
-
 @NamedNativeQueries({
-    @NamedNativeQuery(name = "DatosTarjetaDto.getDatosTarjetaUser", query = "", resultSetMapping = "getDatosTarjetaUser"),
-})
+    @NamedNativeQuery(name = "DatosTarjetaDto.getDatosTarjetaUser", query = "", resultSetMapping = "getDatosTarjetaUser"),})
 
 @SqlResultSetMappings({
     @SqlResultSetMapping(name = "getDatosTarjetaUser", classes = {
@@ -116,13 +114,14 @@ public class Usuario {
     @OneToOne
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Familiares> familiares;
 
     @JsonIgnore
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Residencia> residencia;
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Residencia> residencia;
 
     public Usuario() {
     }
