@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "datos_institucionales")
-public class datos_institucionales {
+public class DatosInstitucionales {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

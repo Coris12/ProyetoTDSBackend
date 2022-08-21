@@ -8,6 +8,7 @@ package com.ProyectoTDSBackend.security.models;
 import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
 import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Familiares;
+import com.ProyectoTDSBackend.models.Formulario;
 import com.ProyectoTDSBackend.models.Medicamentos;
 import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.models.Tarjeta;
@@ -119,6 +120,8 @@ public class Usuario {
     @OneToOne
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
+    
+    
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
