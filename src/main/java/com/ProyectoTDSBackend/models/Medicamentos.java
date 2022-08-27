@@ -32,7 +32,7 @@ public class Medicamentos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_medicamento", nullable = false)
-    private int idMedicamentos;
+    private Long idMedicamentos;
 
     @Column(name = "nombre_medicamento", nullable = false)
     private String nombreMedicamento;
@@ -47,7 +47,7 @@ public class Medicamentos {
     @Column(name = "ini_responsable", nullable = false)
     private String inicialesRespon;
 
-    @Column(name = "abreviatura", nullable = false)
+    @Column(name = "abreviatura")
     private String abreviaturaFun;
 
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
@@ -57,7 +57,7 @@ public class Medicamentos {
     public Medicamentos() {
     }
 
-    public Medicamentos(int idMedicamentos, String nombreMedicamento, Date fecha, String hora, String inicialesRespon, String abreviaturaFun, Usuario usuario) {
+    public Medicamentos(Long idMedicamentos, String nombreMedicamento, Date fecha, String hora, String inicialesRespon, String abreviaturaFun, Usuario usuario) {
         this.idMedicamentos = idMedicamentos;
         this.nombreMedicamento = nombreMedicamento;
         this.fecha = fecha;
@@ -67,13 +67,11 @@ public class Medicamentos {
         this.usuario = usuario;
     }
 
- 
-
-    public int getIdMedicamentos() {
+    public Long getIdMedicamentos() {
         return idMedicamentos;
     }
 
-    public void setIdMedicamentos(int idMedicamentos) {
+    public void setIdMedicamentos(Long idMedicamentos) {
         this.idMedicamentos = idMedicamentos;
     }
 

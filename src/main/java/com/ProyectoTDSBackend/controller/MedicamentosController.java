@@ -9,7 +9,9 @@ import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Medicamentos;
 import com.ProyectoTDSBackend.service.MedicamentosService;
 import com.ProyectoTDSBackend.util.GenericResponse;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,22 +35,10 @@ public class MedicamentosController {
 
     @Autowired
     private MedicamentosService servicio;
-     
-    @PostMapping("/createMedicamento")
-    public ResponseEntity<?> create(@RequestBody Medicamentos medi) {
-
-        Medicamentos medicamento = new Medicamentos(
-                medi.getIdMedicamentos(),
-                medi.getNombreMedicamento(),
-                medi.getFecha(),
-                medi.getHora(),
-                medi.getInicialesRespon(),
-                medi.getAbreviaturaFun(),
-                medi.getUsuario());
-
-        servicio.saveMedicamento(medicamento);
-
-        return new ResponseEntity(new Mensaje("medicamento creado"), HttpStatus.OK);
+    
+     @PostMapping(path = "saveMedicamentos")
+    public ResponseEntity<GenericResponse<String>> saveMedicamento(@RequestBody Medicamentos medicamento) {
+        return new ResponseEntity<GenericResponse<String>>(servicio.saveMedicamento(medicamento), HttpStatus.OK);
     }
     
     @GetMapping("/detallesMedicamentos/{id}")
@@ -58,5 +48,13 @@ public class MedicamentosController {
         }
         Medicamentos medicamento = servicio.getOne(id).get();
         return new ResponseEntity(medicamento, HttpStatus.OK);
+    }
+    
+    @ApiOperation("Muestra una lista de medicamentos")
+    @CrossOrigin({"*"})
+    @GetMapping("/listaMedicamentos")
+    public ResponseEntity<List<Medicamentos>> list() {
+        List<Medicamentos> list = servicio.list();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
 }
