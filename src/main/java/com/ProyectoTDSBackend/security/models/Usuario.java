@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
+import com.ProyectoTDSBackend.models.Consentimiento;
 import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.models.Residencia;
@@ -122,6 +123,9 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Residencia> residencia;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Consentimiento> consentimiento;
 
     public Usuario() {
     }

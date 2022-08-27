@@ -47,7 +47,6 @@ public class Residencia {
     public String nacionalidad;
 
     @JoinColumn(name = "ID_USUARIO", referencedColumnName = "id", insertable = false, updatable = false)
-    
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Usuario usuario;
 

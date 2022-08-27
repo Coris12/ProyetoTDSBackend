@@ -57,12 +57,20 @@ public class UsuarioService {
     public GenericResponse<Usuario> ObtenerByIdentificacion(String identificacion) {
         GenericResponse<Usuario> response = new GenericResponse<>();
         try {
+            if(!usuarioRepository.existsByIdentificacion(identificacion)){
+                response.setMessage("NO EXISTE EL USUARIO CON ESTA IDENTIFICACION");
+                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+                return response;
+            }
+
             if (identificacion != null) {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
                 response.setObject(usuarioRepository.findByIdentificacion(identificacion));
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             } else {
-                response.setObject(null);
+                response.setMessage("INGRESE UNA IDENTIFICACION");
+                response.setStatus(ParametersApp.PROCESS_NOT_COMPLETED.value());
+                return response; 
             }
         } catch (Exception e) {
             // TODO: handle exception
