@@ -121,8 +121,6 @@ public class Usuario {
     @OneToOne
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
-    
-    
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -131,7 +129,8 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Residencia> residencia;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Consentimiento> consentimiento;
 
