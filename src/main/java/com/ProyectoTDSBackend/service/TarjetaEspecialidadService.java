@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ProyectoTDSBackend.models.Tarjeta;
 import com.ProyectoTDSBackend.models.TarjetaEspecialidad;
 import com.ProyectoTDSBackend.repository.TarjetaEspecialidadRepository;
 import com.ProyectoTDSBackend.security.enums.NomEspTarjeta;

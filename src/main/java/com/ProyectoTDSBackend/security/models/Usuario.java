@@ -6,8 +6,11 @@
 package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
+import com.ProyectoTDSBackend.models.Consentimiento;
 import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Familiares;
+import com.ProyectoTDSBackend.models.Formulario;
+import com.ProyectoTDSBackend.models.Medicamentos;
 import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.models.Tarjeta;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -111,10 +114,14 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<ConsultaExterna> consultaExterna;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private List<Medicamentos> medicamentos;
+
     @OneToOne
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Familiares> familiares;
@@ -122,6 +129,10 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Residencia> residencia;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<Consentimiento> consentimiento;
 
     public Usuario() {
     }

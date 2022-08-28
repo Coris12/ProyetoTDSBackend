@@ -8,9 +8,7 @@ package com.ProyectoTDSBackend.service;
 import com.ProyectoTDSBackend.dto.DatosTarjetaAllDTO;
 import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.models.Tarjeta;
-import com.ProyectoTDSBackend.models.TarjetaEspecialidad;
 import com.ProyectoTDSBackend.repository.ResidenciaRepository;
-import com.ProyectoTDSBackend.repository.TarjetaEspecialidadRepository;
 import com.ProyectoTDSBackend.repository.tarjetaRepository;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.ProyectoTDSBackend.security.repository.UsuarioRepository;
@@ -58,9 +56,6 @@ public class TarjetaService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private TarjetaEspecialidadRepository tarjetaEspecialidadRepository;
 
     public List<Tarjeta> listaTarjetas() {
         return repository.findAll();

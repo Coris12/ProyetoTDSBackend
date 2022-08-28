@@ -19,11 +19,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "motivos")
 
-public class motivos {
+public class Motivos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_motivo", nullable = false)
-    private int id_motivo;
+    private int idMotivo;
 
     @Column(name = "referencia")
     private String referencia;
@@ -31,5 +31,39 @@ public class motivos {
     @Column(name = "otro")
     private String otro;
 
+    public Motivos() {
+    }
+
+    public Motivos(int idMotivo, String referencia, String otro) {
+        this.idMotivo = idMotivo;
+        this.referencia = referencia;
+        this.otro = otro;
+    }
+
+    public int getIdMotivo() {
+        return idMotivo;
+    }
+
+    public void setIdMotivo(int idMotivo) {
+        this.idMotivo = idMotivo;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    public String getOtro() {
+        return otro;
+    }
+
+    public void setOtro(String otro) {
+        this.otro = otro;
+    }
+
+    
    
 }
