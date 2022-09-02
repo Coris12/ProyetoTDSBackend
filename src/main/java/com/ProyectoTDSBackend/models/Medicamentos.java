@@ -5,13 +5,17 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.ProyectoTDSBackend.dto.MedicamentoDTO;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -20,7 +24,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +36,25 @@ import javax.persistence.TemporalType;
  *
  * @author corin
  */
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "Medicamentos.generarPdfMedicamentos", query = "", resultSetMapping = "generarPdfMedicamentos")
+})
+
+@SqlResultSetMapping(name = "generarPdfMedicamentos", classes = {
+    @ConstructorResult(targetClass = MedicamentoDTO.class, columns = {
+        @ColumnResult(name = "nombres", type = String.class),
+        @ColumnResult(name = "fecha", type = Date.class),
+        @ColumnResult(name = "hora", type = String.class),
+        @ColumnResult(name = "ini_responsable", type = String.class),
+        @ColumnResult(name = "abreviatura", type = String.class),
+        @ColumnResult(name = "nombre_medicamento", type = String.class),
+        @ColumnResult(name = "sexo", type = String.class),
+        @ColumnResult(name = "establecimiento", type = String.class)
+        
+
+    })
+})
+
 @Entity
 @Table(name = "medicamentos")
 public class Medicamentos {
@@ -42,7 +68,6 @@ public class Medicamentos {
     private String nombreMedicamento;
 
     @Column(name = "fecha")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
     @Column(name = "hora")
@@ -54,26 +79,37 @@ public class Medicamentos {
     @Column(name = "abreviatura")
     private String abreviaturaFun;
 
+    @Column(name = "ESTABLECIMIENTO", length = 60)
+    private String establecimiento;
+
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     @JoinColumn(name = "ID_USUARIO", foreignKey = @ForeignKey(name = "FK_MEDICA_ID"))
     private Usuario usuario;
-     
+
     @JsonIgnore
     @OneToMany(mappedBy = "medicamento", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Evolucion> evolucion;
-    
-  
+
     public Medicamentos() {
     }
 
-    public Medicamentos(Long idMedicamentos, String nombreMedicamento, Date fecha, String hora, String inicialesRespon, String abreviaturaFun, Usuario usuario) {
+    public Medicamentos(Long idMedicamentos, String nombreMedicamento, Date fecha, String hora, String inicialesRespon, String abreviaturaFun, int numHoja, String establecimiento, Usuario usuario) {
         this.idMedicamentos = idMedicamentos;
         this.nombreMedicamento = nombreMedicamento;
         this.fecha = fecha;
         this.hora = hora;
         this.inicialesRespon = inicialesRespon;
         this.abreviaturaFun = abreviaturaFun;
+        this.establecimiento = establecimiento;
         this.usuario = usuario;
+    }
+
+    public List<Evolucion> getEvolucion() {
+        return evolucion;
+    }
+
+    public void setEvolucion(List<Evolucion> evolucion) {
+        this.evolucion = evolucion;
     }
 
     public Long getIdMedicamentos() {
@@ -130,6 +166,14 @@ public class Medicamentos {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(String establecimiento) {
+        this.establecimiento = establecimiento;
     }
 
 }

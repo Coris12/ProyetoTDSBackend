@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.MedicamentoDTO;
 import com.ProyectoTDSBackend.models.Medicamentos;
 import com.ProyectoTDSBackend.repository.MedicamentoRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -61,5 +62,9 @@ public class MedicamentosService {
 
     public List<Medicamentos> list() {
         return repositorio.findAll();
+    }
+      public List<MedicamentoDTO> generarPdf(String iden){
+        List<MedicamentoDTO> generaPdf = repositorio.generarPdfMedicamentos(iden);
+        return generaPdf;
     }
 }

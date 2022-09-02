@@ -45,6 +45,10 @@ public class Evolucion {
 
     @Column(name = "evolucion")
     private String evolucion;
+      
+    @Column(name="administrar_farmaco")
+   private String administrar;
+
 
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_evoluc_id"))
