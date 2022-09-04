@@ -24,13 +24,10 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
-
 /**
  *
  * @author corin
  */
-
-
 @NamedNativeQueries({
     @NamedNativeQuery(name = "Evolucion.generarPdfEvolucionPrescripcion", query = "", resultSetMapping = "generarPdfEvolucionPrescripcion")
 })
@@ -43,10 +40,8 @@ import javax.persistence.Table;
         @ColumnResult(name = "indicaciones", type = String.class),
         @ColumnResult(name = "medicamento_ad", type = String.class),
         @ColumnResult(name = "nombres", type = String.class),
-        @ColumnResult(name = "sexo", type = String.class)
-        
-
-    })
+        @ColumnResult(name = "sexo", type = String.class),
+        @ColumnResult(name = "establecimiento", type = String.class),})
 })
 @Entity
 @Table(name = "evolucion_prescripcion")
@@ -68,10 +63,13 @@ public class Evolucion {
 
     @Column(name = "evolucion")
     private String evolucion;
-      
- @Column(name = "medicamento_ad")
-    private String medicamentoAD ;
- 
+
+    @Column(name = "medicamento_ad")
+    private String medicamentoAD;
+
+    @Column(name = "establecimiento")
+    private String establecimiento;
+
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_evoluc_id"))
     private Usuario usuario;
@@ -79,18 +77,20 @@ public class Evolucion {
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_medicamento", foreignKey = @ForeignKey(name = "fk_medi_id"))
     private Medicamentos medicamento;
-    
+
     public Evolucion() {
     }
 
-    public Evolucion(Long idEvolucion, String indicaciones, Date fecha, String hora, String evolucion, String medicamentoAD, Usuario usuario) {
+    public Evolucion(Long idEvolucion, String indicaciones, Date fecha, String hora, String evolucion, String medicamentoAD, String establecimiento, Usuario usuario, Medicamentos medicamento) {
         this.idEvolucion = idEvolucion;
         this.indicaciones = indicaciones;
         this.fecha = fecha;
         this.hora = hora;
         this.evolucion = evolucion;
         this.medicamentoAD = medicamentoAD;
+        this.establecimiento = establecimiento;
         this.usuario = usuario;
+        this.medicamento = medicamento;
     }
 
     public Long getIdEvolucion() {
@@ -156,5 +156,13 @@ public class Evolucion {
     public void setMedicamentoAD(String medicamentoAD) {
         this.medicamentoAD = medicamentoAD;
     }
-    
+
+    public String getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(String establecimiento) {
+        this.establecimiento = establecimiento;
+    }
+
 }

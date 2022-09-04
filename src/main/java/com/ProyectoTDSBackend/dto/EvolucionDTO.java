@@ -22,12 +22,13 @@ public class EvolucionDTO {
     private String medicamento_ad;
     private String nombres;
     private String sexo;
+    private String establecimiento;
     private String identificacion;
 
     public EvolucionDTO() {
     }
 
-    public EvolucionDTO(String evolucion, Date fecha, String hora, String indicaciones, String medicamento_ad, String nombres, String sexo) {
+    public EvolucionDTO(String evolucion, Date fecha, String hora, String indicaciones, String medicamento_ad, String nombres, String sexo, String establecimiento) {
         this.evolucion = evolucion;
         this.fecha = fecha;
         this.hora = hora;
@@ -35,9 +36,10 @@ public class EvolucionDTO {
         this.medicamento_ad = medicamento_ad;
         this.nombres = nombres;
         this.sexo = sexo;
+        this.establecimiento = establecimiento;
     }
 
-
+   
     public int getIdEvolucion() {
         return idEvolucion;
     }
@@ -102,6 +104,15 @@ public class EvolucionDTO {
         this.sexo = sexo;
     }
 
+    public String getEstablecimiento() {
+        return establecimiento;
+    }
+
+    public void setEstablecimiento(String establecimiento) {
+        this.establecimiento = establecimiento;
+    }
+    
+   
     public String getIdentificacion() {
         return identificacion;
     }

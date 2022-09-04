@@ -7,11 +7,13 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select e.fecha,e.hora,e.evolucion,e.indicaciones,u.nombres,e.medicamento_ad,u.sexo
+		<![CDATA[select e.fecha,e.hora,e.evolucion,
+e.indicaciones,u.nombres,
+e.medicamento_ad,u.sexo,e.establecimiento
 FROM usuario u 
 INNER JOIN evolucion_prescripcion e
 on e.id_usuario=u.id
-where u.identificacion=$P{iden} ]]>
+where u.identificacion=$P{iden}]]>
 	</queryString>
 	<field name="fecha" class="java.sql.Timestamp"/>
 	<field name="hora" class="java.lang.String"/>
@@ -20,6 +22,7 @@ where u.identificacion=$P{iden} ]]>
 	<field name="nombres" class="java.lang.String"/>
 	<field name="medicamento_ad" class="java.lang.String"/>
 	<field name="sexo" class="java.lang.String"/>
+	<field name="establecimiento" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -32,7 +35,7 @@ where u.identificacion=$P{iden} ]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="32" splitType="Stretch">
+		<band height="39" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="113" height="15" uuid="95b43d2f-30e3-4071-9596-ed6f7f3b14ae">
 					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
@@ -106,7 +109,7 @@ where u.identificacion=$P{iden} ]]>
 				<text><![CDATA[SEXO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="15" width="113" height="15" uuid="25712c36-af49-46b2-be72-8396f8d8dee7">
+				<reportElement x="0" y="17" width="113" height="22" uuid="25712c36-af49-46b2-be72-8396f8d8dee7">
 					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
 				</reportElement>
 				<box>
@@ -122,7 +125,7 @@ where u.identificacion=$P{iden} ]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="113" y="15" width="177" height="15" uuid="ae913721-6eeb-41ef-9da7-1ffdaa932c24">
+				<reportElement x="113" y="15" width="177" height="22" uuid="ae913721-6eeb-41ef-9da7-1ffdaa932c24">
 					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
 				</reportElement>
 				<box>
@@ -138,7 +141,7 @@ where u.identificacion=$P{iden} ]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="290" y="15" width="79" height="15" uuid="e19cd8ea-aca0-4d29-b146-cb819052b20f">
+				<reportElement x="290" y="15" width="79" height="22" uuid="e19cd8ea-aca0-4d29-b146-cb819052b20f">
 					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
 				</reportElement>
 				<box>
@@ -154,7 +157,7 @@ where u.identificacion=$P{iden} ]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="369" y="15" width="95" height="15" uuid="061bfd0a-62ee-46d3-a9bf-b830b6b4b578">
+				<reportElement x="369" y="15" width="95" height="22" uuid="061bfd0a-62ee-46d3-a9bf-b830b6b4b578">
 					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
 				</reportElement>
 				<box>
@@ -170,7 +173,7 @@ where u.identificacion=$P{iden} ]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="464" y="15" width="101" height="15" uuid="043dc473-de1f-4c0e-be24-24f63355354f">
+				<reportElement x="464" y="15" width="101" height="22" uuid="043dc473-de1f-4c0e-be24-24f63355354f">
 					<property name="net.sf.jasperreports.export.pdf.tag.h1" value="full"/>
 				</reportElement>
 				<box>
@@ -186,7 +189,7 @@ where u.identificacion=$P{iden} ]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="136" y="15" width="135" height="16" uuid="463097d1-dd8c-42d8-8f0d-c81558924ceb"/>
+				<reportElement x="136" y="15" width="135" height="15" uuid="463097d1-dd8c-42d8-8f0d-c81558924ceb"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
@@ -194,6 +197,10 @@ where u.identificacion=$P{iden} ]]>
 				<reportElement x="312" y="15" width="57" height="17" uuid="2f881a6b-0c14-4676-90fa-325be23d44f3"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="22" width="100" height="15" uuid="df4821e7-a982-4ac3-84f4-9fef300e5a55"/>
+				<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

@@ -45,7 +45,8 @@
         <named-native-query name="Evolucion.generarPdfEvolucionPrescripcion" result-set-mapping="generarPdfEvolucionPrescripcion">
             <query>
                 select  e.evolucion as evolucion,e.fecha as fecha,e.hora as hora ,
-                e.indicaciones as indicaciones ,e.medicamento_ad as medicamento_ad,u.nombres as nombres,u.sexo as sexo
+                e.indicaciones as indicaciones ,e.medicamento_ad as medicamento_ad,u.nombres as nombres,
+                u.sexo as sexo,e.establecimiento as establecimiento
                 FROM usuario u 
                 INNER JOIN evolucion_prescripcion e
                 on e.id_usuario=u.id
