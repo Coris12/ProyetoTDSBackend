@@ -5,9 +5,9 @@
  */
 package com.ProyectoTDSBackend.service;
 
-import com.ProyectoTDSBackend.dto.MedicamentoDTO;
-import com.ProyectoTDSBackend.models.Medicamentos;
-import com.ProyectoTDSBackend.repository.MedicamentoRepository;
+import com.ProyectoTDSBackend.dto.EvolucionDTO;
+import com.ProyectoTDSBackend.models.Evolucion;
+import com.ProyectoTDSBackend.repository.EvolucionRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
 import java.util.List;
@@ -23,30 +23,30 @@ import org.springframework.transaction.annotation.Transactional;
  * @author corin
  */
 @Service
-public class MedicamentosService {
-
-    private static final Logger log = LoggerFactory.getLogger(Medicamentos.class);
+public class EvolucionService {
+    
+     private static final Logger log = LoggerFactory.getLogger(Evolucion.class);
 
     @Autowired
-    private MedicamentoRepository repositorio;
+    private EvolucionRepository repositorio;
 
     @Transactional
-    public GenericResponse<String> saveMedicamento(Medicamentos medicamento) {
+    public GenericResponse<String> saveMedicamento(Evolucion evolucion) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
-            if (medicamento != null) {
-                repositorio.save(medicamento);
+            if (evolucion != null) {
+                repositorio.save(evolucion);
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject(medicamento.getIdMedicamentos().toString());
+                response.setObject(evolucion.getIdEvolucion().toString());
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             } else {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject("medicamento no guardada");
+                response.setObject("Evolucion no guardada");
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             }
 
         } catch (Exception e) {
-            log.error("Error al guardar el medicamento: " + e.getMessage());
+            log.error("Error al guardar la evolucion: " + e.getMessage());
             response.setStatus(ParametersApp.SERVER_ERROR.value());
         }
         return response;
@@ -56,15 +56,16 @@ public class MedicamentosService {
         return repositorio.existsById(id);
     }
 
-    public Optional<Medicamentos> getOne(Long id) {
+    public Optional<Evolucion> getOne(Long id) {
         return repositorio.findById(id);
     }
 
-    public List<Medicamentos> list() {
+    public List<Evolucion> list() {
         return repositorio.findAll();
     }
-      public List<MedicamentoDTO> generarPdf(String iden){
-        List<MedicamentoDTO> generaPdf = repositorio.generarPdfMedicamentos(iden);
+    
+     public List<EvolucionDTO> generarPdf(String iden){
+        List<EvolucionDTO> generaPdf = repositorio.generarPdfEvolucionPrescripcion(iden);
         return generaPdf;
     }
 }

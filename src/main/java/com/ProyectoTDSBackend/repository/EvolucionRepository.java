@@ -5,8 +5,8 @@
  */
 package com.ProyectoTDSBackend.repository;
 
-import com.ProyectoTDSBackend.dto.MedicamentoDTO;
-import com.ProyectoTDSBackend.models.Medicamentos;
+import com.ProyectoTDSBackend.dto.EvolucionDTO;
+import com.ProyectoTDSBackend.models.Evolucion;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,10 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author corin
  */
-public interface MedicamentoRepository extends JpaRepository<Medicamentos, Long> {
-
-    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
+public interface EvolucionRepository extends JpaRepository<Evolucion, Long>{
+      @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     @Query(nativeQuery = true)
-    public List<MedicamentoDTO> generarPdfMedicamentos(@Param("iden") String iden);
+    public List<EvolucionDTO> generarPdfEvolucionPrescripcion(@Param("iden") String iden);
 
 }

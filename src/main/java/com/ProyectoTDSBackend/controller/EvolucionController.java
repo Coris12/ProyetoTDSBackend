@@ -5,13 +5,12 @@
  */
 package com.ProyectoTDSBackend.controller;
 
-import com.ProyectoTDSBackend.dto.MedicamentoDTO;
+import com.ProyectoTDSBackend.dto.EvolucionDTO;
 import com.ProyectoTDSBackend.dto.Mensaje;
-import com.ProyectoTDSBackend.models.Medicamentos;
-import com.ProyectoTDSBackend.service.MedicamentosService;
+import com.ProyectoTDSBackend.models.Evolucion;
+import com.ProyectoTDSBackend.service.EvolucionService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -41,64 +40,63 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author corin
  */
-
 @RestController
-@RequestMapping("/medicamentos")
+@RequestMapping("/evoluciones")
 @CrossOrigin(origins = "*")
-public class MedicamentosController {
+public class EvolucionController {
 
     @Autowired
-    private MedicamentosService servicio;
-    
-     @PostMapping(path = "saveMedicamentos")
-    public ResponseEntity<GenericResponse<String>> saveMedicamento(@RequestBody Medicamentos medicamento) {
-        return new ResponseEntity<GenericResponse<String>>(servicio.saveMedicamento(medicamento), HttpStatus.OK);
+    private EvolucionService servicio;
+
+    @PostMapping(path = "saveEvolucion")
+    public ResponseEntity<GenericResponse<String>> saveEvolucion(@RequestBody Evolucion evolucion) {
+        return new ResponseEntity<GenericResponse<String>>(servicio.saveMedicamento(evolucion), HttpStatus.OK);
     }
-    
-    @GetMapping("/detallesMedicamentos/{id}")
-    public ResponseEntity<Medicamentos> getById(@PathVariable("id") Long id) {
+
+    @GetMapping("/detallesEvolucion/{id}")
+    public ResponseEntity<Evolucion> getById(@PathVariable("id") Long id) {
         if (!servicio.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
-        Medicamentos medicamento = servicio.getOne(id).get();
-        return new ResponseEntity(medicamento, HttpStatus.OK);
+        Evolucion evolucion = servicio.getOne(id).get();
+        return new ResponseEntity(evolucion, HttpStatus.OK);
     }
-    
-    @ApiOperation("Muestra una lista de medicamentos")
+
+    @ApiOperation("Muestra una lista de evoluciones")
     @CrossOrigin({"*"})
-    @GetMapping("/listaMedicamentos")
-    public ResponseEntity<List<Medicamentos>> list() {
-        List<Medicamentos> list = servicio.list();
+    @GetMapping("/listaEvolucion")
+    public ResponseEntity<List<Evolucion>> list() {
+        List<Evolucion> list = servicio.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-    
-     // Metodo generar codigos aleatorios
+
+    // Metodo generar codigos aleatorios
     public String generarCodigoAleatorio() {
         String codigo = "";
         for (int i = 0; i < 10; i++) {
             codigo += (int) (Math.random() * 10);
         }
         return codigo;
-    } 
-    
-      // Generar pdf
+    }
+    // Generar pdf
+
     @GetMapping(path = "generarPdf")
     public ResponseEntity<byte[]> generarPdf(String iden) throws JRException, FileNotFoundException {
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(servicio.generarPdf(iden));
         if (beanCollectionDataSource.getData().size() > 0) {
-            JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/AdministrarMedicamento.jrxml"));
-                    HashMap<String, Object> map = new HashMap<>();
-                    JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
-                    MedicamentoDTO medicamentoDTO = servicio.generarPdf(iden).get(0);
-                    int idE = medicamentoDTO.getIdMedicamentos(); 
-                    byte[] data = JasperExportManager.exportReportToPdf(report);
-                    ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                    .filename("Medicamento" + idE + "_" + generarCodigoAleatorio() + ".pdf")
+            JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/Evolucion.jrxml"));
+            HashMap<String, Object> map = new HashMap<>();
+            JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
+            EvolucionDTO evolucionDTO = servicio.generarPdf(iden).get(0);
+            int idEvo = evolucionDTO.getIdEvolucion();
+            byte[] data = JasperExportManager.exportReportToPdf(report);
+            ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
+                    .filename("Evolucion y Prescripcion" + idEvo + "_" + generarCodigoAleatorio() + ".pdf")
                     .build();
-                    HttpHeaders headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
             headers.setContentDisposition(contentDisposition);
             return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
