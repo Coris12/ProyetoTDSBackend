@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.EvolucionDTO;
 import com.ProyectoTDSBackend.models.Evolucion;
 import com.ProyectoTDSBackend.repository.EvolucionRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -61,5 +62,10 @@ public class EvolucionService {
 
     public List<Evolucion> list() {
         return repositorio.findAll();
+    }
+    
+     public List<EvolucionDTO> generarPdf(String iden){
+        List<EvolucionDTO> generaPdf = repositorio.generarPdfEvolucionPrescripcion(iden);
+        return generaPdf;
     }
 }

@@ -41,6 +41,18 @@
             </query>
         </named-native-query>
     </entity>
+    <entity class="com.ProyectoTDSBackend.models.Evolucion">
+        <named-native-query name="Evolucion.generarPdfEvolucionPrescripcion" result-set-mapping="generarPdfEvolucionPrescripcion">
+            <query>
+                select  e.evolucion as evolucion,e.fecha as fecha,e.hora as hora ,
+                e.indicaciones as indicaciones ,e.medicamento_ad as medicamento_ad,u.nombres as nombres,u.sexo as sexo
+                FROM usuario u 
+                INNER JOIN evolucion_prescripcion e
+                on e.id_usuario=u.id
+                where u.identificacion =:iden
+            </query>
+        </named-native-query>
+    </entity>
     <entity class="com.ProyectoTDSBackend.models.ConsultaExterna">
         <named-native-query name="ConsultaExterna.getConsultaExterna" result-set-mapping="getConsultaExterna">
             <query>
