@@ -62,6 +62,23 @@ public class Formulario {
         this.refiere = refiere;
     }
 
+    public int getIdFormulario() {
+        return idFormulario;
+    }
+
+    public String getCuadro_clinico() {
+        return cuadro_clinico;
+    }
+
+    public String getHallazgos() {
+        return hallazgos;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    
     public void setIdFormulario(int idFormulario) {
         this.idFormulario = idFormulario;
     }
