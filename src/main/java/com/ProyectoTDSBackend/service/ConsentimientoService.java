@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ProyectoTDSBackend.Exceptions.MessagExcepciones;
 import com.ProyectoTDSBackend.dto.ConsentimientoDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoListDto;
+import com.ProyectoTDSBackend.dto.ConsentimientoTratamientoDto;
 import com.ProyectoTDSBackend.models.Consentimiento;
 import com.ProyectoTDSBackend.repository.ConsentimientoRepository;
 import com.ProyectoTDSBackend.repository.InformacionTratamientoRepository;
@@ -225,4 +226,9 @@ public class ConsentimientoService {
 		}
 		return response;
 	}
+        
+          public List<ConsentimientoTratamientoDto> generarPdf(int idCon){
+        List<ConsentimientoTratamientoDto> generaPdf = consentimientoRepository.generarPdfConsentimiento(idCon);
+        return generaPdf;
+    }
 }

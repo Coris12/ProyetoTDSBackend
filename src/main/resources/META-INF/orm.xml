@@ -54,6 +54,17 @@
             </query>
         </named-native-query>
     </entity>
+     <entity class="com.ProyectoTDSBackend.models.MedicoConsentimiento">
+        <named-native-query name="MedicoConsentimiento.generarPdfConsen" result-set-mapping="generarPdfConsen">
+            <query>
+                select alergia as alergia ,cedula as cedula, codigo as codigo ,direccion  as direccion
+                ,edad as edad, especialidad as especialidad ,fecha as fecha , fecha_nac as fecha_nac
+                ,nombre_doc as nombre_doc ,nombrep as nombrep ,cedula_pa as cedula_pa 
+                ,procedimientos as procedimientos, telefono as telefono from medico_consentimiento 
+                where estado='1'and id_medi_c =:idme
+            </query>
+        </named-native-query>
+    </entity>
     <entity class="com.ProyectoTDSBackend.models.ConsultaExterna">
         <named-native-query name="ConsultaExterna.getConsultaExterna" result-set-mapping="getConsultaExterna">
             <query>

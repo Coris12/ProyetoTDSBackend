@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95287fbd-e505-478a-bbc5-a6e43061f7ec">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="153"/>
+	<parameter name="idme" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select alergia ,cedula, codigo ,direccion ,edad, especialidad ,fecha , fecha_nac ,nombre_doc ,nombrep ,cedula_pa ,procedimientos ,telefono from medico_consentimiento where estado='1'and id_medi_c=$P{idme}]]>
+	</queryString>
+	<field name="alergia" class="java.lang.String"/>
+	<field name="cedula" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
+	<field name="fecha_nac" class="java.sql.Timestamp"/>
+	<field name="nombre_doc" class="java.lang.String"/>
+	<field name="nombrep" class="java.lang.String"/>
+	<field name="cedula_pa" class="java.lang.String"/>
+	<field name="procedimientos" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="79" y="0" width="385" height="20" uuid="3f44f387-b8d6-4c76-8b67-0c307deea892"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSENTIMIENTO PARA PROCEDIMIENTO MÉDICOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="206" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="91" height="20" uuid="573558d0-1b13-4972-bea0-babe87f0c842"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Yo (paciente)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="79" y="0" width="125" height="20" uuid="c9655a14-5619-430f-b917-b712e10a0a1d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombrep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="204" y="0" width="223" height="20" uuid="45ac5995-8a48-499f-bfa7-eeb66bde5087"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[portador de la cédula de identidad No.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="427" y="0" width="85" height="20" uuid="0195a845-4e6b-44fb-842a-f71bfedc4f9b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="512" y="0" width="43" height="20" uuid="1874b338-5ecd-4399-a45d-0ef03c11000f"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[con el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="523" height="16" uuid="4a365eed-255c-48a9-b022-faf13973e860"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[fin de diagnosticar y/o tratar los sintomas o signos en relación con mi enfermedad doy mi 
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="292" y="36" width="172" height="20" uuid="082fc92a-7285-4eda-bb7d-25c74d83efc6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{procedimientos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="36" width="292" height="16" uuid="37899998-8aa5-4a31-bfa1-438b2a8d3601"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[que se me  efectúe el (los) siguiente (s) procedimiento(s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="56" width="512" height="19" uuid="42dddd57-7ccd-41e2-9cd2-49cd057ba2ff"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[diagnóstico(s),terapéutico(s) y/o quirúrgico(s) que sera realizado por o bajo la dirección del Dr. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="75" width="100" height="20" uuid="8ff8da70-8340-4367-a9e8-0143c4d239e4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_doc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="76" width="284" height="19" uuid="c0f955af-6675-427e-a33b-a7d384b5eec8"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[y/o personal designado por el médico y/o cirujano.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="20" width="100" height="16" uuid="47c832db-72dd-41d4-ab35-1cdbd4599704"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[consentimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="95" width="555" height="111" uuid="c7a242aa-6d8d-45f9-8cc6-1c9164c3d464"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[He sido informado de los riesgos o complicaciones ( tales como: perforaciones, sangrado,dolor,aspiraciones shock),secuelas y eventualmente la muerte asociados al mencionado procedimiento diagnóstico,terapéutico y/o quirúrgico.Se me ha explicado que durante el curso del mismo pudieran presentarse condiciones imprevistas necesitándose extensión del procedimiento especificado anteriormente o terminar en cirugía con remoción de órganos y tejidos.Asi mismo reconozco que se me ha informado que por convenio ejecutado entre el equipo médico y ENTIDAD:HOSPITAL DEL DIA-CENTRO DE VARICES AG solo existe la presentacion de instalaciones para dicho(s) procemiento(s).]]></text>
+			</staticText>
+		</band>
+		<band height="118">
+			<staticText>
+				<reportElement x="65" y="11" width="385" height="20" uuid="2131d244-4f6b-48e6-9312-f21c37da7f30"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                DECLARACIÓN DEL MÉDICO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="91" height="20" uuid="31cc7f0e-a89c-43a5-b89b-3e3a2152f7dd"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Yo Dr.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="42" y="43" width="100" height="20" uuid="2819ac32-a258-4dd4-bcd1-34994e0bba5c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_doc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="43" width="108" height="20" uuid="3eda3e3d-a616-4df2-a99d-994203cb7165"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[médico especialista ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="43" width="59" height="20" uuid="2469dfe0-31af-43a6-a8e7-d5147ab90e4f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cirujano]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="309" y="43" width="141" height="20" uuid="d91025da-5b3f-4d56-8547-fce360d4290d"/>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="43" width="108" height="20" uuid="bea1fc84-339e-4ea0-80e2-fbf582e8c521"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[con código (MSP)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="63" width="29" height="20" uuid="3aa8d889-e3c2-47b2-97b1-0b2ef1daa96a"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="63" width="100" height="20" uuid="0510a08c-7048-47a0-a66f-022726c902fa"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="131" y="63" width="347" height="20" uuid="e04b2cbb-afe7-4ce6-8552-b0a86798e0f9"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[,he explicado en lenguaje común al paciente y/o representante , ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="464" y="63" width="91" height="20" uuid="4594a894-8c15-4699-94f4-c0d0da0ce506"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[las condiciones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="83" width="553" height="32" uuid="7f0bb661-79dd-4e80-97ca-51ed73dd005a"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[de enfermedad y la necesidad de realizar los procedimientos de diagnóstico y/o de tratamiento,asi como posibles riesgos y complicaciones asociados a los mismos.]]></text>
+			</staticText>
+		</band>
+		<band height="246">
+			<staticText>
+				<reportElement x="2" y="20" width="63" height="20" uuid="d72abde3-480f-4604-88ab-dde3687d0c9a"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Firma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="20" width="227" height="20" uuid="9c87f244-67b0-446d-9510-f28ec4d15b03"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="20" width="63" height="20" uuid="1a67000e-eac0-447e-a652-3da8e9d1e30c"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Firma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="20" width="227" height="20" uuid="e35509cb-d799-4891-8cb9-4242de8bd6de"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="52" width="63" height="20" uuid="f8680d83-5615-413c-9b4d-fb167ca61f98"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="52" width="63" height="20" uuid="f2510c58-3f12-471d-aed6-91e0cffd6acf"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="52" width="227" height="20" uuid="03cf0532-782b-4bb5-afb6-690093ca3070"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="52" width="227" height="20" uuid="be1e4013-1629-44e3-8479-4d49c5f3ed7e"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="42" y="52" width="227" height="20" uuid="c4a34dae-c9a6-493a-9638-878c8fa00dd3"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="328" y="52" width="227" height="20" uuid="cd5f3ebc-9311-4f3c-923b-e38e52ff83a0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cedula_pa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="85" width="63" height="20" uuid="85bd281b-3556-4d42-bd3e-fab400cb189c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(Paciente)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="85" width="263" height="33" uuid="8682b392-9fa6-4bb6-b254-2e0ac4a88a54"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(Testigo o persona autorizada a consentir a la persona )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="138" width="110" height="20" uuid="254f454c-d6bc-427d-9aa8-630af9139256"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA Y HORA : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="162" width="129" height="20" uuid="24feb4f1-269b-4aab-8bcb-66515cb0c7e0"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA NACIMIENTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="162" width="63" height="20" uuid="cf89b3a4-08e2-4de1-8132-ead1bd9022e3"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[EDAD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="184" width="129" height="20" uuid="dc5c8afd-5602-4093-a3b4-723e1a2b4b49"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="204" width="129" height="20" uuid="379c26fd-c47e-408a-832b-30dbc663461e"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TELÈFONO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="224" width="129" height="20" uuid="581b6cae-10cd-4f39-96c3-567bfed7e67f"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ALERGIA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="125" y="204" width="100" height="20" uuid="7ec0915d-f579-439e-85c9-3cd2f7e03d7b"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="162" width="100" height="20" uuid="c6865e5d-22d6-4296-8953-f855c22c3751"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_nac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="162" width="100" height="20" uuid="721b31b9-4af6-4960-b35d-56abcd9780ec"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="184" width="100" height="20" uuid="fd35994e-51a6-4848-9b8a-aefc9740f536"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="224" width="100" height="20" uuid="20063f18-8fa2-4511-8011-7a6a9952726e"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alergia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="138" width="115" height="20" uuid="1dd88968-8435-40fa-8f1a-b50a766a67c4"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="102" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

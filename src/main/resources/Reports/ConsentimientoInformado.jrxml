@@ -2,12 +2,12 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="c4219b96-4be4-476d-a513-687ad45a3f79">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="56"/>
+	<property name="ireport.y" value="112"/>
 	<parameter name="idCon" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[	SELECT         	c.institucion_sistema as institucionSistema, c.unidad_operativa as unidadOperativa,
+		<![CDATA[SELECT         	c.institucion_sistema as institucionSistema, c.unidad_operativa as unidadOperativa,
 				c.cod_ud as codUd,c.canton,c.parroquia,c.provincia,c.numero_historia_clinica as numeroHistoriaClinica, 
                 u.nombres, c.sala, c.servicio, c.cama,c.fecha,i.proposito,i.procedimiento_propuesto,i.resultado_esperado,
 				i.riesgo_complicaciones,i.nombre_profesional_trat,i.especialidad,i.telefono,i.codigo
@@ -498,19 +498,20 @@
 				</textElement>
 				<text><![CDATA[TERAPIA Y PROCEDIMIENTOS PROPUESTOS]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="32" width="271" height="33" uuid="bba00f45-c496-4620-9465-74d160a93a2b"/>
-				<box leftPadding="1">
+			<staticText>
+				<reportElement x="0" y="32" width="271" height="33" uuid="6fd5d8c0-d59c-4001-8be2-1fcfd0ec559d"/>
+				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement textAlignment="Center" markup="none">
+				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-			</textField>
+				<text><![CDATA[]]></text>
+			</staticText>
 			<staticText>
 				<reportElement x="271" y="32" width="284" height="33" uuid="7a1603ae-c579-4487-a9e7-67da5dcfaff0"/>
 				<box>
@@ -581,6 +582,22 @@
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="124" y="45" width="100" height="20" uuid="fb7c04ac-a840-4c28-a15a-475e123d9d45"/>
+				<textFieldExpression><![CDATA[$F{proposito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="80" width="205" height="20" uuid="4cc756ba-3a41-4b1e-8d97-0f139a029fd1"/>
+				<textFieldExpression><![CDATA[$F{riesgo_complicaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="80" width="100" height="20" uuid="c89c670a-66c0-420e-86c2-9290746c61df"/>
+				<textFieldExpression><![CDATA[$F{resultado_esperado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="45" width="100" height="20" uuid="a34bc167-2714-434b-8552-2f865044a669"/>
+				<textFieldExpression><![CDATA[$F{procedimiento_propuesto}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="0" y="168" width="271" height="15" uuid="75778b47-dc03-4fcd-8de0-2e24141bc5dc"/>
 				<box>
@@ -1017,6 +1034,10 @@
 				<textFieldExpression><![CDATA[$F{nombre_profesional_trat}]]></textFieldExpression>
 			</textField>
 			<textField>
+				<reportElement x="156" y="276" width="100" height="20" uuid="c4477219-6dc2-4e21-a521-aa2e83f7cf8c"/>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
 				<reportElement x="352" y="276" width="88" height="28" uuid="09e13580-354f-4e2f-9ba3-7fe898e07e7a"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
@@ -1046,26 +1067,6 @@
 				</textElement>
 				<text><![CDATA[1.INFORMACION ENTREGADA POR EL PROFESIONAL TRATANTE SOBRE EL TRATAMIENTO]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="164" y="284" width="100" height="20" uuid="c8baf677-e958-47fe-9f2c-780e93c96999"/>
-				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="101" y="41" width="100" height="20" uuid="f1a0b114-e98c-46f6-b848-15e3ce905654"/>
-				<textFieldExpression><![CDATA[$F{proposito}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="302" y="40" width="100" height="20" uuid="ae8df801-9de3-4c9d-b08e-5a4ba3cb578c"/>
-				<textFieldExpression><![CDATA[$F{procedimiento_propuesto}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="101" y="80" width="100" height="20" uuid="ad244be5-ea24-4c6a-b2ed-8c36c8334fa3"/>
-				<textFieldExpression><![CDATA[$F{resultado_esperado}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="383" y="86" width="100" height="20" uuid="67be387e-0c24-41a8-9c3d-61da43d6198d"/>
-				<textFieldExpression><![CDATA[$F{riesgo_complicaciones}]]></textFieldExpression>
-			</textField>
 		</band>
 		<band height="145">
 			<staticText>
@@ -1367,7 +1368,7 @@
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="202">
+		<band height="224">
 			<staticText>
 				<reportElement x="-1" y="0" width="555" height="15" uuid="c1b6319b-e0a0-4616-8463-e2400f6f88ff"/>
 				<box>
@@ -1441,7 +1442,7 @@ D.Conciento a que me administren la anastecia propuesta]]></text>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="93" width="415" height="31" uuid="07581199-31d6-4a19-9043-c6dfe5201f7b"/>
+				<reportElement x="0" y="93" width="415" height="51" uuid="07581199-31d6-4a19-9043-c6dfe5201f7b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -1456,7 +1457,7 @@ D.Conciento a que me administren la anastecia propuesta]]></text>
 F.He comprendido plenamente los beneficios y los riesgos de complicaciones derivadas del tratamiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="438" y="93" width="116" height="31" uuid="7feafeff-a6b4-4e4d-bc94-fa57b7c78fdf"/>
+				<reportElement x="438" y="93" width="116" height="51" uuid="7feafeff-a6b4-4e4d-bc94-fa57b7c78fdf"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -1470,7 +1471,7 @@ F.He comprendido plenamente los beneficios y los riesgos de complicaciones deriv
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="124" width="416" height="74" uuid="3314783b-4f57-498d-a5ed-1e8f5ee28590"/>
+				<reportElement x="-1" y="144" width="416" height="74" uuid="3314783b-4f57-498d-a5ed-1e8f5ee28590"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -1486,7 +1487,7 @@ H. He comprendido que tengo el derecho de anular este consentimiento informado e
 I. Declaro que me he entregado al profesional tratante informacion completa y fidedigna sobre los antecedentes personales y familiares de mi estado de salud.Estoy conciente de que mis omisiones o distorsiones deliberadas de los hechos pueden afectar los resultados del tratamiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="438" y="124" width="116" height="74" uuid="65574ced-8b22-49db-bc32-625af884d052"/>
+				<reportElement x="438" y="144" width="116" height="74" uuid="65574ced-8b22-49db-bc32-625af884d052"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>

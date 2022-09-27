@@ -24,6 +24,19 @@ import com.ProyectoTDSBackend.service.ConsentimientoService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -61,5 +74,37 @@ public class ConsentimientoController {
     public ResponseEntity<GenericResponse<Optional<ConsentimientoDto>>> getOneConsentimientoById(Integer idConsentimiento) {
         return new ResponseEntity<GenericResponse<Optional<ConsentimientoDto>>>(consentimientoService.getOneConsentimientoById(idConsentimiento),
                 HttpStatus.OK);
+    }
+    
+    
+      // Metodo generar codigos aleatorios
+    public String generarCodigoAleatorio() {
+        String codigo = "";
+        for (int i = 0; i < 10; i++) {
+            codigo += (int) (Math.random() * 10);
+        }
+        return codigo;
+    }
+    // Generar pdf
+
+    @GetMapping(path = "generarPdf")
+    public ResponseEntity<byte[]> generarPdf(int idCon) throws JRException, FileNotFoundException {
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(consentimientoService.generarPdf(idCon));
+        if (beanCollectionDataSource.getData().size() > 0) {
+            JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/ConsentimientoInformado.jrxml"));
+            HashMap<String, Object> map = new HashMap<>();
+            JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
+            ConsentimientoTratamientoDto consentimientoDTO = consentimientoService.generarPdf(idCon).get(0);
+            int idCo = consentimientoDTO.getIdConsentimiento();
+            byte[] data = JasperExportManager.exportReportToPdf(report);
+            ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
+                    .filename("Evolucion y Prescripcion" + idCo + "_" + generarCodigoAleatorio() + ".pdf")
+                    .build();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentDisposition(contentDisposition);
+            return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

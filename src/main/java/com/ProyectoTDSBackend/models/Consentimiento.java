@@ -28,6 +28,8 @@ import com.ProyectoTDSBackend.security.models.Usuario;
     @NamedNativeQuery(name = "Consentimiento.getAllDatosOnlyConsentimiento", query = "", resultSetMapping = "getAllDatosOnlyConsentimiento"),
     @NamedNativeQuery(name = "Consentimiento.listDataConsentimiento", query = "", resultSetMapping = "listDataConsentimiento"),
     @NamedNativeQuery(name = "Consentimiento.getAllDatosOnlyConsentimientoById", query = "", resultSetMapping = "getAllDatosOnlyConsentimientoById"),
+    @NamedNativeQuery(name = "Consentimiento.generarPdfConsentimiento", query = "", resultSetMapping = "generarPdfConsentimiento")
+
 })
 
 @SqlResultSetMappings({
@@ -46,9 +48,8 @@ import com.ProyectoTDSBackend.security.models.Usuario;
             @ColumnResult(name = "sala", type = String.class),
             @ColumnResult(name = "servicio", type = String.class),
             @ColumnResult(name = "unidadOperativa", type = String.class),
-            @ColumnResult(name = "idUsuario", type = Integer.class),
-        })
-    }), 
+            @ColumnResult(name = "idUsuario", type = Integer.class),})
+    }),
 
     @SqlResultSetMapping(name = "listDataConsentimiento", classes = {
         @ConstructorResult(targetClass = ConsentimientoListDto.class, columns = {
@@ -57,49 +58,72 @@ import com.ProyectoTDSBackend.security.models.Usuario;
             @ColumnResult(name = "numHistCli", type = Integer.class),
             @ColumnResult(name = "usuarioId", type = Integer.class),
             @ColumnResult(name = "identificacion", type = String.class),
-            @ColumnResult(name = "nombres", type = String.class),
-        })
+            @ColumnResult(name = "nombres", type = String.class),})
     }),
-    
+
     @SqlResultSetMapping(name = "getAllDatosOnlyConsentimientoById", classes = {
-            @ConstructorResult(targetClass = ConsentimientoDto.class, columns = {
-                @ColumnResult(name = "idConsentimiento", type = Integer.class),
-                @ColumnResult(name = "cama", type = String.class),
-                @ColumnResult(name = "canton", type = String.class),
-                @ColumnResult(name = "codUd", type = String.class),
-                @ColumnResult(name = "estado", type = Character.class),
-                @ColumnResult(name = "fecha", type = Date.class),
-                @ColumnResult(name = "institucionSistema", type = String.class),
-                @ColumnResult(name = "numeroHistoriaClinica", type = Integer.class),
-                @ColumnResult(name = "parroquia", type = String.class),
-                @ColumnResult(name = "provincia", type = String.class),
-                @ColumnResult(name = "sala", type = String.class),
-                @ColumnResult(name = "servicio", type = String.class),
-                @ColumnResult(name = "unidadOperativa", type = String.class),
-                @ColumnResult(name = "idUsuario", type = Integer.class),
-                @ColumnResult(name = "nombres", type = String.class),
-                @ColumnResult(name = "identificacion", type = String.class),
-            })
-        }), 
-})
+        @ConstructorResult(targetClass = ConsentimientoDto.class, columns = {
+            @ColumnResult(name = "idConsentimiento", type = Integer.class),
+            @ColumnResult(name = "cama", type = String.class),
+            @ColumnResult(name = "canton", type = String.class),
+            @ColumnResult(name = "codUd", type = String.class),
+            @ColumnResult(name = "estado", type = Character.class),
+            @ColumnResult(name = "fecha", type = Date.class),
+            @ColumnResult(name = "institucionSistema", type = String.class),
+            @ColumnResult(name = "numeroHistoriaClinica", type = Integer.class),
+            @ColumnResult(name = "parroquia", type = String.class),
+            @ColumnResult(name = "provincia", type = String.class),
+            @ColumnResult(name = "sala", type = String.class),
+            @ColumnResult(name = "servicio", type = String.class),
+            @ColumnResult(name = "unidadOperativa", type = String.class),
+            @ColumnResult(name = "idUsuario", type = Integer.class),
+            @ColumnResult(name = "nombres", type = String.class),
+            @ColumnResult(name = "identificacion", type = String.class),})
+    }),
+
+    @SqlResultSetMapping(name = "generarPdfConsentimiento", classes = {
+        @ConstructorResult(targetClass = ConsentimientoTratamientoDto.class, columns = {
+            @ColumnResult(name = "idConsentimiento", type = Integer.class),
+            @ColumnResult(name = "cama", type = String.class),
+            @ColumnResult(name = "canton", type = String.class),
+            @ColumnResult(name = "codUd", type = String.class),
+            @ColumnResult(name = "fecha", type = Date.class),
+            @ColumnResult(name = "institucionSistema", type = String.class),
+            @ColumnResult(name = "numeroHistoriaClinica", type = Integer.class),
+            @ColumnResult(name = "parroquia", type = String.class),
+            @ColumnResult(name = "provincia", type = String.class),
+            @ColumnResult(name = "sala", type = String.class),
+            @ColumnResult(name = "servicio", type = String.class),
+            @ColumnResult(name = "unidadOperativa", type = String.class),
+            @ColumnResult(name = "estado", type = Character.class),
+            @ColumnResult(name = "especialidad", type = String.class),
+            @ColumnResult(name = "nombreProfesional", type = String.class),
+            @ColumnResult(name = "procedimientoPropuesto", type = String.class),
+            @ColumnResult(name = "proposito", type = String.class),
+            @ColumnResult(name = "resultadoEsperado", type = String.class),
+            @ColumnResult(name = "riesgoComplicaciones", type = String.class),
+            @ColumnResult(name = "telefono", type = Integer.class),
+            @ColumnResult(name = "nombres", type = String.class),
+            @ColumnResult(name = "identificacion", type = String.class),})
+    }),})
 
 @Entity
-@Table(name="consentimientos")
+@Table(name = "consentimientos")
 public class Consentimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_consentimiento", nullable = false)
-    private Integer idConsentimiento; 
+    private Integer idConsentimiento;
 
     @Column(name = "institucion_sistema")
-    private String instutucionSistema; 
+    private String instutucionSistema;
 
     @Column(name = "unidad_operativa")
-    private String unidadOperativa; 
+    private String unidadOperativa;
 
     @Column(name = "cod_ud")
-    private String codUd; 
+    private String codUd;
 
     @Column(name = "numero_historia_clinica")
     private Integer numeroHistoriaClinica;
@@ -111,24 +135,24 @@ public class Consentimiento {
     private List<InformacionTratamiento> informacionTratamiento;
 
     @ManyToOne
-	@JoinColumn(name = "idUsuario", insertable = false, updatable = false)
-	private Usuario usuario; 
+    @JoinColumn(name = "idUsuario", insertable = false, updatable = false)
+    private Usuario usuario;
 
-    private String servicio; 
-    private String sala; 
-    private String cama; 
-    
+    private String servicio;
+    private String sala;
+    private String cama;
+
     //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-    private Date fecha; 
-    private String parroquia; 
-    private String canton; 
+    private Date fecha;
+    private String parroquia;
+    private String canton;
     private String provincia;
     private Character estado;
-    
+
     public Consentimiento() {
     }
 
-	public List<InformacionTratamiento> getInformacionTratamiento() {
+    public List<InformacionTratamiento> getInformacionTratamiento() {
         return informacionTratamiento;
     }
 
@@ -147,75 +171,95 @@ public class Consentimiento {
     public Integer getIdConsentimiento() {
         return idConsentimiento;
     }
+
     public void setIdConsentimiento(Integer idConsentimiento) {
         this.idConsentimiento = idConsentimiento;
     }
+
     public String getInstutucionSistema() {
         return instutucionSistema;
     }
+
     public void setInstutucionSistema(String instutucionSistema) {
         this.instutucionSistema = instutucionSistema;
     }
+
     public String getUnidadOperativa() {
         return unidadOperativa;
     }
+
     public void setUnidadOperativa(String unidadOperativa) {
         this.unidadOperativa = unidadOperativa;
     }
+
     public String getCodUd() {
         return codUd;
     }
+
     public void setCodUd(String codUd) {
         this.codUd = codUd;
     }
+
     public Integer getNumeroHistoriaClinica() {
         return numeroHistoriaClinica;
     }
+
     public void setNumeroHistoriaClinica(Integer numeroHistoriaClinica) {
         this.numeroHistoriaClinica = numeroHistoriaClinica;
     }
+
     public String getServicio() {
         return servicio;
     }
+
     public void setServicio(String servicio) {
         this.servicio = servicio;
     }
+
     public String getSala() {
         return sala;
     }
+
     public void setSala(String sala) {
         this.sala = sala;
     }
+
     public String getCama() {
         return cama;
     }
+
     public void setCama(String cama) {
         this.cama = cama;
     }
 
     public Date getFecha() {
-		return fecha;
-	}
+        return fecha;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
-	public String getParroquia() {
+    public String getParroquia() {
         return parroquia;
     }
+
     public void setParroquia(String parroquia) {
         this.parroquia = parroquia;
     }
+
     public String getCanton() {
         return canton;
     }
+
     public void setCanton(String canton) {
         this.canton = canton;
     }
+
     public String getProvincia() {
         return provincia;
     }
+
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
