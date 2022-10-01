@@ -28,10 +28,10 @@ public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_proveedor", nullable = false)
-    private int id_proveedor;
+    private int idProveedor;
 
     @Column(name = "nombre_comercial_pro", nullable = false)
-    private String nombre_comercial_pro;
+    private String nombreComercialPro;
     
 
    @Column(name = "estado", nullable = false)
@@ -44,12 +44,14 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int id_proveedor, String nombre_comercial_pro, int estado, Usuario usuario) {
-        this.id_proveedor = id_proveedor;
-        this.nombre_comercial_pro = nombre_comercial_pro;
+    public Proveedor(int idProveedor, String nombreComercialPro, int estado, Usuario usuario) {
+        this.idProveedor = idProveedor;
+        this.nombreComercialPro = nombreComercialPro;
         this.estado = estado;
         this.usuario = usuario;
     }
+
+    
 
     public int getEstado() {
         return estado;
@@ -58,22 +60,23 @@ public class Proveedor {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    public int getId_proveedor() {
-        return id_proveedor;
+
+    public int getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
-    public String getNombre_comercial_pro() {
-        return nombre_comercial_pro;
+    public String getNombreComercialPro() {
+        return nombreComercialPro;
     }
 
-    public void setNombre_comercial_pro(String nombre_comercial_pro) {
-        this.nombre_comercial_pro = nombre_comercial_pro;
+    public void setNombreComercialPro(String nombreComercialPro) {
+        this.nombreComercialPro = nombreComercialPro;
     }
-
+   
     public Usuario getUsuario() {
         return usuario;
     }

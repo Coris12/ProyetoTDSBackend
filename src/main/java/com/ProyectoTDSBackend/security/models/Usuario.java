@@ -12,6 +12,7 @@ import com.ProyectoTDSBackend.models.Evolucion;
 import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.models.Formulario;
 import com.ProyectoTDSBackend.models.Medicamentos;
+import com.ProyectoTDSBackend.models.Protocolos;
 import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.models.Tarjeta;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -138,6 +139,12 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Consentimiento> consentimiento;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<Protocolos> protocolo;
+    
+    
 
     public Usuario() {
     }

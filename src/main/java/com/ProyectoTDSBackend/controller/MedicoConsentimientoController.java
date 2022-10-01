@@ -90,7 +90,7 @@ public class MedicoConsentimientoController {
             int idCo = ConDTO.getIdMediC();
             byte[] data = JasperExportManager.exportReportToPdf(report);
             ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                    .filename("COnsentimiento medico" + idCo + "_" + generarCodigoAleatorio() + ".pdf")
+                    .filename("Consentimiento medico" + idCo + "_" + generarCodigoAleatorio() + ".pdf")
                     .build();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentDisposition(contentDisposition);

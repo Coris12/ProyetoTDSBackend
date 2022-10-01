@@ -44,8 +44,8 @@ public class ProveedorController {
 
         try {
             Proveedor prove = new Proveedor(
-                    proveedor.getId_proveedor(),
-                    proveedor.getNombre_comercial_pro(),
+                    proveedor.getIdProveedor(),
+                    proveedor.getNombreComercialPro(),
                     proveedor.getEstado(),
                     proveedor.getUsuario()
             );
@@ -91,7 +91,7 @@ public class ProveedorController {
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Proveedor proveedor) {
 
         Proveedor provee = servicio.getOne(id).get();
-        provee.setNombre_comercial_pro(proveedor.getNombre_comercial_pro());
+        provee.setNombreComercialPro(proveedor.getNombreComercialPro());
         provee.setUsuario(proveedor.getUsuario());
         
 
