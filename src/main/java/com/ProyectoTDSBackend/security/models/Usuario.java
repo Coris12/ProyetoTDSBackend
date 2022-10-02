@@ -11,6 +11,7 @@ import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Evolucion;
 import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.models.Formulario;
+import com.ProyectoTDSBackend.models.HistoriaClinica;
 import com.ProyectoTDSBackend.models.Medicamentos;
 import com.ProyectoTDSBackend.models.Protocolos;
 import com.ProyectoTDSBackend.models.Residencia;
@@ -123,7 +124,7 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Evolucion> evoluciones;
-    
+
     @OneToOne
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
@@ -139,12 +140,14 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Consentimiento> consentimiento;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Protocolos> protocolo;
-    
-    
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<HistoriaClinica> historia;
 
     public Usuario() {
     }
