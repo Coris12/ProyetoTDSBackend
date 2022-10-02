@@ -83,10 +83,22 @@ public class HistoriaClinica {
     @Column(name = "fr", nullable = false)
     private String fr;
 
+    @Column(name = "examen", nullable = false)
+    private String examen;
+
+    @Column(name = "realizado", nullable = false)
+    private String realizado;
+
+    @Column(name = "dr", nullable = false)
+    private String dr;
+
     @Column(name = "t", nullable = false)
     private int tem;
     
-    @Column(name="estado",nullable=false)
+     @Column(name = "dx", nullable = false)
+    private String dx;
+
+    @Column(name = "estado", nullable = false)
     private int estado;
 
     @ManyToOne
@@ -96,7 +108,7 @@ public class HistoriaClinica {
     public HistoriaClinica() {
     }
 
-    public HistoriaClinica(Long idHistoria, Date fecha, int numCl, int edad, String procedencia, String residencia, String estadoCivil, String religion, String motivo, String enfermedad, String alergia, String app, String apf, String tipoSangre, String habitos, String ta, String fc, String spo2, String fr, int tem, int estado, Usuario usuario) {
+    public HistoriaClinica(Long idHistoria, Date fecha, int numCl, int edad, String procedencia, String residencia, String estadoCivil, String religion, String motivo, String enfermedad, String alergia, String app, String apf, String tipoSangre, String habitos, String ta, String fc, String spo2, String fr, String examen, String realizado, String dr, int tem, String dx, int estado, Usuario usuario) {
         this.idHistoria = idHistoria;
         this.fecha = fecha;
         this.numCl = numCl;
@@ -116,12 +128,17 @@ public class HistoriaClinica {
         this.fc = fc;
         this.spo2 = spo2;
         this.fr = fr;
+        this.examen = examen;
+        this.realizado = realizado;
+        this.dr = dr;
         this.tem = tem;
+        this.dx = dx;
         this.estado = estado;
         this.usuario = usuario;
     }
 
-  
+
+   
 
     public Long getIdHistoria() {
         return idHistoria;
@@ -297,6 +314,38 @@ public class HistoriaClinica {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public String getExamen() {
+        return examen;
+    }
+
+    public void setExamen(String examen) {
+        this.examen = examen;
+    }
+
+    public String getRealizado() {
+        return realizado;
+    }
+
+    public void setRealizado(String realizado) {
+        this.realizado = realizado;
+    }
+
+    public String getDr() {
+        return dr;
+    }
+
+    public void setDr(String dr) {
+        this.dr = dr;
+    }
+
+    public String getDx() {
+        return dx;
+    }
+
+    public void setDx(String dx) {
+        this.dx = dx;
     }
 
     
