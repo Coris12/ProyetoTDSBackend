@@ -54,7 +54,7 @@
             </query>
         </named-native-query>
     </entity>
-     <entity class="com.ProyectoTDSBackend.models.MedicoConsentimiento">
+    <entity class="com.ProyectoTDSBackend.models.MedicoConsentimiento">
         <named-native-query name="MedicoConsentimiento.generarPdfConsen" result-set-mapping="generarPdfConsen">
             <query>
                 select alergia as alergia ,cedula as cedula, codigo as codigo ,direccion  as direccion
@@ -62,6 +62,31 @@
                 ,nombre_doc as nombre_doc ,nombrep as nombrep ,cedula_pa as cedula_pa 
                 ,procedimientos as procedimientos, telefono as telefono from medico_consentimiento 
                 where estado='1'and id_medi_c =:idme
+            </query>
+        </named-native-query>
+    </entity>
+    <entity class="com.ProyectoTDSBackend.models.Formulario">
+        <named-native-query name="MedicoConsentimiento.getFormularioById" result-set-mapping="getFormularioById">
+            <query>
+                select u.nombres as nombres, u.direccion as direccion, u.celular as celular, f.cuadro_clinico as cuadro_clinico, f.diagnostico as diagnostico , f.hallazgos as hallazgos,
+                d.districto as districto, d.area as area, d.entidad as entidad, d.establecimiento as establecimiento, d.hist_clin_num as hist_clin_num, d.tipo as tipo,
+                rede.entidad_sistema as entidad_sitema, rede.especiali_referido as especiali_referido, rede.establecimiento_referido as establecimiento_referido, 
+                rede.fecha as fecha, rede.servicio_referido as servicio_referido , rede.entidad_sistema as entidad_sistema, rede.anio as anio, rede.dia as dia, 
+                rede.mes as mes, rede.entidad as entidad, rede.especialidad as especialidad, rede.servicio as servicio,
+                r.provincia as provincia, r.nacionalidad as nacionalidad, r.pais as pais, r.parroquia as parroquia, r.canton as canton,
+                m.otro as otro, m.referencia as referencia,f.id_formulario as id_formulario
+                from  usuario u
+                join formulario f
+                on  u.id = f.id_usuario
+                join datos_institucionales d
+                on f.id_datos = d.id_datos
+                join refiere_deriva rede
+                on f.id_refiere = rede.id_refiere
+                join motivos m 
+                on rede.id_motivo = m.id_motivo
+                join residencia r 
+                on r.id_usuario = u.id
+                where u.id =:idFor
             </query>
         </named-native-query>
     </entity>

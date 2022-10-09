@@ -5,20 +5,66 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.ProyectoTDSBackend.dto.FormularioDto;
+import com.ProyectoTDSBackend.dto.MedicamentoDTO;
 import com.ProyectoTDSBackend.security.models.Usuario;
+import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 /**
  *
  * @author LENOVO
  */
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "Formulario.getFormularioById", query = "", resultSetMapping = "getFormularioById")
+})
+@SqlResultSetMapping(name = "getFormularioById", classes = {
+    @ConstructorResult(targetClass = FormularioDto.class, columns = {
+        @ColumnResult(name = "nombres", type = String.class),
+        @ColumnResult(name = "direccion", type = String.class),
+        @ColumnResult(name = "celular", type = String.class),
+        @ColumnResult(name = "cuadro_clinico", type = String.class),
+        @ColumnResult(name = "diagnostico", type = String.class),
+        @ColumnResult(name = "hallazgos", type = String.class),
+        @ColumnResult(name = "districto", type = String.class),
+        @ColumnResult(name = "area", type = String.class),
+        @ColumnResult(name = "entidad", type = String.class),
+        @ColumnResult(name = "establecimiento", type = String.class),
+        @ColumnResult(name = "hist_clin_num", type = String.class),
+        @ColumnResult(name = "tipo", type = String.class),
+        @ColumnResult(name = "entidad_sistema", type = String.class),
+        @ColumnResult(name = "especiali_referido", type = String.class),
+        @ColumnResult(name = "establecimiento_referido", type = String.class),
+        @ColumnResult(name = "fecha", type = Date.class),
+        @ColumnResult(name = "servicio_referido", type = String.class),
+        @ColumnResult(name = "anio", type = String.class),
+        @ColumnResult(name = "dia", type = String.class),
+        @ColumnResult(name = "mes", type = String.class),
+        @ColumnResult(name = "especilaidad", type = String.class),
+        @ColumnResult(name = "servicio", type = String.class),
+        @ColumnResult(name = "provincia", type = Boolean.class),
+        @ColumnResult(name = "nacionalidad", type = String.class),
+        @ColumnResult(name = "pais", type = String.class),
+        @ColumnResult(name = "parroquia", type = String.class),
+        @ColumnResult(name = "caton", type = String.class),
+        @ColumnResult(name = "otro", type = String.class),
+        @ColumnResult(name = "idFormulario", type = String.class)
+
+    })
+})
+
 @Entity
 @Table(name = "formulario")
 public class Formulario {
@@ -78,7 +124,6 @@ public class Formulario {
         return diagnostico;
     }
 
-    
     public void setIdFormulario(int idFormulario) {
         this.idFormulario = idFormulario;
     }

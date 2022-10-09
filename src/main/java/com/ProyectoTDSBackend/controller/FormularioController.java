@@ -5,10 +5,12 @@
  */
 package com.ProyectoTDSBackend.controller;
 
+import com.ProyectoTDSBackend.dto.FormularioDto;
 import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Formulario;
 import com.ProyectoTDSBackend.service.ClienteService;
 import com.ProyectoTDSBackend.service.FormularioService;
+import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  *
@@ -65,4 +69,16 @@ public class FormularioController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
+    
+    @ApiOperation("Recibe la id de convocatoria para mostrar estudiantes asignados")
+    @CrossOrigin({"*"})
+    @GetMapping("/getByIdUsuario")
+    public List<Formulario> getByIdConvocatoria(@RequestParam(value = "id") Integer id) {
+        return servicio.getbyidconvocatoria(id);
+    }
+    @ApiIgnore
+     @GetMapping(path = "/getFormularioById")
+    public ResponseEntity<GenericResponse<FormularioDto>> getFormularioById(int idFor) {
+        return new ResponseEntity<GenericResponse<FormularioDto>>(servicio.getFormularioById(idFor), HttpStatus.OK);
+    }
 }
