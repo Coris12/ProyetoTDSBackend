@@ -283,7 +283,6 @@ public class Autorizacion {
         this.nombreRepre = nombreRepre;
     }
 
-
     public String getCedulaRe() {
         return cedulaRe;
     }

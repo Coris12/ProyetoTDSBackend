@@ -59,10 +59,14 @@ public class Producto implements Serializable {
     @ManyToOne()
     private Proveedor proveedor;
 
+    @ManyToOne
+    @JoinColumn(name = "id_sucursal")
+    private Sucursal sucursal;
+
     public Producto() {
     }
 
-    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, String stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor) {
+    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, String stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor, Sucursal sucursal) {
         this.idProducto = idProducto;
         this.categoriaProducto = categoriaProducto;
         this.codigoRef = codigoRef;
@@ -78,8 +82,8 @@ public class Producto implements Serializable {
         this.ultimoCosto = ultimoCosto;
         this.costoPromedio = costoPromedio;
         this.proveedor = proveedor;
+        this.sucursal = sucursal;
     }
-
 
     public int getIdProducto() {
         return idProducto;
@@ -169,8 +173,6 @@ public class Producto implements Serializable {
         this.stock = stock;
     }
 
-  
-
     public float getUltimoCosto() {
         return ultimoCosto;
     }
@@ -201,6 +203,14 @@ public class Producto implements Serializable {
 
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
+    }
+
+    public Sucursal getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 
 }

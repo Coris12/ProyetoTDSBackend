@@ -1,12 +1,17 @@
 package com.ProyectoTDSBackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,6 +41,11 @@ public class Sucursal extends Auditable implements Serializable {
     @Column(name = "estado", length = 200)
     private int estado;
 
+    
+     @JsonIgnore
+    @OneToMany(mappedBy = "sucursal", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private List<Producto> productp;
+    
     public Sucursal() {
     }
 
@@ -98,4 +108,13 @@ public class Sucursal extends Auditable implements Serializable {
         this.estado = estado;
     }
 
+    public List<Producto> getProductp() {
+        return productp;
+    }
+
+    public void setProductp(List<Producto> productp) {
+        this.productp = productp;
+    }
+
+    
 }

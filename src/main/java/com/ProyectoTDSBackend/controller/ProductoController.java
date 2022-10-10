@@ -90,7 +90,8 @@ public class ProductoController {
                 productos.getEstadoProducto(),
                 productos.getCostoPromedio(),
                 productos.getUltimoCosto(),
-                productos.getProveedor());
+                productos.getProveedor(),
+                productos.getSucursal());
 
         producto.setEstadoProducto(1);
         productoService.save(producto);
@@ -148,7 +149,7 @@ public class ProductoController {
 
     @CrossOrigin
     @PutMapping(path = "update-productoStock")
-    public ResponseEntity<GenericResponse<String>> actualizarStock(@RequestBody Producto producto,  @RequestParam int idProd) {
+    public ResponseEntity<GenericResponse<String>> actualizarStock(@RequestBody Producto producto, @RequestParam int idProd) {
         return new ResponseEntity<GenericResponse<String>>(productoService.updateProductoStock(producto, idProd), HttpStatus.OK);
     }
 
