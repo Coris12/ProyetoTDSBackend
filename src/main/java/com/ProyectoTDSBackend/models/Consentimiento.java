@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
 
 import com.ProyectoTDSBackend.dto.ConsentimientoDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoListDto;
+import com.ProyectoTDSBackend.dto.ConsentimientoTraDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoTratamientoDto;
 import com.ProyectoTDSBackend.security.models.Usuario;
 
@@ -82,29 +83,27 @@ import com.ProyectoTDSBackend.security.models.Usuario;
     }),
 
     @SqlResultSetMapping(name = "generarPdfConsentimiento", classes = {
-        @ConstructorResult(targetClass = ConsentimientoTratamientoDto.class, columns = {
-            @ColumnResult(name = "idConsentimiento", type = Integer.class),
-            @ColumnResult(name = "cama", type = String.class),
-            @ColumnResult(name = "canton", type = String.class),
-            @ColumnResult(name = "codUd", type = String.class),
-            @ColumnResult(name = "fecha", type = Date.class),
+        @ConstructorResult(targetClass = ConsentimientoTraDto.class, columns = {
             @ColumnResult(name = "institucionSistema", type = String.class),
-            @ColumnResult(name = "numeroHistoriaClinica", type = Integer.class),
+            @ColumnResult(name = "unidadOperativa", type = String.class),
+            @ColumnResult(name = "codUd", type = String.class),
+            @ColumnResult(name = "canton", type = String.class),
             @ColumnResult(name = "parroquia", type = String.class),
             @ColumnResult(name = "provincia", type = String.class),
+            @ColumnResult(name = "numeroHistoriaClinica", type = Integer.class),
+            @ColumnResult(name = "nombres", type = String.class),
             @ColumnResult(name = "sala", type = String.class),
             @ColumnResult(name = "servicio", type = String.class),
-            @ColumnResult(name = "unidadOperativa", type = String.class),
-            @ColumnResult(name = "estado", type = Character.class),
-            @ColumnResult(name = "especialidad", type = String.class),
-            @ColumnResult(name = "nombreProfesional", type = String.class),
-            @ColumnResult(name = "procedimientoPropuesto", type = String.class),
+            @ColumnResult(name = "cama", type = String.class),
+            @ColumnResult(name = "fecha", type = Date.class),
             @ColumnResult(name = "proposito", type = String.class),
+            @ColumnResult(name = "procedimientoPropuesto", type = String.class),
             @ColumnResult(name = "resultadoEsperado", type = String.class),
             @ColumnResult(name = "riesgoComplicaciones", type = String.class),
-            @ColumnResult(name = "telefono", type = Integer.class),
-            @ColumnResult(name = "nombres", type = String.class),
-            @ColumnResult(name = "identificacion", type = String.class),})
+            @ColumnResult(name = "nombreProfesional", type = String.class),
+            @ColumnResult(name = "especialidad", type = String.class),
+            @ColumnResult(name = "telefono", type = String.class),
+            @ColumnResult(name = "codigo", type = Integer.class),})
     }),})
 
 @Entity

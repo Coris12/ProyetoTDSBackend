@@ -85,6 +85,8 @@ public class Producto implements Serializable {
         this.sucursal = sucursal;
     }
 
+        
+
     public int getIdProducto() {
         return idProducto;
     }

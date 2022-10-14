@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsentimientoInformadoCirujia" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="72c8698a-8e33-42c7-90b2-3d88afb38df3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idCon" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  i.proposito,i.procedimiento_propuesto,i.resultado_esperado,i.riesgo_complicaciones,i.nombre_profesional_trat,i.especialidad,i.telefono,i.codigo
+ FROM consentimientos c JOIN  informacion_tratamientos i
+on i.id_consentimiento_fk=c.id_consentimiento
+WHERE c.estado = 'a' and i.id_inf_trat='2'
+AND c.id_consentimiento=$P{idCon}]]>
+	</queryString>
+	<field name="proposito" class="java.lang.String"/>
+	<field name="procedimiento_propuesto" class="java.lang.String"/>
+	<field name="resultado_esperado" class="java.lang.String"/>
+	<field name="riesgo_complicaciones" class="java.lang.String"/>
+	<field name="nombre_profesional_trat" class="java.lang.String"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.Integer"/>
+	<field name="codigo" class="java.lang.Integer"/>
+	<detail>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement x="155" y="109" width="109" height="14" uuid="355cf9bd-8fbf-4581-938c-e2cb633735f5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESPECIALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="271" height="29" uuid="45595b05-ebcc-48f0-8069-2b45898ed504"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="123" width="155" height="28" uuid="9e367743-6349-4d7b-aa09-591fb54d7d46"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="15" width="271" height="15" uuid="fa0d4470-3ac0-4863-a49e-93690b63e36d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPOSITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="109" width="87" height="14" uuid="830875ed-550e-419e-9449-657bd5d270bc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="109" width="155" height="14" uuid="609d7323-9c48-498d-ac37-4e3a56bb6309"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL CIRUJANO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="123" width="109" height="28" uuid="aa0c928e-67d0-4dae-9dfc-1fcc7cd70ac7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="59" width="284" height="15" uuid="82a4378b-271e-4bf3-acad-de2cdae4e801"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RIESGOS DE COMPLICACIONES QUIRURGICAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="15" width="284" height="15" uuid="6d6af1fe-7cd1-4134-a0c6-f4cfa1edc5ed"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INTERVENCIONES QUIRURGICAS PROPUESTAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="74" width="271" height="35" uuid="ae2116b4-a761-4b26-bc28-d6e293b49908"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="109" width="87" height="14" uuid="1e9f8f37-5ce5-4e16-86dc-6c0a9c54858e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="15" uuid="d1bebac1-a1e6-4bf3-860e-91e9fb8af79d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.INFORMACION ENTREGADA POR EL CIRUJANO SOBRE LA INTERVENCION QUIRÚRGICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="30" width="284" height="29" uuid="5ed236b2-e4e8-468d-a4fd-ea8493fe1df7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="272" height="15" uuid="abb5540f-dc45-403a-9458-69baa156b402"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESULTADOS ESPERADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="74" width="283" height="35" uuid="9c8d4565-f3b0-439d-b830-aa9ff4549a88"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="123" width="117" height="28" uuid="958b7fe7-b016-4063-8e70-faaf1a6afae1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="109" width="117" height="14" uuid="ac8c624f-cc82-4232-ac82-9ac9eb08e8f5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIRMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="123" width="87" height="28" uuid="9b3c8d30-f85e-4875-8539-c6b327da017a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="123" width="87" height="28" uuid="e168e79d-11db-40b0-8b84-7b398648f0b7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="41" y="30" width="100" height="20" uuid="580c1e39-00f6-4bab-b1de-b133efb50a17"/>
+				<textFieldExpression><![CDATA[$F{proposito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="74" width="100" height="20" uuid="412a36c2-7f84-4848-8dd7-ca7572f849d6"/>
+				<textFieldExpression><![CDATA[$F{resultado_esperado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="324" y="74" width="100" height="20" uuid="5c582abc-1bf0-4bcc-afda-793cb87a6897"/>
+				<textFieldExpression><![CDATA[$F{riesgo_complicaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="298" y="30" width="100" height="20" uuid="b6bea718-80d3-4452-bfe2-a77ba71db050"/>
+				<textFieldExpression><![CDATA[$F{procedimiento_propuesto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="123" width="100" height="20" uuid="f160909a-73b7-4a59-9bb4-cafd25bab84a"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="123" width="100" height="20" uuid="d3f1457a-de25-4cdc-911a-ef6a2dfea778"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="123" width="100" height="20" uuid="f1c80abb-f50d-46d8-ba61-06f077bb6487"/>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="123" width="100" height="20" uuid="9b9550b0-b2a2-44fc-992b-4274625f0f91"/>
+				<textFieldExpression><![CDATA[$F{nombre_profesional_trat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

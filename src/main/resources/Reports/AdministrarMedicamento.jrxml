@@ -28,7 +28,7 @@ where u.identificacion=$P{iden};]]>
 		<band height="63" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="557" height="51" uuid="678d8959-a0e9-4a1d-b096-57bdaa05a418"/>
-				<imageExpression><![CDATA["Image\\medivalleLa.png"]]></imageExpression>
+				<imageExpression><![CDATA["Image\\medival.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

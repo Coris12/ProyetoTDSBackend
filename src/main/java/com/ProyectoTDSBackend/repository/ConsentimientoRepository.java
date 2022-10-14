@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ProyectoTDSBackend.dto.ConsentimientoDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoListDto;
+import com.ProyectoTDSBackend.dto.ConsentimientoTraDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoTratamientoDto;
 import com.ProyectoTDSBackend.models.Consentimiento;
 import org.springframework.data.repository.query.Param;
@@ -21,7 +22,7 @@ public interface ConsentimientoRepository extends JpaRepository<Consentimiento, 
     
     @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     @Query(nativeQuery = true)
-    public List<ConsentimientoTratamientoDto> generarPdfConsentimiento(@Param("idCon") int idCon);
+    public List<ConsentimientoTraDto> generarPdfConsentimiento(@Param("idCon") int idCon);
     
     @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     @Query(nativeQuery = true)

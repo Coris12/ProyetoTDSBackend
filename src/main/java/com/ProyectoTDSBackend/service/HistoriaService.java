@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.HistoriaDto;
 import com.ProyectoTDSBackend.models.HistoriaClinica;
 import com.ProyectoTDSBackend.repository.HistoriaRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -64,4 +65,8 @@ public class HistoriaService {
         return repositorio.findAll();
     }
     
+       public List<HistoriaDto> generarPdf(int idHi){
+        List<HistoriaDto> generaPdf = repositorio.generarPdfHistoria(idHi);
+        return generaPdf;
+    }
 }

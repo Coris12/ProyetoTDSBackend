@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsentimientoInformadoAnestesia" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b3e5f0a8-e13a-47c7-9100-d8385d2dbac9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idCon" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  i.proposito,i.procedimiento_propuesto,i.resultado_esperado,i.riesgo_complicaciones,i.nombre_profesional_trat,i.especialidad,i.telefono,i.codigo
+ FROM consentimientos c JOIN  informacion_tratamientos i
+on i.id_consentimiento_fk=c.id_consentimiento
+WHERE c.estado = 'a' and i.id_inf_trat='3'
+AND c.id_consentimiento=$P{idCon}]]>
+	</queryString>
+	<field name="proposito" class="java.lang.String"/>
+	<field name="procedimiento_propuesto" class="java.lang.String"/>
+	<field name="resultado_esperado" class="java.lang.String"/>
+	<field name="riesgo_complicaciones" class="java.lang.String"/>
+	<field name="nombre_profesional_trat" class="java.lang.String"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.Integer"/>
+	<field name="codigo" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement x="271" y="30" width="284" height="31" uuid="e201a368-f980-4b5b-9da6-d36356e16aec"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="156" height="19" uuid="ae9121b3-7a00-4c71-8a49-0ec5fa162074"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL CIRUJANO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="100" width="82" height="19" uuid="46b89f4c-f40d-4522-9e44-ce316f53c881"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="61" width="284" height="15" uuid="fb9e5560-4970-4fce-a397-76fa482fa205"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RIESGOS DE COMPLICACIONES ANESTESICAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="15" width="284" height="15" uuid="65d770ff-7b55-4499-83c7-f52d108a6e7c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANESTESIA PROPUESTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="119" width="92" height="24" uuid="810652dd-8961-498f-9bdc-c5c824ce21af"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="61" width="271" height="15" uuid="48e63d94-b712-4fad-b7a8-efba29ec5d46"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESULTADOS ESPERADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="119" width="109" height="24" uuid="de1763e4-37d9-4b43-a9a8-08a80f98c9d1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="100" width="116" height="19" uuid="e5402d54-eb55-4559-9c7d-8d7194a751ef"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIRMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="15" uuid="39417e20-883e-43a6-8edd-bca9e354ba95"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.INFORMACION ENTREGADA POR EL ANESTESIOLOGO SOBRE LA ANESTESIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="119" width="82" height="24" uuid="d0f332f3-4779-4936-a574-ae8bcb113e4c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="100" width="109" height="19" uuid="fecb84c6-09b1-44e4-a224-d4d37f6072eb"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESPECIALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="119" width="156" height="24" uuid="8024be0a-e223-4339-ab1b-fe0204b90f04"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="119" width="116" height="24" uuid="c68c093a-2f94-4739-af65-d232c0b36deb"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="76" width="284" height="24" uuid="7267ab12-5793-4d47-b484-b4dfa4d54ec6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="15" width="271" height="15" uuid="e41d67d4-da14-45d0-b129-fde1c327bee9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPOSITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="30" width="271" height="31" uuid="b8c41d43-a599-43b8-8936-ebe144049d1a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="76" width="271" height="24" uuid="13cfd939-114b-40d8-b9d5-53d1334dcaff"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="100" width="92" height="19" uuid="df0f406b-aee7-415f-9695-5a212229603c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="21" y="30" width="100" height="20" uuid="a7530282-f683-424d-95f0-072321af457e"/>
+				<textFieldExpression><![CDATA[$F{proposito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="119" width="100" height="20" uuid="f7999b42-dc1d-4bee-86c6-fee48357c953"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="119" width="100" height="20" uuid="f5bc6e82-0704-40a5-89d4-3d37d0036825"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="123" width="100" height="20" uuid="48a3edba-2a1f-48ea-9cd0-67f81a37d0d2"/>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="21" y="119" width="100" height="20" uuid="f6a00142-9dc4-4176-b2de-5bae72faf100"/>
+				<textFieldExpression><![CDATA[$F{nombre_profesional_trat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="80" width="100" height="20" uuid="e8dde790-4679-4d7c-93c2-62811fe4ab67"/>
+				<textFieldExpression><![CDATA[$F{resultado_esperado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="80" width="100" height="20" uuid="56743c0a-8712-4411-9c09-4c74cd4bf28a"/>
+				<textFieldExpression><![CDATA[$F{riesgo_complicaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="30" width="100" height="20" uuid="09825760-08d9-4a21-9557-788b233dd0d1"/>
+				<textFieldExpression><![CDATA[$F{resultado_esperado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

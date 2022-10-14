@@ -65,6 +65,21 @@
             </query>
         </named-native-query>
     </entity>
+    
+    <entity class="com.ProyectoTDSBackend.models.HistoriaClinica">
+        <named-native-query name="HistoriaClinica.generarPdfHistoria" result-set-mapping="generarPdfHistoria">
+            <query>
+                Select u.nombres as nombres,h.alergia as alergia,h.apf as apf ,h.app as app ,h.edad as edad,h.enfermedad as enfermedad 
+                ,h.estado_civil as estado_civil,
+                h.fc as fc,h.fecha as fecha,h.fr as fr,h.habitos as habitos,h.motivo as motivo,h.num_cli as num_cli,h.procedencia as procedencia,h.religion as religion,
+                h.residencia as residencia,
+                h.spo2 as spo2 ,h.ta as ta,h.t as t,h.tipo_sangre as tipo_sangre,h.examen as examen,h.dr as dr,h.realizado as realizado,h.dx as dx
+                from historia_clinica h join usuario u 
+                on h.id_persona=u.id
+                where h.id_historia=:idHi
+            </query>
+        </named-native-query>
+    </entity>
     <entity class="com.ProyectoTDSBackend.models.Formulario">
         <named-native-query name="MedicoConsentimiento.getFormularioById" result-set-mapping="getFormularioById">
             <query>
@@ -239,6 +254,21 @@
             </query>
         </named-native-query>
         
+        <named-native-query name="Consentimiento.generarPdfConsentimiento" result-set-mapping="generarPdfConsentimiento">
+            <query>
+                SELECT c.id_consentimiento as id_consetimiento,c.institucion_sistema as institucionSistema, c.unidad_operativa as unidadOperativa,
+                c.cod_ud as codUd,c.canton as canton,c.parroquia as parroquia,c.provincia as provincia,c.numero_historia_clinica as numeroHistoriaClinica, 
+                u.nombres as nombres, c.sala as sala, c.servicio as servicio, c.cama as cama,c.fecha as fecha,i.proposito as proposito
+                ,i.procedimiento_propuesto as procedimientoPropuesto ,i.resultado_esperado as resultadoEsperado,
+                i.riesgo_complicaciones as riesgoComplicaciones,
+                i.nombre_profesional_trat as nombreProfesional ,i.especialidad as especialidad,i.telefono as telefono,i.codigo as codigo
+                FROM consentimientos c JOIN usuario u
+                ON u.id = c.id_usuario
+                join informacion_tratamientos i
+                on i.id_consentimiento_fk=c.id_consentimiento
+                WHERE c.estado = 'a' and c.id_consentimiento=:idCon
+            </query>
+        </named-native-query>
         <named-native-query name="Consentimiento.getAllDatosOnlyConsentimientoById" result-set-mapping="getAllDatosOnlyConsentimientoById">
             <query>
                 SELECT c.id_consentimiento as idConsentimiento, c.cama, c.canton, c.cod_ud as codUd, c.estado, c.fecha, 

@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConsentimientoInformadoTratamiento" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c6df8fb0-d080-4fc3-87c9-7816f1d13da1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idCon" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  i.proposito,i.procedimiento_propuesto,i.resultado_esperado,i.riesgo_complicaciones,i.nombre_profesional_trat,i.especialidad,i.telefono,i.codigo
+ FROM consentimientos c JOIN  informacion_tratamientos i
+on i.id_consentimiento_fk=c.id_consentimiento
+WHERE c.estado = 'a' and i.id_inf_trat='1']]>
+	</queryString>
+	<field name="proposito" class="java.lang.String"/>
+	<field name="procedimiento_propuesto" class="java.lang.String"/>
+	<field name="resultado_esperado" class="java.lang.String"/>
+	<field name="riesgo_complicaciones" class="java.lang.String"/>
+	<field name="nombre_profesional_trat" class="java.lang.String"/>
+	<field name="especialidad" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.Integer"/>
+	<field name="codigo" class="java.lang.Integer"/>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="271" height="15" uuid="d581781b-d8ed-4467-a558-cbd57df8832e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPOSITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="131" width="116" height="20" uuid="98ba52c5-4573-4d87-8af3-48b06811f1c4"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="115" width="109" height="16" uuid="70fae6a0-3f5a-4642-bede-45533974958a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESPECIALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="131" width="156" height="20" uuid="19e627da-d362-4c52-9129-6d3b4fb93f44"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="63" width="271" height="15" uuid="d6cc7826-6942-44a6-937f-3565699ea689"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESULTADOS ESPERADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="131" width="87" height="20" uuid="b63a4283-3cfa-46ed-9ef8-fb3852ce850d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="30" width="284" height="33" uuid="39367fd6-b93e-4ecb-9c7d-25871bd1feff"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="271" height="37" uuid="43338357-c8b7-4c75-b6fd-208caca3490a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="115" width="116" height="16" uuid="3ad007e7-e4a6-4de0-a5e7-28f14544ec8c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIRMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="63" width="284" height="15" uuid="300a7f6f-c1b5-4aee-a4f9-9b553215be2b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RIESGOS DE COMPLICACIONES CLINICAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="115" width="87" height="16" uuid="c0994486-c99d-4515-844c-777a85e3d0d5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="78" width="284" height="37" uuid="4f876475-1dc1-4e29-9784-1207e6cb8655"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="115" width="87" height="16" uuid="5d8c42bc-79ac-4f1c-9351-a66fb71eb7cf"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="115" width="156" height="16" uuid="7f99a124-c3bf-4d8a-93a3-871072c6fc4d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL PROFESIONAL TRATANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="15" width="284" height="15" uuid="1d7b62d2-b19d-4680-bbdd-62b1fe178115"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERAPIA Y PROCEDIMIENTOS PROPUESTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="15" uuid="53fe76fd-8e3e-4277-9f39-6c13b4a947c5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.INFORMACION ENTREGADA POR EL PROFESIONAL TRATANTE SOBRE EL TRATAMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="131" width="87" height="20" uuid="476d7f8b-7f67-453a-a6a0-57d80628ffff"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="131" width="109" height="20" uuid="bef9d6c2-be15-43ca-a45f-34e0e8bb763c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="24" y="30" width="100" height="20" uuid="1e7cc398-c755-4b40-82a2-1092a7471406"/>
+				<textFieldExpression><![CDATA[$F{proposito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="30" width="100" height="20" uuid="ccbdeb4a-9048-4fa5-a554-1608d0e75220"/>
+				<textFieldExpression><![CDATA[$F{procedimiento_propuesto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="78" width="100" height="20" uuid="b097a0d9-a605-4495-bdcd-bc055574fab0"/>
+				<textFieldExpression><![CDATA[$F{resultado_esperado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="78" width="100" height="20" uuid="3125167b-8634-434a-a7f9-67202880ca33"/>
+				<textFieldExpression><![CDATA[$F{riesgo_complicaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="133" width="100" height="20" uuid="7e4ee894-b512-4814-90b8-a4008d581fde"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="133" width="100" height="20" uuid="068d1bdc-4b33-4162-b9ef-96023c4321be"/>
+				<textFieldExpression><![CDATA[$F{especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="133" width="100" height="20" uuid="4a8fd22f-186f-4456-9b3a-d69901c9e808"/>
+				<textFieldExpression><![CDATA[$F{nombre_profesional_trat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="133" width="100" height="20" uuid="0d98c33b-7f01-4c0d-903a-fa7c4c007c15"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="271" height="33" uuid="79bd773a-ddf1-4f3f-92e1-2db900cd3475"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -5,21 +5,58 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.ProyectoTDSBackend.dto.HistoriaDto;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 /**
  *
  * @author corin
  */
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "HistoriaClinica.generarPdfHistoria", query = "", resultSetMapping = "generarPdfHistoria")
+})
+
+@SqlResultSetMapping(name = "generarPdfHistoria", classes = {
+    @ConstructorResult(targetClass = HistoriaDto.class, columns = {
+        @ColumnResult(name = "nombres", type = String.class),
+        @ColumnResult(name = "alergia", type = String.class),
+        @ColumnResult(name = "apf", type = String.class),
+        @ColumnResult(name = "app", type = String.class),
+        @ColumnResult(name = "fecha", type = Date.class),
+        @ColumnResult(name = "edad", type = Integer.class),
+        @ColumnResult(name = "enfermedad", type = String.class),
+        @ColumnResult(name = "estado_civil", type = String.class),
+        @ColumnResult(name = "fc", type = String.class),
+        @ColumnResult(name = "fr", type = String.class),
+        @ColumnResult(name = "habitos", type = String.class),
+        @ColumnResult(name = "motivo", type = String.class),
+        @ColumnResult(name = "num_cli", type = Integer.class),
+        @ColumnResult(name = "procedencia", type = String.class),
+        @ColumnResult(name = "religion", type = String.class),
+        @ColumnResult(name = "residencia", type = String.class),
+        @ColumnResult(name = "spo2", type = String.class),
+        @ColumnResult(name = "ta", type = String.class),
+        @ColumnResult(name = "t", type = Integer.class),
+        @ColumnResult(name = "tipo_sangre", type = String.class),
+        @ColumnResult(name = "examen", type = String.class),
+        @ColumnResult(name = "dr", type = String.class),
+        @ColumnResult(name = "realizado", type = String.class),
+        @ColumnResult(name = "dx", type = String.class),})
+})
 @Entity
 @Table(name = "historia_clinica")
 public class HistoriaClinica {
@@ -94,8 +131,8 @@ public class HistoriaClinica {
 
     @Column(name = "t", nullable = false)
     private int tem;
-    
-     @Column(name = "dx", nullable = false)
+
+    @Column(name = "dx", nullable = false)
     private String dx;
 
     @Column(name = "estado", nullable = false)
@@ -136,9 +173,6 @@ public class HistoriaClinica {
         this.estado = estado;
         this.usuario = usuario;
     }
-
-
-   
 
     public Long getIdHistoria() {
         return idHistoria;
@@ -348,5 +382,4 @@ public class HistoriaClinica {
         this.dx = dx;
     }
 
-    
 }

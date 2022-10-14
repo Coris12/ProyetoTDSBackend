@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ProyectoTDSBackend.Exceptions.MessagExcepciones;
 import com.ProyectoTDSBackend.dto.ConsentimientoDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoListDto;
+import com.ProyectoTDSBackend.dto.ConsentimientoTraDto;
 import com.ProyectoTDSBackend.dto.ConsentimientoTratamientoDto;
 import com.ProyectoTDSBackend.models.Consentimiento;
 import com.ProyectoTDSBackend.service.ConsentimientoService;
@@ -94,11 +95,11 @@ public class ConsentimientoController {
             JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/ConsentimientoInformado.jrxml"));
             HashMap<String, Object> map = new HashMap<>();
             JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
-            ConsentimientoTratamientoDto consentimientoDTO = consentimientoService.generarPdf(idCon).get(0);
-            int idCo = consentimientoDTO.getIdConsentimiento();
+            ConsentimientoTraDto consentimientoDTO = consentimientoService.generarPdf(idCon).get(0);
+            int idCo = consentimientoDTO.getId_consentimiento();
             byte[] data = JasperExportManager.exportReportToPdf(report);
             ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                    .filename("Evolucion y Prescripcion" + idCo + "_" + generarCodigoAleatorio() + ".pdf")
+                    .filename("Consentimiento Informado" + idCo + "_" + generarCodigoAleatorio() + ".pdf")
                     .build();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentDisposition(contentDisposition);

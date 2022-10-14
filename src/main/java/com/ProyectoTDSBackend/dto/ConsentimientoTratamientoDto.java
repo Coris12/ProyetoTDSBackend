@@ -3,27 +3,28 @@ package com.ProyectoTDSBackend.dto;
 import java.util.Date;
 
 public class ConsentimientoTratamientoDto {
-    private Integer idConsentimiento; 
-    private String cama; 
+
+    private Integer idConsentimiento;
+    private String cama;
     private String canton;
     private String codUd;
-    private Date fecha; 
-    private String institucionSistema; 
-    private Integer numeroHistoriaClinica; 
-    private String parroquia; 
-    private String provincia; 
-    private String sala; 
-    private String servicio; 
-    private String unidadOperativa; 
-    private char estado; 
-    private Integer idConsentimientoFK; 
-    private Integer codigo; 
-    private String especialidad; 
-    private String nombreProfesional; 
-    private String procedimientoPropuesto; 
-    private String proposito; 
-    private String resultadoEsperado; 
-    private String riesgoComplicaciones; 
+    private Date fecha;
+    private String institucionSistema;
+    private Integer numeroHistoriaClinica;
+    private String parroquia;
+    private String provincia;
+    private String sala;
+    private String servicio;
+    private String unidadOperativa;
+    private char estado;
+    private Integer idConsentimientoFK;
+    private Integer codigo;
+    private String especialidad;
+    private String nombreProfesional;
+    private String procedimientoPropuesto;
+    private String proposito;
+    private String resultadoEsperado;
+    private String riesgoComplicaciones;
     private Integer telefono;
     private Integer IdInfTrat;
 
@@ -31,37 +32,38 @@ public class ConsentimientoTratamientoDto {
     }
 
     public ConsentimientoTratamientoDto(Integer idConsentimiento, String cama, String canton, String codUd, Date fecha,
-			String institucionSistema, Integer numeroHistoriaClinica, String parroquia, String provincia, String sala,
-			String servicio, String unidadOperativa, char estado, Integer idConsentimientoFK, Integer codigo,
-			String especialidad, String nombreProfesional, String procedimientoPropuesto, String proposito,
-			String resultadoEsperado, String riesgoComplicaciones, Integer telefono, Integer idInfTrat) {
-		super();
-		this.idConsentimiento = idConsentimiento;
-		this.cama = cama;
-		this.canton = canton;
-		this.codUd = codUd;
-		this.fecha = fecha;
-		this.institucionSistema = institucionSistema;
-		this.numeroHistoriaClinica = numeroHistoriaClinica;
-		this.parroquia = parroquia;
-		this.provincia = provincia;
-		this.sala = sala;
-		this.servicio = servicio;
-		this.unidadOperativa = unidadOperativa;
-		this.estado = estado;
-		this.idConsentimientoFK = idConsentimientoFK;
-		this.codigo = codigo;
-		this.especialidad = especialidad;
-		this.nombreProfesional = nombreProfesional;
-		this.procedimientoPropuesto = procedimientoPropuesto;
-		this.proposito = proposito;
-		this.resultadoEsperado = resultadoEsperado;
-		this.riesgoComplicaciones = riesgoComplicaciones;
-		this.telefono = telefono;
-		IdInfTrat = idInfTrat;
-	}
-
-	public Integer getIdConsentimiento() {
+            String institucionSistema, Integer numeroHistoriaClinica, String parroquia, String provincia, String sala,
+            String servicio, String unidadOperativa, char estado, Integer idConsentimientoFK, Integer codigo,
+            String especialidad, String nombreProfesional, String procedimientoPropuesto, String proposito,
+            String resultadoEsperado, String riesgoComplicaciones, Integer telefono, Integer idInfTrat) {
+        super();
+        this.idConsentimiento = idConsentimiento;
+        this.cama = cama;
+        this.canton = canton;
+        this.codUd = codUd;
+        this.fecha = fecha;
+        this.institucionSistema = institucionSistema;
+        this.numeroHistoriaClinica = numeroHistoriaClinica;
+        this.parroquia = parroquia;
+        this.provincia = provincia;
+        this.sala = sala;
+        this.servicio = servicio;
+        this.unidadOperativa = unidadOperativa;
+        this.estado = estado;
+        this.idConsentimientoFK = idConsentimientoFK;
+        this.codigo = codigo;
+        this.especialidad = especialidad;
+        this.nombreProfesional = nombreProfesional;
+        this.procedimientoPropuesto = procedimientoPropuesto;
+        this.proposito = proposito;
+        this.resultadoEsperado = resultadoEsperado;
+        this.riesgoComplicaciones = riesgoComplicaciones;
+        this.telefono = telefono;
+        IdInfTrat = idInfTrat;
+    }
+    
+   
+    public Integer getIdConsentimiento() {
         return idConsentimiento;
     }
 
@@ -93,16 +95,15 @@ public class ConsentimientoTratamientoDto {
         this.codUd = codUd;
     }
 
-
     public Date getFecha() {
-		return fecha;
-	}
+        return fecha;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
-	public String getInstitucionSistema() {
+    public String getInstitucionSistema() {
         return institucionSistema;
     }
 
@@ -245,5 +246,5 @@ public class ConsentimientoTratamientoDto {
     public void setIdConsentimientoFK(Integer idConsentimientoFK) {
         this.idConsentimientoFK = idConsentimientoFK;
     }
-    
+
 }
