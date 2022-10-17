@@ -71,10 +71,12 @@ public class ProductoController {
         Producto producto = productoService.getByNombre(nombre).get();
         return new ResponseEntity(producto, HttpStatus.OK);
     }
- @PostMapping(path = "saveMedicamentos")
+
+    @PostMapping(path = "saveMedicamentos")
     public ResponseEntity<GenericResponse<String>> saveProducto(@RequestBody Producto producto) {
         return new ResponseEntity<GenericResponse<String>>(productoService.saveProducto(producto), HttpStatus.OK);
     }
+
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Producto productos) {
 
@@ -154,6 +156,13 @@ public class ProductoController {
     @PutMapping(path = "update-productoStock")
     public ResponseEntity<GenericResponse<String>> actualizarStock(@RequestBody Producto producto, @RequestParam Long idProd) {
         return new ResponseEntity<GenericResponse<String>>(productoService.updateProductoStock(producto, idProd), HttpStatus.OK);
+    }
+
+    @ApiOperation("Recibe la id de convocatoria para mostrar estudiantes asignados")
+    @CrossOrigin({"*"})
+    @GetMapping("/getProductoByIdSucursal")
+    public List<Producto> getProductoByIdSucursal(@RequestParam(value = "id") Long id) {
+        return productoService.getbyidsucursal(id);
     }
 
 }

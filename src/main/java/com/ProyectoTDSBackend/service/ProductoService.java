@@ -81,6 +81,9 @@ public class ProductoService {
         productoRepository.deleteById(id);
     }
 
+     public List<Producto> getbyidsucursal(Long id){
+    	return productoRepository.findid(id);
+    }
     public boolean existsById(Long id) {
         return productoRepository.existsById(id);
     }
