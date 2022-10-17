@@ -54,7 +54,7 @@ public class ProductoController {
     }
 
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Producto> getById(@PathVariable("id") int id) {
+    public ResponseEntity<Producto> getById(@PathVariable("id") Long id) {
         if (!productoService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
@@ -71,7 +71,10 @@ public class ProductoController {
         Producto producto = productoService.getByNombre(nombre).get();
         return new ResponseEntity(producto, HttpStatus.OK);
     }
-
+ @PostMapping(path = "saveMedicamentos")
+    public ResponseEntity<GenericResponse<String>> saveProducto(@RequestBody Producto producto) {
+        return new ResponseEntity<GenericResponse<String>>(productoService.saveProducto(producto), HttpStatus.OK);
+    }
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Producto productos) {
 
@@ -93,14 +96,14 @@ public class ProductoController {
                 productos.getProveedor(),
                 productos.getSucursal());
 
-        producto.setEstadoProducto(1);
-        productoService.save(producto);
+        productos.setEstadoProducto(1);
+        productoService.save(productos);
 
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Producto producto) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Producto producto) {
 
         Producto productos = productoService.getOne(id).get();
         productos.setNombreProducto(producto.getNombreProducto());
@@ -125,7 +128,7 @@ public class ProductoController {
     @ApiOperation("Eliminado logico del producto")
     @CrossOrigin({"*"})
     @PatchMapping("/deleteProducto/{id_producto}")
-    public ResponseEntity<?> deleteProducto(@RequestParam(value = "id_producto") int idProducto) {
+    public ResponseEntity<?> deleteProducto(@RequestParam(value = "id_producto") Long idProducto) {
         Producto producto = productoService.getOne(idProducto).get();
         producto.setEstadoProducto(0);
         productoService.save(producto);
@@ -139,7 +142,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") int id) {
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         if (!productoService.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
         }
@@ -149,7 +152,7 @@ public class ProductoController {
 
     @CrossOrigin
     @PutMapping(path = "update-productoStock")
-    public ResponseEntity<GenericResponse<String>> actualizarStock(@RequestBody Producto producto, @RequestParam int idProd) {
+    public ResponseEntity<GenericResponse<String>> actualizarStock(@RequestBody Producto producto, @RequestParam Long idProd) {
         return new ResponseEntity<GenericResponse<String>>(productoService.updateProductoStock(producto, idProd), HttpStatus.OK);
     }
 

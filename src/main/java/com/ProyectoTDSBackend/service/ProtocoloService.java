@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.ProtocoloDto;
 import com.ProyectoTDSBackend.models.Protocolos;
 import com.ProyectoTDSBackend.repository.ProtocoloRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -63,6 +64,9 @@ public class ProtocoloService {
     public List<Protocolos> list() {
         return repositorio.findAll();
     }
-    
+    public List<ProtocoloDto> generarPdf(int idPro){
+        List<ProtocoloDto> generaPdf = repositorio.generarPdfProtocolo(idPro);
+        return generaPdf;
+    }
     
 }

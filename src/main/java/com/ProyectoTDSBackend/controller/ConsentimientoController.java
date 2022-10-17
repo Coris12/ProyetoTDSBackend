@@ -95,8 +95,8 @@ public class ConsentimientoController {
             JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/ConsentimientoInformado.jrxml"));
             HashMap<String, Object> map = new HashMap<>();
             JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
-            ConsentimientoTraDto consentimientoDTO = consentimientoService.generarPdf(idCon).get(0);
-            int idCo = consentimientoDTO.getId_consentimiento();
+            ConsentimientoTraDto consentimientoTraDTO = consentimientoService.generarPdf(idCon).get(0);
+            int idCo = consentimientoTraDTO.getId_consentimiento();
             byte[] data = JasperExportManager.exportReportToPdf(report);
             ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
                     .filename("Consentimiento Informado" + idCo + "_" + generarCodigoAleatorio() + ".pdf")

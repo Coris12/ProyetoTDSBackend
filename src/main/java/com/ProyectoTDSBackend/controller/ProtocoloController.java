@@ -6,13 +6,27 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
+import com.ProyectoTDSBackend.dto.ProtocoloDto;
 import com.ProyectoTDSBackend.models.Protocolos;
 import com.ProyectoTDSBackend.service.ProtocoloService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,5 +78,25 @@ public class ProtocoloController {
             codigo += (int) (Math.random() * 10);
         }
         return codigo;
+    }
+       @GetMapping(path = "generarPdf")
+    public ResponseEntity<byte[]> generarPdf(int idPro) throws JRException, FileNotFoundException {
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(servicio.generarPdf(idPro));
+        if (beanCollectionDataSource.getData().size() > 0) {
+            JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/RecordOperatorio.jrxml"));
+            HashMap<String, Object> map = new HashMap<>();
+            JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
+            ProtocoloDto proto = servicio.generarPdf(idPro).get(0);
+            int idProto = proto.getIdProtocolo();
+            byte[] data = JasperExportManager.exportReportToPdf(report);
+            ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
+                    .filename("Record Operatorio" + idProto + "_" + generarCodigoAleatorio() + ".pdf")
+                    .build();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentDisposition(contentDisposition);
+            return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(data);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

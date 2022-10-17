@@ -28,7 +28,7 @@ public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto", nullable = false)
-    private int idProducto;
+    private Long idProducto;
     @Column(name = "categoria_producto")
     private String categoriaProducto;
     @Column(name = "codigo_ref_producto")
@@ -66,7 +66,7 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(int idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, String stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor, Sucursal sucursal) {
+    public Producto(Long idProducto, String categoriaProducto, String codigoRef, String nombreProducto, String inventarioProducto, String fechaExp, String regSanitario, String codBarra, String descripcionProducto, float precioProducto, String stock, int estadoProducto, float ultimoCosto, float costoPromedio, Proveedor proveedor, Sucursal sucursal) {
         this.idProducto = idProducto;
         this.categoriaProducto = categoriaProducto;
         this.codigoRef = codigoRef;
@@ -87,11 +87,11 @@ public class Producto implements Serializable {
 
         
 
-    public int getIdProducto() {
+    public Long getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
 

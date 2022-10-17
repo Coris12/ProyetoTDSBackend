@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  * @author LENOVO
  */
 @Repository
-public interface ProductoRepository extends JpaRepository<Producto, Integer> {
+public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
     Optional<Producto> findByNombreProducto(String nombre);
 

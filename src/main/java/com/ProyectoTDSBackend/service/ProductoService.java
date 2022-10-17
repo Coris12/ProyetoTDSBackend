@@ -36,7 +36,7 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
-    public Optional<Producto> getOne(int id) {
+    public Optional<Producto> getOne(Long id) {
         return productoRepository.findById(id);
     }
 
@@ -47,7 +47,29 @@ public class ProductoService {
     public void save(Producto producto) {
         productoRepository.save(producto);
     }
-    
+     @Transactional
+    public GenericResponse<String> saveProducto(Producto producto) {
+        GenericResponse<String> response = new GenericResponse<>();
+        try {
+            if (producto != null) {
+                producto.setEstadoProducto(1);
+                productoRepository.save(producto);
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject(producto.getIdProducto().toString());
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            } else {
+                response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
+                response.setObject("diagnostico no guardado  no guardada");
+                response.setStatus(ParametersApp.SUCCESSFUL.value());
+            }
+
+        } catch (Exception e) {
+            log.error("Error al guardar diagnostico: " + e.getMessage());
+            response.setStatus(ParametersApp.SERVER_ERROR.value());
+        }
+        return response;
+    }
+
     
     public GenericResponse<String> updateSucursal(Producto producto) {
         GenericResponse<String> response = new GenericResponse<>();
@@ -55,11 +77,11 @@ public class ProductoService {
         return response;
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         productoRepository.deleteById(id);
     }
 
-    public boolean existsById(int id) {
+    public boolean existsById(Long id) {
         return productoRepository.existsById(id);
     }
 
@@ -70,12 +92,12 @@ public class ProductoService {
      return productoRepository.findAllActiveUsersNative();
     }
 
-    public GenericResponse<String> updateProductoStock(Producto producto, int idProd){
+    public GenericResponse<String> updateProductoStock(Producto producto, Long idProd){
         GenericResponse<String> response = new GenericResponse<>();
         try {
             if(productoRepository.findById(idProd) != null){
                 if( Integer.parseInt(producto.getStock())>=0){
-                    int id = productoRepository.save(producto).getIdProducto();
+                    Long id = productoRepository.save(producto).getIdProducto();
                     response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
 			        response.setObject("Stock "+id+" actualizada correctamente");
 			        response.setStatus(ParametersApp.SUCCESSFUL.value());

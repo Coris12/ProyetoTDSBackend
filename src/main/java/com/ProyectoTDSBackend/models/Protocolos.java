@@ -5,24 +5,64 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.ProyectoTDSBackend.dto.ProtocoloDto;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 /**
  *
  * @author corin
  */
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "Protocolos.generarPdfProtocolo", query = "", resultSetMapping = "generarPdfProtocolo")
+})
+@SqlResultSetMapping(name = "generarPdfProtocolo", classes = {
+    @ConstructorResult(targetClass = ProtocoloDto.class, columns = {
+        @ColumnResult(name = "nombres", type = String.class),
+        @ColumnResult(name = "postoperatorio", type = String.class),
+        @ColumnResult(name = "escrita", type = String.class),
+        @ColumnResult(name = "fecha_red", type = Date.class),
+        @ColumnResult(name = "n_cama", type = Integer.class),
+        @ColumnResult(name = "preoperatorio", type = String.class),
+        @ColumnResult(name = "realizada", type = String.class),
+        @ColumnResult(name = "redactado", type = String.class),
+        @ColumnResult(name = "sala", type = String.class),
+        @ColumnResult(name = "servicio", type = String.class),
+        @ColumnResult(name = "tipo_cirujia", type = String.class),
+        @ColumnResult(name = "anestesiologo", type = String.class),
+        @ColumnResult(name = "cirujano", type = String.class),
+        @ColumnResult(name = "fecha", type = Date.class),
+        @ColumnResult(name = "hora_fin", type = String.class),
+        @ColumnResult(name = "hora_inicio", type = String.class),
+        @ColumnResult(name = "instrumentista", type = String.class),
+        @ColumnResult(name = "primer_ayudante", type = String.class),
+        @ColumnResult(name = "segundo_ayudante", type = Integer.class),
+        @ColumnResult(name = "tercer_ayudante", type = String.class),
+        @ColumnResult(name = "tipo_anestesia", type = String.class),
+        @ColumnResult(name = "complicaciones", type = String.class),
+        @ColumnResult(name = "dieresis", type = String.class),
+        @ColumnResult(name = "examen", type = String.class),
+        @ColumnResult(name = "exploracion", type = String.class),
+        @ColumnResult(name = "exposicion", type = String.class),
+        @ColumnResult(name = "procedimiento", type = String.class),
+        @ColumnResult(name = "sintensis", type = String.class),})
+})
 @Entity
 @Table(name = "protocolo")
 public class Protocolos {
