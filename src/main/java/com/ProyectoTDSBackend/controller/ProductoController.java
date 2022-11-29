@@ -161,8 +161,8 @@ public class ProductoController {
     @ApiOperation("Recibe la id de convocatoria para mostrar estudiantes asignados")
     @CrossOrigin({"*"})
     @GetMapping("/getProductoByIdSucursal")
-    public List<Producto> getProductoByIdSucursal(@RequestParam(value = "id") Long id) {
-        return productoService.getbyidsucursal(id);
+    public List<Producto> getProductoByIdSucursal(@RequestParam(value = "id_sucursal") Long id_sucursal) {
+        return productoService.getbyidsucursal(id_sucursal);
     }
 
 }

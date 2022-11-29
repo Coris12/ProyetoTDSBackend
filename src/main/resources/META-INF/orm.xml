@@ -41,6 +41,8 @@
             </query>
         </named-native-query>
     </entity>
+    
+    
     <entity class="com.ProyectoTDSBackend.models.Protocolos">
         <named-native-query name="Protocolos.generarPdfProtocolo" result-set-mapping="generarPdfProtocolo">
             <query>
@@ -80,7 +82,7 @@
                 select alergia as alergia ,cedula as cedula, codigo as codigo ,direccion  as direccion
                 ,edad as edad, especialidad as especialidad ,fecha as fecha , fecha_nac as fecha_nac
                 ,nombre_doc as nombre_doc ,nombrep as nombrep ,cedula_pa as cedula_pa 
-                ,procedimientos as procedimientos, telefono as telefono from medico_consentimiento 
+                ,procedimientos as procedimientos, telefono as telefono,entidad as entidad from medico_consentimiento 
                 where estado='1'and id_medi_c =:idme
             </query>
         </named-native-query>
@@ -278,10 +280,17 @@
             <query>
                 SELECT c.id_consentimiento as id_consetimiento,c.institucion_sistema as institucionsistema, c.unidad_operativa as unidadoperativa,
                 c.cod_ud as codud,c.canton as canton,c.parroquia as parroquia,c.provincia as provincia,c.numero_historia_clinica as numerohistoriaclinica, 
-                u.nombres as nombres, c.sala as sala, c.servicio as servicio, c.cama as cama,c.fecha as fecha
+                u.nombres as nombres, c.sala as sala, c.servicio as servicio, c.cama as cama,c.fecha as fecha,
+                i.proposito,i.procedimiento_propuesto,i.resultado_esperado,i.riesgo_complicaciones,i.nombre_profesional_trat,i.especialidad,i.telefono,i.codigo
+               
                 FROM consentimientos c JOIN usuario u
                 ON u.id = c.id_usuario
+                JOIN  informacion_tratamientos i
+                on i.id_consentimiento_fk=c.id_consentimiento
                 WHERE c.estado = 'a' and c.id_consentimiento=:idCon
+                and i.id_inf_trat='1' 
+                and i.id_inf_trat='2' 
+                
             </query>
         </named-native-query>
         <named-native-query name="Consentimiento.getAllDatosOnlyConsentimientoById" result-set-mapping="getAllDatosOnlyConsentimientoById">

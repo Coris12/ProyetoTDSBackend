@@ -12,12 +12,10 @@
 	<queryString>
 		<![CDATA[SELECT         	c.id_consentimiento,c.institucion_sistema as institucionSistema, c.unidad_operativa as unidadOperativa,
 				c.cod_ud as codUd,c.canton,c.parroquia,c.provincia,c.numero_historia_clinica as numeroHistoriaClinica, 
-                u.nombres, c.sala, c.servicio, c.cama,c.fecha,i.proposito,i.procedimiento_propuesto,i.resultado_esperado,
-				i.riesgo_complicaciones,i.nombre_profesional_trat,i.especialidad,i.telefono,i.codigo
+                u.nombres, c.sala, c.servicio, c.cama,c.fecha
                 FROM consentimientos c JOIN usuario u
                 ON u.id = c.id_usuario
-				join informacion_tratamientos i
-				on i.id_consentimiento_fk=c.id_consentimiento
+								
                 WHERE c.estado = 'a' and c.id_consentimiento=$P{idCon}]]>
 	</queryString>
 	<field name="id_consentimiento" class="java.lang.Integer"/>
@@ -33,14 +31,6 @@
 	<field name="servicio" class="java.lang.String"/>
 	<field name="cama" class="java.lang.String"/>
 	<field name="fecha" class="java.sql.Timestamp"/>
-	<field name="proposito" class="java.lang.String"/>
-	<field name="procedimiento_propuesto" class="java.lang.String"/>
-	<field name="resultado_esperado" class="java.lang.String"/>
-	<field name="riesgo_complicaciones" class="java.lang.String"/>
-	<field name="nombre_profesional_trat" class="java.lang.String"/>
-	<field name="especialidad" class="java.lang.String"/>
-	<field name="telefono" class="java.lang.Integer"/>
-	<field name="codigo" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

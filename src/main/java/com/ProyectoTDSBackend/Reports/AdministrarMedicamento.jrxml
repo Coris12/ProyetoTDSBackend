@@ -188,6 +188,11 @@ where u.identificacion=$P{iden};]]>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="367" y="15" width="95" height="15" uuid="6a02bfb1-d741-4973-93b6-290f7ee5c6e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>

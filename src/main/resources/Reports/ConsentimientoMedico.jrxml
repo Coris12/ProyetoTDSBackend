@@ -2,12 +2,12 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95287fbd-e505-478a-bbc5-a6e43061f7ec">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="88"/>
 	<parameter name="idme" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select alergia ,cedula, codigo ,direccion ,edad, especialidad ,fecha , fecha_nac ,nombre_doc ,nombrep ,cedula_pa ,procedimientos ,telefono from medico_consentimiento where estado='1'and id_medi_c=$P{idme}]]>
+		<![CDATA[select alergia ,cedula, codigo ,direccion ,edad, especialidad ,fecha , fecha_nac ,nombre_doc ,nombrep ,cedula_pa ,procedimientos ,telefono,entidad from medico_consentimiento where estado='1'and id_medi_c=$P{idme}]]>
 	</queryString>
 	<field name="alergia" class="java.lang.String"/>
 	<field name="cedula" class="java.lang.String"/>
@@ -22,11 +22,17 @@
 	<field name="cedula_pa" class="java.lang.String"/>
 	<field name="procedimientos" class="java.lang.String"/>
 	<field name="telefono" class="java.lang.String"/>
+	<field name="entidad" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="43" splitType="Stretch"/>
+		<band height="43" splitType="Stretch">
+			<image>
+				<reportElement x="2" y="0" width="553" height="43" uuid="1ce95c4f-fedb-4f4c-96bc-1525d1ff3199"/>
+				<imageExpression><![CDATA["Image\\medivalleLa.png"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="23" splitType="Stretch">
@@ -130,12 +136,26 @@
 				<text><![CDATA[consentimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="95" width="555" height="111" uuid="c7a242aa-6d8d-45f9-8cc6-1c9164c3d464"/>
+				<reportElement x="0" y="95" width="555" height="91" uuid="c7a242aa-6d8d-45f9-8cc6-1c9164c3d464"/>
 				<textElement>
 					<font size="12" isBold="false"/>
 				</textElement>
-				<text><![CDATA[He sido informado de los riesgos o complicaciones ( tales como: perforaciones, sangrado,dolor,aspiraciones shock),secuelas y eventualmente la muerte asociados al mencionado procedimiento diagnóstico,terapéutico y/o quirúrgico.Se me ha explicado que durante el curso del mismo pudieran presentarse condiciones imprevistas necesitándose extensión del procedimiento especificado anteriormente o terminar en cirugía con remoción de órganos y tejidos.Asi mismo reconozco que se me ha informado que por convenio ejecutado entre el equipo médico y ENTIDAD:HOSPITAL DEL DIA-CENTRO DE VARICES AG solo existe la presentacion de instalaciones para dicho(s) procemiento(s).]]></text>
+				<text><![CDATA[He sido informado de los riesgos o complicaciones ( tales como: perforaciones, sangrado,dolor,aspiraciones shock),secuelas y eventualmente la muerte asociados al mencionado procedimiento diagnóstico,terapéutico y/o quirúrgico.Se me ha explicado que durante el curso del mismo pudieran presentarse condiciones imprevistas necesitándose extensión del procedimiento especificado anteriormente o terminar en cirugía con remoción de órganos y tejidos.Asi mismo reconozco que se me ha informado que por convenio ejecutado entre el equipo médico y ENTIDAD:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="138" y="186" width="417" height="20" uuid="596d2b2c-1fcb-45af-b693-1b680e020a55"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[solo existe la presentacion de instalaciones para dicho(s) procemiento(s).]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="186" width="138" height="20" uuid="b2bc7c7b-1651-41a9-976c-6362544c0d78"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entidad}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="118">
 			<staticText>

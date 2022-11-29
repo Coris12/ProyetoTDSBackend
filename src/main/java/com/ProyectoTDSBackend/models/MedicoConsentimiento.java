@@ -44,7 +44,8 @@ import javax.persistence.TemporalType;
         @ColumnResult(name = "nombrep", type = String.class),
         @ColumnResult(name = "cedula_pa", type = String.class),
         @ColumnResult(name = "procedimientos", type = String.class),
-        @ColumnResult(name = "telefono", type = String.class),})
+        @ColumnResult(name = "telefono", type = String.class),
+        @ColumnResult(name = "entidad", type = String.class),})
 })
 @Entity
 @Table(name = "medico_consentimiento")
@@ -99,10 +100,13 @@ public class MedicoConsentimiento {
     @Column(name = "estado", nullable = false)
     private int estado;
 
+    @Column(name = "entidad", nullable = false)
+    private String entidad;
+
     public MedicoConsentimiento() {
     }
 
-    public MedicoConsentimiento(Long idMediC, String nombrePaciente, String cedula, String procedimientos, String nombreDoc, String codigo, String especialidad, String personaA, Date fecha, Date fechaNaci, int edad, String direccion, String telefono, String alergia, int estado) {
+    public MedicoConsentimiento(Long idMediC, String nombrePaciente, String cedula, String procedimientos, String nombreDoc, String codigo, String especialidad, String personaA, Date fecha, Date fechaNaci, int edad, String direccion, String telefono, String alergia, int estado, String entidad) {
         this.idMediC = idMediC;
         this.nombrePaciente = nombrePaciente;
         this.cedula = cedula;
@@ -118,6 +122,7 @@ public class MedicoConsentimiento {
         this.telefono = telefono;
         this.alergia = alergia;
         this.estado = estado;
+        this.entidad = entidad;
     }
 
     public Long getIdMediC() {
@@ -238,6 +243,14 @@ public class MedicoConsentimiento {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public String getEntidad() {
+        return entidad;
+    }
+
+    public void setEntidad(String entidad) {
+        this.entidad = entidad;
     }
 
 }

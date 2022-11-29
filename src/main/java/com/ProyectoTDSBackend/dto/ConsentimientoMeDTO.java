@@ -27,11 +27,12 @@ public class ConsentimientoMeDTO {
     private String cedula_pa;
     private String procedimientos;
     private String telefono;
+    private String entidad;
 
     public ConsentimientoMeDTO() {
     }
 
-    public ConsentimientoMeDTO(String alergia, String cedula, String codigo, String direccion, int edad, String especialidad, Date fecha, Date fecha_nac, String nombre_doc, String nombrep, String cedula_pa, String procedimientos, String telefono) {
+    public ConsentimientoMeDTO(String alergia, String cedula, String codigo, String direccion, int edad, String especialidad, Date fecha, Date fecha_nac, String nombre_doc, String nombrep, String cedula_pa, String procedimientos, String telefono, String entidad) {
         this.alergia = alergia;
         this.cedula = cedula;
         this.codigo = codigo;
@@ -45,8 +46,10 @@ public class ConsentimientoMeDTO {
         this.cedula_pa = cedula_pa;
         this.procedimientos = procedimientos;
         this.telefono = telefono;
+        this.entidad = entidad;
     }
 
+   
     public int getIdMediC() {
         return idMediC;
     }
@@ -157,6 +160,14 @@ public class ConsentimientoMeDTO {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getEntidad() {
+        return entidad;
+    }
+
+    public void setEntidad(String entidad) {
+        this.entidad = entidad;
     }
 
     
