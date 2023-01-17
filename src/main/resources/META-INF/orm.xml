@@ -59,7 +59,7 @@
                 e.id_protocolo = p.id_protocolo
                 join tipo_quirurgico t on
                 t.id_protocolo=p.id_protocolo
-                where p.id_protocolo=:idPro
+                where p.id_protocolo=:proto
             </query>
         </named-native-query>
     </entity>
@@ -76,6 +76,7 @@
             </query>
         </named-native-query>
     </entity>
+    
     <entity class="com.ProyectoTDSBackend.models.MedicoConsentimiento">
         <named-native-query name="MedicoConsentimiento.generarPdfConsen" result-set-mapping="generarPdfConsen">
             <query>

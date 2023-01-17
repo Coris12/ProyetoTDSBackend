@@ -38,6 +38,7 @@ public class CreateRoles implements CommandLineRunner {
     //    Rol rolDoctor = new Rol(RolNombre.ROLE_DOCTOR);
     //    Rol rolFarmacia = new Rol(RolNombre.ROLE_FARMACIA);
     //    Rol rolContabilidad = new Rol(RolNombre.ROLE_CONTABILIDAD);
+    //Rol rolOdontologia=new Rol(RolNombre.ROLE_ODONTOLOGIA);
     //    rolService.save(rolAdmin);
     //    rolService.save(rolePaciente);
     //    rolService.save(rolCounter);
@@ -45,6 +46,7 @@ public class CreateRoles implements CommandLineRunner {
     //    rolService.save(rolDoctor);
     //    rolService.save(rolFarmacia);
     //    rolService.save(rolContabilidad);
+   // rolService.save(rolOdontologia);
     
 //     ////Crear tarjetaEspecialidad
 //     TarjetaEspecialidad pediatria = new TarjetaEspecialidad(NomEspTarjeta.PEDIATRIA); 

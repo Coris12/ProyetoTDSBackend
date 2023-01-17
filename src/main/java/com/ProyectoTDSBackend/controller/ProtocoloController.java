@@ -80,17 +80,17 @@ public class ProtocoloController {
         return codigo;
     }
        @GetMapping(path = "generarPdf")
-    public ResponseEntity<byte[]> generarPdf(int idPro) throws JRException, FileNotFoundException {
-        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(servicio.generarPdf(idPro));
+    public ResponseEntity<byte[]> generarPdf(int proto) throws JRException, FileNotFoundException {
+        JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(servicio.generarPdf(proto));
         if (beanCollectionDataSource.getData().size() > 0) {
             JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/RecordOperatorio.jrxml"));
             HashMap<String, Object> map = new HashMap<>();
             JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
-            ProtocoloDto proto = servicio.generarPdf(idPro).get(0);
-            int idProto = proto.getIdProtocolo();
+            ProtocoloDto protoc = servicio.generarPdf(proto).get(0);
+            int protol = protoc.getIdProtocolo();
             byte[] data = JasperExportManager.exportReportToPdf(report);
             ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                    .filename("Record Operatorio" + idProto + "_" + generarCodigoAleatorio() + ".pdf")
+                    .filename("Record Operatorio" + protol + "_" + generarCodigoAleatorio() + ".pdf")
                     .build();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentDisposition(contentDisposition);

@@ -21,5 +21,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ProtocoloRepository extends JpaRepository<Protocolos,Long> {
      @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     @Query(nativeQuery = true)
-    public List<ProtocoloDto> generarPdfProtocolo(@Param("idPro") int idHi);
+    public List<ProtocoloDto> generarPdfProtocolo(@Param("proto") int proto);
 }

@@ -2,8 +2,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91429323-3165-4889-8256-647809d9b3ae">
 	<property name="ireport.zoom" value="1.3310000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="idPro" class="java.lang.Integer">
+	<property name="ireport.y" value="1138"/>
+	<parameter name="proto" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -20,7 +20,7 @@ join equipos e on
 e.id_protocolo = p.id_protocolo
 join tipo_quirurgico t on
 t.id_protocolo=p.id_protocolo
-where p.id_protocolo=$P{idPro}]]>
+where p.id_protocolo=$P{proto}]]>
 	</queryString>
 	<field name="nombres" class="java.lang.String"/>
 	<field name="postoperatorio" class="java.lang.String"/>
@@ -871,24 +871,30 @@ where p.id_protocolo=$P{idPro}]]>
 				<textFieldExpression><![CDATA[$F{escrita}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="305" y="416" width="203" height="20" uuid="e9d004ec-1c28-4305-9cf1-64bb3069e276"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
+				<reportElement x="339" y="371" width="203" height="20" uuid="e9d004ec-1c28-4305-9cf1-64bb3069e276"/>
 				<text><![CDATA[FIRMA  Y NOMBRE DEL CIRUJANO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="171" y="396" width="369" height="20" uuid="21b3771a-2a89-4469-9d0c-230117874b89"/>
+				<reportElement x="50" y="286" width="203" height="20" uuid="21b3771a-2a89-4469-9d0c-230117874b89"/>
 				<box>
 					<bottomPen lineWidth="1.0"/>
 				</box>
 				<text><![CDATA[]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="171" y="396" width="87" height="20" uuid="0ec45382-69d3-4621-9030-8deae4a0539f"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cirujano}]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement x="329" y="340" width="213" height="20" uuid="2a517777-ff0f-41e7-9cdf-c66d56821dcb"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>

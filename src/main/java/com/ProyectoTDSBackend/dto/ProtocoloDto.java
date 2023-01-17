@@ -76,6 +76,8 @@ public class ProtocoloDto {
         this.sintensis = sintensis;
     }
 
+    
+
  
     public int getIdProtocolo() {
         return idProtocolo;
