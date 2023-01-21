@@ -128,7 +128,12 @@
             <artifactId>javase</artifactId>
             <version>3.5.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.3.21</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>

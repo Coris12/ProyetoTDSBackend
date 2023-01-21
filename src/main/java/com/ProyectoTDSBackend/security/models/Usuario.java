@@ -13,6 +13,7 @@ import com.ProyectoTDSBackend.models.Familiares;
 import com.ProyectoTDSBackend.models.Formulario;
 import com.ProyectoTDSBackend.models.HistoriaClinica;
 import com.ProyectoTDSBackend.models.Medicamentos;
+import com.ProyectoTDSBackend.models.Odontologia;
 import com.ProyectoTDSBackend.models.Protocolos;
 import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.models.Tarjeta;
@@ -124,7 +125,9 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Evolucion> evoluciones;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private List<Odontologia> odontologia;
     @OneToOne
     @JoinColumn(name = "id_tarjeta")
     private Tarjeta tarjeta;
@@ -204,6 +207,22 @@ public class Usuario {
         this.consultaExterna = consultaExterna;
         this.tarjeta = tarjeta;
         this.familiares = familiares;
+    }
+
+    public Usuario(int id, String identificacion, String nombres, String direccion, String celular, String profesion, String sexo, String email, String ciudad, int estado, String nombreUsuario, String password, List<HistoriaClinica> historia) {
+        this.id = id;
+        this.identificacion = identificacion;
+        this.nombres = nombres;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.profesion = profesion;
+        this.sexo = sexo;
+        this.email = email;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.historia = historia;
     }
 
     public Usuario(int id, String identificacion, String nombres, String direccion, String celular, String profesion,
@@ -363,6 +382,14 @@ public class Usuario {
 
     public List<Residencia> getResidencia() {
         return residencia;
+    }
+
+    public List<HistoriaClinica> getHistoria() {
+        return historia;
+    }
+
+    public void setHistoria(List<HistoriaClinica> historia) {
+        this.historia = historia;
     }
 
 }
