@@ -26,9 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class FormularioService {
     
-    
-
-    private static final Logger log = LoggerFactory.getLogger(ClienteService.class);
+    private static final Logger log = LoggerFactory.getLogger(Formulario.class);
     
     @Autowired
     private FormularioRepository repositorio;
@@ -65,4 +63,6 @@ public class FormularioService {
         return response;
     }
 
+
+    
 }

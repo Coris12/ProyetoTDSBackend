@@ -7,6 +7,7 @@ package com.ProyectoTDSBackend.models;
 
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,7 +55,25 @@ public class Odontologia {
 
     @Column(name = "frec_respira")
     private int frecRespi;
-
+    
+    @Column(name = "Sesion")
+    private String sesion;
+    
+    @Column (name="Fecha")
+    private Date fecha;
+    
+    @Column (name="Diagnostico")
+    private String diagnostico;
+    
+    @Column (name="Procedimientos")
+    private String procedimiento;
+    
+    @Column (name="Prescipcion")
+    private String prescripcion;
+    
+    @Column (name="Codigo")
+    private String codigo;
+    
     @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<IndicesCPO> indices;
@@ -66,10 +85,13 @@ public class Odontologia {
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<IndicesF> indicesF;
 
+    @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ExamenEsto> examen;
+
     public Odontologia() {
     }
 
-    public Odontologia(Long idOdonto, String establecimiento, String motivo, String enfermedad, int presion, int temperatura, int frecCardiaca, int frecRespi, List<IndicesCPO> indices, Usuario usuario, List<IndicesF> indicesF) {
+    public Odontologia(Long idOdonto, String establecimiento, String motivo, String enfermedad, int presion, int temperatura, int frecCardiaca, int frecRespi, String sesion, Date fecha, String diagnostico, String procedimiento, String prescripcion, String codigo, List<IndicesCPO> indices, Usuario usuario, List<IndicesF> indicesF, List<ExamenEsto> examen) {
         this.idOdonto = idOdonto;
         this.establecimiento = establecimiento;
         this.motivo = motivo;
@@ -78,9 +100,28 @@ public class Odontologia {
         this.temperatura = temperatura;
         this.frecCardiaca = frecCardiaca;
         this.frecRespi = frecRespi;
+        this.sesion = sesion;
+        this.fecha = fecha;
+        this.diagnostico = diagnostico;
+        this.procedimiento = procedimiento;
+        this.prescripcion = prescripcion;
+        this.codigo = codigo;
         this.indices = indices;
         this.usuario = usuario;
         this.indicesF = indicesF;
+        this.examen = examen;
+    }
+
+    
+
+    
+
+    public List<ExamenEsto> getExamen() {
+        return examen;
+    }
+
+    public void setExamen(List<ExamenEsto> examen) {
+        this.examen = examen;
     }
 
     public Long getIdOdonto() {
@@ -171,5 +212,54 @@ public class Odontologia {
         this.indicesF = indicesF;
     }
 
+    public String getSesion() {
+        return sesion;
+    }
+
+    public void setSesion(String sesion) {
+        this.sesion = sesion;
+    }
+
     
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getProcedimiento() {
+        return procedimiento;
+    }
+
+    public void setProcedimiento(String procedimiento) {
+        this.procedimiento = procedimiento;
+    }
+
+    public String getPrescripcion() {
+        return prescripcion;
+    }
+
+    public void setPrescripcion(String prescripcion) {
+        this.prescripcion = prescripcion;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
 }
