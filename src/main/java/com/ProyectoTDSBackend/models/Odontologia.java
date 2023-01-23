@@ -55,25 +55,25 @@ public class Odontologia {
 
     @Column(name = "frec_respira")
     private int frecRespi;
-    
+
     @Column(name = "Sesion")
     private String sesion;
-    
-    @Column (name="Fecha")
+
+    @Column(name = "Fecha")
     private Date fecha;
-    
-    @Column (name="Diagnostico")
+
+    @Column(name = "Diagnostico")
     private String diagnostico;
-    
-    @Column (name="Procedimientos")
+
+    @Column(name = "Procedimientos")
     private String procedimiento;
-    
-    @Column (name="Prescipcion")
+
+    @Column(name = "Prescipcion")
     private String prescripcion;
-    
-    @Column (name="Codigo")
+
+    @Column(name = "Codigo")
     private String codigo;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<IndicesCPO> indices;
@@ -82,16 +82,26 @@ public class Odontologia {
     @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_evoluc_id"))
     private Usuario usuario;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<IndicesF> indicesF;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ExamenEsto> examen;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PlanesDiagnostico> planes;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<DiagnosticoO> diagnosticos;
 
     public Odontologia() {
     }
 
-    public Odontologia(Long idOdonto, String establecimiento, String motivo, String enfermedad, int presion, int temperatura, int frecCardiaca, int frecRespi, String sesion, Date fecha, String diagnostico, String procedimiento, String prescripcion, String codigo, List<IndicesCPO> indices, Usuario usuario, List<IndicesF> indicesF, List<ExamenEsto> examen) {
+    public Odontologia(Long idOdonto, String establecimiento, String motivo, String enfermedad, int presion, int temperatura, int frecCardiaca, int frecRespi, String sesion, Date fecha, String diagnostico, String procedimiento, String prescripcion, String codigo, List<IndicesCPO> indices, Usuario usuario, List<IndicesF> indicesF, List<ExamenEsto> examen, List<PlanesDiagnostico> planes, List<DiagnosticoO> diagnosticos) {
         this.idOdonto = idOdonto;
         this.establecimiento = establecimiento;
         this.motivo = motivo;
@@ -110,11 +120,19 @@ public class Odontologia {
         this.usuario = usuario;
         this.indicesF = indicesF;
         this.examen = examen;
+        this.planes = planes;
+        this.diagnosticos = diagnosticos;
     }
 
-    
+   
 
-    
+    public List<PlanesDiagnostico> getPlanes() {
+        return planes;
+    }
+
+    public void setPlanes(List<PlanesDiagnostico> planes) {
+        this.planes = planes;
+    }
 
     public List<ExamenEsto> getExamen() {
         return examen;
@@ -219,8 +237,6 @@ public class Odontologia {
     public void setSesion(String sesion) {
         this.sesion = sesion;
     }
-
-    
 
     public Date getFecha() {
         return fecha;
