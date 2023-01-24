@@ -12,6 +12,7 @@ import java.util.Date;
  * @author corin
  */
 public class ProtocoloDto {
+
     private int idProtocolo;
     private String nombres;
     private String postoperatorio;
@@ -76,9 +77,6 @@ public class ProtocoloDto {
         this.sintensis = sintensis;
     }
 
-    
-
- 
     public int getIdProtocolo() {
         return idProtocolo;
     }
@@ -310,7 +308,5 @@ public class ProtocoloDto {
     public void setSintensis(String sintensis) {
         this.sintensis = sintensis;
     }
-    
-    
-    
+
 }

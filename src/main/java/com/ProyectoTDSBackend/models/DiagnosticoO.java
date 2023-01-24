@@ -51,16 +51,16 @@ public class DiagnosticoO {
     @Column(name = "Descripcion2")
     private String descripcion2;
 
-    @Column(name = "Pre1", length = 3)
+    @Column(name = "Pre1", length = 1)
     private String pre1;
 
-    @Column(name = "Def", length = 3)
+    @Column(name = "Def", length = 1)
     private String def;
 
-    @Column(name = "Pre2", length = 3)
+    @Column(name = "Pre2", length = 1)
     private String pre2;
 
-    @Column(name = "Def1", length = 3)
+    @Column(name = "Def1", length = 1)
     private String def2;
     
     @ManyToOne(cascade = CascadeType.MERGE)

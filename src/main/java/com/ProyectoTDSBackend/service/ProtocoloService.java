@@ -64,8 +64,8 @@ public class ProtocoloService {
     public List<Protocolos> list() {
         return repositorio.findAll();
     }
-    public List<ProtocoloDto> generarPdf(int idPro){
-        List<ProtocoloDto> generaPdf = repositorio.generarPdfProtocolo(idPro);
+    public List<ProtocoloDto> generarPdf(int proto){
+        List<ProtocoloDto> generaPdf = repositorio.generarPdfProtocolo(proto);
         return generaPdf;
     }
     

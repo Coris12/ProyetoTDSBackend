@@ -93,15 +93,19 @@ public class Odontologia {
     @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PlanesDiagnostico> planes;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<DiagnosticoO> diagnosticos;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SaludBucal> salud;
+
     public Odontologia() {
     }
 
-    public Odontologia(Long idOdonto, String establecimiento, String motivo, String enfermedad, int presion, int temperatura, int frecCardiaca, int frecRespi, String sesion, Date fecha, String diagnostico, String procedimiento, String prescripcion, String codigo, List<IndicesCPO> indices, Usuario usuario, List<IndicesF> indicesF, List<ExamenEsto> examen, List<PlanesDiagnostico> planes, List<DiagnosticoO> diagnosticos) {
+    public Odontologia(Long idOdonto, String establecimiento, String motivo, String enfermedad, int presion, int temperatura, int frecCardiaca, int frecRespi, String sesion, Date fecha, String diagnostico, String procedimiento, String prescripcion, String codigo, List<IndicesCPO> indices, Usuario usuario, List<IndicesF> indicesF, List<ExamenEsto> examen, List<PlanesDiagnostico> planes, List<DiagnosticoO> diagnosticos, List<SaludBucal> salud) {
         this.idOdonto = idOdonto;
         this.establecimiento = establecimiento;
         this.motivo = motivo;
@@ -122,10 +126,26 @@ public class Odontologia {
         this.examen = examen;
         this.planes = planes;
         this.diagnosticos = diagnosticos;
+        this.salud = salud;
     }
 
-   
+    public List<DiagnosticoO> getDiagnosticos() {
+        return diagnosticos;
+    }
 
+    public void setDiagnosticos(List<DiagnosticoO> diagnosticos) {
+        this.diagnosticos = diagnosticos;
+    }
+
+    public List<SaludBucal> getSalud() {
+        return salud;
+    }
+
+    public void setSalud(List<SaludBucal> salud) {
+        this.salud = salud;
+    }
+
+    
     public List<PlanesDiagnostico> getPlanes() {
         return planes;
     }

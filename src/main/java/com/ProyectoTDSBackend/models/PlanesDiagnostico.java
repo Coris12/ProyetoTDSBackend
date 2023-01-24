@@ -41,7 +41,7 @@ public class PlanesDiagnostico {
     @Column(name = "Otros")
     private boolean otros;
 
-    @Column(name = "Otros")
+    @Column(name = "Descripcion")
     private String descripcion;
 
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
