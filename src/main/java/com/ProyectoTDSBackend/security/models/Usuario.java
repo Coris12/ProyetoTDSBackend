@@ -6,6 +6,7 @@
 package com.ProyectoTDSBackend.security.models;
 
 import com.ProyectoTDSBackend.dto.DatosTarjetaDto;
+import com.ProyectoTDSBackend.models.Admision;
 import com.ProyectoTDSBackend.models.Consentimiento;
 import com.ProyectoTDSBackend.models.ConsultaExterna;
 import com.ProyectoTDSBackend.models.Evolucion;
@@ -147,6 +148,10 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Protocolos> protocolo;
+    
+     @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<Admision> admision;
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuario")

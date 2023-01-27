@@ -101,6 +101,8 @@ public class Odontologia {
     @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SaludBucal> salud;
+    
+    
 
     public Odontologia() {
     }
@@ -128,6 +130,9 @@ public class Odontologia {
         this.diagnosticos = diagnosticos;
         this.salud = salud;
     }
+
+  
+    
 
     public List<DiagnosticoO> getDiagnosticos() {
         return diagnosticos;
@@ -297,5 +302,7 @@ public class Odontologia {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+   
 
 }
