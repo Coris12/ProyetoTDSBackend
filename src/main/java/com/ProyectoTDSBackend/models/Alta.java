@@ -5,11 +5,15 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -62,4 +66,8 @@ public class Alta {
     
     @Column(name = "Causa")
     private String causa;
+    
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_dmision", foreignKey = @ForeignKey(name = "fk_enfer_id"))
+    private Admision admision;
 }

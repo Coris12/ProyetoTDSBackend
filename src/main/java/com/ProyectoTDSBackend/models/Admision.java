@@ -83,10 +83,19 @@ public class Admision {
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<EnfermadAnte> enfermedad;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SolicitudE> solicitud;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Alta> alta;
+    
     public Admision() {
     }
 
-    public Admision(Long idAdmision, String instutucionSistema, String unidadOperativa, String codUd, String servicio, Date fecha, String parroquia, String canton, String provincia, String nombre, String estadoC, String instruccion, Date fechaA, String ocupacion, String empresa, String tipoS, String referidoD, String emergencia, String parantesco, String direccP, String telefono, String fuente, String persona, String numero, Usuario usuario, List<LLegadaAd> llegada, List<Accidente> accidente) {
+    public Admision(Long idAdmision, String instutucionSistema, String unidadOperativa, String codUd, String servicio, Date fecha, String parroquia, String canton, String provincia, String nombre, String estadoC, String instruccion, Date fechaA, String ocupacion, String empresa, String tipoS, String referidoD, String emergencia, String parantesco, String direccP, String telefono, String fuente, String persona, String numero, Usuario usuario, List<LLegadaAd> llegada, List<Accidente> accidente, List<EnfermadAnte> enfermedad, List<SolicitudE> solicitud, List<Alta> alta) {
         this.idAdmision = idAdmision;
         this.instutucionSistema = instutucionSistema;
         this.unidadOperativa = unidadOperativa;
@@ -114,8 +123,12 @@ public class Admision {
         this.usuario = usuario;
         this.llegada = llegada;
         this.accidente = accidente;
+        this.enfermedad = enfermedad;
+        this.solicitud = solicitud;
+        this.alta = alta;
     }
 
+    
    
     public Long getIdAdmision() {
         return idAdmision;
@@ -325,4 +338,37 @@ public class Admision {
         this.llegada = llegada;
     }
 
+    public List<Accidente> getAccidente() {
+        return accidente;
+    }
+
+    public void setAccidente(List<Accidente> accidente) {
+        this.accidente = accidente;
+    }
+
+    public List<EnfermadAnte> getEnfermedad() {
+        return enfermedad;
+    }
+
+    public void setEnfermedad(List<EnfermadAnte> enfermedad) {
+        this.enfermedad = enfermedad;
+    }
+
+    public List<SolicitudE> getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(List<SolicitudE> solicitud) {
+        this.solicitud = solicitud;
+    }
+
+    public List<Alta> getAlta() {
+        return alta;
+    }
+
+    public void setAlta(List<Alta> alta) {
+        this.alta = alta;
+    }
+
+    
 }
