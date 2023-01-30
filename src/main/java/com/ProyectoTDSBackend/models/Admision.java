@@ -104,10 +104,18 @@ public class Admision {
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TrataM> tratamiento;
     
+     @JsonIgnore
+    @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Emergencia> emergencias;
+     
+      @JsonIgnore
+    @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Lesiones> lesion;
+    
     public Admision() {
     }
 
-    public Admision(Long idAdmision, String instutucionSistema, String unidadOperativa, String codUd, String servicio, Date fecha, String parroquia, String canton, String provincia, String nombre, String estadoC, String instruccion, Date fechaA, String ocupacion, String empresa, String tipoS, String referidoD, String emergencia, String parantesco, String direccP, String telefono, String fuente, String persona, String numero, Usuario usuario, List<LLegadaAd> llegada, List<Accidente> accidente, List<EnfermadAnte> enfermedad, List<SolicitudE> solicitud, List<Alta> alta, List<IngresoDia> ingreso, List<DiagnosticoAI> diagnosAlta, List<TrataM> tratamiento) {
+    public Admision(Long idAdmision, String instutucionSistema, String unidadOperativa, String codUd, String servicio, Date fecha, String parroquia, String canton, String provincia, String nombre, String estadoC, String instruccion, Date fechaA, String ocupacion, String empresa, String tipoS, String referidoD, String emergencia, String parantesco, String direccP, String telefono, String fuente, String persona, String numero, Usuario usuario, List<LLegadaAd> llegada, List<Accidente> accidente, List<EnfermadAnte> enfermedad, List<SolicitudE> solicitud, List<Alta> alta, List<IngresoDia> ingreso, List<DiagnosticoAI> diagnosAlta, List<TrataM> tratamiento, List<Emergencia> emergencias, List<Lesiones> lesion) {
         this.idAdmision = idAdmision;
         this.instutucionSistema = instutucionSistema;
         this.unidadOperativa = unidadOperativa;
@@ -141,7 +149,11 @@ public class Admision {
         this.ingreso = ingreso;
         this.diagnosAlta = diagnosAlta;
         this.tratamiento = tratamiento;
+        this.emergencias = emergencias;
+        this.lesion = lesion;
     }
+
+    
 
     
 
@@ -409,6 +421,22 @@ public class Admision {
 
     public void setTratamiento(List<TrataM> tratamiento) {
         this.tratamiento = tratamiento;
+    }
+
+    public List<Emergencia> getEmergencias() {
+        return emergencias;
+    }
+
+    public void setEmergencias(List<Emergencia> emergencias) {
+        this.emergencias = emergencias;
+    }
+
+    public List<Lesiones> getLesion() {
+        return lesion;
+    }
+
+    public void setLesion(List<Lesiones> lesion) {
+        this.lesion = lesion;
     }
 
     

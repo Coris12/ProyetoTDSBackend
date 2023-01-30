@@ -5,8 +5,8 @@
  */
 package com.ProyectoTDSBackend.service;
 
-import com.ProyectoTDSBackend.models.EnfermadAnte;
-import com.ProyectoTDSBackend.repository.EnfermedaRepository;
+import com.ProyectoTDSBackend.models.Lesiones;
+import com.ProyectoTDSBackend.repository.LesionesRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
 import java.util.List;
@@ -22,21 +22,21 @@ import org.springframework.transaction.annotation.Transactional;
  * @author corin
  */
 @Service
-public class EnfermedadService {
-
-    private static final Logger log = LoggerFactory.getLogger(EnfermadAnte.class);
+public class LesionesService {
+    
+    private static final Logger log = LoggerFactory.getLogger(Lesiones.class);
 
     @Autowired
-    private EnfermedaRepository repositorio;
+    private LesionesRepository repositorio;
 
     @Transactional
-    public GenericResponse<String> saveEnfermedad(EnfermadAnte enfe) {
+    public GenericResponse<String> saveLesion(Lesiones le) {
         GenericResponse<String> response = new GenericResponse<>();
         try {
-            if (enfe != null) {
-                repositorio.save(enfe);
+            if (le != null) {
+                repositorio.save(le);
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
-                response.setObject(enfe.getIdEnfermedad().toString());
+                response.setObject(le.getIdLesiones().toString());
                 response.setStatus(ParametersApp.SUCCESSFUL.value());
             } else {
                 response.setMessage(ParametersApp.SUCCESSFUL.getReasonPhrase());
@@ -55,11 +55,11 @@ public class EnfermedadService {
         return repositorio.existsById(id);
     }
 
-    public Optional<EnfermadAnte> getOne(Long id) {
+    public Optional<Lesiones> getOne(Long id) {
         return repositorio.findById(id);
     }
 
-    public List<EnfermadAnte> list() {
+    public List<Lesiones> list() {
         return repositorio.findAll();
     }
 }
