@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91429323-3165-4889-8256-647809d9b3ae">
 	<property name="ireport.zoom" value="1.3310000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1138"/>
+	<property name="ireport.y" value="1030"/>
 	<parameter name="proto" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -640,7 +640,7 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[COMPLICACIONES DEL ACTO OPERATORIO]]></text>
 			</staticText>
 		</band>
-		<band height="251">
+		<band height="223">
 			<textField>
 				<reportElement x="0" y="95" width="555" height="51" uuid="1a8b7f55-b8c9-4ad3-9886-eaf263d66291"/>
 				<box>
@@ -722,7 +722,7 @@ where p.id_protocolo=$P{proto}]]>
 		</band>
 		<band height="447">
 			<staticText>
-				<reportElement x="0" y="61" width="555" height="20" uuid="89a1d83a-36de-4250-a260-4aacd764e460"/>
+				<reportElement x="0" y="66" width="555" height="20" uuid="89a1d83a-36de-4250-a260-4aacd764e460"/>
 				<box>
 					<pen lineStyle="Solid"/>
 					<topPen lineWidth="0.75" lineStyle="Solid"/>
@@ -736,7 +736,7 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[COMPLICACIONES DEL ACTO OPERATORIO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="81" width="555" height="36" uuid="0f08a53b-ac5d-48ee-a340-1b2649d871f8"/>
+				<reportElement x="0" y="86" width="555" height="36" uuid="0f08a53b-ac5d-48ee-a340-1b2649d871f8"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -748,7 +748,7 @@ where p.id_protocolo=$P{proto}]]>
 				<textFieldExpression><![CDATA[$F{complicaciones}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="117" width="555" height="20" uuid="4fe815fe-181e-470c-adf1-47e2b7b5f01b"/>
+				<reportElement x="0" y="122" width="555" height="20" uuid="4fe815fe-181e-470c-adf1-47e2b7b5f01b"/>
 				<box>
 					<pen lineStyle="Solid"/>
 					<topPen lineWidth="0.75" lineStyle="Solid"/>
@@ -762,7 +762,7 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[EXAMEN HISOPATOLOGICO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="137" width="555" height="34" uuid="6ece2073-4dc1-4d55-b004-b3b8c0ec9cf3"/>
+				<reportElement x="0" y="142" width="555" height="34" uuid="6ece2073-4dc1-4d55-b004-b3b8c0ec9cf3"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -774,33 +774,7 @@ where p.id_protocolo=$P{proto}]]>
 				<textFieldExpression><![CDATA[$F{examen}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="20" uuid="7afe2bc6-a735-4572-ab6f-75fcb11fe85b"/>
-				<box>
-					<pen lineStyle="Solid"/>
-					<topPen lineWidth="0.75" lineStyle="Solid"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid"/>
-					<bottomPen lineWidth="0.75" lineStyle="Solid"/>
-					<rightPen lineWidth="0.75" lineStyle="Solid"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[SINTESIS]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="20" width="555" height="40" uuid="f8dcfcb9-e578-4eeb-8034-bbd2866cd989"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{sintensis}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="186" width="318" height="120" uuid="b199ecff-57af-42a0-b51b-65161bb93918"/>
+				<reportElement x="0" y="232" width="318" height="120" uuid="b199ecff-57af-42a0-b51b-65161bb93918"/>
 				<box>
 					<pen lineStyle="Solid"/>
 					<topPen lineWidth="0.75" lineStyle="Solid"/>
@@ -814,7 +788,7 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="186" width="318" height="20" uuid="7f1f0339-9b04-4f15-931e-701bc18e27d2"/>
+				<reportElement x="0" y="232" width="318" height="20" uuid="7f1f0339-9b04-4f15-931e-701bc18e27d2"/>
 				<box>
 					<pen lineStyle="Solid"/>
 					<topPen lineWidth="0.75" lineStyle="Solid"/>
@@ -828,12 +802,12 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[REDACTADA POR:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="206" width="318" height="20" uuid="4dd24b54-bfbc-4810-90d4-1a7fef3570bc"/>
+				<reportElement x="0" y="252" width="318" height="20" uuid="4dd24b54-bfbc-4810-90d4-1a7fef3570bc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{redactado}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="226" width="318" height="20" uuid="63ffeee0-d2bd-4474-ba40-c5f0435695aa"/>
+				<reportElement x="0" y="272" width="318" height="20" uuid="63ffeee0-d2bd-4474-ba40-c5f0435695aa"/>
 				<box>
 					<pen lineStyle="Solid"/>
 					<topPen lineWidth="0.75" lineStyle="Solid"/>
@@ -847,12 +821,12 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[FECHA DEL DICTADO:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="246" width="318" height="20" uuid="7f74faa2-24eb-4064-8e00-07b83c1f9fdc"/>
+				<reportElement x="0" y="292" width="318" height="20" uuid="7f74faa2-24eb-4064-8e00-07b83c1f9fdc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{fecha_red}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="266" width="318" height="20" uuid="a71e3315-22e9-421c-9627-3bd6d47db601"/>
+				<reportElement x="0" y="312" width="318" height="20" uuid="a71e3315-22e9-421c-9627-3bd6d47db601"/>
 				<box>
 					<pen lineStyle="Solid"/>
 					<topPen lineWidth="0.75" lineStyle="Solid"/>
@@ -866,7 +840,7 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[ESCRITA POR :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="286" width="318" height="20" uuid="7a746116-30a8-4ab8-9f68-2342a124294f"/>
+				<reportElement x="0" y="332" width="318" height="20" uuid="7a746116-30a8-4ab8-9f68-2342a124294f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{escrita}]]></textFieldExpression>
 			</textField>
@@ -875,7 +849,7 @@ where p.id_protocolo=$P{proto}]]>
 				<text><![CDATA[FIRMA  Y NOMBRE DEL CIRUJANO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="50" y="286" width="203" height="20" uuid="21b3771a-2a89-4469-9d0c-230117874b89"/>
+				<reportElement x="50" y="332" width="203" height="20" uuid="21b3771a-2a89-4469-9d0c-230117874b89"/>
 				<box>
 					<bottomPen lineWidth="1.0"/>
 				</box>
@@ -894,6 +868,32 @@ where p.id_protocolo=$P{proto}]]>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="26" width="555" height="40" uuid="f8dcfcb9-e578-4eeb-8034-bbd2866cd989"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sintensis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="6" width="555" height="20" uuid="7afe2bc6-a735-4572-ab6f-75fcb11fe85b"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="0.75" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SINTESIS]]></text>
 			</staticText>
 		</band>
 	</detail>

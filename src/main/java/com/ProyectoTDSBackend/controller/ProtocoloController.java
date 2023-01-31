@@ -6,7 +6,7 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.Mensaje;
-import com.ProyectoTDSBackend.dto.ProtocoloDto;
+import com.ProyectoTDSBackend.dto.ProtocoloDTO;
 import com.ProyectoTDSBackend.models.Protocolos;
 import com.ProyectoTDSBackend.service.ProtocoloService;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -79,7 +79,7 @@ public class ProtocoloController {
         }
         return codigo;
     }
-    
+
     @GetMapping(path = "generarPdf")
     public ResponseEntity<byte[]> generarPdf(int proto) throws JRException, FileNotFoundException {
         JRBeanCollectionDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(servicio.generarPdf(proto));
@@ -87,11 +87,11 @@ public class ProtocoloController {
             JasperReport compileReport = JasperCompileManager.compileReport(new FileInputStream("src/main/resources/Reports/RecordOperatorio.jrxml"));
             HashMap<String, Object> map = new HashMap<>();
             JasperPrint report = JasperFillManager.fillReport(compileReport, map, beanCollectionDataSource);
-            ProtocoloDto prot = servicio.generarPdf(proto).get(0);
-            int idPro = prot.getIdProtocolo();
+            ProtocoloDTO pro = servicio.generarPdf(proto).get(0);
+            int idProto = pro.getIdProtocolo();
             byte[] data = JasperExportManager.exportReportToPdf(report);
             ContentDisposition contentDisposition = ContentDisposition.builder("attachment")
-                    .filename("Protocolo" + idPro + "_" + generarCodigoAleatorio() + ".pdf")
+                    .filename("Record Operatorio" + idProto + "_" + generarCodigoAleatorio() + ".pdf")
                     .build();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentDisposition(contentDisposition);
@@ -100,4 +100,5 @@ public class ProtocoloController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

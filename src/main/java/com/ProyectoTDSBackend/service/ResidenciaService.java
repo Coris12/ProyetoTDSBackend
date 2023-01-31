@@ -10,6 +10,8 @@ import com.ProyectoTDSBackend.models.Residencia;
 import com.ProyectoTDSBackend.repository.ResidenciaRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import com.ProyectoTDSBackend.util.ParametersApp;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ResidenciaService {
@@ -71,6 +73,17 @@ public class ResidenciaService {
         }
         return response;
 
+    }
+     public boolean existsById(Long id) {
+        return recidenciaRepository.existsById(id);
+    }
+
+    public Optional<Residencia> getOne(Long id) {
+        return recidenciaRepository.findById(id);
+    }
+
+    public List<Residencia> list() {
+        return recidenciaRepository.findAll();
     }
 
 }

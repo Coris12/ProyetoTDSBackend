@@ -11,8 +11,7 @@ import java.util.Date;
  *
  * @author corin
  */
-public class ProtocoloDto {
-
+public class ProtocoloDTO {
     private int idProtocolo;
     private String nombres;
     private String postoperatorio;
@@ -43,10 +42,10 @@ public class ProtocoloDto {
     private String procedimiento;
     private String sintensis;
 
-    public ProtocoloDto() {
+    public ProtocoloDTO() {
     }
 
-    public ProtocoloDto(String nombres, String postoperatorio, String escrita, Date fecha_red, int n_cama, String preoperatorio, String realizada, String redactado, String sala, String servicio, String tipo_cirujia, String anestesiologo, String cirujano, Date fecha, String hora_fin, String hora_inicio, String instrumentista, String primer_ayudante, String segundo_ayudante, String tercer_ayudante, String tipo_anestesia, String complicaciones, String dieresis, String examen, String exploracion, String exposicion, String procedimiento, String sintensis) {
+    public ProtocoloDTO(String nombres, String postoperatorio, String escrita, Date fecha_red, int n_cama, String preoperatorio, String realizada, String redactado, String sala, String servicio, String tipo_cirujia, String anestesiologo, String cirujano, Date fecha, String hora_fin, String hora_inicio, String instrumentista, String primer_ayudante, String segundo_ayudante, String tercer_ayudante, String tipo_anestesia, String complicaciones, String dieresis, String examen, String exploracion, String exposicion, String procedimiento, String sintensis) {
         this.nombres = nombres;
         this.postoperatorio = postoperatorio;
         this.escrita = escrita;
@@ -125,6 +124,8 @@ public class ProtocoloDto {
         this.n_cama = n_cama;
     }
 
+    
+
     public String getPreoperatorio() {
         return preoperatorio;
     }
@@ -140,6 +141,8 @@ public class ProtocoloDto {
     public void setRealizada(String realizada) {
         this.realizada = realizada;
     }
+
+    
 
     public String getRedactado() {
         return redactado;
@@ -308,5 +311,9 @@ public class ProtocoloDto {
     public void setSintensis(String sintensis) {
         this.sintensis = sintensis;
     }
-
+    
+    
+        
+    
+    
 }
