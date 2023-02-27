@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.OdontologiaDto;
 import com.ProyectoTDSBackend.models.Odontologia;
 import com.ProyectoTDSBackend.repository.OdontologiaRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -62,8 +63,9 @@ public class OdontologiaService {
         return repositorio.findAll();
     }
 
-//    public List<EvolucionDTO> generarPdf(String iden) {
-//        List<EvolucionDTO> generaPdf = repositorio.generarPdfEvolucionPrescripcion(iden);
-//        return generaPdf;
-//    } 
+    public List<OdontologiaDto> generarPdf(Long idOdon) {
+        List<OdontologiaDto> generaPdf = repositorio.generarPdfOdon(idOdon);
+        return generaPdf;
+    } 
+    
 }

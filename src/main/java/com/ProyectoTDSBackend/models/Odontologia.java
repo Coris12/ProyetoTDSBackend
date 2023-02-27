@@ -5,12 +5,15 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.ProyectoTDSBackend.dto.OdontologiaDto;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -19,13 +22,138 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 /**
  *
  * @author corin
  */
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "Odontologia.generarPdfOdon", query = "", resultSetMapping = "generarPdfOdon")
+})
+
+@SqlResultSetMapping(name = "generarPdfOdon", classes = {
+    @ConstructorResult(targetClass = OdontologiaDto.class, columns = {
+       
+        @ColumnResult(name = "codigo", type = Integer.class),
+        @ColumnResult(name = "diagnostico", type = String.class),
+        @ColumnResult(name = "enfermedad", type = String.class),
+        @ColumnResult(name = "establecimiento", type = String.class),
+        @ColumnResult(name = "fecha", type = Date.class),
+        @ColumnResult(name = "nombres", type = String.class),
+        @ColumnResult(name = "sexo", type = String.class),
+        @ColumnResult(name = "num_cli", type = Integer.class),
+        @ColumnResult(name = "edad", type = Integer.class),
+        @ColumnResult(name = "frec_cardiaca", type = Integer.class),
+        @ColumnResult(name = "frec_respira", type = String.class),
+        @ColumnResult(name = "motivo_consulta", type = String.class),
+        @ColumnResult(name = "prescipcion", type = String.class),
+        @ColumnResult(name = "presion_arterial", type = Integer.class),
+        @ColumnResult(name = "procedimientos", type = String.class),
+        @ColumnResult(name = "sesion", type = Integer.class),
+        @ColumnResult(name = "temperatura", type = Integer.class),
+        @ColumnResult(name = "alergia_anes", type = Boolean.class),
+        @ColumnResult(name = "alergiaa", type = Boolean.class),
+        @ColumnResult(name = "asma", type = Boolean.class),
+        @ColumnResult(name = "diabetes", type = Boolean.class),
+        @ColumnResult(name = "descripcion", type = String.class),
+        @ColumnResult(name = "enf_car", type = Boolean.class),
+        @ColumnResult(name = "hemorragias", type = Boolean.class),
+        @ColumnResult(name = "otros", type = Boolean.class),
+        @ColumnResult(name = "tuberculosis", type = Boolean.class),
+        @ColumnResult(name = "vh_sida", type = Boolean.class),
+        @ColumnResult(name = "a_t_m", type = Boolean.class),
+        @ColumnResult(name = "carrillos", type = Boolean.class),
+        @ColumnResult(name = "descripcione", type = String.class),
+        @ColumnResult(name = "glandulas_sa", type = Boolean.class),
+        @ColumnResult(name = "glangios", type = Boolean.class),
+        @ColumnResult(name = "labio", type = Boolean.class),
+        @ColumnResult(name = "lengua", type = Boolean.class),
+        @ColumnResult(name = "maxilar_su", type = Boolean.class),
+        @ColumnResult(name = "maxilar_in", type = Boolean.class),
+        @ColumnResult(name = "mejillas", type = Boolean.class),
+        @ColumnResult(name = "oro", type = Boolean.class),
+        @ColumnResult(name = "paladar", type = Boolean.class),
+        @ColumnResult(name = "piso", type = Boolean.class),
+        @ColumnResult(name = "anglei", type = String.class),
+        @ColumnResult(name = "angleii", type = String.class),
+        @ColumnResult(name = "angleiii", type = String.class),
+        @ColumnResult(name = "cal1", type = Integer.class),
+        @ColumnResult(name = "cal2", type = Integer.class),
+        @ColumnResult(name = "cal3", type = Integer.class),
+        @ColumnResult(name = "cal4", type = Integer.class),
+        @ColumnResult(name = "cal5", type = Integer.class),
+        @ColumnResult(name = "cal6", type = Integer.class),
+        @ColumnResult(name = "gin1", type = Integer.class),
+        @ColumnResult(name = "gin2", type = Integer.class),
+        @ColumnResult(name = "gin3", type = Integer.class),
+        @ColumnResult(name = "gin4", type = Integer.class),
+        @ColumnResult(name = "gin5", type = Integer.class),
+        @ColumnResult(name = "gin6", type = Integer.class),
+        @ColumnResult(name = "leve", type = String.class),
+        @ColumnResult(name = "levef", type = String.class),
+        @ColumnResult(name = "moderada", type = String.class),
+        @ColumnResult(name = "moderadaf", type = String.class),
+        @ColumnResult(name = "p11", type = String.class),
+        @ColumnResult(name = "p16", type = String.class),
+        @ColumnResult(name = "p17", type = String.class),
+        @ColumnResult(name = "p21", type = String.class),
+        @ColumnResult(name = "p26", type = String.class),
+        @ColumnResult(name = "p27", type = String.class),
+        @ColumnResult(name = "p31", type = String.class),
+        @ColumnResult(name = "p36", type = String.class),
+        @ColumnResult(name = "p37", type = String.class),
+        @ColumnResult(name = "p41", type = String.class),
+        @ColumnResult(name = "p46", type = String.class),
+        @ColumnResult(name = "p47", type = String.class),
+        @ColumnResult(name = "p55", type = String.class),
+        @ColumnResult(name = "p65", type = String.class),
+        @ColumnResult(name = "p71", type = String.class),
+        @ColumnResult(name = "p75", type = String.class),
+        @ColumnResult(name = "p85", type = String.class),
+        @ColumnResult(name = "placa1", type = Integer.class),
+        @ColumnResult(name = "placa2", type = Integer.class),
+        @ColumnResult(name = "placa3", type = Integer.class),
+        @ColumnResult(name = "placa4", type = Integer.class),
+        @ColumnResult(name = "placa5", type = Integer.class),
+        @ColumnResult(name = "placa6", type = Integer.class),
+        @ColumnResult(name = "severa", type = Boolean.class),
+        @ColumnResult(name = "severaf", type = Boolean.class),
+        @ColumnResult(name = "totalg1", type = Integer.class),
+        @ColumnResult(name = "totalp1", type = Integer.class),
+        @ColumnResult(name = "totalc2", type = Integer.class),
+        @ColumnResult(name = "p51", type = String.class),
+        @ColumnResult(name = "d", type = Integer.class),
+        @ColumnResult(name = "c", type = Integer.class),
+        @ColumnResult(name = "p", type = Integer.class),
+        @ColumnResult(name = "o", type = Integer.class),
+        @ColumnResult(name = "totald", type = Integer.class),
+        @ColumnResult(name = "d1", type = Integer.class),
+        @ColumnResult(name = "c1", type = Integer.class),
+        @ColumnResult(name = "p1", type = Integer.class),
+        @ColumnResult(name = "o1", type = Integer.class),
+        @ColumnResult(name = "totald1", type = Integer.class),
+        @ColumnResult(name = "biometrica", type = Boolean.class),
+        @ColumnResult(name = "otrosp", type = Boolean.class),
+        @ColumnResult(name = "quimicas", type = Boolean.class),
+        @ColumnResult(name = "descripcionp", type = String.class),
+        @ColumnResult(name = "rayosx", type = Boolean.class),
+        @ColumnResult(name = "cie1", type = String.class),
+        @ColumnResult(name = "cie2", type = String.class),
+        @ColumnResult(name = "def", type = String.class),
+        @ColumnResult(name = "def1", type = String.class),
+        @ColumnResult(name = "descripcion1", type = String.class),
+        @ColumnResult(name = "descripcion2", type = String.class),
+        @ColumnResult(name = "fechaa", type = Date.class),
+        @ColumnResult(name = "fechac", type = Date.class),
+        @ColumnResult(name = "pre1", type = String.class),
+        @ColumnResult(name = "pre2", type = String.class),
+        @ColumnResult(name = "profesional", type = String.class),})
+})
 @Entity
 @Table(name = "odontologia")
 public class Odontologia {
@@ -101,8 +229,6 @@ public class Odontologia {
     @JsonIgnore
     @OneToMany(mappedBy = "odontologia", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SaludBucal> salud;
-    
-    
 
     public Odontologia() {
     }
@@ -131,9 +257,6 @@ public class Odontologia {
         this.salud = salud;
     }
 
-  
-    
-
     public List<DiagnosticoO> getDiagnosticos() {
         return diagnosticos;
     }
@@ -150,7 +273,6 @@ public class Odontologia {
         this.salud = salud;
     }
 
-    
     public List<PlanesDiagnostico> getPlanes() {
         return planes;
     }
@@ -302,7 +424,5 @@ public class Odontologia {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
-   
 
 }

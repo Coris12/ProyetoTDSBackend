@@ -103,28 +103,43 @@
             </query>
         </named-native-query>
     </entity>
-    <entity class="com.ProyectoTDSBackend.models.Formulario">
-        <named-native-query name="MedicoConsentimiento.getFormularioById" result-set-mapping="getFormularioById">
+    
+    <entity class="com.ProyectoTDSBackend.models.Odontologia">
+        <named-native-query name="Odontologia.generarPdfOdon" result-set-mapping="generarPdfOdon">
             <query>
-                select u.nombres as nombres, u.direccion as direccion, u.celular as celular, f.cuadro_clinico as cuadro_clinico, f.diagnostico as diagnostico , f.hallazgos as hallazgos,
-                d.districto as districto, d.area as area, d.entidad as entidad, d.establecimiento as establecimiento, d.hist_clin_num as hist_clin_num, d.tipo as tipo,
-                rede.entidad_sistema as entidad_sitema, rede.especiali_referido as especiali_referido, rede.establecimiento_referido as establecimiento_referido, 
-                rede.fecha as fecha, rede.servicio_referido as servicio_referido , rede.entidad_sistema as entidad_sistema, rede.anio as anio, rede.dia as dia, 
-                rede.mes as mes, rede.entidad as entidad, rede.especialidad as especialidad, rede.servicio as servicio,
-                r.provincia as provincia, r.nacionalidad as nacionalidad, r.pais as pais, r.parroquia as parroquia, r.canton as canton,
-                m.otro as otro, m.referencia as referencia,f.id_formulario as id_formulario
-                from  usuario u
-                join formulario f
-                on  u.id = f.id_usuario
-                join datos_institucionales d
-                on f.id_datos = d.id_datos
-                join refiere_deriva rede
-                on f.id_refiere = rede.id_refiere
-                join motivos m 
-                on rede.id_motivo = m.id_motivo
-                join residencia r 
-                on r.id_usuario = u.id
-                where u.id =:idFor
+                Select o.codigo as codigo,o.diagnostico as diagnostico,o.enfermedad as enfermedad,o.establecimiento as establecimiento,
+                o.fecha as fecha,u.nombres as nombres,u.sexo as sexo,h.num_cli as num_cli,h.edad as edad,o.frec_cardiaca as frec_cardiaca,o.frec_respira as frec_respira,
+                o.motivo_consulta as motivo_consulta,o.prescipcion as prescipcion,o.presion_arterial as presion_arterial,o.procedimientos as procedimientos,
+                o.sesion as sesion,o.temperatura as temperatura,i.alergia_anes as alergia_anes,i.alergiaa as alergiaa,i.asma as asma,i.diabetes as diabetes,
+                i.descripcion as descripcion,i.enf_car as enf_car,i.hemorragias as hemorragias,i.otros as otros,i.tuberculosis as tuberculosis,i.vh_sida as vh_sida,
+                e.a_t_m as a_t_m,e.carrillos as carrillos, e.descripcion as descripcione,e.glandulas_sa as glandulas_sa,e.glangios as glangios,e.labio as labio,
+                e.lengua as lengua,e.maxilar_su as maxilar_su,e.maxilar_in as maxilar_in,e.mejillas as mejillas,e.oro as oro ,e.paladar as paladar,e.piso as piso,
+                s.anglei as anglei,s.angleii as angleii,s.angleiii as angleiii,s.cal1 as cal1,s.cal2 as cal2,s.cal3 as cal3, s.cal4 as cal4,s.cal5 as cal5,s.cal6 as cal6,s.gin1 as gin1,
+                s.gin2 as gin2,s.gin3 as gin3,s.gin4 as gin4,s.gin5 as gin5,s.gin6 as gin6,s.leve as leve,s.levef as levef,s.moderada as moderada,s.moderadaf as moderadaf,s.p11 as p11,
+                s.p16 as p16,s.p17 as p17 ,s.p21 as p21,s.p26 as p26,s.p27 as p27,s.p31 as p31,s.p36 as p36,s.p37 as p37,s.p41 as p41,s.p46 as p46,s.p47 as p47,
+                s.p55 as p55,s.p65 as p65,s.p71 as p71,s.p75 as p75,s.p85 as p85,s.placa1 as placa1,s.placa2 as placa2, s.placa3 as placa3,s.placa4 as placa4,
+                s.placa5 as placa5,s.placa6 as placa6,s.severa as severa,s.severaf as severaf ,s.totalg1 as totalg1,s.totalp1 as totalp1,s.totalc2 as totalc2,s.p51 as p51,d.d as d,d.c as c,d.p as p ,d.o as o,d.totald as totald ,d.d1 as d1,d.c1 as c1,d.p1 as p1,d.o1 as o1 ,d.totald1 as totald1,
+                p.biometrica as biometrica,p.otros as otrosp,p.quimicas as quimicas,p.descripcion as descripcionp,p.rayosx as rayosx,
+                c.cie1 as cie1,c.cie2 as cie2 ,c.def as def,c.def1 as def1, c.descripcion1 as descripcion1 ,c.descripcion2 as descripcion2,c.fechaa as fechaa,
+                c.fechac as fechac,c.pre1 as pre1,c.pre2 as pre2,c.profesional as profesional
+
+                from odontologia o join 
+                usuario u on o.id_usuario = u.id
+                join historia_clinica h 
+                on h.id_persona = u.id 
+                join indicef i on
+                i.id_odontologia = o.id_odontologia
+                join examen_esto e on 
+                e.id_odontologia = o.id_odontologia
+                join salud s on 
+                s.id_odontologia = o.id_odontologia
+                join indices d on 
+                d.id_odontologia = o.id_odontologia
+                join planes p on
+                p.id_odontologia = o.id_odontologia
+                join diagnosticoo c on 
+                c.id_odontologia = o.id_odontologia
+                where o.id_odontologia=:idOdon
             </query>
         </named-native-query>
     </entity>
