@@ -83,35 +83,35 @@ public class Admision {
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<EnfermadAnte> enfermedad;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SolicitudE> solicitud;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Alta> alta;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<IngresoDia> ingreso;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<DiagnosticoAI> diagnosAlta;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TrataM> tratamiento;
-    
-     @JsonIgnore
+
+    @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Emergencia> emergencias;
-     
-      @JsonIgnore
+
+    @JsonIgnore
     @OneToMany(mappedBy = "admision", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Lesiones> lesion;
-    
+
     public Admision() {
     }
 
@@ -153,12 +153,6 @@ public class Admision {
         this.lesion = lesion;
     }
 
-    
-
-    
-
-    
-   
     public Long getIdAdmision() {
         return idAdmision;
     }
@@ -439,5 +433,4 @@ public class Admision {
         this.lesion = lesion;
     }
 
-    
 }
