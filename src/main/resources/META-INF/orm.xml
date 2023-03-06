@@ -107,7 +107,7 @@
     <entity class="com.ProyectoTDSBackend.models.Odontologia">
         <named-native-query name="Odontologia.generarPdfOdon" result-set-mapping="generarPdfOdon">
             <query>
-                Select o.codigo as codigo,o.diagnostico as diagnostico,o.enfermedad as enfermedad,o.establecimiento as establecimiento,
+                Select o.codigo as codigo,o.diagnostico as diagnostico,o.enfermedad as enfermedad,o.establecimiento as establecimeinto,
                 o.fecha as fecha,u.nombres as nombres,u.sexo as sexo,h.num_cli as num_cli,h.edad as edad,o.frec_cardiaca as frec_cardiaca,o.frec_respira as frec_respira,
                 o.motivo_consulta as motivo_consulta,o.prescipcion as prescipcion,o.presion_arterial as presion_arterial,o.procedimientos as procedimientos,
                 o.sesion as sesion,o.temperatura as temperatura,i.alergia_anes as alergia_anes,i.alergiaa as alergiaa,i.asma as asma,i.diabetes as diabetes,

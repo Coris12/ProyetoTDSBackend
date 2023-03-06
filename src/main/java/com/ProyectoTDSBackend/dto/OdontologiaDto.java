@@ -15,10 +15,10 @@ import java.util.Date;
 public class OdontologiaDto {
 
     private int idOdonto;
-    private int codigo;
+    private String codigo;
     private String diagnostico;
     private String enfermedad;
-    private String establecimiento;
+    private String establecimeinto;
     private Date fecha;
     private String nombres;
     private String sexo;
@@ -30,7 +30,7 @@ public class OdontologiaDto {
     private String prescipcion;
     private int presion_arterial;
     private String procedimientos;
-    private int sesion;
+    private String sesion;
     private int temperatura;
     private boolean alergia_anes;
     private boolean alergiaa;
@@ -97,8 +97,8 @@ public class OdontologiaDto {
     private int placa4;
     private int placa5;
     private int placa6;
-    private boolean severa;
-    private boolean severaf;
+    private String severa;
+    private String severaf;
     private int totalg1;
     private int totalp1;
     private int totalc2;
@@ -115,7 +115,7 @@ public class OdontologiaDto {
     private int totald1;
     private boolean biometrica;
     private boolean otrosp;
-    private boolean quimicas;
+    private String quimicas;
     private String descripcionp;
     private boolean rayosx;
     private String cie1;
@@ -130,14 +130,15 @@ public class OdontologiaDto {
     private String pre2;
     private String profesional;
 
+    
     public OdontologiaDto() {
     }
 
-    public OdontologiaDto(int codigo, String diagnostico, String enfermedad, String establecimiento, Date fecha, String nombres, String sexo, int num_cli, int edad, int frec_cardiaca, int frec_respira, String motivo_consulta, String prescipcion, int presion_arterial, String procedimientos, int sesion, int temperatura, boolean alergia_anes, boolean alergiaa, boolean asma, boolean diabetes, String descripcion, boolean enf_car, boolean hemorragias, boolean otros, boolean tuberculosis, boolean vh_sida, boolean a_t_m, boolean carrillos, String descripcione, boolean glandulas_sa, boolean glangios, boolean labio, boolean lengua, boolean maxilar_su, boolean maxilar_in, boolean mejillas, boolean oro, boolean paladar, boolean piso, String anglei, String angleii, String angleiii, int cal1, int cal2, int cal3, int cal4, int cal5, int cal6, int gin1, int gin2, int gin3, int gin4, int gin5, int gin6, String leve, String levef, String moderada, String moderadaf, String p11, String p16, String p17, String p21, String p26, String p27, String p31, String p36, String p37, String p41, String p46, String p47, String p55, String p65, String p71, String p75, String p85, int placa1, int placa2, int placa3, int placa4, int placa5, int placa6, boolean severa, boolean severaf, int totalg1, int totalp1, int totalc2, String p51, int d, int c, int p, int o, int totald, int d1, int c1, int p1, int o1, int totald1, boolean biometrica, boolean otrosp, boolean quimicas, String descripcionp, boolean rayosx, String cie1, String cie2, String def, String def1, String descripcion1, String descripcion2, Date fechaa, Date fechac, String pre1, String pre2, String profesional) {
+    public OdontologiaDto(String codigo, String diagnostico, String enfermedad, String establecimeinto, Date fecha, String nombres, String sexo, int num_cli, int edad, int frec_cardiaca, int frec_respira, String motivo_consulta, String prescipcion, int presion_arterial, String procedimientos, String sesion, int temperatura, boolean alergia_anes, boolean alergiaa, boolean asma, boolean diabetes, String descripcion, boolean enf_car, boolean hemorragias, boolean otros, boolean tuberculosis, boolean vh_sida, boolean a_t_m, boolean carrillos, String descripcione, boolean glandulas_sa, boolean glangios, boolean labio, boolean lengua, boolean maxilar_su, boolean maxilar_in, boolean mejillas, boolean oro, boolean paladar, boolean piso, String anglei, String angleii, String angleiii, int cal1, int cal2, int cal3, int cal4, int cal5, int cal6, int gin1, int gin2, int gin3, int gin4, int gin5, int gin6, String leve, String levef, String moderada, String moderadaf, String p11, String p16, String p17, String p21, String p26, String p27, String p31, String p36, String p37, String p41, String p46, String p47, String p55, String p65, String p71, String p75, String p85, int placa1, int placa2, int placa3, int placa4, int placa5, int placa6, String severa, String severaf, int totalg1, int totalp1, int totalc2, String p51, int d, int c, int p, int o, int totald, int d1, int c1, int p1, int o1, int totald1, boolean biometrica, boolean otrosp, String quimicas, String descripcionp, boolean rayosx, String cie1, String cie2, String def, String def1, String descripcion1, String descripcion2, Date fechaa, Date fechac, String pre1, String pre2, String profesional) {
         this.codigo = codigo;
         this.diagnostico = diagnostico;
         this.enfermedad = enfermedad;
-        this.establecimiento = establecimiento;
+        this.establecimeinto = establecimeinto;
         this.fecha = fecha;
         this.nombres = nombres;
         this.sexo = sexo;
@@ -250,6 +251,8 @@ public class OdontologiaDto {
         this.profesional = profesional;
     }
 
+
+
     public int getIdOdonto() {
         return idOdonto;
     }
@@ -260,11 +263,11 @@ public class OdontologiaDto {
 
     
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -284,13 +287,7 @@ public class OdontologiaDto {
         this.enfermedad = enfermedad;
     }
 
-    public String getEstablecimiento() {
-        return establecimiento;
-    }
-
-    public void setEstablecimiento(String establecimiento) {
-        this.establecimiento = establecimiento;
-    }
+   
 
     public Date getFecha() {
         return fecha;
@@ -381,11 +378,11 @@ public class OdontologiaDto {
         this.procedimientos = procedimientos;
     }
 
-    public int getSesion() {
+    public String getSesion() {
         return sesion;
     }
 
-    public void setSesion(int sesion) {
+    public void setSesion(String sesion) {
         this.sesion = sesion;
     }
 
@@ -917,21 +914,25 @@ public class OdontologiaDto {
         this.placa6 = placa6;
     }
 
-    public boolean isSevera() {
+    public String getSevera() {
         return severa;
     }
 
-    public void setSevera(boolean severa) {
+    public void setSevera(String severa) {
         this.severa = severa;
     }
 
-    public boolean isSeveraf() {
+    public String getSeveraf() {
         return severaf;
     }
 
-    public void setSeveraf(boolean severaf) {
+    public void setSeveraf(String severaf) {
         this.severaf = severaf;
     }
+
+
+
+    
 
     public int getTotalg1() {
         return totalg1;
@@ -1061,13 +1062,15 @@ public class OdontologiaDto {
         this.otrosp = otrosp;
     }
 
-    public boolean isQuimicas() {
+    public String getQuimicas() {
         return quimicas;
     }
 
-    public void setQuimicas(boolean quimicas) {
+    public void setQuimicas(String quimicas) {
         this.quimicas = quimicas;
     }
+
+   
 
     public String getDescripcionp() {
         return descripcionp;
@@ -1171,6 +1174,14 @@ public class OdontologiaDto {
 
     public void setProfesional(String profesional) {
         this.profesional = profesional;
+    }
+
+    public String getEstablecimeinto() {
+        return establecimeinto;
+    }
+
+    public void setEstablecimeinto(String establecimeinto) {
+        this.establecimeinto = establecimeinto;
     }
     
     
