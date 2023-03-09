@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.AnestesiaDto;
 import com.ProyectoTDSBackend.models.Anestesia;
 import com.ProyectoTDSBackend.repository.AnestesiaRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -24,11 +25,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class AnestesiaService {
+
     private static final Logger log = LoggerFactory.getLogger(Anestesia.class);
 
     @Autowired
-    private AnestesiaRepository repositorio; 
-    
+    private AnestesiaRepository repositorio;
+
     @Transactional
     public GenericResponse<String> saveAnes(Anestesia anes) {
         GenericResponse<String> response = new GenericResponse<>();
@@ -62,5 +64,9 @@ public class AnestesiaService {
     public List<Anestesia> list() {
         return repositorio.findAll();
     }
-    
+
+    public List<AnestesiaDto> generarPdf(Long idA) {
+        List<AnestesiaDto> generaPdf = repositorio.generarPdfAnes(idA);
+        return generaPdf;
+    }
 }

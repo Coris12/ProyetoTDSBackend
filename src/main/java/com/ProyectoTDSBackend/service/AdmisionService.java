@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.AdmisionDto;
 import com.ProyectoTDSBackend.models.Admision;
 import com.ProyectoTDSBackend.repository.AdmisionRepository;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -63,4 +64,9 @@ public class AdmisionService {
         return repositorio.findAll();
     }
 
+       public List<AdmisionDto> generarPdf(Long idAd) {
+        List<AdmisionDto> generaPdf = repositorio.generarPdfAd(idAd);
+        return generaPdf;
+    } 
+    
 }

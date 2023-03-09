@@ -143,6 +143,120 @@
             </query>
         </named-native-query>
     </entity>
+    <entity class="com.ProyectoTDSBackend.models.Anestesia">
+        <named-native-query name="Anestesia.generarPdfAnes" result-set-mapping="generarPdfAnes">
+            <query>
+                Select u.nombres as nombres,u.sexo as sexo ,h.num_cli as numcli,h.edad as edad,a.anesteciologo as anesteciologo,
+                a.ayudantea as ayudantea,a.ayudantec as ayudantec,a.cama as cama,a.cirujano as cirujano,a.estatura as estatura,
+                a.fecha as fecha,a.horaa as horaa,a.horao as horao,a.intrumentista as intrumentista,a.mina as mina,a.mino as mino,
+                a.ocupacion as ocupacion,a.peso as peso ,a.postoperatorio as post,a.preoperatorio as pre,a.propuesta as propuesta,
+                a.realizada as realizada,a.sala as sala,a.servicio as servicio,a.tecnica as tecnica,a.tipod as tipod,t.abierto as abierto,t.apsepsia as apsepsia,t.cerrado as cerrado,t.cir as cir,t.conductiva as conductiva,t.continua as conti,t.continuaa as continuaa,
+                t.espidural as espidural,t.general as general,t.habon as habon,t.hiperbara as hiperbara,t.i as i,t.manguito as manguito,t.mascara as mascara,
+                t.media as media,t.nasal as nasal,t.nivel as nivel,t.oral as oral,t.rap as rap,t.raquidea as raquidea,t.semi_cerrado as semi_cerrado,
+                t.taponamiento as taponamiento,t.topica as topica ,t.tubo as tubo,t.vaiven as vaiven,t.simple as simple,t.puncion_lat as puncion_lat,
+                i.anteriora as anteriora,i.apgar as apgar,i.atrimias as atrimias,i.conducido as conducido,i.congenitas as congenitas,i.dextrosas as dextrosas,
+                i.ecg as ecg,i.tecnicas as tecnicas,i.expansores as expansores,i.hematologico as hematologico ,i.hemorragia as hemorragia,i.hipertensiom as hipertensiom,
+                i.hora as hora,i.horad as horad,i.horai as horai,i.infarto as infarto ,i.otros as otros,i.pa as pa,i.po as po,i.quimicas as quimicas,i.ringer as ringer,
+                i.sangre as sangre,i.total as total,i.uroanalisis as uro,i.valvulares as valvulares,c.atrrimias as atrri,c.cambiot as cambiot,c.cardiaco as cardiaco,c.comentario as comentario ,c.perforacion_duram as perforacion,c.espamo as esmpamo,
+                c.grupos as grupos,c.hipertension as hipert,c.informacion as informacion,c.insuficiente as insuficiente,c.r1 as r1,c.r2 as r2,c.r3 as r3,c.r4 as r4,c.r5 as r5,c.dep_respiratoria as depresion,c.vomito as vomito,r.cabeza as cabeza,r.cefalea as cefalea,r.convulsiones as convul,r.craneales as craneales,r.cuello as cuello,r.diabetes as diabetes,r.electrolitico as electro,
+                r.endoscopia as endo,r.extramidades as extremidades,r.extradural as extradural,r.habitos as habitos,r.intradural as intradural,r.intratoraicas as intrato,
+                r.trumatismo as trumatismo,r.obstreticas as obstretica,r.otross as otross,r.perineales as peri,r.renal as renal,r.sentido as sentido,r.shocks as shocks,
+                r.extratoraicas as extrato,r.toxemias as toxe,r.abdomen as abdomen,r.conciencia as conciencia,r.descripcion as descripcion,r.otrosr,
+                s.bueno as bueno,s.deprimido as deprimido,s.digitalicos as digi,s.elaborado as elaborado,s.esteroides as esteroides,s.fecha as fech,
+                s.hipotensores as hipotensores,s.hora as horat,s.insuficiente as insuficientes,s.otrost as otrost,s.recordatorio as recordatorio,s.tranquilizantes as tranqui,
+                s.medicamento as medicamento
+                from usuario u join
+                historia_clinica h on
+                h.id_persona = u.id join 
+                aneste a on u.id = a.id_usuario
+                join tecnicas t on
+                t.id_anes = a.id_anes
+                join infunsion i on 
+                i.id_anes = a.id_anes
+                join complicacion c on
+                c.id_anes = a.id_anes
+                join region r on 
+                r.id_anes = a.id_anes
+                join terapia s on 
+                s.id_anes = a.id_anes
+                where a.id_anes=:idA
+            </query>
+        </named-native-query> 
+    </entity>
+    <entity class="com.ProyectoTDSBackend.models.Admision">
+        <named-native-query name="Admision.generarPdfAd" result-set-mapping="generarPdfAd">
+            <query>
+                Select a.canton as canton,a.cod_ud as cod_ud,a.direccp as direccp,a.emergencia as emergencia,a.empresa as empresa,
+                a.fecha as fecha,a.fechaa as fechaa,a.fuente as fuente,a.instruccion as instruccion,a.institucion_sistema as institucion_sistema,
+                a.nombre as nombre,a.numero as numero,a.ocupacion as ocupacion,a.parantesco as parantesco,a.parroquia as parroquia,a.persona as persona,
+                a.provincia as provincia,a.referidod as referidod,a.servicio as servicio,a.telefono as telefono,a.tipos as tipos,a.unidad_operativa as unida_operativa,
+                h.num_cli as num_cli,u.nombres as nombres,u.celular as celular,r.barrio as barrio,r.parroquia as parro,r.canton as can,r.provincia as provi,
+                r.nacionalidad as nacionalidad,u.sexo as sexo,h.estado_civil as estado_civil,u.direccion as direccion,l.ambulancia as ambulancia,
+                l.ambulatorio as ambulatorio,l.otrot as otrot,l.causac as causac ,l.descrip as descrip, l.grupo as grupo ,l.hora as hora,l.motivo as motivo,
+                l.obstetrica as obstretica, l.policia as policia,l.quirurgica as quirurgica,l.trauma as trauma,d.familiar as familiar,d.abusof as abusof,
+                d.abusos as abusos,d.ahogamiento as ahogamiento,d.ialcoholica as ialcoholica,d.almientaria as almientaria,d.anafilaxia as anafilaxia,
+                d.aplastamiento as aplastamiento,d.apsicologico as apsicologico,d.caida as caida,d.vcorto as vcorto,d.descripcion as descr,d.direccion as direcciona,
+                d.drogas as drogas,d.envenenamiento as enve,d.alientoe as alientoe,d.c_extraño as c_extraño,d.fechae as fechae,d.armaf as armaf,
+                d.gases as gases,d.moderdura as moderdura,d.nombre as nombrea,d.policial as policial,d.quemadura as quemadura,d.riña as rina,
+                d.transito as transito ,d.valor as valor,d.otrav as otrav,d.picadura as picadura,d.otrai as otrai,d.otroa as otroa,
+                e.alergico as alergico,e.clinico as clinico,e.descripcine as decripcione,
+                e.descriciona as descriciona,e.condicion_estable as condicion_estable,e.condicion_inestable as condicion_inestable,e.farmacolo as farmacolo,
+                e.ginecologico as ginecologico,e.via_aerea as via_aerea,e.via_obstruida as via_obstruida,e.otro as otroe,e.psiquiatrico as psiquiatrico,
+                e.quirurgico as quirurgico ,e.traumato as traumato
+                ,s.abdomen as abdomens,s.t_axilar as t_axilar,s.t_bucal as t_bucal,s.cabeza as cabezas,s.capilar as capilar ,s.columna as columnas,s.cuello as cuello,
+                s.descripcion as descripcions,s.extremidades as extremidades,s.fcardiaca as fcardiaca,s.motora as motora,s.ocular as ocular,
+                s.satura as satura,s.pelvis as pelvis,s.peso as peso ,s.presion as presion ,s.pupilad as pupilad ,s.pupilai as pupilai,
+                s.frespiratoria as frespiratoria,s.talla as talla,s.torax as torax,s.total as totals,s.verbal as verbal,s.via_obstruidasp as via_obstruidasp,f.cerrada as cerrada,f.cortante as cortante,f.esguince as esguince,f. excoracion as excoracion,f.expuesta as expuesta,f.extraña as extraña,
+                f.hematoma as hematoma ,f.hemorragia as hemorragia,f.inflamacion as inflamacion,f.deformacion as deformacion,f.mordedura as moderdural,f.penetrante as penetrante,
+                f.picadura as picadural,f.quemadura as quemaduraf,m.abortos as abortos,m.borramiento as borramiento,m.cesareas as cesareas,m.contraciones as contraciones ,m.dilatacion as dilatacion ,
+                m.fecha as fecham,m.fetal as fetal,m.frecuencia as frecuenciam,m.gestas as gestas,m.membranas as membranas,m.partos as partos ,m.plano as plano,
+                m.presentacion as presentacion,m.semanas as semanas,m.sangrado as sangrado,m.tiempo as tiempo,m.uterina as uterina,m.util as util,
+                o.abdomen as abdomeno,o.biometrica as biometricas,o.electro_car as electro_car,o.descripcion as descripciono,o.ecoabdomen as ecoabdomen,
+                o.electrolitos as electrolitos ,o.endoscopia as endoscopia,o.gastrometria as gastrometira,o.interconsulta as interconsulta,o.osea as osea,
+                o.otros as otroso,o.ecopelvica as ecopelvica,o.resonancia as resonancia,o.quimicas as quimicaso ,o.tomografia as tomografia,
+                o.torax as toraxo,o.uroanalisis as uroanalisis,i.cie1 as cie1,i.cie2 as cie2,i.cie3 as cie3,i.descripcion1 as descripcion1,
+                i.descripcion2 as descripcion2,i.descripcion3 as descripcion3,i.d1 as d1,i.d2 as d2,i.d3 as d3,t.cie1 as cie1a,t.cie2 as cie2a,t.cie3 as cie3a,t.descripcion1 as descripcion1a,
+                t.descripcion2 as descripcion2a,t.descripcion3 as descripcion3a,t.d1 as d1a,t.d2 as d2a,t.d3 as d3a,c.indicaciones as indicaciones,c.medicamento1 as medicamento1,c.medicamento2 as medicamento2,c.medicamento3 as medicamento3,c.posologia as posologia,
+                c.posologia2 as posologia2,c.posologia3 as posologia3,
+                p.cexterna as cexterna,p.causa as causaa,p.codigo as codigoa,p.dias as diasa,p.domicilio as domicilio,p.estable as establea,
+                p.establecimiento as establecimientoa,p.fecha as fechas,p.inestable as inestablea,p.internacion as internacion,p.muerto as muerto ,
+                p.nombre as nombrep,p.observacion as observaciona,p.referencia as referenciaa,p.servicio as servicioa,p.vivo as vivo
+
+
+                from admision a join usuario u
+                on a.id_usuario = u.id 
+                join
+                historia_clinica h on
+                h.id_persona = u.id join
+                residencia r on
+                r.id_usuario = u.id
+                join llegada l on 
+                l.id_dmision = a.id_dmision
+                join accidente d on
+                d.id_dmision = a.id_dmision
+                join enfermedad e on
+                e.id_dmision = a.id_dmision
+                join signose s on
+                s.id_dmision = a.id_dmision
+                join lesiones f on
+                f.id_dmision = a.id_dmision
+                join emergencia m on
+                m.id_dmision = a.id_dmision
+                join solicutud o on
+                o.id_dmision=a.id_dmision
+                join ingreso i on
+                i.id_dmision = a.id_dmision
+                join diagnosticoai t on
+                t.id_dmision = a.id_dmision
+                join trata_me c on
+                c.id_dmision = a.id_dmision
+                join alta p on 
+                p.id_dmision = a.id_dmision
+                where a.id_dmision=:idAd
+            </query>
+        </named-native-query>
+    </entity>
+    
     <entity class="com.ProyectoTDSBackend.models.ConsultaExterna">
         <named-native-query name="ConsultaExterna.getConsultaExterna" result-set-mapping="getConsultaExterna">
             <query>
