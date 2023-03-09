@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c0a2d0c-0b25-428f-8fc1-375fdcf1fada">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2124"/>
+	<property name="ireport.y" value="2228"/>
 	<parameter name="idA" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -2389,9 +2389,9 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[FIRMA DE ANESTESIOLOGO]]></text>
 			</staticText>
 		</band>
-		<band height="703">
+		<band height="688">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="20" uuid="d8c8495e-adbe-46ca-85ad-1dda664ad5ce"/>
+				<reportElement x="0" y="13" width="555" height="20" uuid="d8c8495e-adbe-46ca-85ad-1dda664ad5ce"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2405,7 +2405,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[PRE ANESTESICO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="20" width="132" height="20" uuid="04d532c6-c4ac-4357-bb7c-79300da31c02"/>
+				<reportElement x="0" y="33" width="132" height="20" uuid="04d532c6-c4ac-4357-bb7c-79300da31c02"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2419,7 +2419,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[OPERACION PROPUESTA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="132" y="20" width="178" height="20" uuid="507c97f2-1ad2-4814-9249-18e132bd2777"/>
+				<reportElement x="132" y="33" width="178" height="20" uuid="507c97f2-1ad2-4814-9249-18e132bd2777"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2433,7 +2433,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[RIESGO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="20" width="140" height="20" uuid="40513ff7-259d-4876-9a18-0be2d14c85d7"/>
+				<reportElement x="310" y="33" width="140" height="20" uuid="40513ff7-259d-4876-9a18-0be2d14c85d7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2447,7 +2447,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[INFORMACION ESPECIAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="450" y="20" width="105" height="20" uuid="332a7b12-d19a-41b2-96b6-b5fec541911c"/>
+				<reportElement x="450" y="33" width="105" height="20" uuid="332a7b12-d19a-41b2-96b6-b5fec541911c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2461,7 +2461,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[GRUPO SANGUINEO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="40" width="132" height="39" uuid="effce660-4a24-41e7-a04a-eb350cc35346"/>
+				<reportElement x="0" y="53" width="132" height="39" uuid="effce660-4a24-41e7-a04a-eb350cc35346"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2473,7 +2473,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{propuesta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="40" width="140" height="39" uuid="23df15c4-6721-4447-ad0b-18eeb36cff45"/>
+				<reportElement x="310" y="53" width="140" height="39" uuid="23df15c4-6721-4447-ad0b-18eeb36cff45"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2485,7 +2485,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{informacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="132" y="40" width="18" height="39" uuid="d3eb53e8-ae63-4377-b60e-30c1985a3795"/>
+				<reportElement x="132" y="53" width="18" height="39" uuid="d3eb53e8-ae63-4377-b60e-30c1985a3795"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2499,7 +2499,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[1]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="242" y="40" width="18" height="39" uuid="697fbd8a-6567-444c-8fc2-99ddb03f721e"/>
+				<reportElement x="242" y="53" width="18" height="39" uuid="697fbd8a-6567-444c-8fc2-99ddb03f721e"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2513,7 +2513,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[4]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="208" y="40" width="18" height="39" uuid="a087387f-357a-4114-a9d4-58fedfc742e0"/>
+				<reportElement x="208" y="53" width="18" height="39" uuid="a087387f-357a-4114-a9d4-58fedfc742e0"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2527,7 +2527,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[3]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="40" width="18" height="39" uuid="805c2f3c-40e8-4fc6-87ec-06f6e45c77c4"/>
+				<reportElement x="277" y="53" width="18" height="39" uuid="805c2f3c-40e8-4fc6-87ec-06f6e45c77c4"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2541,7 +2541,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[5]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="174" y="40" width="18" height="39" uuid="6dc2ea55-bc10-4eab-8fe1-5c60351ea04d"/>
+				<reportElement x="174" y="53" width="18" height="39" uuid="6dc2ea55-bc10-4eab-8fe1-5c60351ea04d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2555,7 +2555,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[2]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="450" y="40" width="105" height="39" uuid="06fa0620-b030-4338-94fb-75ecbf9dc183"/>
+				<reportElement x="450" y="53" width="105" height="39" uuid="06fa0620-b030-4338-94fb-75ecbf9dc183"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2567,7 +2567,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{grupos}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="40" width="24" height="39" uuid="ac5778d3-b25c-4f34-815b-1ed666547993"/>
+				<reportElement x="150" y="53" width="24" height="39" uuid="ac5778d3-b25c-4f34-815b-1ed666547993"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2579,7 +2579,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{r1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="192" y="40" width="16" height="39" uuid="807d2135-11fb-4a01-96ba-519a9595d4ef"/>
+				<reportElement x="192" y="53" width="16" height="39" uuid="807d2135-11fb-4a01-96ba-519a9595d4ef"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2591,7 +2591,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{r2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="226" y="40" width="16" height="39" uuid="8fe13d0f-a045-4c97-8792-9bad2e5060bb"/>
+				<reportElement x="226" y="53" width="16" height="39" uuid="8fe13d0f-a045-4c97-8792-9bad2e5060bb"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2603,7 +2603,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{r3}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="260" y="40" width="17" height="39" uuid="bfb14474-95fc-4bcc-a291-8099832f10ac"/>
+				<reportElement x="260" y="53" width="17" height="39" uuid="bfb14474-95fc-4bcc-a291-8099832f10ac"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2615,7 +2615,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{r4}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="295" y="40" width="15" height="39" uuid="ee78cf4f-1580-479b-bc1c-a746ec0a1ba2"/>
+				<reportElement x="295" y="53" width="15" height="39" uuid="ee78cf4f-1580-479b-bc1c-a746ec0a1ba2"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2627,7 +2627,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{r5}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="79" width="74" height="57" uuid="04d4707b-2c6b-4347-be13-29fda6d3f447"/>
+				<reportElement x="0" y="92" width="74" height="57" uuid="04d4707b-2c6b-4347-be13-29fda6d3f447"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2641,7 +2641,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[REGION OPERATORIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="74" y="79" width="58" height="17" uuid="5775c54e-e066-40be-8553-b416815a3868"/>
+				<reportElement x="74" y="92" width="58" height="17" uuid="5775c54e-e066-40be-8553-b416815a3868"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2655,7 +2655,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[CABEZA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="162" y="79" width="80" height="17" uuid="b02f2cd5-0f12-4029-b6cd-e9c55a671ee5"/>
+				<reportElement x="162" y="92" width="80" height="17" uuid="b02f2cd5-0f12-4029-b6cd-e9c55a671ee5"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2669,7 +2669,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[ORG.SENTIDOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="270" y="79" width="80" height="19" uuid="2497df35-ae31-43fc-918a-ae43fa1e848c"/>
+				<reportElement x="270" y="92" width="80" height="19" uuid="2497df35-ae31-43fc-918a-ae43fa1e848c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2683,7 +2683,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[ENDOSCOPIAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="381" y="79" width="69" height="19" uuid="20dffbe0-bc34-42c7-9071-c47db1632760"/>
+				<reportElement x="381" y="92" width="69" height="19" uuid="20dffbe0-bc34-42c7-9071-c47db1632760"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2697,7 +2697,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[INTRADURAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="74" y="96" width="70" height="20" uuid="70d3891a-a996-4174-8241-2a7725959068"/>
+				<reportElement x="74" y="109" width="70" height="20" uuid="70d3891a-a996-4174-8241-2a7725959068"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2711,7 +2711,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[EXTRADURAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="478" y="79" width="50" height="20" uuid="61a1fc08-0a94-42f2-9587-f1ea405e2f53"/>
+				<reportElement x="478" y="92" width="50" height="20" uuid="61a1fc08-0a94-42f2-9587-f1ea405e2f53"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2725,7 +2725,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[CUELLO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="176" y="96" width="98" height="20" uuid="31294fdc-f2ee-472b-9ea2-6a71c3655020"/>
+				<reportElement x="176" y="109" width="98" height="20" uuid="31294fdc-f2ee-472b-9ea2-6a71c3655020"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2739,7 +2739,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[EXTRATORACICAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="99" width="101" height="17" uuid="206a518c-ddba-4926-8a40-7bc940dc0bf6"/>
+				<reportElement x="310" y="112" width="101" height="17" uuid="206a518c-ddba-4926-8a40-7bc940dc0bf6"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2753,7 +2753,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[INTRATORACICAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="450" y="99" width="53" height="17" uuid="766becee-dbd0-496b-80c2-e32db7326670"/>
+				<reportElement x="450" y="112" width="53" height="17" uuid="766becee-dbd0-496b-80c2-e32db7326670"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2767,7 +2767,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[ABDOMEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="75" y="116" width="101" height="20" uuid="41ecd444-c4da-48f6-80c9-0e3a1020d2cf"/>
+				<reportElement x="75" y="129" width="101" height="20" uuid="41ecd444-c4da-48f6-80c9-0e3a1020d2cf"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2781,7 +2781,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[EXTREMIDADES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="229" y="116" width="101" height="20" uuid="ea6d1212-6407-4901-9103-1a8f2f63e029"/>
+				<reportElement x="229" y="129" width="101" height="20" uuid="ea6d1212-6407-4901-9103-1a8f2f63e029"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2795,7 +2795,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[OBSTRETICAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="387" y="117" width="91" height="19" uuid="5c75f874-7420-4929-bf9e-2eea6579e229"/>
+				<reportElement x="387" y="130" width="91" height="19" uuid="5c75f874-7420-4929-bf9e-2eea6579e229"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2809,7 +2809,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[PERINEALES]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="504" y="99" width="51" height="18" uuid="9cbbe0fc-d324-4b13-99cc-bc201230b9c4"/>
+				<reportElement x="504" y="112" width="51" height="18" uuid="9cbbe0fc-d324-4b13-99cc-bc201230b9c4"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2821,7 +2821,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{abdomen}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="274" y="99" width="36" height="18" uuid="6115c6c7-821a-4bd5-afef-209a130a3cde"/>
+				<reportElement x="274" y="112" width="36" height="18" uuid="6115c6c7-821a-4bd5-afef-209a130a3cde"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2833,7 +2833,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{extrato}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="242" y="79" width="29" height="17" uuid="904bce99-f9a1-4796-9ee1-b987a599a40d"/>
+				<reportElement x="242" y="92" width="29" height="17" uuid="904bce99-f9a1-4796-9ee1-b987a599a40d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2845,7 +2845,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{sentido}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="478" y="117" width="77" height="19" uuid="141192f3-71e8-4f54-bc1a-df1d0b9d0647"/>
+				<reportElement x="478" y="130" width="77" height="19" uuid="141192f3-71e8-4f54-bc1a-df1d0b9d0647"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2857,7 +2857,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{peri}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="117" width="58" height="19" uuid="9a76e08a-1d38-4697-bf36-bfa28350655a"/>
+				<reportElement x="330" y="130" width="58" height="19" uuid="9a76e08a-1d38-4697-bf36-bfa28350655a"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2869,7 +2869,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{obstretica}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="411" y="99" width="39" height="17" uuid="f8029847-735f-4283-bb6e-478133a90464"/>
+				<reportElement x="411" y="112" width="39" height="17" uuid="f8029847-735f-4283-bb6e-478133a90464"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2881,7 +2881,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{intrato}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="450" y="79" width="28" height="20" uuid="d4f319db-f7b7-42da-8cc7-85381dfb1721"/>
+				<reportElement x="450" y="92" width="28" height="20" uuid="d4f319db-f7b7-42da-8cc7-85381dfb1721"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2893,7 +2893,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{intradural}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="96" width="32" height="21" uuid="44221049-5aec-4bc4-a462-57918526fff9"/>
+				<reportElement x="144" y="109" width="32" height="21" uuid="44221049-5aec-4bc4-a462-57918526fff9"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2905,7 +2905,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{extradural}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="177" y="117" width="52" height="19" uuid="da0481d4-ff7d-4849-a810-76aec123f6ca"/>
+				<reportElement x="176" y="130" width="53" height="19" uuid="da0481d4-ff7d-4849-a810-76aec123f6ca"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2917,7 +2917,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{extremidades}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="350" y="79" width="31" height="19" uuid="8a09ee5b-2df0-4bb9-af5f-9e0015e65bb6"/>
+				<reportElement x="350" y="92" width="31" height="19" uuid="8a09ee5b-2df0-4bb9-af5f-9e0015e65bb6"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2929,7 +2929,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{endo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="528" y="79" width="27" height="20" uuid="2435b8eb-bdee-42b0-b098-39d5df710e82"/>
+				<reportElement x="528" y="92" width="27" height="20" uuid="2435b8eb-bdee-42b0-b098-39d5df710e82"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2941,7 +2941,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{cuello}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="132" y="79" width="30" height="17" uuid="4c321825-a732-43b9-9d59-1fba3912fc7d"/>
+				<reportElement x="132" y="92" width="30" height="17" uuid="4c321825-a732-43b9-9d59-1fba3912fc7d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2953,7 +2953,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{cabeza}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="136" width="555" height="21" uuid="2c3e9ed5-63e2-42bb-bed6-531ef45af9a2"/>
+				<reportElement x="0" y="149" width="555" height="21" uuid="2c3e9ed5-63e2-42bb-bed6-531ef45af9a2"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2967,7 +2967,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[EXAMENES DE LABORATORIO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="157" width="192" height="20" uuid="ed84c9d4-17cb-46eb-a420-62c695b87530"/>
+				<reportElement x="0" y="170" width="192" height="20" uuid="ed84c9d4-17cb-46eb-a420-62c695b87530"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2981,7 +2981,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[UROANALISIS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="192" y="157" width="195" height="20" uuid="47ab8fba-7833-46e9-85c5-ff3dccb3939d"/>
+				<reportElement x="192" y="170" width="195" height="20" uuid="47ab8fba-7833-46e9-85c5-ff3dccb3939d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -2995,7 +2995,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[HEMATOLOGICO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="388" y="157" width="167" height="20" uuid="9c7373b5-d640-4448-831b-eb72e2a0d380"/>
+				<reportElement x="388" y="170" width="167" height="20" uuid="9c7373b5-d640-4448-831b-eb72e2a0d380"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3009,7 +3009,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[QUIMICA SANGUINEA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="177" width="192" height="47" uuid="d0256c35-4175-4eea-853b-d4946825e670"/>
+				<reportElement x="0" y="190" width="192" height="47" uuid="d0256c35-4175-4eea-853b-d4946825e670"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3021,7 +3021,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{uro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="192" y="177" width="196" height="47" uuid="36c16494-bf96-4e44-8716-689299134279"/>
+				<reportElement x="192" y="190" width="196" height="47" uuid="36c16494-bf96-4e44-8716-689299134279"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3033,7 +3033,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{hematologico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="388" y="177" width="167" height="47" uuid="9c3850d4-9f99-4f7b-9238-6dba8d11a26e"/>
+				<reportElement x="388" y="190" width="167" height="47" uuid="9c3850d4-9f99-4f7b-9238-6dba8d11a26e"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3045,7 +3045,7 @@ where a.id_anes=$P{idA}]]>
 				<textFieldExpression><![CDATA[$F{quimicas}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="224" width="208" height="20" uuid="e7851052-c024-4f31-8a9c-3d0a55019a8b"/>
+				<reportElement x="0" y="237" width="208" height="20" uuid="e7851052-c024-4f31-8a9c-3d0a55019a8b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3059,7 +3059,7 @@ where a.id_anes=$P{idA}]]>
 				<text><![CDATA[SISTEMA RESPIRATORIO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="244" width="208" height="41" uuid="afa70fef-a9aa-403c-8224-a31fa92aeaf7"/>
+				<reportElement x="0" y="257" width="208" height="41" uuid="afa70fef-a9aa-403c-8224-a31fa92aeaf7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3076,7 +3076,7 @@ BRONQUIECTASIAS-OTROS
 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="285" width="208" height="40" uuid="e109eb74-4756-46af-b180-4aa4188a7178"/>
+				<reportElement x="0" y="298" width="208" height="40" uuid="e109eb74-4756-46af-b180-4aa4188a7178"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3088,7 +3088,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="208" y="224" width="347" height="20" uuid="ffbdd823-1fcb-4781-8a92-e56ea6a967b9"/>
+				<reportElement x="208" y="237" width="347" height="20" uuid="ffbdd823-1fcb-4781-8a92-e56ea6a967b9"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3102,7 +3102,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[SISTEMA CIRCULATORIO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="208" y="244" width="61" height="20" uuid="7e144c8a-aa38-41c3-8ef9-d31717e90f9f"/>
+				<reportElement x="208" y="257" width="61" height="20" uuid="7e144c8a-aa38-41c3-8ef9-d31717e90f9f"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3116,7 +3116,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[ARRITMAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="208" y="264" width="86" height="20" uuid="ecd9cfb2-6c14-459f-abd5-26a71103194c"/>
+				<reportElement x="208" y="277" width="86" height="20" uuid="ecd9cfb2-6c14-459f-abd5-26a71103194c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3130,7 +3130,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[HIPERTENSION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="209" y="284" width="101" height="20" uuid="fa43c731-69f2-4ebf-afc6-115dbf266b3c"/>
+				<reportElement x="208" y="297" width="102" height="20" uuid="fa43c731-69f2-4ebf-afc6-115dbf266b3c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3144,7 +3144,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[ENF.VALVULARES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="209" y="304" width="101" height="20" uuid="6371c80e-dd33-40ba-8207-6e8a1033b381"/>
+				<reportElement x="208" y="317" width="102" height="21" uuid="6371c80e-dd33-40ba-8207-6e8a1033b381"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3158,7 +3158,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[ENF.CONGENITAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="388" y="305" width="101" height="20" uuid="cd837cff-4a50-42d6-86ff-f1c267991c12"/>
+				<reportElement x="388" y="318" width="101" height="20" uuid="cd837cff-4a50-42d6-86ff-f1c267991c12"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3172,7 +3172,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[INFARTOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="388" y="244" width="101" height="20" uuid="735d180c-3015-413b-8c92-10ea94e10dcb"/>
+				<reportElement x="388" y="257" width="101" height="20" uuid="735d180c-3015-413b-8c92-10ea94e10dcb"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3186,7 +3186,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[P.A.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="388" y="285" width="101" height="20" uuid="0c50d91f-6dbb-46b9-9034-4fae2df15fd5"/>
+				<reportElement x="388" y="298" width="101" height="20" uuid="0c50d91f-6dbb-46b9-9034-4fae2df15fd5"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3200,7 +3200,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[E.C.G]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="269" y="244" width="119" height="20" uuid="254ee189-c5dc-4a93-9de8-690ebab48291"/>
+				<reportElement x="269" y="257" width="119" height="20" uuid="254ee189-c5dc-4a93-9de8-690ebab48291"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3212,7 +3212,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{atrimias}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="311" y="305" width="77" height="19" uuid="521a8d95-6a5c-4740-b72b-584fe3090f89"/>
+				<reportElement x="311" y="318" width="77" height="20" uuid="521a8d95-6a5c-4740-b72b-584fe3090f89"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3224,7 +3224,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{congenitas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="489" y="284" width="66" height="20" uuid="213a864e-3755-43ff-a6e0-876d7be41e86"/>
+				<reportElement x="490" y="297" width="66" height="20" uuid="213a864e-3755-43ff-a6e0-876d7be41e86"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3236,7 +3236,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{ecg}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="294" y="264" width="261" height="21" uuid="430ca905-3697-400e-bc38-5c59546f1d85"/>
+				<reportElement x="294" y="277" width="261" height="21" uuid="430ca905-3697-400e-bc38-5c59546f1d85"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3248,7 +3248,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{hipertensiom}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="489" y="304" width="66" height="20" uuid="0edaeec8-7039-4bd2-81b7-ab3299553ed6"/>
+				<reportElement x="489" y="317" width="66" height="21" uuid="0edaeec8-7039-4bd2-81b7-ab3299553ed6"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3260,7 +3260,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{infarto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="489" y="244" width="66" height="20" uuid="9cecae01-80c8-40df-957d-0ae0ab81481f"/>
+				<reportElement x="489" y="257" width="66" height="20" uuid="9cecae01-80c8-40df-957d-0ae0ab81481f"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3271,22 +3271,8 @@ BRONQUIECTASIAS-OTROS
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{pa}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="325" width="555" height="20" uuid="f6f2ac11-628d-4b80-aabd-43ffc79bf27f"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[ANESTESIAS ANTERIORES Y COMPLICACIONES]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="311" y="285" width="77" height="20" uuid="573dec1c-f32b-4168-87bb-04ccc56e69b6"/>
+				<reportElement x="311" y="298" width="77" height="20" uuid="573dec1c-f32b-4168-87bb-04ccc56e69b6"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3298,7 +3284,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{valvulares}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="345" width="555" height="59" uuid="5242e1a4-11ae-4d1b-93cc-f73f4800a96d"/>
+				<reportElement x="0" y="358" width="555" height="44" uuid="5242e1a4-11ae-4d1b-93cc-f73f4800a96d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3310,7 +3296,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{anteriora}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="404" width="381" height="20" uuid="6652e7ae-d8ce-4c68-b6e9-65221888a46b"/>
+				<reportElement x="0" y="338" width="556" height="20" uuid="2ecaf88a-f634-486b-86fd-6958411d6ad0"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3318,65 +3304,13 @@ BRONQUIECTASIAS-OTROS
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ULTIMA INGESTION DE ALIMAENTOS:HORA]]></text>
+				<text><![CDATA[ANESTESIAS ANTERIORES Y COMPLICACIONES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="424" width="381" height="20" uuid="61e2695d-5bed-475d-9d5b-fc9fa7342f1d"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[HORA DEL ACCIDENTE O DOLOR]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="381" y="404" width="174" height="20" uuid="b48bc4ce-b08b-49fc-b272-2d2b839fae33"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{horai}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="381" y="424" width="174" height="20" uuid="93449194-858e-4853-856c-674412bcaf92"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{horad}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="444" width="555" height="20" uuid="64ec769e-6e2c-4726-bc5f-1482c4aaf475"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[SISTEMA NERVIOSO CENTRAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="229" y="464" width="174" height="20" uuid="a8e90ffb-a2de-4f26-8188-52461fe92650"/>
+				<reportElement x="229" y="442" width="174" height="20" uuid="a8e90ffb-a2de-4f26-8188-52461fe92650"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3390,7 +3324,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[TRAUMATISMOS CRANEALES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="464" width="150" height="20" uuid="9defb3a6-2054-4579-999d-66b24df00f26"/>
+				<reportElement x="0" y="442" width="150" height="20" uuid="9defb3a6-2054-4579-999d-66b24df00f26"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3404,7 +3338,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[CONVULSIONES EPILEPSIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="484" width="150" height="20" uuid="127649eb-6b29-43c7-bf41-9eeedf8b4baf"/>
+				<reportElement x="0" y="462" width="150" height="20" uuid="127649eb-6b29-43c7-bf41-9eeedf8b4baf"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3418,7 +3352,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[PERDIDA DE CONCIENCIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="229" y="484" width="174" height="20" uuid="ee3d5c8c-0fb4-4aea-983d-13739d6ee5a1"/>
+				<reportElement x="229" y="462" width="174" height="20" uuid="ee3d5c8c-0fb4-4aea-983d-13739d6ee5a1"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3432,7 +3366,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[CEFALEA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="504" width="150" height="20" uuid="6c7702fb-c9b4-41f2-91ec-f3594a7242b1"/>
+				<reportElement x="0" y="482" width="150" height="20" uuid="6c7702fb-c9b4-41f2-91ec-f3594a7242b1"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3445,8 +3379,134 @@ BRONQUIECTASIAS-OTROS
 				</textElement>
 				<text><![CDATA[OTROS]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="403" y="462" width="151" height="20" uuid="0f639850-a115-47a9-9abb-42c5144c5022"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cefalea}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="442" width="79" height="20" uuid="434981cd-15f1-434a-ae52-825c9433761c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{convul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="442" width="152" height="20" uuid="9f017543-7a51-4e69-9cf7-3802a496a5a3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{craneales}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="462" width="79" height="20" uuid="c275c06f-5c12-46d0-9e6e-b4c1107162b6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{conciencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="482" width="405" height="20" uuid="668a7ec4-a0ac-4502-a804-b6aa566532d7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{otross}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="0" y="524" width="281" height="20" uuid="e51eced4-e8da-4b3e-9442-c36647332683"/>
+				<reportElement x="0" y="422" width="555" height="20" uuid="64ec769e-6e2c-4726-bc5f-1482c4aaf475"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA NERVIOSO CENTRAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="402" width="381" height="20" uuid="6652e7ae-d8ce-4c68-b6e9-65221888a46b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ULTIMA INGESTION DE ALIMAENTOS:HORA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="422" width="381" height="20" uuid="61e2695d-5bed-475d-9d5b-fc9fa7342f1d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORA DEL ACCIDENTE O DOLOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="381" y="402" width="174" height="20" uuid="b48bc4ce-b08b-49fc-b272-2d2b839fae33"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{horai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="422" width="174" height="20" uuid="93449194-858e-4853-856c-674412bcaf92"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{horad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="502" width="281" height="22" uuid="e51eced4-e8da-4b3e-9442-c36647332683"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3460,7 +3520,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[OTROS SISTEMAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="544" width="174" height="20" uuid="6ac5a5d9-cdcf-431e-8630-8259a0781f36"/>
+				<reportElement x="0" y="524" width="174" height="20" uuid="6ac5a5d9-cdcf-431e-8630-8259a0781f36"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3474,7 +3534,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[ALERGIA-HABITOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="564" width="174" height="20" uuid="eef5136f-dc1d-4d12-8528-92e9cbbd9a91"/>
+				<reportElement x="0" y="544" width="174" height="20" uuid="eef5136f-dc1d-4d12-8528-92e9cbbd9a91"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3488,7 +3548,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[HIPERTIROISMO-DIABETES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="584" width="174" height="20" uuid="696e33a2-0524-409c-a64c-7ecdeb3be671"/>
+				<reportElement x="0" y="564" width="174" height="20" uuid="696e33a2-0524-409c-a64c-7ecdeb3be671"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3502,7 +3562,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[INSUF.HEPATICO O RENAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="604" width="174" height="20" uuid="f7ead6f4-5e9b-4c9f-ba98-87f15b284117"/>
+				<reportElement x="0" y="584" width="174" height="20" uuid="f7ead6f4-5e9b-4c9f-ba98-87f15b284117"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3516,7 +3576,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[DESEQULIBRIO ELECTROLITICO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="624" width="174" height="20" uuid="48fd445f-3d18-4814-b801-1710a6b0ab79"/>
+				<reportElement x="0" y="604" width="174" height="20" uuid="48fd445f-3d18-4814-b801-1710a6b0ab79"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3530,7 +3590,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[TRAUMATISMOS MULTIPLES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="664" width="174" height="20" uuid="e4cc0a90-bac7-4455-adad-c97b7e6ae01c"/>
+				<reportElement x="0" y="644" width="174" height="20" uuid="e4cc0a90-bac7-4455-adad-c97b7e6ae01c"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3544,7 +3604,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[SHOCKS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="683" width="174" height="20" uuid="e4acc87b-c275-4ae1-88bb-bfb2a2ef079d"/>
+				<reportElement x="0" y="663" width="174" height="20" uuid="e4acc87b-c275-4ae1-88bb-bfb2a2ef079d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3558,7 +3618,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[OTROS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="281" y="524" width="274" height="20" uuid="89ba421e-2d91-40d3-82a7-8b6cb923eef3"/>
+				<reportElement x="281" y="502" width="274" height="22" uuid="89ba421e-2d91-40d3-82a7-8b6cb923eef3"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3572,7 +3632,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[TERAPIA ANTERIOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="281" y="544" width="107" height="20" uuid="2581b3ae-8ffb-4cc6-b6e1-6115516ed019"/>
+				<reportElement x="281" y="524" width="107" height="20" uuid="2581b3ae-8ffb-4cc6-b6e1-6115516ed019"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3586,7 +3646,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[DIGITALICOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="281" y="564" width="107" height="20" uuid="f700bbb6-ddee-4d51-9325-42c05bdfbc97"/>
+				<reportElement x="281" y="544" width="107" height="20" uuid="f700bbb6-ddee-4d51-9325-42c05bdfbc97"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3600,7 +3660,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[ESTEROIDES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="281" y="584" width="107" height="20" uuid="0da59254-e23b-47b6-b125-12dcb11be69d"/>
+				<reportElement x="281" y="564" width="107" height="20" uuid="0da59254-e23b-47b6-b125-12dcb11be69d"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3614,7 +3674,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[TRANQUILIZANTES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="604" width="108" height="20" uuid="34a03b40-3e40-41d0-a0eb-a2119e13ddd7"/>
+				<reportElement x="281" y="584" width="106" height="20" uuid="34a03b40-3e40-41d0-a0eb-a2119e13ddd7"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3628,7 +3688,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[HIPOTENSORES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="624" width="109" height="20" uuid="961e4efd-92d3-43fa-9589-976a4bd78d72"/>
+				<reportElement x="280" y="604" width="109" height="20" uuid="961e4efd-92d3-43fa-9589-976a4bd78d72"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3642,7 +3702,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[OTROS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="644" width="275" height="20" uuid="a90bebec-3b53-495f-82b0-4c7e6a10db87"/>
+				<reportElement x="280" y="624" width="275" height="20" uuid="a90bebec-3b53-495f-82b0-4c7e6a10db87"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3656,43 +3716,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[DIAGNOSTICO PREOPERATORIO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="403" y="484" width="151" height="20" uuid="0f639850-a115-47a9-9abb-42c5144c5022"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cefalea}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="150" y="464" width="79" height="20" uuid="434981cd-15f1-434a-ae52-825c9433761c"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{convul}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="403" y="464" width="152" height="20" uuid="9f017543-7a51-4e69-9cf7-3802a496a5a3"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{craneales}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="174" y="564" width="107" height="20" uuid="6bb775ee-f48f-4ff1-8770-042362ed9b8b"/>
+				<reportElement x="174" y="544" width="107" height="20" uuid="6bb775ee-f48f-4ff1-8770-042362ed9b8b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3704,7 +3728,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{diabetes}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="174" y="663" width="106" height="20" uuid="23c75164-69a0-41f2-9436-360ad5a86f30"/>
+				<reportElement x="174" y="643" width="107" height="20" uuid="23c75164-69a0-41f2-9436-360ad5a86f30"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3716,7 +3740,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{shocks}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="174" y="584" width="107" height="20" uuid="49847cdb-5dc0-441f-921c-e66a87fdd4c9"/>
+				<reportElement x="174" y="564" width="107" height="20" uuid="49847cdb-5dc0-441f-921c-e66a87fdd4c9"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3728,31 +3752,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{renal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="484" width="79" height="20" uuid="c275c06f-5c12-46d0-9e6e-b4c1107162b6"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{conciencia}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="150" y="504" width="405" height="20" uuid="668a7ec4-a0ac-4502-a804-b6aa566532d7"/>
-				<box>
-					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{otross}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="174" y="544" width="106" height="20" uuid="53f801b7-ae39-4351-84be-a455c9a8c567"/>
+				<reportElement x="174" y="524" width="106" height="20" uuid="53f801b7-ae39-4351-84be-a455c9a8c567"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3764,7 +3764,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{habitos}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="174" y="604" width="107" height="20" uuid="a608a3c7-6c0a-4a09-91ba-878c50201a27"/>
+				<reportElement x="174" y="584" width="107" height="20" uuid="a608a3c7-6c0a-4a09-91ba-878c50201a27"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3776,7 +3776,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{electro}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="644" width="174" height="20" uuid="aa251316-319a-43a9-bb87-6ed7a3877b90"/>
+				<reportElement x="0" y="624" width="174" height="20" uuid="aa251316-319a-43a9-bb87-6ed7a3877b90"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3790,7 +3790,7 @@ BRONQUIECTASIAS-OTROS
 				<text><![CDATA[TOEXIMIAS]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="174" y="624" width="107" height="20" uuid="e26c1957-d67d-4a1d-ac48-e45b2a23bc51"/>
+				<reportElement x="174" y="604" width="107" height="20" uuid="e26c1957-d67d-4a1d-ac48-e45b2a23bc51"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3802,7 +3802,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{trumatismo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="174" y="643" width="106" height="20" uuid="7985c369-3e2e-4386-bf8c-49cefc5119b2"/>
+				<reportElement x="174" y="624" width="106" height="19" uuid="7985c369-3e2e-4386-bf8c-49cefc5119b2"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3814,7 +3814,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{toxe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="174" y="683" width="106" height="20" uuid="69e4dce3-b4ff-4a28-b757-52eed87111ed"/>
+				<reportElement x="174" y="663" width="107" height="20" uuid="69e4dce3-b4ff-4a28-b757-52eed87111ed"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3826,7 +3826,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{otrosr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="389" y="584" width="165" height="20" uuid="2afdf1d2-242e-4ecb-a4d1-7bc459ec10be"/>
+				<reportElement x="389" y="564" width="165" height="20" uuid="2afdf1d2-242e-4ecb-a4d1-7bc459ec10be"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3838,7 +3838,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{tranqui}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="389" y="604" width="165" height="20" uuid="fa15a3af-228e-40da-bf7c-5119d3df7418"/>
+				<reportElement x="389" y="584" width="165" height="19" uuid="fa15a3af-228e-40da-bf7c-5119d3df7418"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3850,7 +3850,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{hipotensores}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="389" y="623" width="166" height="20" uuid="ee02ee5a-4972-4c0f-9fc5-94a328ca38f3"/>
+				<reportElement x="389" y="603" width="166" height="21" uuid="ee02ee5a-4972-4c0f-9fc5-94a328ca38f3"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3862,7 +3862,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{otrost}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="389" y="564" width="165" height="20" uuid="fb4761b1-32bf-45a0-bd11-d80b7c176eb8"/>
+				<reportElement x="389" y="544" width="165" height="20" uuid="fb4761b1-32bf-45a0-bd11-d80b7c176eb8"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3874,7 +3874,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{esteroides}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="389" y="544" width="166" height="20" uuid="9a023842-3873-46cd-aab2-218376c44b15"/>
+				<reportElement x="389" y="524" width="166" height="20" uuid="9a023842-3873-46cd-aab2-218376c44b15"/>
 				<box>
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3886,7 +3886,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{digi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="281" y="664" width="273" height="39" uuid="0f07370a-afcf-4e38-97ab-8ecbb78f3d57"/>
+				<reportElement x="281" y="644" width="273" height="39" uuid="0f07370a-afcf-4e38-97ab-8ecbb78f3d57"/>
 				<box leftPadding="10">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -3898,7 +3898,7 @@ BRONQUIECTASIAS-OTROS
 				<textFieldExpression><![CDATA[$F{pre}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="379">
+		<band height="332">
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="5cd4ccbf-081e-445c-bdbe-866afebf32b8"/>
 				<box>
@@ -4184,9 +4184,6 @@ UROLOGIAS
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
 	</summary>
