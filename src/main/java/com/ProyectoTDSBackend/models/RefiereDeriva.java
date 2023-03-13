@@ -6,12 +6,15 @@
 package com.ProyectoTDSBackend.models;
 
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,7 +29,7 @@ public class RefiereDeriva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_refiere", nullable = false)
-    private int idRefiere;
+    private Long idRefiere;
 
     @Column(name = "entidad_sistema", nullable = false)
     private String entidadSistema;
@@ -43,29 +46,28 @@ public class RefiereDeriva {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @OneToOne
-    @JoinColumn(name = "id_motivo")
-    private Motivos motivo;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_formulario", foreignKey = @ForeignKey(name = "fk_enfer_id"))
+    private Formulario formulario;
 
     public RefiereDeriva() {
     }
 
-    public RefiereDeriva(int idRefiere, String entidadSistema, String establecimientoRefer, String servicioReferido, String especialidadReferido, Date fecha, Motivos motivo) {
+    public RefiereDeriva(Long idRefiere, String entidadSistema, String establecimientoRefer, String servicioReferido, String especialidadReferido, Date fecha, Formulario formulario) {
         this.idRefiere = idRefiere;
         this.entidadSistema = entidadSistema;
         this.establecimientoRefer = establecimientoRefer;
         this.servicioReferido = servicioReferido;
         this.especialidadReferido = especialidadReferido;
         this.fecha = fecha;
-        this.motivo = motivo;
+        this.formulario = formulario;
     }
 
-    
-    public int getIdRefiere() {
+    public Long getIdRefiere() {
         return idRefiere;
     }
 
-    public void setIdRefiere(int idRefiere) {
+    public void setIdRefiere(Long idRefiere) {
         this.idRefiere = idRefiere;
     }
 
@@ -109,14 +111,12 @@ public class RefiereDeriva {
         this.fecha = fecha;
     }
 
-    public Motivos getMotivo() {
-        return motivo;
+    public Formulario getFormulario() {
+        return formulario;
     }
 
-    public void setMotivo(Motivos motivo) {
-        this.motivo = motivo;
+    public void setFormulario(Formulario formulario) {
+        this.formulario = formulario;
     }
-    
-    
 
 }

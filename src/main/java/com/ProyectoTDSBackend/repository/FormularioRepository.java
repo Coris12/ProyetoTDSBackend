@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author LENOVO
  */
-public interface FormularioRepository extends JpaRepository<Formulario, Integer> {
+public interface FormularioRepository extends JpaRepository<Formulario, Long> {
 
     @Query(value = "select u.nombres, u.direccion, u.celular, f.cuadro_clinico, f.diagnostico, f.hallazgos,\n"
             + "d.districto, d.area, d.entidad, d.establecimiento, d.hist_clin_num, d.tipo,\n"

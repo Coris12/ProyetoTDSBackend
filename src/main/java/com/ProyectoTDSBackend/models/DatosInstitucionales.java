@@ -5,11 +5,15 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,13 +27,13 @@ public class DatosInstitucionales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_datos", nullable = false)
-    private int id_datos;
+    private Long idDatos;
 
     @Column(name = "entidad")
     private String entidad;
 
     @Column(name = "hist_clin_num")
-    private String hist_clin_num;
+    private String histclinnum;
 
     @Column(name = "establecimiento")
     private String establecimiento;
@@ -39,31 +43,64 @@ public class DatosInstitucionales {
 
     @Column(name = "districto")
     private String districto;
-    
-    @Column(name = "area")
-    private String area;
 
-    public DatosInstitucionales(int id_datos, String entidad, String hist_clin_num, String establecimiento, String tipo, String districto, String area) {
-        this.id_datos = id_datos;
-        this.entidad = entidad;
-        this.hist_clin_num = hist_clin_num;
-        this.establecimiento = establecimiento;
-        this.tipo = tipo;
-        this.districto = districto;
-        this.area = area;
-    }
+    @Column(name = "limitada", length = 1)
+    private String limitada;
+
+    @Column(name = "ausencia", length = 1)
+    private String ausencia;
+
+    @Column(name = "falta", length = 1)
+    private String falta;
+
+    @Column(name = "saturacion", length = 1)
+    private String satu;
+
+    @Column(name = "otro", length = 1)
+    private String otros;
+
+    @Column(name = "descrip")
+    private String descripcion;
+
+    @Column(name = "nombreP")
+    private String nombreP;
+    
+    @Column(name = "codigo")
+    private String codigo; 
+    
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_formulario", foreignKey = @ForeignKey(name = "fk_enfer_id"))
+    private Formulario formulario;
 
     public DatosInstitucionales() {
     }
 
-    
-    
-    public int getId_datos() {
-        return id_datos;
+    public DatosInstitucionales(Long idDatos, String entidad, String histclinnum, String establecimiento, String tipo, String districto, String limitada, String ausencia, String falta, String satu, String otros, String descripcion, String nombreP, String codigo, Formulario formulario) {
+        this.idDatos = idDatos;
+        this.entidad = entidad;
+        this.histclinnum = histclinnum;
+        this.establecimiento = establecimiento;
+        this.tipo = tipo;
+        this.districto = districto;
+        this.limitada = limitada;
+        this.ausencia = ausencia;
+        this.falta = falta;
+        this.satu = satu;
+        this.otros = otros;
+        this.descripcion = descripcion;
+        this.nombreP = nombreP;
+        this.codigo = codigo;
+        this.formulario = formulario;
     }
 
-    public void setId_datos(int id_datos) {
-        this.id_datos = id_datos;
+   
+
+    public Long getIdDatos() {
+        return idDatos;
+    }
+
+    public void setIdDatos(Long idDatos) {
+        this.idDatos = idDatos;
     }
 
     public String getEntidad() {
@@ -74,12 +111,12 @@ public class DatosInstitucionales {
         this.entidad = entidad;
     }
 
-    public String getHist_clin_num() {
-        return hist_clin_num;
+    public String getHistclinnum() {
+        return histclinnum;
     }
 
-    public void setHist_clin_num(String hist_clin_num) {
-        this.hist_clin_num = hist_clin_num;
+    public void setHist_clin_num(String histclinnum) {
+        this.histclinnum = histclinnum;
     }
 
     public String getEstablecimiento() {
@@ -106,14 +143,77 @@ public class DatosInstitucionales {
         this.districto = districto;
     }
 
-    public String getArea() {
-        return area;
+    public String getLimitada() {
+        return limitada;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setLimitada(String limitada) {
+        this.limitada = limitada;
     }
-    
-    
+
+    public String getAusencia() {
+        return ausencia;
+    }
+
+    public void setAusencia(String ausencia) {
+        this.ausencia = ausencia;
+    }
+
+    public String getFalta() {
+        return falta;
+    }
+
+    public void setFalta(String falta) {
+        this.falta = falta;
+    }
+
+    public String getSatu() {
+        return satu;
+    }
+
+    public void setSatu(String satu) {
+        this.satu = satu;
+    }
+
+    public String getOtros() {
+        return otros;
+    }
+
+    public void setOtros(String otros) {
+        this.otros = otros;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Formulario getFormulario() {
+        return formulario;
+    }
+
+    public void setFormulario(Formulario formulario) {
+        this.formulario = formulario;
+    }
+
+    public String getNombreP() {
+        return nombreP;
+    }
+
+    public void setNombreP(String nombreP) {
+        this.nombreP = nombreP;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     
 }

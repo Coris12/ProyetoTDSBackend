@@ -6,10 +6,8 @@
 package com.ProyectoTDSBackend.controller;
 
 import com.ProyectoTDSBackend.dto.FormularioDto;
-import com.ProyectoTDSBackend.dto.Mensaje;
 import com.ProyectoTDSBackend.models.Formulario;
-import com.ProyectoTDSBackend.service.ClienteService;
-import com.ProyectoTDSBackend.service.FormularioService;
+import com.ProyectoTDSBackend.service.FormService;
 import com.ProyectoTDSBackend.util.GenericResponse;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
@@ -27,38 +25,18 @@ import springfox.documentation.annotations.ApiIgnore;
 
 /**
  *
- * @author LENOVO
+ * @author corin
  */
 @RestController
 @RequestMapping("/formulario")
 @CrossOrigin({"*"})
-public class FormularioController {
+public class FormsController {
+     @Autowired
+    private FormService servicio;
 
-    @Autowired
-    private FormularioService servicio;
-
-    @ApiOperation("Crea al formulario")
-    @PostMapping("/crearFormulario")
-    public ResponseEntity<?> create(@RequestBody Formulario formulario) {
-
-        try {
-            Formulario form = new Formulario(
-                    formulario.getIdFormulario(),
-                    formulario.getCuadro_clinico(),
-                    formulario.getHallazgos(),
-                    formulario.getDiagnostico(),
-                    formulario.getUsuario(),
-                    formulario.getDatos(),
-                    formulario.getRefiere()
-            );
-            servicio.save(form);
-            int id = formulario.getIdFormulario();
-            return new ResponseEntity<>(new Mensaje(String.valueOf(id)), HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println("error crear al crear el formulario: " + e.getMessage());
-            return new ResponseEntity(new Mensaje("Formulario no fue creado"), HttpStatus.BAD_REQUEST);
-        }
-
+      @PostMapping(path = "saveForm")
+    public ResponseEntity<GenericResponse<String>> saveFormulario(@RequestBody Formulario form) {
+        return new ResponseEntity<GenericResponse<String>>(servicio.saveFormulario(form), HttpStatus.OK);
     }
     
     @ApiOperation("Muestra una lista de los formularios")
