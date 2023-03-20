@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.repository;
 
+import com.ProyectoTDSBackend.dto.FormDto;
 import com.ProyectoTDSBackend.dto.FormularioDto;
 import com.ProyectoTDSBackend.models.Formulario;
 import com.ProyectoTDSBackend.util.GenericResponse;
@@ -42,10 +43,14 @@ public interface FormularioRepository extends JpaRepository<Formulario, Long> {
             + "join residencia r \n"
             + "on r.id_usuario = u.id\n"
             + "where u.id= :id", nativeQuery = true)
-    List<Formulario> findid(@Param("id") Integer id);
+    List<Formulario> findid(@Param("id") long id);
 
     @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
     @Query(nativeQuery = true)
-    public FormularioDto getFormularioById(int idFor);
+    public FormularioDto getFormularioById(long idFor);
 
+    
+    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRES_NEW, rollbackFor = {Throwable.class})
+    @Query(nativeQuery = true)
+    public List<FormDto> generarPdfForm(@Param("idForm") long idForm);
 }

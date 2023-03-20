@@ -41,7 +41,38 @@
             </query>
         </named-native-query>
     </entity>
-    
+    <entity class="com.ProyectoTDSBackend.models.Formulario">
+        <named-native-query name="Formulario.generarPdfForm" result-set-mapping="generarPdfForm">
+            <query>
+                select u.nombres as nombres, u.direccion as direccion, u.celular as celular,u.sexo as sexo,u.identificacion as indent,r.canton as caton,
+                r.parroquia as parro,r.provincia as provi,r.nacionalidad as nac,r.pais as pais,h.edad as edad,h.num_cli as numcli,f.cie as cie,f.cie2 as cie2,
+                f.contrarefrencia as contra,f.cuadro_clinico as cuadro,f.dato as dato ,f.dato2 AS dato2,f.derivacion as deriva,f.diagnostico as diagnos,f.diagnostic as diagnostic,
+                f.hallazgos as hallazgo,f.inversa as inversa,f.referencia as referencia,
+                d.ausencia as ausencia,d.codigo as codigo,d.descrip as descrip,d.districto as districto,d.entidad as entidad,d.establecimiento as estable,
+                d.falta as falta,d.limitada as limitada,d.nombrep as nombrep,d.otro as otro,d.saturacion as satu,d.tipo as tipo,
+                s.entidad_sistema as entidadS,s.especiali_referido as espe,s.establecimiento_referido as estableci,s.fecha as fechaR,s.servicio_referido as servicio,
+                l.distrito as distrit,l.entidadc as entidadc,l.establecimiento as establecim,l.fecha as fechac,l.justificada as jus,l.servicioc as servicioc,l.tipoc as tipoc,
+                i.ciec as ciec,i.ciei as ciei,i.cuadro as cuadroi,i.da as da ,i.diagnostico_in as diagnosticoi,i.halla as halla,i.tratamiento as trata,
+                i.tratamientor as tratamien,i.diagnosticoi as diag,i.da1 as da1
+                from  usuario u
+                join historia_clinica h on
+                u.id = h.id_persona
+                join formulario f
+                on  u.id = f.id_usuario
+                join residencia r
+                on u.id=r.id_usuario
+                join datos_institucionales d on
+                d.id_formulario = f.id_formulario
+                join refiere_deriva s on 
+                s.id_formulario = f.id_formulario
+                join contrareferencia l on 
+                l.id_formulario = f.id_formulario
+                join inversa i on 
+                i.id_formulario = f.id_formulario
+                where f.id_formulario=:idForm
+            </query>
+        </named-native-query>
+    </entity>
     
     <entity class="com.ProyectoTDSBackend.models.Protocolos">
         <named-native-query name="Protocolos.generarPdfProtocolo" result-set-mapping="generarPdfProtocolo">
@@ -420,7 +451,7 @@
                 WHERE c.estado = 'a' and c.id_consentimiento=:idCon
                 and i.id_inf_trat='1' 
                 and i.id_inf_trat='2' 
-                
+                and i.id_inf_trat='3'
             </query>
         </named-native-query>
         <named-native-query name="Consentimiento.getAllDatosOnlyConsentimientoById" result-set-mapping="getAllDatosOnlyConsentimientoById">

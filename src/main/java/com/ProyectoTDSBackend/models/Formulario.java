@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.models;
 
+import com.ProyectoTDSBackend.dto.FormDto;
 import com.ProyectoTDSBackend.dto.FormularioDto;
 import com.ProyectoTDSBackend.security.models.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,6 +28,7 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SqlResultSetMapping;
+import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 
 /**
@@ -34,40 +36,106 @@ import javax.persistence.Table;
  * @author LENOVO
  */
 @NamedNativeQueries({
-    @NamedNativeQuery(name = "Formulario.getFormularioById", query = "", resultSetMapping = "getFormularioById")
+    @NamedNativeQuery(name = "Formulario.getFormularioById", query = "", resultSetMapping = "getFormularioById"),
+    @NamedNativeQuery(name = "Formulario.generarPdfForm", query = "", resultSetMapping = "generarPdfForm")
 })
-@SqlResultSetMapping(name = "getFormularioById", classes = {
-    @ConstructorResult(targetClass = FormularioDto.class, columns = {
-        @ColumnResult(name = "nombres", type = String.class),
-        @ColumnResult(name = "direccion", type = String.class),
-        @ColumnResult(name = "celular", type = String.class),
-        @ColumnResult(name = "cuadro_clinico", type = String.class),
-        @ColumnResult(name = "diagnostico", type = String.class),
-        @ColumnResult(name = "hallazgos", type = String.class),
-        @ColumnResult(name = "districto", type = String.class),
-        @ColumnResult(name = "area", type = String.class),
-        @ColumnResult(name = "entidad", type = String.class),
-        @ColumnResult(name = "establecimiento", type = String.class),
-        @ColumnResult(name = "hist_clin_num", type = String.class),
-        @ColumnResult(name = "tipo", type = String.class),
-        @ColumnResult(name = "entidad_sistema", type = String.class),
-        @ColumnResult(name = "especiali_referido", type = String.class),
-        @ColumnResult(name = "establecimiento_referido", type = String.class),
-        @ColumnResult(name = "fecha", type = Date.class),
-        @ColumnResult(name = "servicio_referido", type = String.class),
-        @ColumnResult(name = "anio", type = String.class),
-        @ColumnResult(name = "dia", type = String.class),
-        @ColumnResult(name = "mes", type = String.class),
-        @ColumnResult(name = "especilaidad", type = String.class),
-        @ColumnResult(name = "servicio", type = String.class),
-        @ColumnResult(name = "provincia", type = Boolean.class),
-        @ColumnResult(name = "nacionalidad", type = String.class),
-        @ColumnResult(name = "pais", type = String.class),
-        @ColumnResult(name = "parroquia", type = String.class),
-        @ColumnResult(name = "caton", type = String.class),
-        @ColumnResult(name = "otro", type = String.class),
-        @ColumnResult(name = "idFormulario", type = String.class)
+@SqlResultSetMappings({
+    @SqlResultSetMapping(name = "getFormularioById", classes = {
+        @ConstructorResult(targetClass = FormularioDto.class, columns = {
+            @ColumnResult(name = "nombres", type = String.class),
+            @ColumnResult(name = "direccion", type = String.class),
+            @ColumnResult(name = "celular", type = String.class),
+            @ColumnResult(name = "cuadro_clinico", type = String.class),
+            @ColumnResult(name = "diagnostico", type = String.class),
+            @ColumnResult(name = "hallazgos", type = String.class),
+            @ColumnResult(name = "districto", type = String.class),
+            @ColumnResult(name = "area", type = String.class),
+            @ColumnResult(name = "entidad", type = String.class),
+            @ColumnResult(name = "establecimiento", type = String.class),
+            @ColumnResult(name = "hist_clin_num", type = String.class),
+            @ColumnResult(name = "tipo", type = String.class),
+            @ColumnResult(name = "entidad_sistema", type = String.class),
+            @ColumnResult(name = "especiali_referido", type = String.class),
+            @ColumnResult(name = "establecimiento_referido", type = String.class),
+            @ColumnResult(name = "fecha", type = Date.class),
+            @ColumnResult(name = "servicio_referido", type = String.class),
+            @ColumnResult(name = "anio", type = String.class),
+            @ColumnResult(name = "dia", type = String.class),
+            @ColumnResult(name = "mes", type = String.class),
+            @ColumnResult(name = "especilaidad", type = String.class),
+            @ColumnResult(name = "servicio", type = String.class),
+            @ColumnResult(name = "provincia", type = String.class),
+            @ColumnResult(name = "nacionalidad", type = String.class),
+            @ColumnResult(name = "pais", type = String.class),
+            @ColumnResult(name = "parroquia", type = String.class),
+            @ColumnResult(name = "caton", type = String.class),
+            @ColumnResult(name = "otro", type = String.class),
+            @ColumnResult(name = "idFormulario", type = String.class)
 
+        })
+    }),
+    @SqlResultSetMapping(name = "generarPdfForm", classes = {
+        @ConstructorResult(targetClass = FormDto.class, columns = {
+            @ColumnResult(name = "nombres", type = String.class),
+            @ColumnResult(name = "direccion", type = String.class),
+            @ColumnResult(name = "celular", type = String.class),
+            @ColumnResult(name = "sexo", type = String.class),
+            @ColumnResult(name = "indent", type = String.class),
+            @ColumnResult(name = "caton", type = String.class),
+            @ColumnResult(name = "parro", type = String.class),
+            @ColumnResult(name = "provi", type = String.class),
+            @ColumnResult(name = "nac", type = String.class),
+            @ColumnResult(name = "pais", type = String.class),
+            @ColumnResult(name = "edad", type = Integer.class),
+            @ColumnResult(name = "numcli", type = Integer.class),
+            @ColumnResult(name = "cie", type = String.class),
+            @ColumnResult(name = "cie2", type = String.class),
+            @ColumnResult(name = "contra", type = String.class),
+            @ColumnResult(name = "cuadro", type = String.class),
+            @ColumnResult(name = "dato", type = String.class),
+            @ColumnResult(name = "dato2", type = String.class),
+            @ColumnResult(name = "deriva", type = String.class),
+            @ColumnResult(name = "diagnos", type = String.class),
+            @ColumnResult(name = "diagnostic", type = String.class),
+            @ColumnResult(name = "hallazgo", type = String.class),
+            @ColumnResult(name = "inversa", type = String.class),
+            @ColumnResult(name = "referencia", type = String.class),
+            @ColumnResult(name = "ausencia", type = String.class),
+            @ColumnResult(name = "codigo", type = String.class),
+            @ColumnResult(name = "descrip", type = String.class),
+            @ColumnResult(name = "districto", type = String.class),
+            @ColumnResult(name = "entidad", type = String.class),
+            @ColumnResult(name = "estable", type = String.class),
+            @ColumnResult(name = "falta", type = String.class),
+            @ColumnResult(name = "limitada", type = String.class),
+            @ColumnResult(name = "nombrep", type = String.class),
+            @ColumnResult(name = "otro", type = String.class),
+            @ColumnResult(name = "satu", type = String.class),
+            @ColumnResult(name = "tipo", type = String.class),
+            @ColumnResult(name = "entidads", type = String.class),
+            @ColumnResult(name = "espe", type = String.class),
+            @ColumnResult(name = "estableci", type = String.class),
+            @ColumnResult(name = "fechar", type = Date.class),
+            @ColumnResult(name = "servicio", type = String.class),
+            @ColumnResult(name = "distrit", type = String.class),
+            @ColumnResult(name = "entidadc", type = String.class),
+            @ColumnResult(name = "establecim", type = String.class),
+            @ColumnResult(name = "fechac", type = String.class),
+            @ColumnResult(name = "jus", type = String.class),
+            @ColumnResult(name = "servicioc", type = String.class),
+            @ColumnResult(name = "tipoc", type = String.class),
+            @ColumnResult(name = "ciec", type = String.class),
+            @ColumnResult(name = "ciei", type = String.class),
+            @ColumnResult(name = "cuadroi", type = String.class),
+            @ColumnResult(name = "da", type = String.class),
+            @ColumnResult(name = "diagnosticoi", type = String.class),
+            @ColumnResult(name = "halla", type = String.class),
+            @ColumnResult(name = "trata", type = String.class),
+            @ColumnResult(name = "tratamien", type = String.class),
+            @ColumnResult(name = "diag", type = String.class),
+            @ColumnResult(name = "da1", type = String.class)
+
+        })
     })
 })
 
@@ -123,14 +191,14 @@ public class Formulario {
     @OneToMany(mappedBy = "formulario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<RefiereDeriva> refiere;
 
-     @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "formulario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Inversa> inver;
-     
-     @JsonIgnore
+
+    @JsonIgnore
     @OneToMany(mappedBy = "formulario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Contrareferencia> refe;
-     
+
     @ManyToOne(optional = true, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_autoriza_id"))
     private Usuario usuario;
@@ -158,8 +226,6 @@ public class Formulario {
         this.refe = refe;
         this.usuario = usuario;
     }
-
-    
 
     public Long getIdFormulario() {
         return idFormulario;
@@ -305,5 +371,4 @@ public class Formulario {
         this.refe = refe;
     }
 
-    
 }

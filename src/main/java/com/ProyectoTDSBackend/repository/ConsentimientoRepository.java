@@ -39,4 +39,5 @@ public interface ConsentimientoRepository extends JpaRepository<Consentimiento, 
     +" WHERE id_consentimiento = :idConsentimiento", nativeQuery = true)
     void deleteUpdateConsentimiento(Integer idConsentimiento);
 
+    
 }

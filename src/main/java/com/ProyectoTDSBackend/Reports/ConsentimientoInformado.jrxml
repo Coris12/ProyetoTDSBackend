@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="c4219b96-4be4-476d-a513-687ad45a3f79">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="546"/>
 	<parameter name="idCon" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -10,12 +10,10 @@
 		<defaultValueExpression><![CDATA["C:\\Users\\corin\\OneDrive\\Escritorio\\MediValle\\src\\main\\java\\com\\ProyectoTDSBackend\\Reports\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT         	c.id_consentimiento,c.institucion_sistema as institucionSistema, c.unidad_operativa as unidadOperativa,
-				c.cod_ud as codUd,c.canton,c.parroquia,c.provincia,c.numero_historia_clinica as numeroHistoriaClinica, 
-                u.nombres, c.sala, c.servicio, c.cama,c.fecha
+		<![CDATA[SELECT c.id_consentimiento,c.institucion_sistema as institucionSistema, c.unidad_operativa as unidadOperativa,c.cod_ud as codUd,c.canton,c.parroquia,c.provincia,c.numero_historia_clinica as numeroHistoriaClinica,u.nombres, c.sala, c.servicio, c.cama,c.fecha
+
                 FROM consentimientos c JOIN usuario u
                 ON u.id = c.id_usuario
-								
                 WHERE c.estado = 'a' and c.id_consentimiento=$P{idCon}]]>
 	</queryString>
 	<field name="id_consentimiento" class="java.lang.Integer"/>
@@ -470,7 +468,7 @@
 					<subreportParameterExpression><![CDATA[$F{id_consentimiento}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ConsentimientoInformadoCirujia.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["ConsentimientoInformadoCirujia.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
 				<reportElement x="-1" y="0" width="556" height="153" uuid="434428e5-c0c0-4469-87c0-9e7649b1c96f"/>
@@ -478,7 +476,7 @@
 					<subreportParameterExpression><![CDATA[$F{id_consentimiento}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ConsentimientoInformadoTratamiento.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["ConsentimientoInformadoTratamiento.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="145">
@@ -488,7 +486,7 @@
 					<subreportParameterExpression><![CDATA[$F{id_consentimiento}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ConsentimientoInformadoAnestesia.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["ConsentimientoInformadoAnestesia.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="202">

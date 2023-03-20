@@ -66,7 +66,7 @@ public class TarjetaController {
             tar.setTipoaAfiliacion(tarjeta.getAfiliacion());
             tar.setFechaInicio(tarjeta.getFechaInicio());
             tar.setFechaFin(tarjeta.getFechaFin());
-            tar.setQR(servicio.generateByteQrCode(identificacion, 250, 250));
+            tar.setQR(servicio.generateByteQrCode(identificacion, 255, 255));
             tar.setEstado(tarjeta.getEstado());
             tar.setIdTarjetaEspecialidad(tarjeta.getIdTarjetaEspecialidad());
             servicio.save(tar);

@@ -5,6 +5,7 @@
  */
 package com.ProyectoTDSBackend.service;
 
+import com.ProyectoTDSBackend.dto.FormDto;
 import com.ProyectoTDSBackend.dto.FormularioDto;
 import com.ProyectoTDSBackend.models.Formulario;
 import com.ProyectoTDSBackend.repository.FormularioRepository;
@@ -65,11 +66,11 @@ public class FormService {
     }
     
     
-      public List<Formulario> getbyidconvocatoria(Integer id) {
+      public List<Formulario> getbyidconvocatoria(Long id) {
         return repositorio.findid(id);
     }
 
-    public GenericResponse<FormularioDto> getFormularioById(int idFor) {
+    public GenericResponse<FormularioDto> getFormularioById(Long idFor) {
         GenericResponse<FormularioDto> response = new GenericResponse<>();
         try {
             FormularioDto FormularioDto = repositorio.getFormularioById(idFor);
@@ -88,8 +89,8 @@ public class FormService {
         return response;
     }
 
-    /*   public List<FormularioDto> generarPdf(Long idAd) {
-        List<FormularioDto> generaPdf = repositorio.generarPdfAd(idAd);
+       public List<FormDto> generarPdf(Long idForm) {
+        List<FormDto> generaPdf = repositorio.generarPdfForm(idForm);
         return generaPdf;
-    } */
+    } 
 }
